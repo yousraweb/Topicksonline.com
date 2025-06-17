@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      TopPicksOnline - Your Trusted Guide to the Best Products Worldwide!
+    </title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="progress-bar"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="nav-container">
+        <a href="#" class="logo" onclick="showPage('home')">TopPicksOnline</a>
+        <nav>
+          <ul class="nav-menu">
+            <li>
+              <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showPage('categories')"
+                >Categories</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showPage('blog')">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showPage('about')">About</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showPage('contact')"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-cta" onclick="showTopDeals()">Top Deals</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page-content active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-category">
+            <div
+              class="hero-category-icon"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80');
+              "
+            ></div>
+            Trusted Product Reviews
+          </div>
+          <h1>Discover the Best Deals, Products & Online Offers</h1>
+          <p>
+            TopPicksOnline helps you find and compare top-rated products from
+            trusted brands across health, tech, beauty, learning, and more —
+            handpicked for your convenience.
+          </p>
+          <a href="#" class="hero-cta" onclick="showTopDeals()">
+            Explore Top Deals
+          </a>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories">
+        <div class="container">
+          <h2 class="section-title">Featured Categories</h2>
+          <div class="categories-grid">
+            <div class="category-card" onclick="showPage('health-fitness')">
+              <div
+                class="category-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+                "
+              >
+                <div class="category-overlay"></div>
+                <div class="category-icon">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/2936/2936719.png"
+                    alt="Health & Fitness"
+                  />
+                </div>
+              </div>
+              <div class="category-content">
+                <h3>Health & Fitness</h3>
+                <p>
+                  Premium protein powders, fitness trackers, and home gym
+                  equipment to help you reach your wellness goals.
+                </p>
+                <span class="category-arrow">→</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="showPage('beauty')">
+              <div
+                class="category-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+                "
+              >
+                <div class="category-overlay"></div>
+                <div class="category-icon">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3081/3081648.png"
+                    alt="Beauty & Personal Care"
+                  />
+                </div>
+              </div>
+              <div class="category-content">
+                <h3>Beauty & Personal Care</h3>
+                <p>
+                  Carefully curated skincare sets, professional hair tools, and
+                  beauty supplements for your daily routine.
+                </p>
+                <span class="category-arrow">→</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="showPage('tech')">
+              <div
+                class="category-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+                "
+              >
+                <div class="category-overlay"></div>
+                <div class="category-icon">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png"
+                    alt="Tech & Gadgets"
+                  />
+                </div>
+              </div>
+              <div class="category-content">
+                <h3>Tech & Gadgets</h3>
+                <p>
+                  Latest laptops, smartwatches, and wireless earbuds that
+                  combine innovation with exceptional value.
+                </p>
+                <span class="category-arrow">→</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="showPage('learning')">
+              <div
+                class="category-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+                "
+              >
+                <div class="category-overlay"></div>
+                <div class="category-icon">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3002/3002543.png"
+                    alt="Online Learning"
+                  />
+                </div>
+              </div>
+              <div class="category-content">
+                <h3>Online Learning</h3>
+                <p>
+                  Top-rated courses, eBooks, and educational subscriptions to
+                  advance your career and skills.
+                </p>
+                <span class="category-arrow">→</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="showPage('home-lifestyle')">
+              <div
+                class="category-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+                "
+              >
+                <div class="category-overlay"></div>
+                <div class="category-icon">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
+                    alt="Home & Lifestyle"
+                  />
+                </div>
+              </div>
+              <div class="category-content">
+                <h3>Home & Lifestyle</h3>
+                <p>
+                  Smart home devices, kitchen appliances, and storage solutions
+                  to enhance your living space.
+                </p>
+                <span class="category-arrow">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Top Picks Section -->
+      <section class="products">
+        <div class="container">
+          <h2 class="section-title">Top Picks of the Month</h2>
+          <div class="products-grid">
+            <div class="product-card">
+              <div class="product-number">1</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">
+                  Premium Protein Powder - Chocolate
+                </h3>
+                <div class="product-price">
+                  <span class="current-price">$49.99</span>
+                  <span class="original-price">$69.99</span>
+                  <span class="discount">30% OFF</span>
+                </div>
+                <p class="product-description">
+                  High-quality whey protein isolate with 25g protein per
+                  serving. Perfect for post-workout recovery and muscle
+                  building.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('protein-powder')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-number">2</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">
+                  Smart Fitness Tracker with Heart Rate
+                </h3>
+                <div class="product-price">
+                  <span class="current-price">$199.99</span>
+                  <span class="original-price">$299.99</span>
+                  <span class="discount">33% OFF</span>
+                </div>
+                <p class="product-description">
+                  Advanced fitness tracking with 24/7 heart rate monitoring,
+                  GPS, and 7-day battery life.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('fitness-tracker')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-number">3</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">Complete Skincare Routine Set</h3>
+                <div class="product-price">
+                  <span class="current-price">$89.99</span>
+                  <span class="original-price">$129.99</span>
+                  <span class="discount">31% OFF</span>
+                </div>
+                <p class="product-description">
+                  Professional-grade skincare system with cleanser, serum,
+                  moisturizer, and SPF protection.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('skincare-set')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section class="newsletter">
+        <div class="newsletter-content">
+          <h2>Get Exclusive Offers & Product Alerts</h2>
+          <p>
+            Stay updated with the latest deals and new product recommendations
+            straight to your inbox!
+          </p>
+          <form
+            class="newsletter-form"
+            onsubmit="handleNewsletterSignup(event)"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          <small>We respect your privacy. Unsubscribe anytime.</small>
+        </div>
+      </section>
+    </div>
+
+    <!-- Categories Page -->
+    <div id="categories" class="page-content">
+      <div class="page-header">
+        <div class="page-header-content">
+          <h1>All Categories</h1>
+        </div>
+      </div>
+      <div class="page-content-body">
+        <div class="container">
+          <div class="categories-grid">
+            <div class="category-card" onclick="showPage('health-fitness')">
+              <div class="category-icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2936/2936719.png"
+                  alt="Health & Fitness"
+                />
+              </div>
+              <h3>Health & Fitness</h3>
+              <p>
+                Premium protein powders, fitness trackers, and home gym
+                equipment.
+              </p>
+              <span class="category-arrow">→</span>
+            </div>
+            <div class="category-card" onclick="showPage('beauty')">
+              <div class="category-icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3081/3081648.png"
+                  alt="Beauty & Personal Care"
+                />
+              </div>
+              <h3>Beauty & Personal Care</h3>
+              <p>Skincare sets, hair tools, and beauty supplements.</p>
+              <span class="category-arrow">→</span>
+            </div>
+            <div class="category-card" onclick="showPage('tech')">
+              <div class="category-icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png"
+                  alt="Tech & Gadgets"
+                />
+              </div>
+              <h3>Tech & Gadgets</h3>
+              <p>Laptops, smartwatches, and wireless earbuds.</p>
+              <span class="category-arrow">→</span>
+            </div>
+            <div class="category-card" onclick="showPage('learning')">
+              <div class="category-icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3002/3002543.png"
+                  alt="Online Learning"
+                />
+              </div>
+              <h3>Online Learning</h3>
+              <p>Courses, eBooks, and educational subscriptions.</p>
+              <span class="category-arrow">→</span>
+            </div>
+            <div class="category-card" onclick="showPage('home-lifestyle')">
+              <div class="category-icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
+                  alt="Home & Lifestyle"
+                />
+              </div>
+              <h3>Home & Lifestyle</h3>
+              <p>Smart home devices and kitchen appliances.</p>
+              <span class="category-arrow">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health & Fitness Page -->
+    <div id="health-fitness" class="page-content">
+      <div class="page-header">
+        <div class="page-header-content">
+          <h1>Health & Fitness</h1>
+        </div>
+      </div>
+      <div class="page-content-body">
+        <div class="container">
+          <div class="products-grid">
+            <div class="product-card">
+              <div class="product-number">1</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">Whey Protein Isolate - Vanilla</h3>
+                <div class="product-price">
+                  <span class="current-price">$54.99</span>
+                  <span class="original-price">$74.99</span>
+                  <span class="discount">27% OFF</span>
+                </div>
+                <p class="product-description">
+                  Pure whey protein isolate with minimal carbs and fat. 25g
+                  protein per serving.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('whey-protein')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-number">2</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">Advanced Fitness Tracker with GPS</h3>
+                <div class="product-price">
+                  <span class="current-price">$299.99</span>
+                  <span class="original-price">$399.99</span>
+                  <span class="discount">25% OFF</span>
+                </div>
+                <p class="product-description">
+                  Professional-grade fitness tracking with built-in GPS and
+                  health monitoring.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('gps-tracker')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-number">3</div>
+              <div
+                class="product-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+                "
+              ></div>
+              <div class="product-info">
+                <h3 class="product-title">Home Gym Equipment Set</h3>
+                <div class="product-price">
+                  <span class="current-price">$199.99</span>
+                  <span class="original-price">$279.99</span>
+                  <span class="discount">29% OFF</span>
+                </div>
+                <p class="product-description">
+                  Complete home workout solution with resistance bands,
+                  dumbbells, and exercise mat.
+                </p>
+                <button
+                  class="cta-button"
+                  onclick="handleAffiliateDeal('home-gym')"
+                >
+                  View Deal
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-content">
+      <div class="page-header">
+        <div class="page-header-content">
+          <h1>About TopPicksOnline</h1>
+        </div>
+      </div>
+      <div class="page-content-body">
+        <div class="content-container">
+          <h2>Who We Are</h2>
+          <p>
+            We are passionate online researchers, product enthusiasts, and
+            experienced marketers dedicated to helping consumers make informed
+            purchasing decisions. Our team spends countless hours researching,
+            testing, and comparing products to bring you only the best
+            recommendations.
+          </p>
+
+          <h2>Our Mission</h2>
+          <p>
+            At TopPicksOnline, our mission is simple: to help global buyers find
+            the best deals quickly and confidently. We understand that shopping
+            online can be overwhelming with countless options and conflicting
+            reviews. That's why we've created a trusted platform that cuts
+            through the noise and delivers curated, high-quality product
+            recommendations.
+          </p>
+
+          <h2>What Sets Us Apart</h2>
+          <ul>
+            <li>Rigorous product testing and research process</li>
+            <li>Transparent affiliate relationships</li>
+            <li>Global perspective on product availability and pricing</li>
+            <li>Regular updates to ensure recommendations stay current</li>
+            <li>Focus on value, not just premium products</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-content">
+      <div class="page-header">
+        <div class="page-header-content">
+          <h1>Contact Us</h1>
+        </div>
+      </div>
+      <div class="page-content-body">
+        <div class="content-container">
+          <p>
+            We'd love to hear from you! Whether you have a question about our
+            recommendations, want to suggest a product for review, or need help
+            finding the perfect item, don't hesitate to reach out.
+          </p>
+
+          <div class="contact-form">
+            <form onsubmit="handleContactForm(event)">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="cta-button">Send Message</button>
+            </form>
+          </div>
+
+          <h2>Business Email</h2>
+          <p>For business inquiries: business@toppicksonline.com</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" onclick="showPage('about')">About</a></li>
+            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            <li><a href="#" onclick="showTopDeals()">Top Deals</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Categories</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showPage('health-fitness')"
+                >Health & Fitness</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="showPage('beauty')"
+                >Beauty & Personal Care</a
+              >
+            </li>
+            <li><a href="#" onclick="showPage('tech')">Tech & Gadgets</a></li>
+            <li>
+              <a href="#" onclick="showPage('learning')">Online Learning</a>
+            </li>
+            <li>
+              <a href="#" onclick="showPage('home-lifestyle')"
+                >Home & Lifestyle</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showLegal('privacy')">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" onclick="showLegal('disclaimer')"
+                >Affiliate Disclaimer</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="showLegal('terms')">Terms of Service</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>TopPicksOnline</h3>
+          <p>
+            Your trusted guide to the best products worldwide. We help you
+            discover amazing deals and make confident purchasing decisions.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                alt="Facebook"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  filter: brightness(0) invert(1);
+                "
+              />
+            </a>
+            <a href="#" class="social-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+                alt="Twitter"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  filter: brightness(0) invert(1);
+                "
+              />
+            </a>
+            <a href="#" class="social-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
+                alt="Instagram"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  filter: brightness(0) invert(1);
+                "
+              />
+            </a>
+            <a href="#" class="social-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                alt="Email"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  filter: brightness(0) invert(1);
+                "
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2025 TopPicksOnline. All rights reserved. | Helping you find the
+          best products since 2025
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
