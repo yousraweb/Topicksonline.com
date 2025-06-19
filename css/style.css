@@ -677,6 +677,10 @@ footer {
     display: block;
 }
 
+.page-content-body {
+    min-height: 80vh;
+}
+
 .page-header {
     background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
     color: white;
