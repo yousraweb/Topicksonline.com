@@ -1,5 +1,6 @@
 /* ===========================
-   TOPICKSONLINE - COMPLETE CSS
+   TOPICKSONLINE - COMPLETE UPDATED CSS
+   Version 2.0 - Enhanced & Optimized
    =========================== */
 
 /* Base styles */
@@ -19,6 +20,20 @@ body {
 
 html {
     scroll-behavior: smooth;
+}
+
+/* ===========================
+   READING PROGRESS BAR
+   =========================== */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
+    transition: width 0.1s ease;
+    z-index: 1001;
 }
 
 /* ===========================
@@ -52,6 +67,7 @@ html {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nav-menu {
@@ -67,6 +83,7 @@ html {
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    cursor: pointer;
 }
 
 .nav-link:hover {
@@ -97,11 +114,14 @@ html {
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    cursor: pointer;
 }
 
 .nav-cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    text-decoration: none;
+    color: white;
 }
 
 /* ===========================
@@ -189,20 +209,30 @@ html {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
 }
 
 .hero-cta:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: white;
 }
 
 /* ===========================
-   CATEGORIES SECTION
+   MAIN CONTENT SECTIONS
    =========================== */
-.categories {
+.categories, .products {
     padding: 6rem 2rem;
+}
+
+.categories {
     background: #FFFFFF;
+}
+
+.products {
+    background: #F9F9F9;
 }
 
 .container {
@@ -221,6 +251,9 @@ html {
     background-clip: text;
 }
 
+/* ===========================
+   CATEGORIES GRID
+   =========================== */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -348,13 +381,8 @@ html {
 }
 
 /* ===========================
-   PRODUCTS SECTION
+   PRODUCTS GRID
    =========================== */
-.products {
-    padding: 6rem 2rem;
-    background: #F9F9F9;
-}
-
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -473,6 +501,36 @@ html {
 .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* ===========================
+   SPECIAL CTA BUTTON (WEALTH NESTING)
+   =========================== */
+.wealth-cta-button {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, #FF6F61 0%, #FF3742 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(255, 63, 66, 0.3);
+    text-align: center;
+    margin: 2rem 0;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+.wealth-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 63, 66, 0.4);
     text-decoration: none;
     color: white;
 }
@@ -605,6 +663,7 @@ footer {
     color: #cccccc;
     text-decoration: none;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .footer-section ul li a:hover {
@@ -764,6 +823,107 @@ footer {
 }
 
 /* ===========================
+   ARTICLE CONTENT STYLES (WEALTH NESTING)
+   =========================== */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.article-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.article-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.article-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: #333;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.article-content ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
+    border-left: 4px solid #6366F1;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #6366F1;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.disclaimer {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+    color: #666;
+    border: 1px solid #e9ecef;
+}
+
+/* ===========================
    LEGAL PAGES STYLES
    =========================== */
 .legal-content {
@@ -805,20 +965,6 @@ footer {
     margin-bottom: 0.5rem;
     line-height: 1.6;
     color: #666;
-}
-
-/* FIX FOOTER FOR EMBEDDED LEGAL PAGES */
-#privacy-policy,
-#affiliate-disclaimer,
-#terms-of-service {
-    min-height: 100vh;
-}
-
-#privacy-policy .legal-content,
-#affiliate-disclaimer .legal-content,
-#terms-of-service .legal-content {
-    min-height: 80vh;
-    padding-bottom: 4rem;
 }
 
 /* ===========================
@@ -866,20 +1012,6 @@ footer {
 }
 
 /* ===========================
-   READING PROGRESS BAR
-   =========================== */
-.reading-progress {
-    position: fixed;
-    top: 81px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(135deg, #FF6F61 0%, #4A90E2 100%);
-    transition: width 0.1s ease;
-    z-index: 999;
-}
-
-/* ===========================
    ANIMATIONS
    =========================== */
 @keyframes fadeInUp {
@@ -902,153 +1034,24 @@ footer {
 .category-card:nth-child(3) { animation-delay: 0.3s; }
 .category-card:nth-child(4) { animation-delay: 0.4s; }
 .category-card:nth-child(5) { animation-delay: 0.5s; }
+.category-card:nth-child(6) { animation-delay: 0.6s; }
 
 .product-card:nth-child(1) { animation-delay: 0.1s; }
 .product-card:nth-child(2) { animation-delay: 0.3s; }
 .product-card:nth-child(3) { animation-delay: 0.5s; }
-
-/* ===========================
-   Additional styling for article page
-   =========================== */ 
-      .article-content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        line-height: 1.8;
-        color: #333;
-      }
-      
-      .article-content h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1.2;
-      }
-      
-      .article-content h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 2.5rem 0 1rem;
-        background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      
-      .article-content h3 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin: 2rem 0 1rem;
-        color: #333;
-      }
-      
-      .article-content p {
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-      }
-      
-      .article-content ul {
-        margin: 1.5rem 0;
-        padding-left: 2rem;
-      }
-      
-      .article-content li {
-        margin-bottom: 0.8rem;
-        font-size: 1.1rem;
-      }
-      
-      .highlight-box {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
-        border-left: 4px solid #6366F1;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-radius: 8px;
-      }
-      
-      .wealth-cta-button {
-        display: inline-block;
-        padding: 1.2rem 2.5rem;
-        background: linear-gradient(135deg, #FF6F61 0%, #FF3742 100%);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 10px 30px rgba(255, 63, 66, 0.3);
-        text-align: center;
-        margin: 2rem 0;
-      }
-      
-      .wealth-cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(255, 63, 66, 0.4);
-        text-decoration: none;
-        color: white;
-      }
-      
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin: 2rem 0;
-      }
-      
-      .stat-card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.1);
-      }
-      
-      .stat-number {
-        font-size: 2rem;
-        font-weight: 800;
-        color: #6366F1;
-        display: block;
-      }
-      
-      .stat-label {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 0.5rem;
-      }
-      
-      .disclaimer {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin: 2rem 0;
-        font-size: 0.9rem;
-        color: #666;
-        border: 1px solid #e9ecef;
-      }
-      
-      @media (max-width: 768px) {
-        .article-content {
-          padding: 1rem;
-        }
-        
-        .article-content h1 {
-          font-size: 2rem;
-        }
-        
-        .article-content h2 {
-          font-size: 1.5rem;
-        }
-      }
+.product-card:nth-child(4) { animation-delay: 0.7s; }
+.product-card:nth-child(5) { animation-delay: 0.9s; }
+.product-card:nth-child(6) { animation-delay: 1.1s; }
 
 /* ===========================
    MOBILE RESPONSIVENESS
    =========================== */
+@media (max-width: 1200px) {
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
@@ -1071,9 +1074,8 @@ footer {
     }
 
     .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .products-grid {
@@ -1120,6 +1122,22 @@ footer {
     .content-container {
         padding: 0 1rem;
     }
+
+    .article-content {
+        padding: 1rem;
+    }
+
+    .article-content h1 {
+        font-size: 2rem;
+    }
+
+    .article-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
 
 @media (max-width: 480px) {
@@ -1155,6 +1173,11 @@ footer {
     .contact-form {
         padding: 1.5rem;
         margin: 0.5rem;
+    }
+
+    .wealth-cta-button {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -1211,3 +1234,70 @@ footer {
         background: white !important;
     }
 }
+
+/* ===========================
+   PERFORMANCE OPTIMIZATIONS
+   =========================== */
+.category-card,
+.product-card {
+    contain: layout style paint;
+}
+
+.hero::before,
+.newsletter::before,
+.page-header::before {
+    will-change: opacity;
+}
+
+.category-card:hover,
+.product-card:hover,
+.cta-button:hover {
+    will-change: transform;
+}
+
+/* ===========================
+   ACCESSIBILITY IMPROVEMENTS
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus states for keyboard navigation */
+.nav-link:focus,
+.nav-cta:focus,
+.category-card:focus,
+.cta-button:focus,
+.wealth-cta-button:focus {
+    outline: 2px solid #6366F1;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .category-overlay,
+    .hero::before,
+    .newsletter::before,
+    .page-header::before {
+        opacity: 0.9;
+    }
+}
+
+/* ===========================
+   END OF CSS
+   =========================== */
