@@ -807,6 +807,20 @@ footer {
     color: #666;
 }
 
+/* FIX FOOTER FOR EMBEDDED LEGAL PAGES */
+#privacy-policy,
+#affiliate-disclaimer,
+#terms-of-service {
+    min-height: 100vh;
+}
+
+#privacy-policy .legal-content,
+#affiliate-disclaimer .legal-content,
+#terms-of-service .legal-content {
+    min-height: 80vh;
+    padding-bottom: 4rem;
+}
+
 /* ===========================
    CONTACT FORM
    =========================== */
