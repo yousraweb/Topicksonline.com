@@ -908,6 +908,145 @@ footer {
 .product-card:nth-child(3) { animation-delay: 0.5s; }
 
 /* ===========================
+   Additional styling for article page
+   =========================== */ 
+      .article-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        line-height: 1.8;
+        color: #333;
+      }
+      
+      .article-content h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+      
+      .article-content h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 2.5rem 0 1rem;
+        background: linear-gradient(135deg, #6366F1 0%, #4A90E2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .article-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 2rem 0 1rem;
+        color: #333;
+      }
+      
+      .article-content p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+      
+      .article-content ul {
+        margin: 1.5rem 0;
+        padding-left: 2rem;
+      }
+      
+      .article-content li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
+        border-left: 4px solid #6366F1;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 8px;
+      }
+      
+      .wealth-cta-button {
+        display: inline-block;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, #FF6F61 0%, #FF3742 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 10px 30px rgba(255, 63, 66, 0.3);
+        text-align: center;
+        margin: 2rem 0;
+      }
+      
+      .wealth-cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 63, 66, 0.4);
+        text-decoration: none;
+        color: white;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.1);
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #6366F1;
+        display: block;
+      }
+      
+      .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.5rem;
+      }
+      
+      .disclaimer {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 2rem 0;
+        font-size: 0.9rem;
+        color: #666;
+        border: 1px solid #e9ecef;
+      }
+      
+      @media (max-width: 768px) {
+        .article-content {
+          padding: 1rem;
+        }
+        
+        .article-content h1 {
+          font-size: 2rem;
+        }
+        
+        .article-content h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+/* ===========================
    MOBILE RESPONSIVENESS
    =========================== */
 @media (max-width: 768px) {

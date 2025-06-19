@@ -218,3 +218,14 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+function handleWealthNestingDeal() {
+  window.open('https://wealthnesting.com/vsl/', '_blank');
+  
+  // Optional: Track the click for analytics
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'click', {
+      'event_category': 'affiliate',
+      'event_label': 'wealth_nesting_main_cta'
+    });
+  }
+}
