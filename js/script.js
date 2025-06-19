@@ -1,7 +1,3 @@
-// ===========================
-// TOPICKSONLINE - COMPLETE JAVASCRIPT
-// ===========================
-
 // Reading progress bar
 window.addEventListener('scroll', () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -10,7 +6,6 @@ window.addEventListener('scroll', () => {
     document.getElementById('progress-bar').style.width = scrolled + '%';
 });
 
-// Main page navigation function with clean URLs
 function showPage(pageId) {
     // Hide all pages
     const pages = document.querySelectorAll('.page-content');
@@ -22,124 +17,165 @@ function showPage(pageId) {
         targetPage.classList.add('active');
     }
     
-    // Update URL with clean path
+    // Update URL (this is the only addition to your original function)
     const cleanPath = pageId === 'home' ? '/' : `/${pageId}`;
-    window.history.pushState({page: pageId}, '', cleanPath);
-    
-    // Update page title
-    updatePageTitle(pageId);
+    window.history.pushState(null, '', cleanPath);
     
     // Scroll to top
     window.scrollTo(0, 0);
 }
 
-// Privacy Policy page
 function showPrivacyPolicy() {
+    // Hide all pages
     const pages = document.querySelectorAll('.page-content');
     pages.forEach(page => page.classList.remove('active'));
     
+    // Show privacy policy page
     const privacyPage = document.getElementById('privacy-policy');
     if (privacyPage) {
         privacyPage.classList.add('active');
     }
     
-    window.history.pushState({page: 'privacy-policy'}, '', '/privacy-policy');
-    updatePageTitle('privacy-policy');
+    // Update URL
+    window.history.pushState(null, '', '/privacy-policy');
+    
+    // Scroll to top
     window.scrollTo(0, 0);
 }
 
-// Affiliate Disclaimer page
 function showAffiliateDisclaimer() {
+    // Hide all pages
     const pages = document.querySelectorAll('.page-content');
     pages.forEach(page => page.classList.remove('active'));
     
+    // Show affiliate disclaimer page
     const disclaimerPage = document.getElementById('affiliate-disclaimer');
     if (disclaimerPage) {
         disclaimerPage.classList.add('active');
     }
     
-    window.history.pushState({page: 'affiliate-disclaimer'}, '', '/affiliate-disclaimer');
-    updatePageTitle('affiliate-disclaimer');
+    // Update URL
+    window.history.pushState(null, '', '/affiliate-disclaimer');
+    
+    // Scroll to top
     window.scrollTo(0, 0);
 }
 
-// Terms of Service page
 function showTermsOfService() {
+    // Hide all pages
     const pages = document.querySelectorAll('.page-content');
     pages.forEach(page => page.classList.remove('active'));
     
+    // Show terms page
     const termsPage = document.getElementById('terms-of-service');
     if (termsPage) {
         termsPage.classList.add('active');
     }
     
-    window.history.pushState({page: 'terms-of-service'}, '', '/terms-of-service');
-    updatePageTitle('terms-of-service');
+    // Update URL
+    window.history.pushState(null, '', '/terms-of-service');
+    
+    // Scroll to top
     window.scrollTo(0, 0);
 }
 
-// Top Deals page
 function showTopDeals() {
+    // Hide all pages
     const pages = document.querySelectorAll('.page-content');
     pages.forEach(page => page.classList.remove('active'));
     
+    // Show top deals page
     const topDealsPage = document.getElementById('top-deals');
     if (topDealsPage) {
         topDealsPage.classList.add('active');
     }
     
-    window.history.pushState({page: 'top-deals'}, '', '/top-deals');
-    updatePageTitle('top-deals');
+    // Update URL
+    window.history.pushState(null, '', '/top-deals');
+    
+    // Scroll to top
     window.scrollTo(0, 0);
 }
 
-// Update page title based on current page
-function updatePageTitle(pageId) {
-    const titles = {
-        'home': 'TopPicksOnline - Your Trusted Guide to the Best Products Worldwide!',
-        'about': 'About Us - TopPicksOnline',
-        'contact': 'Contact Us - TopPicksOnline',
-        'categories': 'All Categories - TopPicksOnline',
-        'health-fitness': 'Health & Fitness Products - TopPicksOnline',
-        'beauty': 'Beauty & Personal Care - TopPicksOnline',
-        'tech': 'Tech & Gadgets - TopPicksOnline',
-        'learning': 'Online Learning - TopPicksOnline',
-        'home-lifestyle': 'Home & Lifestyle - TopPicksOnline',
-        'blog': 'Product Reviews & Buying Guides - TopPicksOnline',
-        'top-deals': 'Top Deals This Month - TopPicksOnline',
-        'privacy-policy': 'Privacy Policy - TopPicksOnline',
-        'affiliate-disclaimer': 'Affiliate Disclaimer - TopPicksOnline',
-        'terms-of-service': 'Terms of Service - TopPicksOnline'
-    };
+function showLegal(type) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
     
-    document.title = titles[pageId] || 'TopPicksOnline';
+    // Create or show legal page
+    let legalPage = document.getElementById('legal-page');
+    if (!legalPage) {
+        legalPage = document.createElement('div');
+        legalPage.id = 'legal-page';
+        legalPage.className = 'page-content';
+        document.body.appendChild(legalPage);
+    }
+    
+    let content = '';
+    let title = '';
+    switch(type) {
+        case 'privacy':
+            title = 'Privacy Policy';
+            content = `
+                <h2>Information We Collect</h2>
+                <p>We collect information you provide directly to us, such as when you subscribe to our newsletter or contact us.</p>
+                <h2>How We Use Your Information</h2>
+                <p>We use the information we collect to provide, maintain, and improve our services, including sending you newsletters and product recommendations.</p>
+                <h2>Information Sharing</h2>
+                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy.</p>
+            `;
+            break;
+        case 'disclaimer':
+            title = 'Affiliate Disclaimer';
+            content = `
+                <h2>Affiliate Relationships</h2>
+                <p>TopPicksOnline participates in various affiliate marketing programs, which means we may earn commissions from qualifying purchases made through our links.</p>
+                <h2>Amazon Associate</h2>
+                <p>As an Amazon Associate, we earn from qualifying purchases. This does not affect the price you pay for products.</p>
+                <h2>Product Recommendations</h2>
+                <p>Our product recommendations are based on thorough research and testing. While we may earn commissions, this does not influence our honest reviews and recommendations.</p>
+            `;
+            break;
+        case 'terms':
+            title = 'Terms of Service';
+            content = `
+                <h2>Acceptance of Terms</h2>
+                <p>By accessing and using TopPicksOnline, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                <h2>Use License</h2>
+                <p>Permission is granted to temporarily view the materials on TopPicksOnline for personal, non-commercial transitory viewing only.</p>
+                <h2>Disclaimer</h2>
+                <p>The materials on TopPicksOnline are provided on an 'as is' basis. TopPicksOnline makes no warranties, expressed or implied.</p>
+            `;
+            break;
+    }
+    
+    legalPage.innerHTML = `
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>${title}</h1>
+            </div>
+        </div>
+        <div class="page-content-body">
+            <div class="content-container">
+                <p><em>Last updated: June 17, 2025</em></p>
+                ${content}
+            </div>
+        </div>
+    `;
+    
+    legalPage.classList.add('active');
+    
+    // Update URL
+    window.history.pushState(null, '', `/${type}`);
+    
+    window.scrollTo(0, 0);
 }
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', function(event) {
-    if (event.state && event.state.page) {
-        const pages = document.querySelectorAll('.page-content');
-        pages.forEach(page => page.classList.remove('active'));
-        
-        const targetPage = document.getElementById(event.state.page);
-        if (targetPage) {
-            targetPage.classList.add('active');
-        }
-        
-        updatePageTitle(event.state.page);
-    } else {
-        // Default to home page
-        showPage('home');
-    }
-});
-
-// Handle affiliate deal clicks
 function handleAffiliateDeal(productId) {
     // In a real implementation, this would redirect to the affiliate link
     alert(`Redirecting to affiliate partner for ${productId}. In a real implementation, this would take you to the product page with our affiliate tracking.`);
 }
 
-// Handle newsletter signup
 function handleNewsletterSignup(event) {
     event.preventDefault();
     const email = event.target.querySelector('input[type="email"]').value;
@@ -147,7 +183,6 @@ function handleNewsletterSignup(event) {
     event.target.reset();
 }
 
-// Handle contact form submission
 function handleContactForm(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -158,44 +193,8 @@ function handleContactForm(event) {
     event.target.reset();
 }
 
-// Initialize page based on current URL when page loads
+// Initialize animations when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    const path = window.location.pathname;
-    let pageId = 'home';
-    
-    // Map URLs to page IDs
-    const urlMap = {
-        '/': 'home',
-        '/about': 'about',
-        '/contact': 'contact',
-        '/categories': 'categories',
-        '/health-fitness': 'health-fitness',
-        '/beauty': 'beauty',
-        '/tech': 'tech',
-        '/learning': 'learning',
-        '/home-lifestyle': 'home-lifestyle',
-        '/blog': 'blog',
-        '/top-deals': 'top-deals',
-        '/privacy-policy': 'privacy-policy',
-        '/affiliate-disclaimer': 'affiliate-disclaimer',
-        '/terms-of-service': 'terms-of-service'
-    };
-    
-    if (urlMap[path]) {
-        pageId = urlMap[path];
-    }
-    
-    // Show the correct page without adding to history
-    const pages = document.querySelectorAll('.page-content');
-    pages.forEach(page => page.classList.remove('active'));
-    
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.add('active');
-    }
-    
-    updatePageTitle(pageId);
-    
     // Add intersection observer for animations
     const observerOptions = {
         threshold: 0.1,
@@ -219,4 +218,3 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
- 
