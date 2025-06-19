@@ -768,6 +768,40 @@
             min-height: 120px;
         }
 
+        .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.legal-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.legal-section:last-child {
+    border-bottom: none;
+}
+
+.legal-section h2 {
+    color: #6c5ce7;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.legal-section p {
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-menu {

@@ -21,6 +21,50 @@
             // Scroll to top
             window.scrollTo(0, 0);
         }
+        function showPrivacyPolicy() {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show privacy policy page
+    const privacyPage = document.getElementById('privacy-policy');
+    if (privacyPage) {
+        privacyPage.classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+function showAffiliateDisclaimer() {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show affiliate disclaimer page
+    const disclaimerPage = document.getElementById('affiliate-disclaimer');
+    if (disclaimerPage) {
+        disclaimerPage.classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+function showTermsOfService() {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show terms page
+    const termsPage = document.getElementById('terms-of-service');
+    if (termsPage) {
+        termsPage.classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
 
         function showTopDeals() {
     // Hide all pages
