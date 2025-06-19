@@ -23,76 +23,19 @@
         }
 
         function showTopDeals() {
-            // Create a top deals page showing best products from all categories
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            let topDealsPage = document.getElementById('top-deals-page');
-            if (!topDealsPage) {
-                topDealsPage = document.createElement('div');
-                topDealsPage.id = 'top-deals-page';
-                topDealsPage.className = 'page-content';
-                topDealsPage.innerHTML = `
-                    <div class="page-header">
-                        <div class="page-header-content">
-                            <h1>Top Deals This Month</h1>
-                        </div>
-                    </div>
-                    <div class="page-content-body">
-                        <div class="container">
-                            <div class="products-grid">
-                                <div class="product-card">
-                                    <div class="product-number">1</div>
-                                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-                                    <div class="product-info">
-                                        <h3 class="product-title">Premium Protein Powder Bundle</h3>
-                                        <div class="product-price">
-                                            <span class="current-price">$39.99</span>
-                                            <span class="original-price">$59.99</span>
-                                            <span class="discount">33% OFF</span>
-                                        </div>
-                                        <p class="product-description">Limited time bundle offer with free shaker bottle and meal plan guide.</p>
-                                        <button class="cta-button" onclick="handleAffiliateDeal('top-protein')">Get Deal</button>
-                                    </div>
-                                </div>
-                                <div class="product-card">
-                                    <div class="product-number">2</div>
-                                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-                                    <div class="product-info">
-                                        <h3 class="product-title">Gaming Laptop - Flash Sale</h3>
-                                        <div class="product-price">
-                                            <span class="current-price">$899.99</span>
-                                            <span class="original-price">$1299.99</span>
-                                            <span class="discount">31% OFF</span>
-                                        </div>
-                                        <p class="product-description">High-performance gaming laptop with RTX graphics. Limited stock available.</p>
-                                        <button class="cta-button" onclick="handleAffiliateDeal('gaming-deal')">Save $400</button>
-                                    </div>
-                                </div>
-                                <div class="product-card">
-                                    <div class="product-number">3</div>
-                                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-                                    <div class="product-info">
-                                        <h3 class="product-title">Complete Skincare System</h3>
-                                        <div class="product-price">
-                                            <span class="current-price">$69.99</span>
-                                            <span class="original-price">$99.99</span>
-                                            <span class="discount">30% OFF</span>
-                                        </div>
-                                        <p class="product-description">Professional skincare routine with cleansing, treatment, and moisturizing products.</p>
-                                        <button class="cta-button" onclick="handleAffiliateDeal('skincare-deal')">Save Today</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(topDealsPage);
-            }
-            
-            topDealsPage.classList.add('active');
-            window.scrollTo(0, 0);
-        }
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show top deals page
+    const topDealsPage = document.getElementById('top-deals');
+    if (topDealsPage) {
+        topDealsPage.classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
 
         function showLegal(type) {
             // Hide all pages
