@@ -844,7 +844,18 @@ transform-style: preserve-3d;
     .nav-container {
         padding: 0 20px;
     }
-    
+    .article-container {
+        padding: 80px 20px 40px !important;
+    }
+    .affiliate-card-inner {
+        padding: 20px;
+        border-radius: var(--radius);
+    }
+    .affiliate-content {
+        flex-direction: column;
+        align-items: start;
+        text-align: start;
+    }
     .container {
         padding: 0 20px 40px;
     }
