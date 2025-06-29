@@ -1,0 +1,99 @@
+{
+  "title": "How Search Engines Work",
+  "author": "Alex Rivera",
+  "date": "2025-06-29",
+  "category": "Technology",
+  "difficulty": "Beginner",
+  "readTime": "10 min",
+  "tags": ["Search Engines", "SEO", "Web", "Google"],
+  "content": [
+    {
+      "type": "text",
+      "content": "Search engines like Google, Bing, and DuckDuckGo help us navigate the vast information on the web. But how exactly do they work behind the scenes? This article breaks down the key processes that power search engines in a way that's easy to understand."
+    },
+    {
+      "type": "heading2",
+      "content": "The Core Components of a Search Engine"
+    },
+    {
+      "type": "text",
+      "content": "A search engine typically works in three stages: crawling, indexing, and ranking. Each stage plays a critical role in making sure you get relevant and fast search results."
+    },
+    {
+      "type": "image",
+      "src": "/images/search-engine-overview.jpg",
+      "alt": "Search engine workflow illustration"
+    },
+    {
+      "type": "heading3",
+      "content": "1. Crawling: Discovering the Web"
+    },
+    {
+      "type": "text",
+      "content": "Search engines send out 'crawlers' or 'bots' that browse the web 24/7. They follow links from one page to another, gathering data about websites, including their structure, content, and media."
+    },
+    {
+      "type": "tip",
+      "content": "Make sure your website has a sitemap and uses internal linking effectively—this helps crawlers discover and navigate your site easily."
+    },
+    {
+      "type": "heading3",
+      "content": "2. Indexing: Storing What’s Found"
+    },
+    {
+      "type": "text",
+      "content": "Once pages are crawled, their content is stored in a massive index—a giant database. The index allows the search engine to retrieve relevant results in a fraction of a second when someone enters a query."
+    },
+    {
+      "type": "code",
+      "content": "User Query → Search Index → Ranked Results"
+    },
+    {
+      "type": "heading3",
+      "content": "3. Ranking: Delivering the Best Results"
+    },
+    {
+      "type": "text",
+      "content": "When a user searches for something, the engine ranks all the indexed pages based on hundreds of factors—like relevance, page speed, mobile-friendliness, and backlinks. The most useful and trustworthy results show up first."
+    },
+    {
+      "type": "warning",
+      "content": "If your site isn't optimized for SEO, it may not appear in search results—even if it's indexed."
+    },
+    {
+      "type": "heading2",
+      "content": "The Role of Algorithms"
+    },
+    {
+      "type": "text",
+      "content": "Search engines use complex algorithms to rank and refine results. These algorithms are constantly updated to improve user satisfaction, reduce spam, and understand context better through natural language processing (NLP)."
+    },
+    {
+      "type": "affiliate",
+      "content": "Learn SEO from scratch with this hands-on course",
+      "description": "Master keyword research, on-page SEO, and backlink strategies to rank higher on Google.",
+      "label": "Beginner Bundle",
+      "link": "https://example.com/seo-course"
+    },
+    {
+      "type": "heading3",
+      "content": "4. Personalization and Location"
+    },
+    {
+      "type": "text",
+      "content": "Modern search engines personalize results based on your location, language, and previous searches. This helps deliver content that’s most relevant to *you*."
+    },
+    {
+      "type": "heading2",
+      "content": "How to Improve Visibility"
+    },
+    {
+      "type": "text",
+      "content": "If you want your website to appear in search results, focus on SEO (Search Engine Optimization). This involves using relevant keywords, optimizing page speed, writing quality content, and earning trustworthy backlinks."
+    },
+    {
+      "type": "conclusion",
+      "content": "Search engines may seem like magic, but they follow a systematic process of crawling, indexing, and ranking. Understanding how they work can help you create content that’s easier to find—and more helpful to users worldwide."
+    }
+  ]
+}
