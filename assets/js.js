@@ -287,6 +287,9 @@ function renderHomepage(pageData) {
 function renderArticle(articleData) {
     if (!articleData) return renderNotFound();
 
+    // Set meta tags for social media sharing
+    setMetaTags(articleData);
+
     const mainContent = $('#main-content');
     const contentBlocks = {
         text: (block) => `<p>${block.content}</p>`,
@@ -295,31 +298,30 @@ function renderArticle(articleData) {
         code: (block) => `<div class="code-block"><pre>${block.content}</pre></div>`,
         tip: (block) => `<div class="tip-box">💡 ${block.content}</div>`,
         warning: (block) => `<div class="warning-box">⚠️ ${block.content}</div>`,
-affiliate: (block) => `
-    <a href="${block.link}" class="affiliate-card" target="_blank" rel="noopener" id="affiliate-${Math.random().toString(36).substr(2, 9)}">
-    <div class="affiliate-card-inner">
-    <div class="glowing">
-        
-        <span style="--i:1;"></span>
-        <span style="--i:2;"></span>
-        <span style="--i:3;"></span>
-        <span style="--i:4;"></span>
-        <span style="--i:5;"></span>
-    </div>
-            <div class="affiliate-glow"></div>
-            <div class="affiliate-content">
-                <div class="affiliate-text">
-                    <span class="affiliate-label">${block.label || 'Special Offer'}</span>
-                    <h3 class="affiliate-title">${block.content}</h3>
-                    ${block.description ? `<p class="affiliate-description">${block.description}</p>` : ''}
-                </div>
-                <div class="affiliate-button">
-                    Get Started →
-                </div>
+        affiliate: (block) => `
+            <a href="${block.link}" class="affiliate-card" target="_blank" rel="noopener" id="affiliate-${Math.random().toString(36).substr(2, 9)}">
+            <div class="affiliate-card-inner">
+            <div class="glowing">
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+                <span style="--i:4;"></span>
+                <span style="--i:5;"></span>
             </div>
-        </div>
-    </a>
-`,
+                    <div class="affiliate-glow"></div>
+                    <div class="affiliate-content">
+                        <div class="affiliate-text">
+                            <span class="affiliate-label">${block.label || 'Special Offer'}</span>
+                            <h3 class="affiliate-title">${block.content}</h3>
+                            ${block.description ? `<p class="affiliate-description">${block.description}</p>` : ''}
+                        </div>
+                        <div class="affiliate-button">
+                            Get Started →
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `,
         image: (block) => `<img src="${block.src}" alt="${block.alt || ''}" />`
     };
 
@@ -344,8 +346,129 @@ affiliate: (block) => `
             <div>Advertisement</div>
         </div>
     `;
+
+    // Initialize affiliate cards after rendering
+    setTimeout(initAffiliateCards, 100);
+}
+
+// Add this new function to handle meta tags
+function setMetaTags(articleData) {
+    // Get or create meta tags
+    const getOrCreateMeta = (property, name = null) => {
+        let meta = document.querySelector(`meta[property="${property}"]`) || 
+                   (name ? document.querySelector(`meta[name="${name}"]`) : null);
+        if (!meta) {
+            meta = document.createElement('meta');
+            if (property) meta.setAttribute('property', property);
+            if (name) meta.setAttribute('name', name);
+            document.head.appendChild(meta);
+        }
+        return meta;
+    };
+
+    // Extract description from first text block
+    const firstTextBlock = articleData.content?.find(block => block.type === 'text');
+    const description = articleData.description || 
+                       (firstTextBlock ? firstTextBlock.content.substring(0, 160) + '...' : 
+                        `Read about ${articleData.title} by ${articleData.author}`);
+
+    // Extract first image from content
+    const firstImageBlock = articleData.content?.find(block => block.type === 'image');
+    const imageUrl = articleData.thumbnail || firstImageBlock?.src || '/assets/default-share-image.jpg';
+
+    // Current page URL
+    const currentUrl = window.location.href;
+
+    // Update page title
+    document.title = `${articleData.title} | TutorialHub`;
+
+    // Basic meta tags
+    getOrCreateMeta(null, 'description').content = description;
+    getOrCreateMeta(null, 'author').content = articleData.author;
+    getOrCreateMeta(null, 'keywords').content = articleData.tags?.join(', ') || articleData.category;
+
+    // Open Graph meta tags (Facebook, LinkedIn, etc.)
+    getOrCreateMeta('og:title').content = articleData.title;
+    getOrCreateMeta('og:description').content = description;
+    getOrCreateMeta('og:type').content = 'article';
+    getOrCreateMeta('og:url').content = currentUrl;
+    getOrCreateMeta('og:image').content = imageUrl;
+    getOrCreateMeta('og:site_name').content = 'TutorialHub';
+    getOrCreateMeta('article:author').content = articleData.author;
+    getOrCreateMeta('article:published_time').content = articleData.date;
+    getOrCreateMeta('article:section').content = articleData.category;
     
-setTimeout(initAffiliateCards, 100);
+    if (articleData.tags) {
+        articleData.tags.forEach(tag => {
+            const tagMeta = document.createElement('meta');
+            tagMeta.setAttribute('property', 'article:tag');
+            tagMeta.content = tag;
+            document.head.appendChild(tagMeta);
+        });
+    }
+
+    // Twitter Card meta tags
+    getOrCreateMeta('twitter:card').content = 'summary_large_image';
+    getOrCreateMeta('twitter:title').content = articleData.title;
+    getOrCreateMeta('twitter:description').content = description;
+    getOrCreateMeta('twitter:image').content = imageUrl;
+    getOrCreateMeta('twitter:site').content = '@tutorialhub'; // Your Twitter handle
+
+    // Structured data for SEO (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredData) {
+        structuredData = document.createElement('script');
+        structuredData.type = 'application/ld+json';
+        document.head.appendChild(structuredData);
+    }
+
+    structuredData.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": articleData.title,
+        "description": description,
+        "image": imageUrl,
+        "author": {
+            "@type": "Person",
+            "name": articleData.author
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "TutorialHub",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/assets/logo.png"
+            }
+        },
+        "datePublished": articleData.date,
+        "dateModified": articleData.lastModified || articleData.date,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": currentUrl
+        },
+        "articleSection": articleData.category,
+        "keywords": articleData.tags?.join(', ')
+    });
+}
+
+// Also add a function to reset meta tags when navigating away
+function resetMetaTags() {
+    document.title = 'TutorialHub - Learn Anything';
+    
+    // Reset basic meta tags
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.content = 'Discover high-quality tutorials on programming, design, business, and more';
+    
+    // Remove article-specific meta tags
+    document.querySelectorAll('meta[property^="article:"], meta[property^="og:"], meta[property^="twitter:"]').forEach(meta => {
+        if (meta.getAttribute('property') !== 'og:site_name') {
+            meta.remove();
+        }
+    });
+    
+    // Remove structured data
+    const structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (structuredData) structuredData.remove();
 }
 
 function renderCategoryPage(categoryData) {
@@ -492,6 +615,7 @@ async function handleRoute() {
 
     if (path === '/' || path === '') {
         const pageData = await fetchJSON('/assets/data/pages/home.json');
+        resetMetaTags();
         renderHomepage(pageData);
     } else if (path.startsWith('/category/')) {
         const categorySlug = path.substring('/category/'.length);
