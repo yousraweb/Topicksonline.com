@@ -14,6 +14,19 @@
       "author": "Sarah Chen"
     },
     {
+      "id": "articles/search-engines",
+      "title": "How Search Engines Work",
+      "description": "Search engines like Google, Bing, and DuckDuckGo help us navigate the vast information on the web. But how exactly do they work behind the scenes? This article ...",
+      "category": "Technology",
+      "tags": [
+        "Search Engines",
+        "SEO",
+        "Web",
+        "Google"
+      ],
+      "author": "Alex Rivera"
+    },
+    {
       "id": "articles/seo-optimization",
       "title": "SEO Optimization Strategies",
       "description": "Search Engine Optimization (SEO) is crucial for increasing your website's visibility and driving organic traffic. This guide covers modern SEO strategies that w...",

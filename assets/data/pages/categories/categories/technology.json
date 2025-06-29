@@ -1,0 +1,24 @@
+{
+  "title": "Technology Articles",
+  "category": "Technology",
+  "description": "All articles about Technology",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/search-engines",
+      "title": "How Search Engines Work",
+      "author": "Alex Rivera",
+      "date": "2025-06-29",
+      "category": "Technology",
+      "tags": [
+        "Search Engines",
+        "SEO",
+        "Web",
+        "Google"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "10 min",
+      "description": "Search engines like Google, Bing, and DuckDuckGo help us navigate the vast information on the web. But how exactly do they work behind the scenes? This article ..."
+    }
+  ]
+}

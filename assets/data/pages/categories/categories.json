@@ -9,6 +9,13 @@
       "link": "/category/programming"
     },
     {
+      "name": "Technology",
+      "slug": "technology",
+      "articleCount": 1,
+      "description": "Browse all Technology articles",
+      "link": "/category/technology"
+    },
+    {
       "name": "Marketing",
       "slug": "marketing",
       "articleCount": 1,
