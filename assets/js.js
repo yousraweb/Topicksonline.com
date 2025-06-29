@@ -346,7 +346,14 @@ function renderArticle(articleData) {
             <div>Advertisement</div>
         </div>
     `;
+    const shareButtonHTML = shareUtils.createShareButton();
+    mainContent.insertAdjacentHTML('beforeend', shareButtonHTML);
 
+    // Update share button behavior for mobile
+    const shareButton = document.querySelector('.share-button');
+    if (navigator.share) {
+        shareButton.onclick = () => shareUtils.shareNative();
+    }
     // Initialize affiliate cards after rendering
     setTimeout(initAffiliateCards, 100);
 }
@@ -666,7 +673,182 @@ function initAffiliateCards() {
         });
     });
 }
+// Share functionality
+const shareUtils = {
+    // Create share button HTML
+    createShareButton() {
+        return `
+            <div class="share-container">
+                <button class="share-button" onclick="shareUtils.toggleMenu()" aria-label="Share article">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                </button>
+                <div class="share-menu" id="shareMenu">
+                    <div class="share-option twitter" onclick="shareUtils.shareTwitter()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                        <span>Twitter</span>
+                    </div>
+                    <div class="share-option facebook" onclick="shareUtils.shareFacebook()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                        <span>Facebook</span>
+                    </div>
+                    <div class="share-option linkedin" onclick="shareUtils.shareLinkedIn()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </div>
+                    <div class="share-option whatsapp" onclick="shareUtils.shareWhatsApp()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </div>
+                    <div class="share-option copy" onclick="shareUtils.copyLink()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span>Copy Link</span>
+                    </div>
+                </div>
+                <div class="share-toast" id="shareToast"></div>
+            </div>
+        `;
+    },
 
+    // Get current article data
+    getCurrentArticle() {
+        return {
+            title: document.querySelector('.article-title')?.textContent || document.title,
+            url: window.location.href,
+            description: document.querySelector('meta[name="description"]')?.content || ''
+        };
+    },
+
+    // Toggle share menu
+    toggleMenu() {
+        const menu = document.getElementById('shareMenu');
+        menu.classList.toggle('active');
+        
+        // Close menu when clicking outside
+        if (menu.classList.contains('active')) {
+            setTimeout(() => {
+                document.addEventListener('click', this.closeMenuHandler);
+            }, 100);
+        }
+    },
+
+    closeMenuHandler(e) {
+        if (!e.target.closest('.share-container')) {
+            document.getElementById('shareMenu').classList.remove('active');
+            document.removeEventListener('click', shareUtils.closeMenuHandler);
+        }
+    },
+
+    // Show toast notification
+    showToast(message) {
+        const toast = document.getElementById('shareToast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    },
+
+    // Native share API (mobile)
+    async shareNative() {
+        const article = this.getCurrentArticle();
+        
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: article.title,
+                    text: article.description,
+                    url: article.url
+                });
+                this.showToast('Shared successfully!');
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.error('Error sharing:', err);
+                }
+            }
+        } else {
+            this.toggleMenu();
+        }
+    },
+
+    // Share to Twitter
+    shareTwitter() {
+        const article = this.getCurrentArticle();
+        const text = `${article.title} by @tutorialhub`;
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(article.url)}`;
+        window.open(url, '_blank', 'width=550,height=400');
+        this.showToast('Sharing to Twitter...');
+    },
+
+    // Share to Facebook
+    shareFacebook() {
+        const article = this.getCurrentArticle();
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(article.url)}`;
+        window.open(url, '_blank', 'width=550,height=400');
+        this.showToast('Sharing to Facebook...');
+    },
+
+    // Share to LinkedIn
+    shareLinkedIn() {
+        const article = this.getCurrentArticle();
+        const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(article.url)}`;
+        window.open(url, '_blank', 'width=550,height=400');
+        this.showToast('Sharing to LinkedIn...');
+    },
+
+    // Share to WhatsApp
+    shareWhatsApp() {
+        const article = this.getCurrentArticle();
+        const text = `${article.title} - ${article.url}`;
+        const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+        this.showToast('Opening WhatsApp...');
+    },
+
+    // Copy link to clipboard
+    async copyLink() {
+        const article = this.getCurrentArticle();
+        
+        try {
+            await navigator.clipboard.writeText(article.url);
+            this.showToast('Link copied to clipboard!');
+            
+            // Change icon temporarily
+            const copyOption = document.querySelector('.share-option.copy svg');
+            const originalSVG = copyOption.innerHTML;
+            copyOption.innerHTML = '<path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none"></path>';
+            
+            setTimeout(() => {
+                copyOption.innerHTML = originalSVG;
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy:', err);
+            this.showToast('Failed to copy link');
+        }
+    }
+};
+
+// Make shareUtils global
+window.shareUtils = shareUtils;
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     theme.init();
