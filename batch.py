@@ -51,13 +51,14 @@ class ArticleIndexBuilder:
                 # Extract article info
                 article_info = {
                     'id': f'articles/{article_id}',
+                    'image': f'assets/images/' + article_id + '.jpg',
                     'title': article_data.get('title', 'Untitled'),
                     'author': article_data.get('author', 'Unknown'),
                     'date': article_data.get('date', ''),
                     'category': article_data.get('category', 'Uncategorized'),
                     'tags': article_data.get('tags', []),
                     'difficulty': article_data.get('difficulty', 'Not specified'),
-                    'readTime': article_data.get('readTime', ''),
+                    'assds': article_data.get('readTime', ''),
                     'description': article_data.get('description', '')
                 }
                 
