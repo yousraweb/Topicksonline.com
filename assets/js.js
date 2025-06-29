@@ -64,7 +64,7 @@ async function fetchCommonData() {
 // Theme Management
 const theme = {
     init() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
         this.updateIcon(savedTheme);
     },
@@ -96,7 +96,7 @@ const templates = {
         <div class="tutorial-card animate-in" onclick="navigateTo('/${tutorial.id}')" data-category="${tutorial.category}">
             <div class="tutorial-thumbnail">${console.log(tutorial), tutorial.image ? `<img src="${tutorial.image}" alt="${tutorial.title}">` : ''}</div>
             <div class="tutorial-content">
-                <span class="tutorial-category">${tutorial.category} kjlh;jhkjh</span>
+                <span class="tutorial-category">${tutorial.category}</span>
                 <h3 class="tutorial-title">${tutorial.title}</h3>
                 <p class="tutorial-description">${tutorial.description}</p>
                 <div class="tutorial-meta">

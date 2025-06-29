@@ -10,6 +10,7 @@
       "description": "Master React Hooks with practical examples and best practices. Learn useState, useEffect, and custom hooks.",
       "category": "Programming",
       "difficulty": "Intermediate",
+      "image": "assets/images/react-hooks.png",
       "author": "Sarah Chen",
       "date": "2025-01-15",
       "readTime": "15 min"

@@ -44,7 +44,10 @@
     --border: rgba(0, 0, 0, 0.08);
     --border-hover: rgba(0, 0, 0, 0.16);
 }
-
+.tutorial-thumbnail img {
+    object-fit: contain;
+    width: 100%;
+}
 /* Base styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
