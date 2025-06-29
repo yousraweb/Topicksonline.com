@@ -9,91 +9,103 @@
   "content": [
     {
       "type": "text",
-      "content": "Search engines like Google, Bing, and DuckDuckGo help us navigate the vast information on the web. But how exactly do they work behind the scenes? This article breaks down the key processes that power search engines in a way that's easy to understand."
+      "content": "Search engines are our gateway to the internet. From typing a query to seeing results in milliseconds, there’s a lot going on behind the scenes. In this beginner's guide, we’ll break down how search engines like Google work, and why it matters."
     },
     {
       "type": "heading2",
-      "content": "The Core Components of a Search Engine"
+      "content": "What is a Search Engine?"
     },
     {
       "type": "text",
-      "content": "A search engine typically works in three stages: crawling, indexing, and ranking. Each stage plays a critical role in making sure you get relevant and fast search results."
+      "content": "A search engine is a software system designed to carry out web searches. It helps users find information on the internet by scanning billions of web pages and presenting the most relevant ones."
     },
     {
       "type": "image",
-      "src": "/images/search-engine-overview.jpg",
-      "alt": "Search engine workflow illustration"
+      "src": "assets\\images\\search-engine-diagram.jpg",
+      "alt": "Diagram showing how a search engine works"
     },
     {
       "type": "heading3",
-      "content": "1. Crawling: Discovering the Web"
+      "content": "1. Crawling: Exploring the Web"
     },
     {
       "type": "text",
-      "content": "Search engines send out 'crawlers' or 'bots' that browse the web 24/7. They follow links from one page to another, gathering data about websites, including their structure, content, and media."
+      "content": "Search engines use bots called 'crawlers' or 'spiders' to visit websites and read their content. These bots follow links from one page to another, gathering data across the web."
     },
     {
       "type": "tip",
-      "content": "Make sure your website has a sitemap and uses internal linking effectively—this helps crawlers discover and navigate your site easily."
+      "content": "Include a sitemap in your website to help search engines crawl your content more efficiently."
     },
     {
       "type": "heading3",
-      "content": "2. Indexing: Storing What’s Found"
+      "content": "2. Indexing: Organizing Information"
     },
     {
       "type": "text",
-      "content": "Once pages are crawled, their content is stored in a massive index—a giant database. The index allows the search engine to retrieve relevant results in a fraction of a second when someone enters a query."
+      "content": "Once a page is crawled, the search engine stores its content in a massive index—a database of all known web pages. Think of it as the engine’s library of the web."
     },
     {
       "type": "code",
-      "content": "User Query → Search Index → Ranked Results"
+      "content": "// Simplified index structure\n{\n  \"url\": \"example.com/page\",\n  \"keywords\": [\"SEO\", \"search engine\", \"indexing\"]\n}"
     },
     {
       "type": "heading3",
-      "content": "3. Ranking: Delivering the Best Results"
+      "content": "3. Ranking: Choosing the Best Results"
     },
     {
       "type": "text",
-      "content": "When a user searches for something, the engine ranks all the indexed pages based on hundreds of factors—like relevance, page speed, mobile-friendliness, and backlinks. The most useful and trustworthy results show up first."
+      "content": "When you search, the engine sorts through its index to find the most relevant pages. It ranks them using algorithms that consider factors like keywords, page quality, backlinks, speed, and mobile-friendliness."
     },
     {
       "type": "warning",
-      "content": "If your site isn't optimized for SEO, it may not appear in search results—even if it's indexed."
+      "content": "If your site isn’t mobile-friendly or loads slowly, it may rank lower in search results."
     },
     {
       "type": "heading2",
-      "content": "The Role of Algorithms"
+      "content": "Understanding Search Algorithms"
     },
     {
       "type": "text",
-      "content": "Search engines use complex algorithms to rank and refine results. These algorithms are constantly updated to improve user satisfaction, reduce spam, and understand context better through natural language processing (NLP)."
-    },
-    {
-      "type": "affiliate",
-      "content": "Learn SEO from scratch with this hands-on course",
-      "description": "Master keyword research, on-page SEO, and backlink strategies to rank higher on Google.",
-      "label": "Beginner Bundle",
-      "link": "https://example.com/seo-course"
+      "content": "Search algorithms are complex mathematical formulas that determine which pages should appear first. Google’s algorithm, for example, uses over 200 ranking factors and is constantly updated."
     },
     {
       "type": "heading3",
-      "content": "4. Personalization and Location"
+      "content": "4. Personalization and Relevance"
     },
     {
       "type": "text",
-      "content": "Modern search engines personalize results based on your location, language, and previous searches. This helps deliver content that’s most relevant to *you*."
+      "content": "Modern search engines also personalize results based on your device, location, language, and even past searches. This ensures that you see results that are most relevant to you."
+    },
+    {
+      "type": "affiliate",
+      "content": "Start your SEO journey with practical tools",
+      "description": "Learn how to rank higher with beginner-friendly SEO training and real tools.",
+      "label": "Free Trial Available",
+      "link": "https://example.com/seo-starter-kit"
     },
     {
       "type": "heading2",
-      "content": "How to Improve Visibility"
+      "content": "How to Optimize for Search Engines"
     },
     {
       "type": "text",
-      "content": "If you want your website to appear in search results, focus on SEO (Search Engine Optimization). This involves using relevant keywords, optimizing page speed, writing quality content, and earning trustworthy backlinks."
+      "content": "This process is called SEO (Search Engine Optimization). It involves improving your website's visibility by optimizing content, using the right keywords, improving page speed, and building links from other trusted websites."
+    },
+    {
+      "type": "tip",
+      "content": "Use free tools like Google Search Console to monitor how your site performs in search results."
+    },
+    {
+      "type": "heading3",
+      "content": "Bonus: Fun Fact"
+    },
+    {
+      "type": "text",
+      "content": "Google processes over 8.5 billion searches per day. That’s nearly 100,000 searches every second!"
     },
     {
       "type": "conclusion",
-      "content": "Search engines may seem like magic, but they follow a systematic process of crawling, indexing, and ranking. Understanding how they work can help you create content that’s easier to find—and more helpful to users worldwide."
+      "content": "Search engines may seem simple on the surface, but their underlying technology is incredibly advanced. By understanding how they work, you can not only become a smarter user—but also create content that more people will discover and enjoy."
     }
   ]
 }
