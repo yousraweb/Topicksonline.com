@@ -1,0 +1,85 @@
+{
+  "title": "Cookie Policy",
+  "type": "legal",
+  "lastUpdated": "January 1, 2025",
+  "content": [
+    {
+      "type": "heading",
+      "level": 1,
+      "content": "Cookie Policy"
+    },
+    {
+      "type": "text",
+      "content": "Last updated: January 1, 2025"
+    },
+    {
+      "type": "text",
+      "content": "This Cookie Policy explains how we use cookies and similar technologies to recognize you when you visit our website."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "What Are Cookies?"
+    },
+    {
+      "type": "text",
+      "content": "Cookies are small data files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to site owners."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Types of Cookies We Use"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Essential Cookies: Required for the website to function properly",
+        "Analytics Cookies: Help us understand how visitors interact with our website",
+        "Functionality Cookies: Enable enhanced functionality and personalization",
+        "Advertising Cookies: Used to deliver relevant ads and track campaign performance"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Cookie Details"
+    },
+    {
+      "type": "table",
+      "headers": ["Cookie Name", "Purpose", "Duration"],
+      "rows": [
+        ["session_id", "Maintains user session", "Session"],
+        ["analytics_token", "Google Analytics tracking", "2 years"],
+        ["user_preferences", "Stores user preferences", "1 year"],
+        ["consent_given", "Records cookie consent", "1 year"]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Managing Cookies"
+    },
+    {
+      "type": "text",
+      "content": "Most web browsers allow you to control cookies through their settings. You can set your browser to refuse cookies or delete certain cookies. However, if you choose to block cookies, some features of our website may not function properly."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Updates to This Policy"
+    },
+    {
+      "type": "text",
+      "content": "We may update this Cookie Policy from time to time. We will notify you of any changes by posting the new policy on this page."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Contact Us"
+    },
+    {
+      "type": "text",
+      "content": "If you have questions about our use of cookies, please contact us at privacy@example.com"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "title": "All Categories",
+  "categories": [
+    {
+      "name": "Programming",
+      "slug": "programming",
+      "articleCount": 1,
+      "description": "Browse all Programming articles",
+      "link": "/category/programming"
+    },
+    {
+      "name": "Marketing",
+      "slug": "marketing",
+      "articleCount": 1,
+      "description": "Browse all Marketing articles",
+      "link": "/category/marketing"
+    },
+    {
+      "name": "Design",
+      "slug": "design",
+      "articleCount": 1,
+      "description": "Browse all Design articles",
+      "link": "/category/design"
+    }
+  ]
+}

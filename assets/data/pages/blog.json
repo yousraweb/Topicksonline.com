@@ -1,0 +1,50 @@
+{
+  "title": "Blog",
+  "type": "page",
+  "description": "Latest news, updates, and insights from our team",
+  "content": [
+    {
+      "type": "hero",
+      "title": "Our Blog",
+      "subtitle": "Insights, updates, and stories from our team"
+    },
+    {
+      "type": "text",
+      "content": "Stay updated with the latest trends, tips, and insights from our team of experts. We share our knowledge and experience to help you grow."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Recent Posts"
+    },
+    {
+      "type": "blog_list",
+      "posts": [
+        {
+          "title": "The Future of Web Development in 2025",
+          "date": "January 15, 2025",
+          "excerpt": "Explore the latest trends and technologies shaping the future of web development.",
+          "author": "Sarah Chen",
+          "readTime": "5 min read",
+          "link": "/blog/future-web-development-2025"
+        },
+        {
+          "title": "Building Scalable Applications with Modern Architecture",
+          "date": "January 10, 2025",
+          "excerpt": "Learn how to design and build applications that can scale with your business needs.",
+          "author": "Mike Johnson",
+          "readTime": "8 min read",
+          "link": "/blog/scalable-applications"
+        },
+        {
+          "title": "AI and Machine Learning: A Developer's Guide",
+          "date": "January 5, 2025",
+          "excerpt": "A comprehensive guide to implementing AI and ML in your applications.",
+          "author": "Alex Rivera",
+          "readTime": "10 min read",
+          "link": "/blog/ai-ml-guide"
+        }
+      ]
+    }
+  ]
+}
