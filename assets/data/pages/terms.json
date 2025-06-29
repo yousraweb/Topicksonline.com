@@ -1,0 +1,84 @@
+{
+  "title": "Terms of Service",
+  "type": "legal",
+  "lastUpdated": "January 1, 2025",
+  "content": [
+    {
+      "type": "heading",
+      "level": 1,
+      "content": "Terms of Service"
+    },
+    {
+      "type": "text",
+      "content": "Last updated: January 1, 2025"
+    },
+    {
+      "type": "text",
+      "content": "Please read these Terms of Service carefully before using our website or services."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Acceptance of Terms"
+    },
+    {
+      "type": "text",
+      "content": "By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access our services."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Use of Services"
+    },
+    {
+      "type": "text",
+      "content": "You may use our services only for lawful purposes and in accordance with these Terms. You agree not to use our services:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "In any way that violates any applicable law or regulation",
+        "To transmit any harmful or malicious code",
+        "To impersonate or attempt to impersonate another person",
+        "In any way that infringes upon the rights of others",
+        "To engage in any conduct that restricts or inhibits anyone's use of the services"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Intellectual Property"
+    },
+    {
+      "type": "text",
+      "content": "The services and their original content, features, and functionality are and will remain the exclusive property of our company and its licensors."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Termination"
+    },
+    {
+      "type": "text",
+      "content": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Limitation of Liability"
+    },
+    {
+      "type": "text",
+      "content": "In no event shall our company, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Contact Information"
+    },
+    {
+      "type": "text",
+      "content": "If you have any questions about these Terms, please contact us at legal@example.com"
+    }
+  ]
+}

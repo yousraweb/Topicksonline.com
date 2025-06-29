@@ -1,0 +1,62 @@
+{
+  "title": "Documentation",
+  "type": "page",
+  "description": "Comprehensive guides and API references for developers",
+  "content": [
+    {
+      "type": "hero",
+      "title": "Documentation Center",
+      "subtitle": "Everything you need to build amazing projects"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Getting Started"
+    },
+    {
+      "type": "text",
+      "content": "Welcome to our documentation center. Here you'll find comprehensive guides, tutorials, and API references to help you get the most out of our platform."
+    },
+    {
+      "type": "cards",
+      "cards": [
+        {
+          "title": "Quick Start Guide",
+          "description": "Get up and running in minutes with our step-by-step guide",
+          "link": "/docs/quickstart"
+        },
+        {
+          "title": "API Reference",
+          "description": "Complete API documentation with examples and code snippets",
+          "link": "/docs/api"
+        },
+        {
+          "title": "Examples",
+          "description": "Learn by example with our collection of sample projects",
+          "link": "/docs/examples"
+        },
+        {
+          "title": "FAQ",
+          "description": "Find answers to commonly asked questions",
+          "link": "/docs/faq"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Popular Topics"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Authentication and Authorization",
+        "Working with APIs",
+        "Database Integration",
+        "Deployment Guidelines",
+        "Performance Optimization",
+        "Security Best Practices"
+      ]
+    }
+  ]
+}

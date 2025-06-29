@@ -1,0 +1,75 @@
+{
+  "title": "Privacy Policy",
+  "type": "legal",
+  "lastUpdated": "January 1, 2025",
+  "content": [
+    {
+      "type": "heading",
+      "level": 1,
+      "content": "Privacy Policy"
+    },
+    {
+      "type": "text",
+      "content": "Last updated: January 1, 2025"
+    },
+    {
+      "type": "text",
+      "content": "Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Information We Collect"
+    },
+    {
+      "type": "text",
+      "content": "We collect information you provide directly to us, such as when you create an account, subscribe to our newsletter, or contact us."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Personal Information: Name, email address, phone number",
+        "Account Information: Username, password, preferences",
+        "Payment Information: Processed securely through third-party providers",
+        "Usage Data: How you interact with our services"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "How We Use Your Information"
+    },
+    {
+      "type": "text",
+      "content": "We use the information we collect to:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Provide, maintain, and improve our services",
+        "Send you technical notices and support messages",
+        "Communicate with you about products, services, and events",
+        "Monitor and analyze trends and usage",
+        "Detect, investigate, and prevent fraudulent transactions"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Data Security"
+    },
+    {
+      "type": "text",
+      "content": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized or unlawful processing, accidental loss, destruction, or damage."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Contact Us"
+    },
+    {
+      "type": "text",
+      "content": "If you have any questions about this Privacy Policy, please contact us at privacy@example.com"
+    }
+  ]
+}

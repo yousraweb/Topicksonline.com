@@ -1,0 +1,37 @@
+{
+  "title": "About TutorialHub",
+  "content": [
+    {
+      "type": "heading2",
+      "content": "Our Mission"
+    },
+    {
+      "type": "text",
+      "content": "TutorialHub is dedicated to providing high-quality, accessible tutorials that empower people to learn new skills and advance their careers."
+    },
+    {
+      "type": "heading2",
+      "content": "What We Offer"
+    },
+    {
+      "type": "text",
+      "content": "We curate and create tutorials across various domains including programming, design, marketing, and business. Each tutorial is crafted by experts in their field."
+    },
+    {
+      "type": "heading3",
+      "content": "Quality Content"
+    },
+    {
+      "type": "text",
+      "content": "All our tutorials are reviewed for accuracy, clarity, and practical value. We believe in learning by doing, so our content includes hands-on examples and exercises."
+    },
+    {
+      "type": "heading3",
+      "content": "Community Driven"
+    },
+    {
+      "type": "text",
+      "content": "Our platform is built on community feedback. We continuously improve our content based on user suggestions and industry trends."
+    }
+  ]
+}

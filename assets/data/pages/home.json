@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "Learn Anything, Anytime",
+    "subtitle": "Discover high-quality tutorials on programming, design, business, and more"
+  },
+  "featured": [
+    {
+      "id": "articles/react-hooks-guide",
+      "title": "Complete Guide to React Hooks",
+      "description": "Master React Hooks with practical examples and best practices. Learn useState, useEffect, and custom hooks.",
+      "category": "Programming",
+      "difficulty": "Intermediate",
+      "author": "Sarah Chen",
+      "date": "2025-01-15",
+      "readTime": "15 min"
+    },
+    {
+      "id": "articles/ui-design-principles",
+      "title": "Modern UI Design Principles",
+      "description": "Learn the fundamental principles of creating beautiful, user-friendly interfaces that users love.",
+      "category": "Design",
+      "difficulty": "Beginner",
+      "author": "Alex Rivera",
+      "date": "2025-01-10",
+      "readTime": "12 min"
+    },
+    {
+      "id": "articles/seo-optimization",
+      "title": "SEO Optimization Strategies",
+      "description": "Boost your website's visibility with proven SEO techniques and tools for 2025.",
+      "category": "Marketing",
+      "difficulty": "Intermediate",
+      "author": "Mike Johnson",
+      "date": "2025-01-08",
+      "readTime": "20 min"
+    }
+  ]
+}

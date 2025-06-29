@@ -1,0 +1,24 @@
+{
+  "title": "Marketing Articles",
+  "category": "Marketing",
+  "description": "All articles about Marketing",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/seo-optimization",
+      "title": "SEO Optimization Strategies",
+      "author": "Mike Johnson",
+      "date": "2025-01-08",
+      "category": "Marketing",
+      "tags": [
+        "SEO",
+        "Marketing",
+        "Digital Marketing",
+        "Search Engines"
+      ],
+      "difficulty": "Intermediate",
+      "readTime": "20 min",
+      "description": "Search Engine Optimization (SEO) is crucial for increasing your website's visibility and driving organic traffic. This guide covers modern SEO strategies that w..."
+    }
+  ]
+}
