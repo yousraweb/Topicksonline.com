@@ -6,6 +6,7 @@
   "articles": [
     {
       "id": "articles/seo-optimization",
+      "image": "assets/images/seo-optimization.jpg",
       "title": "SEO Optimization Strategies",
       "author": "Mike Johnson",
       "date": "2025-01-08",
@@ -17,7 +18,7 @@
         "Search Engines"
       ],
       "difficulty": "Intermediate",
-      "readTime": "20 min",
+      "assds": "20 min",
       "description": "Search Engine Optimization (SEO) is crucial for increasing your website's visibility and driving organic traffic. This guide covers modern SEO strategies that w..."
     }
   ]

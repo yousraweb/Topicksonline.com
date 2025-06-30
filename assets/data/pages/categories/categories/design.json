@@ -6,6 +6,7 @@
   "articles": [
     {
       "id": "articles/ui-design-principles",
+      "image": "assets/images/ui-design-principles.jpg",
       "title": "Modern UI Design Principles",
       "author": "Alex Rivera",
       "date": "2025-01-10",
@@ -17,7 +18,7 @@
         "Web Design"
       ],
       "difficulty": "Beginner",
-      "readTime": "12 min",
+      "assds": "12 min",
       "description": "Creating intuitive and beautiful user interfaces is both an art and a science. In this guide, we'll explore the fundamental principles that make interfaces not ..."
     }
   ]

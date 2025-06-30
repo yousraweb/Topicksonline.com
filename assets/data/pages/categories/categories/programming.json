@@ -6,6 +6,7 @@
   "articles": [
     {
       "id": "articles/react-hooks-guide",
+      "image": "assets/images/react-hooks-guide.jpg",
       "title": "Complete Guide to React Hooks",
       "author": "Sarah Chen",
       "date": "2025-01-15",
@@ -17,7 +18,7 @@
         "Hooks"
       ],
       "difficulty": "Intermediate",
-      "readTime": "15 min",
+      "assds": "15 min",
       "description": "React Hooks revolutionized how we write React components. In this comprehensive guide, we'll explore everything you need to know about hooks...."
     }
   ]

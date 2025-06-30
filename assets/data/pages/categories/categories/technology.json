@@ -6,6 +6,7 @@
   "articles": [
     {
       "id": "articles/search-engines",
+      "image": "assets/images/search-engines.jpg",
       "title": "How Search Engines Work",
       "author": "Alex Rivera",
       "date": "2025-06-29",
@@ -17,8 +18,8 @@
         "Google"
       ],
       "difficulty": "Beginner",
-      "readTime": "10 min",
-      "description": "Search engines like Google, Bing, and DuckDuckGo help us navigate the vast information on the web. But how exactly do they work behind the scenes? This article ..."
+      "assds": "10 min",
+      "description": "Search engines are our gateway to the internet. From typing a query to seeing results in milliseconds, there’s a lot going on behind the scenes. In this beginne..."
     }
   ]
 }
