@@ -7,6 +7,7 @@ import shutil
 class ArticleIndexBuilder:
     def __init__(self, base_path='assets/data'):
         self.base_path = Path(base_path)
+        self.root = self.base_path / 'pages'
         self.pages_path = self.base_path / 'pages/articles'
         self.category_path = self.base_path / 'pages/categories'
         self.articles = []
@@ -153,6 +154,93 @@ class ArticleIndexBuilder:
             category_path = category_dir / f'{category_slug}.json'
             self.save_json(category_path, category_data)
             print(f"  ✓ Created {category_name} page with {len(articles)} articles")
+    def update_homepage(self, num_featured=10):
+        """Update homepage with latest articles"""
+        print("\nUpdating homepage with latest articles...")
+        
+        # Sort articles by date (newest first)
+        sorted_articles = sorted(
+            self.articles, 
+            key=lambda x: x.get('date', ''), 
+            reverse=True
+        )
+        
+        # Take the most recent articles for featured section
+        featured_articles = sorted_articles[:num_featured]
+        
+        # Load existing homepage data to preserve hero section
+        homepage_path = self.root / 'home.json'
+
+        # Default homepage structure
+        homepage_data = {
+            "hero": {
+                "title": "Learn Anything, Anytime",
+                "subtitle": "Discover high-quality tutorials on programming, design, business, and more"
+            },
+            "featured": []
+        }
+        
+        # Try to load existing homepage to preserve hero section
+        if homepage_path.exists():
+            try:
+                with open(homepage_path, 'r', encoding='utf-8') as f:
+                    existing_data = json.load(f)
+                    # Preserve hero section if it exists
+                    if 'hero' in existing_data:
+                        homepage_data['hero'] = existing_data['hero']
+            except Exception as e:
+                print(f"  ⚠ Warning: Could not load existing homepage: {e}")
+        
+        # Update featured articles
+        homepage_data['featured'] = []
+        
+        for article in featured_articles:
+            # Construct the featured article object
+            featured_item = {
+                "id": article['id'],  # Use ID as-is, don't add "articles/" prefix
+                "title": article['title'],
+                "description": article['description'],
+                "category": article['category'],
+                "difficulty": article.get('difficulty', 'Not specified'),
+                "author": article['author'],
+                "date": article['date'],
+                "readTime": article.get('readTime', '15 min')  # Default readTime if empty
+            }
+            
+            # Add optional fields only if they exist
+            if article.get('image'):
+                featured_item['image'] = article['image']
+            
+            if article.get('tags'):
+                featured_item['tags'] = article['tags']
+            
+            homepage_data['featured'].append(featured_item)
+        
+        # Save updated homepage
+        self.save_json(homepage_path, homepage_data)
+        print(f"  ✓ Homepage updated with {len(featured_articles)} featured articles")
+        
+        # Show which articles are featured
+        for article in featured_articles:
+            print(f"    - {article['title']} ({article['date']})")
+
+    def create_homepage_from_scratch(self):
+        """Create a new homepage if it doesn't exist"""
+        homepage_path = self.pages_path / 'home.json'
+        
+        if not homepage_path.exists():
+            print("\nCreating new homepage...")
+            
+            homepage_data = {
+                "hero": {
+                    "title": "Learn Anything, Anytime",
+                    "subtitle": "Discover high-quality tutorials on programming, design, business, and more"
+                },
+                "featured": []
+            }
+            
+            self.save_json(homepage_path, homepage_data)
+            print("  ✓ Homepage created")
     
     def save_json(self, file_path, data):
         """Save JSON file with proper formatting"""
@@ -201,6 +289,7 @@ class ArticleIndexBuilder:
         self.create_search_index()
         self.create_categories_list()
         self.create_category_pages()
+        self.update_homepage()
         self.generate_stats()
         
         print("\n✓ Build completed successfully!")

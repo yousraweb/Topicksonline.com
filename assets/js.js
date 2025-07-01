@@ -622,8 +622,8 @@ async function handleRoute() {
 
     if (path === '/' || path === '') {
         const pageData = await fetchJSON('/assets/data/pages/home.json');
-        resetMetaTags();
         renderHomepage(pageData);
+        resetMetaTags();
     } else if (path.startsWith('/category/')) {
         const categorySlug = path.substring('/category/'.length);
         const categoryData = await fetchJSON(`/assets/data/pages/categories/categories/${categorySlug}.json`);
