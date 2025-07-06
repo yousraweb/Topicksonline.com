@@ -174,8 +174,8 @@ class ArticleIndexBuilder:
         # Default homepage structure
         homepage_data = {
             "hero": {
-                "title": "Learn Anything, Anytime",
-                "subtitle": "Discover high-quality tutorials on programming, design, business, and more"
+                "title": "One Blog. Every Topic.",
+                "subtitle": "Fresh content every day on what matters — from money to mindset."
             },
             "featured": []
         }
