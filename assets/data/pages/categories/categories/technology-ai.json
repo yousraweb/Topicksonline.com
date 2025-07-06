@@ -1,0 +1,26 @@
+{
+  "title": "Technology & AI  Articles",
+  "category": "Technology & AI ",
+  "description": "All articles about Technology & AI ",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/What No One Tells You About Starting a Website in 2025",
+      "image": "assets/images/What No One Tells You About Starting a Website in 2025.jpg",
+      "title": "What No One Tells You About Starting a Website in 2025",
+      "author": "Yarra Evic",
+      "date": "2025-07-06",
+      "category": "Technology & AI ",
+      "tags": [
+        "Website",
+        "2025",
+        "Beginner",
+        "Startup Tips",
+        "Blogging"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "5 min",
+      "description": "Starting a website in 2025 seems simple—but there are hidden truths you’ll want to know before jumping in. Here's what no one really tells you."
+    }
+  ]
+}

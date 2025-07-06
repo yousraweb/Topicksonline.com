@@ -5,35 +5,22 @@
   },
   "featured": [
     {
-      "id": "articles/What-No-One-Tells-You-About-Starting-a-Website-in-2025",
-      "title": "Complete Guide to React Hooks",
-      "description": "Master React Hooks with practical examples and best practices. Learn useState, useEffect, and custom hooks.",
-      "category": "Programming",
-      "difficulty": "Intermediate",
-      "image": "assets/images/react-hooks.png",
-      "author": "Sarah Chen",
-      "date": "2025-01-15",
-      "readTime": "15 min"
-    },
-    {
-      "id": "articles/ui-design-principles",
-      "title": "Modern UI Design Principles",
-      "description": "Learn the fundamental principles of creating beautiful, user-friendly interfaces that users love.",
-      "category": "Design",
+      "id": "articles/What No One Tells You About Starting a Website in 2025",
+      "title": "What No One Tells You About Starting a Website in 2025",
+      "description": "Starting a website in 2025 seems simple—but there are hidden truths you’ll want to know before jumping in. Here's what no one really tells you.",
+      "category": "Technology & AI ",
       "difficulty": "Beginner",
-      "author": "Alex Rivera",
-      "date": "2025-01-10",
-      "readTime": "12 min"
-    },
-    {
-      "id": "articles/seo-optimization",
-      "title": "SEO Optimization Strategies",
-      "description": "Boost your website's visibility with proven SEO techniques and tools for 2025.",
-      "category": "Marketing",
-      "difficulty": "Intermediate",
-      "author": "Mike Johnson",
-      "date": "2025-01-08",
-      "readTime": "20 min"
+      "author": "Yarra Evic",
+      "date": "2025-07-06",
+      "readTime": "5 min",
+      "image": "assets/images/What No One Tells You About Starting a Website in 2025.jpg",
+      "tags": [
+        "Website",
+        "2025",
+        "Beginner",
+        "Startup Tips",
+        "Blogging"
+      ]
     }
   ]
 }

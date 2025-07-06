@@ -1,56 +1,18 @@
 {
   "articles": [
     {
-      "id": "articles/react-hooks-guide",
-      "title": "Complete Guide to React Hooks",
-      "description": "React Hooks revolutionized how we write React components. In this comprehensive guide, we'll explore everything you need to know about hooks....",
-      "category": "Programming",
+      "id": "articles/What No One Tells You About Starting a Website in 2025",
+      "title": "What No One Tells You About Starting a Website in 2025",
+      "description": "Starting a website in 2025 seems simple—but there are hidden truths you’ll want to know before jumping in. Here's what no one really tells you.",
+      "category": "Technology & AI ",
       "tags": [
-        "React",
-        "JavaScript",
-        "Frontend",
-        "Hooks"
+        "Website",
+        "2025",
+        "Beginner",
+        "Startup Tips",
+        "Blogging"
       ],
-      "author": "Sarah Chen"
-    },
-    {
-      "id": "articles/search-engines",
-      "title": "How Search Engines Work",
-      "description": "Search engines are our gateway to the internet. From typing a query to seeing results in milliseconds, there’s a lot going on behind the scenes. In this beginne...",
-      "category": "Technology",
-      "tags": [
-        "Search Engines",
-        "SEO",
-        "Web",
-        "Google"
-      ],
-      "author": "Alex Rivera"
-    },
-    {
-      "id": "articles/seo-optimization",
-      "title": "SEO Optimization Strategies",
-      "description": "Search Engine Optimization (SEO) is crucial for increasing your website's visibility and driving organic traffic. This guide covers modern SEO strategies that w...",
-      "category": "Marketing",
-      "tags": [
-        "SEO",
-        "Marketing",
-        "Digital Marketing",
-        "Search Engines"
-      ],
-      "author": "Mike Johnson"
-    },
-    {
-      "id": "articles/ui-design-principles",
-      "title": "Modern UI Design Principles",
-      "description": "Creating intuitive and beautiful user interfaces is both an art and a science. In this guide, we'll explore the fundamental principles that make interfaces not ...",
-      "category": "Design",
-      "tags": [
-        "UI",
-        "UX",
-        "Design",
-        "Web Design"
-      ],
-      "author": "Alex Rivera"
+      "author": "Yarra Evic"
     }
   ]
 }
