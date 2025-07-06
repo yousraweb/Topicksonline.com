@@ -1057,7 +1057,6 @@ footer {
     position: absolute;
     top: -12px;
     left: 20px;
-    background: var(--bg-primary);
     padding: 0 8px;
 }
 
