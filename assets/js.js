@@ -387,7 +387,7 @@ function setMetaTags(articleData) {
     const currentUrl = window.location.href;
 
     // Update page title
-    document.title = `${articleData.title} | TutorialHub`;
+    document.title = `${articleData.title} | TopPicksOnline`;
 
     // Basic meta tags
     getOrCreateMeta(null, 'description').content = description;
@@ -441,7 +441,7 @@ function setMetaTags(articleData) {
         },
         "publisher": {
             "@type": "Organization",
-            "name": "TutorialHub",
+            "name": "TopPicksOnline",
             "logo": {
                 "@type": "ImageObject",
                 "url": "/assets/logo.png"
@@ -460,7 +460,7 @@ function setMetaTags(articleData) {
 
 // Also add a function to reset meta tags when navigating away
 function resetMetaTags() {
-    document.title = 'TutorialHub - Learn Anything';
+    document.title = 'Top Picks Online - One Blog. Every Topic.';
     
     // Reset basic meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -793,7 +793,7 @@ const shareUtils = {
     // Share to Twitter
     shareTwitter() {
         const article = this.getCurrentArticle();
-        const text = `${article.title} by @tutorialhub`;
+        const text = `${article.title} by @topicksonline.com`;
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(article.url)}`;
         window.open(url, '_blank', 'width=550,height=400');
         this.showToast('Sharing to Twitter...');
