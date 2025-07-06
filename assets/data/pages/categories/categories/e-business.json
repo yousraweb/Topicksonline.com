@@ -2,8 +2,27 @@
   "title": "E-Business Articles",
   "category": "E-Business",
   "description": "All articles about E-Business",
-  "articleCount": 2,
+  "articleCount": 3,
   "articles": [
+    {
+      "id": "articles/How to Create a Website in 2025 That Actually Gets Traffic",
+      "image": "assets/images/How to Create a Website in 2025 That Actually Gets Traffic.jpg",
+      "title": "How to Create a Website in 2025 That Actually Gets Traffic (I Went from Zero to 45K Monthly Visitors)",
+      "author": "Sarah Martinez",
+      "date": "2025-07-06",
+      "category": "E-Business",
+      "tags": [
+        "Website Creation",
+        "Web Development",
+        "Blog Traffic",
+        "SEO",
+        "Content Strategy",
+        "Online Business"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "17 min",
+      "description": "Skip the generic website creation advice. This is my exact step-by-step process for building a website that actually gets found and visited. Real strategies, real results from zero to 45,000 monthly visitors."
+    },
     {
       "id": "articles/Top 10 Micro Niches You Can Start a Website On in 2025",
       "image": "assets/images/Top 10 Micro Niches You Can Start a Website On in 2025.jpg",
