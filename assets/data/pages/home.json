@@ -6,21 +6,21 @@
   "featured": [
     {
       "id": "articles/What No One Tells You About Starting a Website in 2025",
-      "title": "What No One Tells You About Starting a Website in 2025",
-      "description": "Everyone says starting a website in 2025 is easier than ever. That’s true—on the surface. But here's what no one really tells you: the deeper challenges, mindset shifts, and hidden work behind every successful site.",
-      "category": "Technology & AI",
+      "title": "What No One Actually Tells You About Starting a Website in 2025 (I Learned the Hard Way)",
+      "description": "After launching 12 websites over 3 years (and watching 8 of them fail), here are the brutal truths no one mentions in those glossy tutorials. Real talk about what it actually takes to build something that matters.",
+      "category": "Technology & AI ",
       "difficulty": "Beginner",
-      "author": "Alex Canvy",
+      "author": "Alex Rivera",
       "date": "2025-07-06",
-      "readTime": "9 min",
+      "readTime": "13 min",
       "image": "assets/images/What No One Tells You About Starting a Website in 2025.jpg",
       "tags": [
-        "Website",
-        "2025",
-        "Beginner",
-        "Startup Tips",
+        "Website Building",
         "Online Business",
-        "Blogging"
+        "Beginner Guide",
+        "Digital Marketing",
+        "Web Development",
+        "Entrepreneurship"
       ]
     }
   ]
