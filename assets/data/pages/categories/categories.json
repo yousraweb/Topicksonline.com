@@ -2,10 +2,10 @@
   "title": "All Categories",
   "categories": [
     {
-      "name": "Technology & AI ",
+      "name": "Technology & AI",
       "slug": "technology-ai",
       "articleCount": 1,
-      "description": "Browse all Technology & AI  articles",
+      "description": "Browse all Technology & AI articles",
       "link": "/category/technology-ai"
     }
   ]
