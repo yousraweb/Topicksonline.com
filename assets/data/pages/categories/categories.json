@@ -2,6 +2,13 @@
   "title": "All Categories",
   "categories": [
     {
+      "name": "E-Business",
+      "slug": "e-business",
+      "articleCount": 1,
+      "description": "Browse all E-Business articles",
+      "link": "/category/e-business"
+    },
+    {
       "name": "E-Business ",
       "slug": "e-business",
       "articleCount": 1,
