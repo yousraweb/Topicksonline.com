@@ -93,8 +93,8 @@ const showLoading = () => {
 // Template functions
 const templates = {
     tutorialCard: (tutorial) => `
-        <div class="tutorial-card animate-in" onclick="navigateTo('/${tutorial.id}')" data-category="${tutorial.category}">
-            <div class="tutorial-thumbnail">${console.log(tutorial), tutorial.image ? `<img src="${tutorial.image}" alt="${tutorial.title}">` : ''}</div>
+        <div class="tutorial-card animate-in" onclick="navigateTo('/articles/${tutorial.id.replace('articles/', '')}')" data-category="${tutorial.category}">
+            <div class="tutorial-thumbnail">${tutorial.image ? `<img src="${tutorial.image}" alt="${tutorial.title}" onerror="this.style.display='none'">` : ''}</div>
             <div class="tutorial-content">
                 <span class="tutorial-category">${tutorial.category}</span>
                 <h3 class="tutorial-title">${tutorial.title}</h3>
@@ -322,7 +322,8 @@ function renderArticle(articleData) {
                 </div>
             </a>
         `,
-        image: (block) => `<img src="${block.src}" alt="${block.alt || ''}" />`
+        image: (block) => `<img src="${block.src}" alt="${block.alt || ''}" onerror="this.style.display='none'" />`,
+        conclusion: (block) => `<div class="conclusion-box"><h3>Conclusion</h3><p>${block.content}</p></div>`
     };
 
     const contentHTML = articleData.content?.map(block => 
@@ -400,7 +401,7 @@ function setMetaTags(articleData) {
     getOrCreateMeta('og:type').content = 'article';
     getOrCreateMeta('og:url').content = currentUrl;
     getOrCreateMeta('og:image').content = imageUrl;
-    getOrCreateMeta('og:site_name').content = 'TutorialHub';
+    getOrCreateMeta('og:site_name').content = 'TopPicksOnline';
     getOrCreateMeta('article:author').content = articleData.author;
     getOrCreateMeta('article:published_time').content = articleData.date;
     getOrCreateMeta('article:section').content = articleData.category;
@@ -419,7 +420,7 @@ function setMetaTags(articleData) {
     getOrCreateMeta('twitter:title').content = articleData.title;
     getOrCreateMeta('twitter:description').content = description;
     getOrCreateMeta('twitter:image').content = imageUrl;
-    getOrCreateMeta('twitter:site').content = '@tutorialhub'; // Your Twitter handle
+    getOrCreateMeta('twitter:site').content = '@topicksonline';
 
     // Structured data for SEO (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
@@ -460,7 +461,7 @@ function setMetaTags(articleData) {
 
 // Also add a function to reset meta tags when navigating away
 function resetMetaTags() {
-    document.title = 'Top Picks Online - One Blog. Every Topic.';
+    document.title = 'TopPicksOnline - One Blog. Every Topic.';
     
     // Reset basic meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -494,6 +495,48 @@ function renderCategoryPage(categoryData) {
             
             <div class="tutorial-grid">
                 ${categoryData.articles?.map(templates.tutorialCard).join('') || '<p>No articles found in this category.</p>'}
+            </div>
+        </div>
+    `;
+}
+
+function renderGenericPage(pageData) {
+    const mainContent = $('#main-content');
+    if (!pageData) return renderNotFound();
+
+    const contentBlocks = {
+        text: (block) => `<p>${block.content}</p>`,
+        heading: (block) => `<h${block.level || 2}>${block.content}</h${block.level || 2}>`,
+        list: (block) => `<ul>${block.items?.map(item => `<li>${item}</li>`).join('') || ''}</ul>`,
+        cards: (block) => `
+            <div class="cards-grid">
+                ${block.cards?.map(card => `
+                    <div class="card">
+                        <h3>${card.title}</h3>
+                        <p>${card.description}</p>
+                        ${card.link ? `<a href="${card.link}" class="card-link">Learn More →</a>` : ''}
+                    </div>
+                `).join('') || ''}
+            </div>
+        `,
+        cta: (block) => `<div class="cta-section"><p>${block.text}</p></div>`
+    };
+
+    let content = '';
+    if (pageData.content) {
+        content = pageData.content.map(block => 
+            contentBlocks[block.type] ? contentBlocks[block.type](block) : `<p>${block.content || ''}</p>`
+        ).join('');
+    }
+
+    mainContent.innerHTML = `
+        <div class="container animate-in">
+            <div class="article-header">
+                <h1 class="article-title">${pageData.title}</h1>
+                ${pageData.description ? `<p class="article-meta">${pageData.description}</p>` : ''}
+            </div>
+            <div class="article-content">
+                ${content}
             </div>
         </div>
     `;
@@ -553,7 +596,7 @@ const search = {
             dropdown.innerHTML = `<div class="search-no-results">No articles found for "${query}"</div>`;
         } else {
             dropdown.innerHTML = results.slice(0, 5).map(article => `
-                <div class="search-result-item" onclick="navigateTo('/${article.id}')">
+                <div class="search-result-item" onclick="navigateTo('/articles/${article.id.replace('articles/', '')}')">
                     <div class="search-result-title">${this.highlightMatch(article.title, query)}</div>
                     <div class="search-result-meta">${article.category} • By ${article.author}</div>
                 </div>
@@ -624,14 +667,32 @@ async function handleRoute() {
         const pageData = await fetchJSON('/assets/data/pages/home.json');
         renderHomepage(pageData);
         resetMetaTags();
+    } else if (path.startsWith('/articles/')) {
+        const articleSlug = path.substring('/articles/'.length);
+        const articleData = await fetchJSON(`/assets/data/pages/articles/${articleSlug}.json`);
+        renderArticle(articleData);
     } else if (path.startsWith('/category/')) {
         const categorySlug = path.substring('/category/'.length);
         const categoryData = await fetchJSON(`/assets/data/pages/categories/categories/${categorySlug}.json`);
         renderCategoryPage(categoryData);
+    } else if (path === '/search') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        if (query) {
+            const results = await search.perform(query);
+            search.displayResults(results);
+        } else {
+            navigateTo('/');
+        }
     } else {
+        // Try to load as a generic page
         const pageName = path.substring(1);
         const pageData = await fetchJSON(`/assets/data/pages/${pageName}.json`);
-        renderArticle(pageData);
+        if (pageData) {
+            renderGenericPage(pageData);
+        } else {
+            renderNotFound();
+        }
     }
 }
 
@@ -642,6 +703,7 @@ function navigateTo(path) {
 }
 
 window.navigateTo = navigateTo;
+
 // Add this function to your JavaScript
 function initAffiliateCards() {
     const affiliateCards = document.querySelectorAll('.affiliate-card');
@@ -673,9 +735,9 @@ function initAffiliateCards() {
         });
     });
 }
+
 // Share functionality
 const shareUtils = {
-    // Create share button HTML
     createShareButton() {
         return `
             <div class="share-container">
@@ -728,7 +790,6 @@ const shareUtils = {
         `;
     },
 
-    // Get current article data
     getCurrentArticle() {
         return {
             title: document.querySelector('.article-title')?.textContent || document.title,
@@ -737,12 +798,10 @@ const shareUtils = {
         };
     },
 
-    // Toggle share menu
     toggleMenu() {
         const menu = document.getElementById('shareMenu');
         menu.classList.toggle('active');
         
-        // Close menu when clicking outside
         if (menu.classList.contains('active')) {
             setTimeout(() => {
                 document.addEventListener('click', this.closeMenuHandler);
@@ -757,7 +816,6 @@ const shareUtils = {
         }
     },
 
-    // Show toast notification
     showToast(message) {
         const toast = document.getElementById('shareToast');
         toast.textContent = message;
@@ -768,7 +826,6 @@ const shareUtils = {
         }, 3000);
     },
 
-    // Native share API (mobile)
     async shareNative() {
         const article = this.getCurrentArticle();
         
@@ -790,7 +847,6 @@ const shareUtils = {
         }
     },
 
-    // Share to Twitter
     shareTwitter() {
         const article = this.getCurrentArticle();
         const text = `${article.title} by @topicksonline.com`;
@@ -799,7 +855,6 @@ const shareUtils = {
         this.showToast('Sharing to Twitter...');
     },
 
-    // Share to Facebook
     shareFacebook() {
         const article = this.getCurrentArticle();
         const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(article.url)}`;
@@ -807,7 +862,6 @@ const shareUtils = {
         this.showToast('Sharing to Facebook...');
     },
 
-    // Share to LinkedIn
     shareLinkedIn() {
         const article = this.getCurrentArticle();
         const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(article.url)}`;
@@ -815,7 +869,6 @@ const shareUtils = {
         this.showToast('Sharing to LinkedIn...');
     },
 
-    // Share to WhatsApp
     shareWhatsApp() {
         const article = this.getCurrentArticle();
         const text = `${article.title} - ${article.url}`;
@@ -824,7 +877,6 @@ const shareUtils = {
         this.showToast('Opening WhatsApp...');
     },
 
-    // Copy link to clipboard
     async copyLink() {
         const article = this.getCurrentArticle();
         
@@ -832,7 +884,6 @@ const shareUtils = {
             await navigator.clipboard.writeText(article.url);
             this.showToast('Link copied to clipboard!');
             
-            // Change icon temporarily
             const copyOption = document.querySelector('.share-option.copy svg');
             const originalSVG = copyOption.innerHTML;
             copyOption.innerHTML = '<path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none"></path>';
@@ -847,8 +898,8 @@ const shareUtils = {
     }
 };
 
-// Make shareUtils global
 window.shareUtils = shareUtils;
+
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     theme.init();
