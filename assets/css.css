@@ -1047,17 +1047,17 @@ footer {
     border: 1px solid rgba(91, 92, 255, 0.3);
     border-radius: var(--radius-sm);
     padding: 24px 28px;
+    padding-top: 20px;
     margin: 32px 0;
     position: relative;
 }
 
 .conclusion-box::before {
     content: '🎯';
-    font-size: 24px;
+    font-size: 30px;
     position: absolute;
-    top: -12px;
-    left: 20px;
-    background: var(--bg-primary);
+    top: -29px;
+    left: 11px;
     padding: 0 8px;
 }
 
@@ -1279,7 +1279,6 @@ footer {
     
     .article-content h3 {
         font-size: 22px;
-        margin-top: 32px;
     }
     
     .conclusion-box,
