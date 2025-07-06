@@ -343,9 +343,7 @@ function renderArticle(articleData) {
             </div>
         </article>
         
-        <div class="sidebar-ad">
-            <div>Advertisement</div>
-        </div>
+        
     `;
     const shareButtonHTML = shareUtils.createShareButton();
     mainContent.insertAdjacentHTML('beforeend', shareButtonHTML);
