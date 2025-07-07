@@ -220,33 +220,28 @@ const newsletter = {
     },
 
     async subscribeUser(email) {
-        // Demo implementation - replace with your email service
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        return Math.random() > 0.1; // 90% success rate for demo
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwpbdeee';
+    
+    try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                subject: 'New Newsletter Signup',
+                message: `New subscriber: ${email}`,
+                source: 'Website Newsletter Form'
+            })
+        });
         
-        /* 
-        // Replace this with your actual email service integration
-        // Example for ConvertKit:
-        try {
-            const response = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    api_key: 'YOUR_API_KEY',
-                    email: email,
-                    tags: ['website-signup']
-                })
-            });
-            
-            return response.ok;
-        } catch (error) {
-            console.error('ConvertKit API error:', error);
-            return false;
-        }
-        */
-    },
+        return response.ok;
+    } catch (error) {
+        console.error('Formspree error:', error);
+        return false;
+    }
+},
 
     isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
