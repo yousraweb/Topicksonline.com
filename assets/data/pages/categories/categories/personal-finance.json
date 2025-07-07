@@ -2,7 +2,7 @@
   "title": "Personal Finance Articles",
   "category": "Personal Finance",
   "description": "All articles about Personal Finance",
-  "articleCount": 1,
+  "articleCount": 2,
   "articles": [
     {
       "id": "articles/7-Day Budget Meal Plan for Under $50",
@@ -22,6 +22,25 @@
       "difficulty": "Beginner",
       "readTime": "14 min",
       "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment."
+    },
+    {
+      "id": "articles/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals",
+      "image": "assets/images/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals.jpg",
+      "title": "Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals (I Fed Myself for $6/Day Using These)",
+      "author": "Carlos Rivera",
+      "date": "2025-07-06",
+      "category": "Personal Finance",
+      "tags": [
+        "Budget Groceries",
+        "Cheap Food",
+        "Meal Planning",
+        "Money Saving",
+        "Food Budget",
+        "Frugal Living"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "15 min",
+      "description": "Stop buying expensive groceries that only make one meal. These 10 ingredients cost under $3 each but can create dozens of different meals. I tested every one during my broke college years."
     }
   ]
 }
