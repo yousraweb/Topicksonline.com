@@ -220,14 +220,15 @@ const newsletter = {
     },
 
     async subscribeUser(email) {
-    // Opens user's email with pre-filled signup notification
-    const subject = encodeURIComponent('New Newsletter Signup');
-    const body = encodeURIComponent(`New subscriber: ${email}\n\nTime: ${new Date().toLocaleString()}`);
+    console.log('🚀 Testing newsletter signup for:', email);
     
-    window.open(`mailto:yousraelassoui6@gmail.com?subject=${subject}&body=${body}`, '_self');
+    // Simulate delay and show logs
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return true;
+    // Show alert with email (you can copy manually)
+    alert(`Newsletter signup: ${email}\n\nCopy this to your subscriber list!`);
+    
+    return true; // Always succeeds for testing
 },
     isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
