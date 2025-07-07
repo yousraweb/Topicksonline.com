@@ -94,7 +94,14 @@ const showLoading = () => {
 const templates = {
     tutorialCard: (tutorial) => `
         <div class="tutorial-card animate-in" onclick="navigateTo('/articles/${tutorial.id.replace('articles/', '')}')" data-category="${tutorial.category}">
-            <div class="tutorial-thumbnail">${tutorial.image ? `<img src="${tutorial.image}" alt="${tutorial.title}" onerror="this.style.display='none'">` : ''}</div>
+            <div class="tutorial-thumbnail" style="position: relative;">
+                <!-- Loader shown until image loads -->
+                <div class="image-loader"></div>
+                ${tutorial.image ? `<img src="${tutorial.image}" 
+                                       alt="${tutorial.title}" 
+                                       onload="this.previousElementSibling.style.display='none'" 
+                                       onerror="this.previousElementSibling.style.display='none'; this.style.display='none';" />` : ''}
+            </div>
             <div class="tutorial-content">
                 <span class="tutorial-category">${tutorial.category}</span>
                 <h3 class="tutorial-title">${tutorial.title}</h3>
@@ -113,6 +120,7 @@ const templates = {
         </div>
     `
 };
+
 
 // Filter functionality
 const filters = {
