@@ -220,42 +220,15 @@ const newsletter = {
     },
 
     async subscribeUser(email) {
-    console.log('🚀 Starting Formspree subscription for:', email);
+    // Opens user's email with pre-filled signup notification
+    const subject = encodeURIComponent('New Newsletter Signup');
+    const body = encodeURIComponent(`New subscriber: ${email}\n\nTime: ${new Date().toLocaleString()}`);
     
-    try {
-        // Use FormData instead of JSON
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('subject', 'New Newsletter Signup');
-        formData.append('message', `New subscriber: ${email}`);
-        formData.append('_replyto', email); // Formspree specific field
-        formData.append('source', 'Website Newsletter Form');
-        
-        const response = await fetch('https://formspree.io/f/mwpbdeee', {
-            method: 'POST',
-            body: formData, // ✅ CORRECT: Send FormData
-            headers: {
-                'Accept': 'application/json' // ✅ CORRECT: Only Accept header
-            }
-        });
-        
-        console.log('📥 Formspree response:', response.status, response.ok);
-        
-        if (response.ok) {
-            console.log('✅ Subscription successful!');
-            return true;
-        } else {
-            const errorData = await response.json();
-            console.error('❌ Formspree error:', errorData);
-            return false;
-        }
-        
-    } catch (error) {
-        console.error('💥 Network error:', error);
-        return false;
-    }
+    window.open(`mailto:YOUR_EMAIL@gmail.com?subject=${subject}&body=${body}`, '_self');
+    
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return true;
 },
-
     isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
