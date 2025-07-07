@@ -220,25 +220,38 @@ const newsletter = {
     },
 
     async subscribeUser(email) {
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwpbdeee';
+    console.log('🚀 Starting Formspree subscription for:', email);
     
     try {
-        const response = await fetch(FORMSPREE_ENDPOINT, {
+        // Use FormData instead of JSON
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('subject', 'New Newsletter Signup');
+        formData.append('message', `New subscriber: ${email}`);
+        formData.append('_replyto', email); // Formspree specific field
+        formData.append('source', 'Website Newsletter Form');
+        
+        const response = await fetch('https://formspree.io/f/mwpbdeee', {
             method: 'POST',
+            body: formData, // ✅ CORRECT: Send FormData
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                subject: 'New Newsletter Signup',
-                message: `New subscriber: ${email}`,
-                source: 'Website Newsletter Form'
-            })
+                'Accept': 'application/json' // ✅ CORRECT: Only Accept header
+            }
         });
         
-        return response.ok;
+        console.log('📥 Formspree response:', response.status, response.ok);
+        
+        if (response.ok) {
+            console.log('✅ Subscription successful!');
+            return true;
+        } else {
+            const errorData = await response.json();
+            console.error('❌ Formspree error:', errorData);
+            return false;
+        }
+        
     } catch (error) {
-        console.error('Formspree error:', error);
+        console.error('💥 Network error:', error);
         return false;
     }
 },
