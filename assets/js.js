@@ -175,25 +175,32 @@ function renderNewsletterBlock(block) {
 const newsletter = {
     init() {
         this.bindEvents();
+        console.log('📧 Newsletter system initialized');
     },
 
     bindEvents() {
         document.addEventListener('submit', (e) => {
             if (e.target.classList.contains('newsletter-form')) {
                 e.preventDefault();
+                console.log('📝 Newsletter form submitted');
                 this.handleSubmit(e.target);
             }
         });
     },
 
     async handleSubmit(form) {
+        console.log('🚀 Processing newsletter subscription...');
+        
         const email = form.querySelector('.newsletter-input').value.trim();
         const button = form.querySelector('.newsletter-button');
         const successMsg = form.querySelector('.newsletter-success');
         const errorMsg = form.querySelector('.newsletter-error');
 
+        console.log('📧 Email entered:', email);
+
         // Simple email validation
         if (!this.isValidEmail(email)) {
+            console.log('❌ Invalid email');
             this.showError(errorMsg, 'Please enter a valid email address.');
             return;
         }
@@ -203,34 +210,30 @@ const newsletter = {
         this.hideMessages(successMsg, errorMsg);
 
         try {
-            // Simple working solution - save email and show success
+            console.log('💾 Saving email...');
             await this.saveEmail(email);
             
-            // Show success
+            console.log('✅ Email saved successfully');
             this.showSuccess(successMsg);
             form.reset();
-            
-            // Track the event
             this.trackSubscription(email);
             
         } catch (error) {
-            console.error('Newsletter error:', error);
-            this.showError(errorMsg, 'Something went wrong. Please try again.');
+            console.error('❌ Newsletter error:', error);
+            this.showError(errorMsg, error.message || 'Something went wrong. Please try again.');
         } finally {
-            // Always reset button after 2 seconds
             setTimeout(() => {
                 this.setLoading(button, false);
-            }, 2000);
+            }, 1500);
         }
     },
 
     async saveEmail(email) {
-        // Save to localStorage (you can check this in browser console)
         const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
         
         // Check if already subscribed
         if (subscribers.find(sub => sub.email === email)) {
-            throw new Error('Already subscribed');
+            throw new Error('This email is already subscribed!');
         }
         
         // Add new subscriber
@@ -243,47 +246,28 @@ const newsletter = {
         subscribers.push(newSubscriber);
         localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
         
-        // Log to console for you to see
         console.log('✅ NEW SUBSCRIBER:', email);
-        console.log('📧 ALL SUBSCRIBERS:', subscribers);
-        
-        // Also try to submit to Netlify if available (but don't wait for it)
-        this.tryNetlifySubmit(email).catch(() => {
-            // Silently fail if Netlify doesn't work
-        });
+        console.log('📊 TOTAL SUBSCRIBERS:', subscribers.length);
         
         // Simulate processing time
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 800));
         
         return true;
     },
 
-    async tryNetlifySubmit(email) {
-        // Try to submit to Netlify Forms (won't break if it fails)
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('form-name', 'newsletter');
-        
-        await fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData).toString()
-        });
-    },
-
     isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email) && email.length < 255;
+        return emailRegex.test(email) && email.length < 255 && email.length > 5;
     },
 
     setLoading(button, loading) {
         if (loading) {
             button.disabled = true;
-            button.textContent = 'Subscribing...';
-            button.style.opacity = '0.7';
+            button.innerHTML = '⏳ Subscribing...';
+            button.style.opacity = '0.8';
         } else {
             button.disabled = false;
-            button.textContent = button.getAttribute('data-original-text') || 'Subscribe Now';
+            button.innerHTML = button.getAttribute('data-original-text') || 'Subscribe Now';
             button.style.opacity = '1';
         }
     },
@@ -293,6 +277,10 @@ const newsletter = {
         successMsg.style.display = 'block';
         successMsg.style.color = '#22c55e';
         successMsg.style.fontWeight = '600';
+        successMsg.style.background = 'rgba(34, 197, 94, 0.1)';
+        successMsg.style.padding = '12px';
+        successMsg.style.borderRadius = '8px';
+        successMsg.style.marginTop = '12px';
     },
 
     showError(errorMsg, message) {
@@ -300,6 +288,10 @@ const newsletter = {
         errorMsg.style.display = 'block';
         errorMsg.style.color = '#ef4444';
         errorMsg.style.fontWeight = '600';
+        errorMsg.style.background = 'rgba(239, 68, 68, 0.1)';
+        errorMsg.style.padding = '12px';
+        errorMsg.style.borderRadius = '8px';
+        errorMsg.style.marginTop = '12px';
     },
 
     hideMessages(successMsg, errorMsg) {
@@ -308,14 +300,12 @@ const newsletter = {
     },
 
     trackSubscription(email) {
-        // Google Analytics
         if (typeof gtag !== 'undefined') {
             gtag('event', 'newsletter_subscribe', {
                 method: 'website_form'
             });
         }
-        
-        console.log('📊 Newsletter subscription tracked for:', email);
+        console.log('📊 Newsletter subscription tracked');
     }
 };
 
@@ -1188,3 +1178,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
+// Newsletter helper functions - ADD THIS AT THE END OF js.js
+window.checkNewsletterSubscribers = function() {
+    const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+    console.log('📧 Newsletter Subscribers (' + subscribers.length + ' total):');
+    console.table(subscribers);
+    return subscribers;
+};
+
+window.exportNewsletterEmails = function() {
+    const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+    const emails = subscribers.map(sub => sub.email).join('\n');
+    console.log('📋 Email List:\n' + emails);
+    return emails;
+};
+
+window.clearNewsletterSubscribers = function() {
+    localStorage.removeItem('newsletter_subscribers');
+    console.log('🗑️ Newsletter subscribers cleared');
+};
