@@ -15,6 +15,32 @@
     {
       "type": "heading",
       "level": 2,
+      "content": "Meet Our Team"
+    },
+    {
+      "type": "text",
+      "content": "Our diverse team brings together expertise from across the tech spectrum, from AI innovation to full-stack development."
+    },
+    {
+      "type": "cards",
+      "cards": [
+        {
+          "title": "Yousra El Assoui",
+          "description": "AI Engineering Student",
+          "location": "Morocco",
+          "type": "Founder & AI Specialist"
+        },
+        {
+          "title": "Achraf El Assoui",
+          "description": "Senior Full Stack Web Developer",
+          "location": "Remote",
+          "type": "Lead Developer"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
       "content": "Why Work With Us?"
     },
     {
@@ -64,7 +90,7 @@
     },
     {
       "type": "cta",
-      "text": "Don't see a position that fits? Send us your resume at careers@example.com"
+      "text": "Don't see a position that fits? Send us your resume at yousraelassoui6@gmail.com"
     }
   ]
 }
