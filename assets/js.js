@@ -224,7 +224,7 @@ const newsletter = {
     const subject = encodeURIComponent('New Newsletter Signup');
     const body = encodeURIComponent(`New subscriber: ${email}\n\nTime: ${new Date().toLocaleString()}`);
     
-    window.open(`mailto:YOUR_EMAIL@gmail.com?subject=${subject}&body=${body}`, '_self');
+    window.open(`mailto:yousraelassoui6@gmail.com?subject=${subject}&body=${body}`, '_self');
     
     await new Promise(resolve => setTimeout(resolve, 1000));
     return true;
