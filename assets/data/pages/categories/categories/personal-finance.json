@@ -1,0 +1,27 @@
+{
+  "title": "Personal Finance Articles",
+  "category": "Personal Finance",
+  "description": "All articles about Personal Finance",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/7-Day Budget Meal Plan for Under $50",
+      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
+      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
+      "author": "Maria Santos",
+      "date": "2025-07-06",
+      "category": "Personal Finance",
+      "tags": [
+        "Budget Meals",
+        "Meal Planning",
+        "Cheap Recipes",
+        "Grocery Budget",
+        "Money Saving",
+        "Food Budget"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min",
+      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment."
+    }
+  ]
+}

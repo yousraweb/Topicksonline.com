@@ -5,6 +5,25 @@
   },
   "featured": [
     {
+      "id": "articles/7-Day Budget Meal Plan for Under $50",
+      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
+      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
+      "category": "Personal Finance",
+      "difficulty": "Beginner",
+      "author": "Maria Santos",
+      "date": "2025-07-06",
+      "readTime": "14 min",
+      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
+      "tags": [
+        "Budget Meals",
+        "Meal Planning",
+        "Cheap Recipes",
+        "Grocery Budget",
+        "Money Saving",
+        "Food Budget"
+      ]
+    },
+    {
       "id": "articles/Best Productivity Tools for Remote Workers",
       "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
       "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
