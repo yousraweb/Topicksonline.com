@@ -21,6 +21,13 @@
       "articleCount": 2,
       "description": "Browse all Personal Finance articles",
       "link": "/category/personal-finance"
+    },
+    {
+      "name": "Uncategorized",
+      "slug": "uncategorized",
+      "articleCount": 1,
+      "description": "Browse all Uncategorized articles",
+      "link": "/category/uncategorized"
     }
   ]
 }

@@ -155,6 +155,17 @@
         "Web Development",
         "Entrepreneurship"
       ]
+    },
+    {
+      "id": "articles/Beginner’s No-Gym Workout Plan",
+      "title": "Untitled",
+      "description": "",
+      "category": "Uncategorized",
+      "difficulty": "Beginner",
+      "author": "Unknown",
+      "date": "",
+      "readTime": "5 min",
+      "image": "assets/images/Beginner’s No-Gym Workout Plan.jpg"
     }
   ]
 }

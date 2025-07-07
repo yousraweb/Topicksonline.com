@@ -1,0 +1,20 @@
+{
+  "title": "Uncategorized Articles",
+  "category": "Uncategorized",
+  "description": "All articles about Uncategorized",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Beginner’s No-Gym Workout Plan",
+      "image": "assets/images/Beginner’s No-Gym Workout Plan.jpg",
+      "title": "Untitled",
+      "author": "Unknown",
+      "date": "",
+      "category": "Uncategorized",
+      "tags": [],
+      "difficulty": "Beginner",
+      "readTime": "5 min",
+      "description": ""
+    }
+  ]
+}
