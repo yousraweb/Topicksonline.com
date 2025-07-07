@@ -121,6 +121,173 @@ const templates = {
     `
 };
 
+// Newsletter Template Function
+function renderNewsletterBlock(block) {
+    const benefits = block.benefits || [
+        { icon: "✨", text: "Weekly insights" },
+        { icon: "🚀", text: "No spam, ever" },
+        { icon: "💡", text: "Unsubscribe anytime" }
+    ];
+
+    return `
+        <section class="newsletter-section" data-newsletter-id="${Math.random().toString(36).substr(2, 9)}">
+            <div class="newsletter-content">
+                <span class="newsletter-icon">${block.icon || '📧'}</span>
+                <h3 class="newsletter-title">${block.title || 'Stay in the Loop'}</h3>
+                <p class="newsletter-description">
+                    ${block.description || 'Get the latest tutorials, tips, and insights delivered straight to your inbox.'}
+                </p>
+                
+                <form class="newsletter-form">
+                    <input 
+                        type="email" 
+                        class="newsletter-input" 
+                        placeholder="${block.placeholder || 'Enter your email address'}"
+                        required
+                    >
+                    <button type="submit" class="newsletter-button">
+                        ${block.buttonText || 'Subscribe'}
+                    </button>
+                </form>
+                
+                <div class="newsletter-success">
+                    ${block.successMessage || '🎉 Welcome aboard! Check your email to confirm your subscription.'}
+                </div>
+                
+                <div class="newsletter-error">
+                    ${block.errorMessage || '⚠️ Something went wrong. Please try again.'}
+                </div>
+                
+                <div class="newsletter-benefits">
+                    ${benefits.map(benefit => `
+                        <div class="newsletter-benefit">
+                            <span class="newsletter-benefit-icon">${benefit.icon}</span>
+                            <span>${benefit.text}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </section>
+    `;
+}
+
+// Newsletter functionality
+const newsletter = {
+    init() {
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        // Use event delegation for dynamically added newsletter forms
+        document.addEventListener('submit', (e) => {
+            if (e.target.classList.contains('newsletter-form')) {
+                e.preventDefault();
+                this.handleSubmit(e.target);
+            }
+        });
+    },
+
+    async handleSubmit(form) {
+        const email = form.querySelector('.newsletter-input').value.trim();
+        const button = form.querySelector('.newsletter-button');
+        const successMsg = form.querySelector('.newsletter-success');
+        const errorMsg = form.querySelector('.newsletter-error');
+
+        if (!this.isValidEmail(email)) {
+            this.showError(errorMsg, 'Please enter a valid email address.');
+            return;
+        }
+
+        this.setLoading(button, true);
+        this.hideMessages(successMsg, errorMsg);
+
+        try {
+            const success = await this.subscribeUser(email);
+            
+            if (success) {
+                this.showSuccess(successMsg);
+                form.reset();
+                this.trackSubscription(email);
+            } else {
+                this.showError(errorMsg, 'Failed to subscribe. Please try again.');
+            }
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            this.showError(errorMsg, 'Something went wrong. Please try again.');
+        } finally {
+            this.setLoading(button, false);
+        }
+    },
+
+    async subscribeUser(email) {
+        // Demo implementation - replace with your email service
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        return Math.random() > 0.1; // 90% success rate for demo
+        
+        /* 
+        // Replace this with your actual email service integration
+        // Example for ConvertKit:
+        try {
+            const response = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    api_key: 'YOUR_API_KEY',
+                    email: email,
+                    tags: ['website-signup']
+                })
+            });
+            
+            return response.ok;
+        } catch (error) {
+            console.error('ConvertKit API error:', error);
+            return false;
+        }
+        */
+    },
+
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    },
+
+    setLoading(button, loading) {
+        const originalText = button.getAttribute('data-original-text') || button.textContent;
+        if (!button.getAttribute('data-original-text')) {
+            button.setAttribute('data-original-text', originalText);
+        }
+        
+        button.disabled = loading;
+        button.textContent = loading ? 'Subscribing...' : originalText;
+    },
+
+    showSuccess(successMsg) {
+        successMsg.style.display = 'block';
+    },
+
+    showError(errorMsg, message) {
+        errorMsg.textContent = message;
+        errorMsg.style.display = 'block';
+    },
+
+    hideMessages(successMsg, errorMsg) {
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+    },
+
+    trackSubscription(email) {
+        console.log('Newsletter subscription:', email);
+        
+        // Google Analytics 4 event
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'newsletter_subscribe', {
+                method: 'website_form'
+            });
+        }
+    }
+};
 
 // Filter functionality
 const filters = {
@@ -253,6 +420,9 @@ function renderHomepage(pageData) {
 
     cache.currentArticles = pageData.featured || [];
     
+    // Check if newsletter data exists in JSON
+    const newsletterHTML = pageData.newsletter ? renderNewsletterBlock(pageData.newsletter) : '';
+    
     mainContent.innerHTML = `
         <div class="search-container animate-in">
             <div class="search-box">
@@ -274,6 +444,8 @@ function renderHomepage(pageData) {
             <div class="tutorial-grid">
                 ${cache.currentArticles.map(templates.tutorialCard).join('') || '<p>No tutorials found</p>'}
             </div>
+            
+            ${newsletterHTML}
         </div>
     `;
     
@@ -331,7 +503,8 @@ function renderArticle(articleData) {
             </a>
         `,
         image: (block) => `<img src="${block.src}" alt="${block.alt || ''}" onerror="this.style.display='none'" />`,
-        conclusion: (block) => `<div class="conclusion-box"><h3>Conclusion</h3><p>${block.content}</p></div>`
+        conclusion: (block) => `<div class="conclusion-box"><h3>Conclusion</h3><p>${block.content}</p></div>`,
+        newsletter: (block) => renderNewsletterBlock(block) // ADD NEWSLETTER SUPPORT
     };
 
     const contentHTML = articleData.content?.map(block => 
@@ -488,6 +661,9 @@ function resetMetaTags() {
 function renderCategoryPage(categoryData) {
     if (!categoryData) return renderNotFound();
     
+    // Check if newsletter data exists in JSON
+    const newsletterHTML = categoryData.newsletter ? renderNewsletterBlock(categoryData.newsletter) : '';
+    
     $('#main-content').innerHTML = `
         <div class="container animate-in">
             <div class="article-header">
@@ -502,6 +678,8 @@ function renderCategoryPage(categoryData) {
             <div class="tutorial-grid">
                 ${categoryData.articles?.map(templates.tutorialCard).join('') || '<p>No articles found in this category.</p>'}
             </div>
+            
+            ${newsletterHTML}
         </div>
     `;
 }
@@ -525,7 +703,8 @@ function renderGenericPage(pageData) {
                 `).join('') || ''}
             </div>
         `,
-        cta: (block) => `<div class="cta-section"><p>${block.text}</p></div>`
+        cta: (block) => `<div class="cta-section"><p>${block.text}</p></div>`,
+        newsletter: (block) => renderNewsletterBlock(block) // ADD NEWSLETTER SUPPORT
     };
 
     let content = '';
@@ -909,6 +1088,7 @@ window.shareUtils = shareUtils;
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     theme.init();
+    newsletter.init(); // ADD NEWSLETTER INITIALIZATION
 
     const commonData = await fetchCommonData();
     if (commonData.navigation) {
