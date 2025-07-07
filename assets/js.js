@@ -1178,22 +1178,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
-// Newsletter helper functions - ADD THIS AT THE END OF js.js
+// Newsletter helper functions
 window.checkNewsletterSubscribers = function() {
     const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
     console.log('📧 Newsletter Subscribers (' + subscribers.length + ' total):');
     console.table(subscribers);
     return subscribers;
-};
-
-window.exportNewsletterEmails = function() {
-    const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-    const emails = subscribers.map(sub => sub.email).join('\n');
-    console.log('📋 Email List:\n' + emails);
-    return emails;
-};
-
-window.clearNewsletterSubscribers = function() {
-    localStorage.removeItem('newsletter_subscribers');
-    console.log('🗑️ Newsletter subscribers cleared');
 };
