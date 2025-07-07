@@ -313,6 +313,30 @@
     {
       "type": "conclusion",
       "content": "Creating a successful website in 2025 isn't about having the perfect design or the most advanced features. It's about understanding your audience, creating genuinely helpful content, and promoting it consistently. The technical stuff is easier than ever—the hard part is staying consistent when growth feels slow. Your audience is out there searching for exactly what you have to offer. The only question is whether you'll create something valuable enough for them to stay, subscribe, and recommend to others. Start with helping one person solve one problem, then scale from there. That's how every successful website begins."
+    },
+    {
+      "type": "newsletter",
+      "title": "Found This Reality Check Helpful?",
+      "description": "Get more honest, no-BS advice about building websites and online businesses. I share real failures, actual numbers, and strategies that work—not just the highlight reel everyone else shows you.",
+      "icon": "💡",
+      "placeholder": "Your email address",
+      "buttonText": "Get Real Business Insights",
+      "benefits": [
+        {
+          "icon": "📊",
+          "text": "Real numbers & data"
+        },
+        {
+          "icon": "🚫",
+          "text": "No sugar-coating"
+        },
+        {
+          "icon": "🎯",
+          "text": "Actionable strategies"
+        }
+      ],
+      "successMessage": "🎉 Welcome to the real talk! Check your email for honest insights.",
+      "errorMessage": "⚠️ Something went wrong. Please try again or contact me directly."
     }
   ]
 }

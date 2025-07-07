@@ -230,6 +230,31 @@
     {
       "type": "conclusion",
       "content": "Starting a website in 2025 is definitely easier than it was in 2005. But building something that matters—something that helps people and sustains your goals? That's exactly as hard as it's always been. The good news? With the right expectations and approach, it's absolutely doable. Just don't believe anyone who tells you it'll be easy. Easy doesn't build character, skills, or anything worth having. Now stop reading about it and start building."
+    },
+    {
+      "type": "newsletter",
+      "title": "Found This Reality Check Helpful?",
+      "description": "Get more honest, no-BS advice about building websites and online businesses. I share real failures, actual numbers, and strategies that work—not just the highlight reel everyone else shows you.",
+      "icon": "💡",
+      "placeholder": "Your email address",
+      "buttonText": "Get Real Business Insights",
+      "benefits": [
+        {
+          "icon": "📊",
+          "text": "Real numbers & data"
+        },
+        {
+          "icon": "🚫",
+          "text": "No sugar-coating"
+        },
+        {
+          "icon": "🎯",
+          "text": "Actionable strategies"
+        }
+      ],
+      "successMessage": "🎉 Welcome to the real talk! Check your email for honest insights.",
+      "errorMessage": "⚠️ Something went wrong. Please try again or contact me directly."
     }
   ]
 }
+
