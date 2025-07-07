@@ -61,29 +61,5 @@
         "Entrepreneurship"
       ]
     }
-  ],
-  "newsletter": {
-    "type": "newsletter",
-    "title": "Never Miss a Tutorial",
-    "description": "Join 5,000+ readers getting weekly insights on web development, design, and online business. Free tutorials, tips, and resources delivered to your inbox.",
-    "placeholder": "Enter your email address",
-    "icon": "🚀",
-    "buttonText": "Subscribe Now",
-    "benefits": [
-      {
-        "icon": "✨",
-        "text": "Weekly insights"
-      },
-      {
-        "icon": "🚀",
-        "text": "No spam, ever"
-      },
-      {
-        "icon": "💡",
-        "text": "Unsubscribe anytime"
-      }
-    ],
-    "successMessage": "🎉 Welcome aboard! Check your email to confirm your subscription.",
-    "errorMessage": "⚠️ Something went wrong. Please try again."
-  }
+  ]
 }
