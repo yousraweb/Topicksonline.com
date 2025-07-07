@@ -7,15 +7,7 @@
     },
     {
       "type": "text",
-      "content": "ToPicksOnline is your trusted source for discovering the best products, deals, and offers across multiple niches. Founded by Yousra El Assoui, our platform is dedicated to helping consumers make informed purchasing decisions by providing valuable insights and recommending top-quality products at the best prices available in the market."
-    },
-    {
-      "type": "heading2",
-      "content": "About the Founder"
-    },
-    {
-      "type": "text",
-      "content": "Yousra El Assoui established ToPicksOnline with a mission to simplify the overwhelming world of online shopping and product selection. With extensive research experience and a keen eye for quality, Yousra personally evaluates products across various categories to bring you honest recommendations and unbeatable deals."
+      "content": "ToPicksOnline is dedicated to providing high-quality, accessible tutorials that empower people to learn new skills and advance their careers."
     },
     {
       "type": "heading2",
@@ -23,51 +15,23 @@
     },
     {
       "type": "text",
-      "content": "We specialize in researching and reviewing products across diverse niches including technology, lifestyle, home improvement, fitness, education, and business tools. Our comprehensive guides help you find the best value for your money while ensuring product quality and reliability."
+      "content": "We curate and create tutorials across various domains including programming, design, marketing, and business. Each tutorial is crafted by experts in their field."
     },
     {
       "type": "heading3",
-      "content": "Thorough Research & Best Prices"
+      "content": "Quality Content"
     },
     {
       "type": "text",
-      "content": "Every product and offer featured on our platform undergoes rigorous research and price comparison. We scout multiple marketplaces and vendors to ensure you're getting the best deals available. Our recommendations are based on quality, value, customer reviews, and competitive pricing."
+      "content": "All our tutorials are reviewed for accuracy, clarity, and practical value. We believe in learning by doing, so our content includes hands-on examples and exercises."
     },
     {
       "type": "heading3",
-      "content": "Multi-Niche Expertise"
+      "content": "Community Driven"
     },
     {
       "type": "text",
-      "content": "From tech gadgets and home essentials to online courses and business tools, we cover diverse categories to meet various consumer needs. Our content provides valuable insights before suggesting products, helping you understand what you're buying and why it's the best choice for your specific requirements."
-    },
-    {
-      "type": "heading2",
-      "content": "Our Approach"
-    },
-    {
-      "type": "text",
-      "content": "We believe in providing value first. Our detailed guides and comparisons help you make informed decisions before we suggest any products. This approach builds trust and ensures our recommendations truly serve your needs and budget."
-    },
-    {
-      "type": "heading2",
-      "content": "Contact Information"
-    },
-    {
-      "type": "text",
-      "content": "For business partnerships, product suggestions, or general inquiries, please reach out to us:"
-    },
-    {
-      "type": "text",
-      "content": "Founder & CEO: Yousra El Assoui"
-    },
-    {
-      "type": "text",
-      "content": "Email: yousraelassoui6@gmail.com"
-    },
-    {
-      "type": "text",
-      "content": "Website: topicksonline.com"
+      "content": "Our platform is built on community feedback. We continuously improve our content based on user suggestions and industry trends."
     }
   ]
 }
