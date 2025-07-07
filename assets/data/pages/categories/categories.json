@@ -7,6 +7,13 @@
       "articleCount": 3,
       "description": "Browse all E-Business articles",
       "link": "/category/e-business"
+    },
+    {
+      "name": "Productivity & Tools",
+      "slug": "productivity-tools",
+      "articleCount": 1,
+      "description": "Browse all Productivity & Tools articles",
+      "link": "/category/productivity-tools"
     }
   ]
 }

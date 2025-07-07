@@ -1,0 +1,27 @@
+{
+  "title": "Productivity & Tools Articles",
+  "category": "Productivity & Tools",
+  "description": "All articles about Productivity & Tools",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/The Ultimate Work From Home Desk Setup Guide",
+      "image": "assets/images/The Ultimate Work From Home Desk Setup Guide.jpg",
+      "title": "The Ultimate Work From Home Desk Setup Guide (2025 Edition) - I Spent $3,200 Testing 47 Products",
+      "author": "Marcus Chen",
+      "date": "2025-07-06",
+      "category": "Productivity & Tools",
+      "tags": [
+        "Work From Home",
+        "Desk Setup",
+        "Productivity",
+        "Home Office",
+        "Remote Work",
+        "Ergonomics"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "19 min",
+      "description": "After 3 years of remote work and testing 47 different products, here's my complete guide to creating the perfect work from home desk setup. Includes budget options and premium picks that actually work."
+    }
+  ]
+}
