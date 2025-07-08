@@ -5,6 +5,24 @@
   },
   "featured": [
     {
+      "id": "articles/Beginners NoGym Workout Plan",
+      "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
+      "description": "Stop drowning in expensive gym memberships you never use. After 6 months of testing home workout routines and spending $0 on equipment, here's the 4-week plan that actually got me fit at home.",
+      "category": "Health & Fitness",
+      "difficulty": "Beginner",
+      "author": "Sarah Martinez",
+      "date": "2025-07-08",
+      "readTime": "12 min",
+      "image": "assets/images/Beginners NoGym Workout Plan.jpg",
+      "tags": [
+        "beginner fitness",
+        "home workout",
+        "bodyweight exercises",
+        "no equipment",
+        "4-week plan"
+      ]
+    },
+    {
       "id": "articles/7-Day Budget Meal Plan for Under $50",
       "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
       "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
@@ -154,24 +172,6 @@
         "Digital Marketing",
         "Web Development",
         "Entrepreneurship"
-      ]
-    },
-    {
-      "id": "articles/Beginners NoGym Workout Plan",
-      "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
-      "description": "",
-      "category": "Health & Fitness",
-      "difficulty": "Beginner",
-      "author": "Fitness Guide",
-      "date": "",
-      "readTime": "8 minutes",
-      "image": "assets/images/Beginners NoGym Workout Plan.jpg",
-      "tags": [
-        "beginner fitness",
-        "home workout",
-        "bodyweight exercises",
-        "no equipment",
-        "4-week plan"
       ]
     }
   ]
