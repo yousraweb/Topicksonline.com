@@ -42,6 +42,25 @@
       ]
     },
     {
+      "id": "articles/Home Workout Space in a Small Room",
+      "title": "How to Create a Home Workout Space in a Small Room: Transform Any Corner Into Your Personal Gym",
+      "description": "No extra room needed—just smart setup. After transforming my 10x10 bedroom into a functional workout space for under $75, here's exactly how to create an inviting home gym anywhere.",
+      "category": "Health & Fitness",
+      "difficulty": "Beginner",
+      "author": "Jessica Chen",
+      "date": "2025-07-08",
+      "readTime": "11 min",
+      "image": "assets/images/Home Workout Space in a Small Room.jpg",
+      "tags": [
+        "home gym",
+        "small space",
+        "workout space",
+        "home fitness",
+        "budget fitness",
+        "apartment workout"
+      ]
+    },
+    {
       "id": "articles/7-Day Budget Meal Plan for Under $50",
       "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
       "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
@@ -172,25 +191,6 @@
         "Niche Marketing",
         "Blog Topics",
         "Digital Marketing"
-      ]
-    },
-    {
-      "id": "articles/What No One Tells You About Starting a Website in 2025",
-      "title": "What No One Actually Tells You About Starting a Website in 2025 (I Learned the Hard Way)",
-      "description": "After launching 12 websites over 3 years (and watching 8 of them fail), here are the brutal truths no one mentions in those glossy tutorials. Real talk about what it actually takes to build something that matters.",
-      "category": "E-Business",
-      "difficulty": "Beginner",
-      "author": "Alex Rivera",
-      "date": "2025-07-06",
-      "readTime": "13 min",
-      "image": "assets/images/What No One Tells You About Starting a Website in 2025.jpg",
-      "tags": [
-        "Website Building",
-        "Online Business",
-        "Beginner Guide",
-        "Digital Marketing",
-        "Web Development",
-        "Entrepreneurship"
       ]
     }
   ]

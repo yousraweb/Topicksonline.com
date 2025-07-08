@@ -2,6 +2,13 @@
   "title": "All Categories",
   "categories": [
     {
+      "name": "Health & Fitness",
+      "slug": "health-fitness",
+      "articleCount": 3,
+      "description": "Browse all Health & Fitness articles",
+      "link": "/category/health-fitness"
+    },
+    {
       "name": "Productivity & Tools",
       "slug": "productivity-tools",
       "articleCount": 3,
@@ -21,13 +28,6 @@
       "articleCount": 2,
       "description": "Browse all Personal Finance articles",
       "link": "/category/personal-finance"
-    },
-    {
-      "name": "Health & Fitness",
-      "slug": "health-fitness",
-      "articleCount": 2,
-      "description": "Browse all Health & Fitness articles",
-      "link": "/category/health-fitness"
     }
   ]
 }
