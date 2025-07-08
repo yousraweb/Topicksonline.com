@@ -23,11 +23,11 @@
       "link": "/category/personal-finance"
     },
     {
-      "name": "Uncategorized",
-      "slug": "uncategorized",
+      "name": "Health & Fitness",
+      "slug": "health-fitness",
       "articleCount": 1,
-      "description": "Browse all Uncategorized articles",
-      "link": "/category/uncategorized"
+      "description": "Browse all Health & Fitness articles",
+      "link": "/category/health-fitness"
     }
   ]
 }

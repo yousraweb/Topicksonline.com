@@ -16,12 +16,18 @@
       "author": "Maria Santos"
     },
     {
-      "id": "articles/Beginner’s NoGym Workout Plan",
-      "title": "Untitled",
+      "id": "articles/Beginners NoGym Workout Plan",
+      "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
       "description": "",
-      "category": "Uncategorized",
-      "tags": [],
-      "author": "Unknown"
+      "category": "Health & Fitness",
+      "tags": [
+        "beginner fitness",
+        "home workout",
+        "bodyweight exercises",
+        "no equipment",
+        "4-week plan"
+      ],
+      "author": "Fitness Guide"
     },
     {
       "id": "articles/Best Productivity Tools for Remote Workers",

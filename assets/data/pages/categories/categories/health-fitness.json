@@ -1,0 +1,26 @@
+{
+  "title": "Health & Fitness Articles",
+  "category": "Health & Fitness",
+  "description": "All articles about Health & Fitness",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Beginners NoGym Workout Plan",
+      "image": "assets/images/Beginners NoGym Workout Plan.jpg",
+      "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
+      "author": "Fitness Guide",
+      "date": "",
+      "category": "Health & Fitness",
+      "tags": [
+        "beginner fitness",
+        "home workout",
+        "bodyweight exercises",
+        "no equipment",
+        "4-week plan"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "8 minutes",
+      "description": ""
+    }
+  ]
+}

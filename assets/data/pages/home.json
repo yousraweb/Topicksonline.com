@@ -157,15 +157,22 @@
       ]
     },
     {
-      "id": "articles/Beginner’s NoGym Workout Plan",
-      "title": "Untitled",
+      "id": "articles/Beginners NoGym Workout Plan",
+      "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
       "description": "",
-      "category": "Uncategorized",
+      "category": "Health & Fitness",
       "difficulty": "Beginner",
-      "author": "Unknown",
+      "author": "Fitness Guide",
       "date": "",
-      "readTime": "5 min",
-      "image": "assets/images/Beginner’s NoGym Workout Plan.jpg"
+      "readTime": "8 minutes",
+      "image": "assets/images/Beginners NoGym Workout Plan.jpg",
+      "tags": [
+        "beginner fitness",
+        "home workout",
+        "bodyweight exercises",
+        "no equipment",
+        "4-week plan"
+      ]
     }
   ]
 }
