@@ -2,8 +2,27 @@
   "title": "Health & Fitness Articles",
   "category": "Health & Fitness",
   "description": "All articles about Health & Fitness",
-  "articleCount": 1,
+  "articleCount": 2,
   "articles": [
+    {
+      "id": "articles/Beginner Home Fitness Mistakes",
+      "image": "assets/images/Beginner Home Fitness Mistakes.jpg",
+      "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
+      "author": "Mike Thompson",
+      "date": "2025-07-08",
+      "category": "Health & Fitness",
+      "tags": [
+        "fitness mistakes",
+        "home workout",
+        "beginner fitness",
+        "workout form",
+        "fitness motivation",
+        "exercise tips"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min",
+      "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them."
+    },
     {
       "id": "articles/Beginners NoGym Workout Plan",
       "image": "assets/images/Beginners NoGym Workout Plan.jpg",
