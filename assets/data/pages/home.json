@@ -61,6 +61,25 @@
       ]
     },
     {
+      "id": "articles/Lose Weight at Home Without a Gym",
+      "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
+      "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss.",
+      "category": "Health & Fitness",
+      "difficulty": "Beginner",
+      "author": "Rachel Chen",
+      "date": "2025-07-08",
+      "readTime": "15 min",
+      "image": "assets/images/Lose Weight at Home Without a Gym.jpg",
+      "tags": [
+        "weight loss",
+        "home fitness",
+        "fat loss",
+        "calorie deficit",
+        "HIIT workouts",
+        "nutrition tips"
+      ]
+    },
+    {
       "id": "articles/7-Day Budget Meal Plan for Under $50",
       "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
       "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
@@ -172,25 +191,6 @@
         "Money Saving",
         "Food Budget",
         "Frugal Living"
-      ]
-    },
-    {
-      "id": "articles/Top 10 Micro Niches You Can Start a Website On in 2025",
-      "title": "Top 10 Micro Niches You Can Start a Website On in 2025 (I've Tested 6 of These)",
-      "description": "Forget competing with giants in 'fitness' or 'finance.' These 10 micro niches have low competition, passionate audiences, and real monetization potential. I've personally tested 6 of them with surprising results.",
-      "category": "E-Business",
-      "difficulty": "Beginner",
-      "author": "Jordan Blake",
-      "date": "2025-07-06",
-      "readTime": "16 min",
-      "image": "assets/images/Top 10 Micro Niches You Can Start a Website On in 2025.jpg",
-      "tags": [
-        "Micro Niches",
-        "Website Ideas",
-        "Online Business",
-        "Niche Marketing",
-        "Blog Topics",
-        "Digital Marketing"
       ]
     }
   ]
