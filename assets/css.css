@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 #canvas {
     position: fixed;
     top: 0;
@@ -12,8 +13,9 @@
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 9999;
+    z-index: -2;
 }
+
 :root {
     /* Dark theme colors (default) */
     --bg-primary: #0a0a0b;
@@ -239,6 +241,7 @@ nav {
     background-clip: text;
     letter-spacing: -0.5px;
     cursor: pointer;
+    color: var(--accent); /* fallback for browsers that don't support background-clip */
 }
 
 .nav-menu {
@@ -498,6 +501,7 @@ main {
     background-clip: text;
     margin-bottom: 60px;
     text-align: center;
+    color: var(--text-primary); /* fallback */
 }
 
 /* Tutorial Grid */
@@ -557,37 +561,40 @@ main {
     bottom: 0;
     background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
 }
+
+/* Day headers - now fully dynamic */
 .day-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--accent-gradient);
+    color: var(--text-inverse);
     padding: 15px 25px;
     margin: 25px 0 15px 0;
     border-radius: 12px;
     text-align: center;
-    /* box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); */
+    box-shadow: var(--shadow-glow);
 }
 
 .day-header h3 {
     margin: 0 !important;
-    /* font-size: 1.2em !important; */
     font-weight: 600;
     letter-spacing: 1px;
+    color: var(--text-inverse);
 }
 
-/* Meal Cards */
+/* Meal Cards - now fully dynamic */
 .meal-card {
-    background: #fff;
-    /* border: 1px solid #e1e8ed; */
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
     margin: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
 .meal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: var(--hover-lift);
+    box-shadow: var(--shadow-md);
+    background: var(--bg-card-hover);
 }
 
 .meal-header {
@@ -598,8 +605,9 @@ main {
 }
 
 .meal-type {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-    color: white;
+    background: var(--error-bg);
+    color: var(--error);
+    border: 1px solid var(--error-border);
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.85em;
@@ -609,8 +617,9 @@ main {
 }
 
 .meal-price {
-    background: #27ae60;
-    color: white;
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid var(--success-border);
     padding: 6px 12px;
     border-radius: 20px;
     font-weight: 600;
@@ -618,42 +627,41 @@ main {
 }
 
 .meal-name {
-    color: #2c3e50;
+    color: var(--text-primary);
     margin: 10px 0 8px 0;
     font-size: 1.1em;
     font-weight: 600;
 }
 
 .meal-description {
-    color: #5a6c7d;
+    color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
 }
 
-/* Enhanced text styling */
+/* Enhanced text styling - fixed to prevent disappearing text */
 .highlight-text {
-    /* background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); */
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: 600;
     margin: 20px 0;
     padding: 15px;
-    border-left: 1px solid #f5576c;
-    background-color: #fff5f7;
+    border-left: 3px solid var(--error);
+    background: var(--error-bg);
     border-radius: 0 8px 8px 0;
+    color: var(--text-primary);
+    border: 1px solid var(--error-border);
 }
 
-/* Content lists */
+/* Content lists - now fully dynamic */
 .content-list {
-    /* background: #f8fafc1c; */
-    /* border-radius: 10px; */
+    background: var(--bg-card);
+    border-radius: 10px;
     color: var(--text-primary);
     padding: 20px;
     padding-left: 30px;
     list-style: none;
     margin: 20px 0;
-    border-left: 1px solid #3b82f6;
+    border-left: 3px solid var(--info);
+    border: 1px solid var(--border);
 }
 
 .content-list li {
@@ -661,20 +669,21 @@ main {
     padding-left: 10px;
     line-height: 1.6;
     position: relative;
+    color: var(--text-secondary);
 }
 
 .content-list li::before {
     content: "✓";
-    color: #10b981;
+    color: var(--success);
     font-weight: 600;
     position: absolute;
     left: -15px;
 }
 
-/* Section headings */
+/* Section headings - now fully dynamic */
 .section-heading {
-    color: #1a202c;
-    border-bottom: 3px solid #3b82f6;
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--info);
     padding-bottom: 10px;
     margin: 30px 0 20px 0;
     position: relative;
@@ -687,18 +696,18 @@ main {
     left: 0;
     width: 50px;
     height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: var(--accent-gradient);
     border-radius: 2px;
 }
 
 .subsection-heading {
-    color: #374151;
+    color: var(--text-primary);
     margin: 25px 0 15px 0;
     padding-left: 15px;
-    border-left: 4px solid #10b981;
+    border-left: 4px solid var(--success);
 }
 
-/* Enhanced tip and warning boxes */
+/* Enhanced tip and warning boxes - now fully dynamic */
 .tip-box, .warning-box {
     display: flex;
     align-items: flex-start;
@@ -709,23 +718,31 @@ main {
 }
 
 .tip-box {
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    border: 1px solid #f59e0b;
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    color: var(--text-primary);
 }
 
 .warning-box {
-    background: linear-gradient(135deg, #fee2e2, #fecaca);
-    border: 1px solid #ef4444;
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--text-primary);
 }
 
 .tip-icon, .warning-icon {
     font-size: 1.5em;
     flex-shrink: 0;
+    color: var(--warning);
+}
+
+.warning-icon {
+    color: var(--error);
 }
 
 .tip-content, .warning-content {
     flex: 1;
     line-height: 1.6;
+    color: var(--text-primary);
 }
 
 /* Content images */
@@ -734,27 +751,9 @@ main {
     height: auto;
     border-radius: 12px;
     margin: 20px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .meal-header {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-    
-    .day-header {
-        padding: 12px 20px;
-        margin: 20px 0 12px 0;
-    }
-    
-    .meal-card {
-        padding: 15px;
-        margin: 12px 0;
-    }
-}
 .tutorial-thumbnail img {
     object-fit: cover;
     width: 100%;
@@ -1246,6 +1245,7 @@ footer {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--text-primary); /* fallback */
 }
 
 .article-meta {
@@ -1736,8 +1736,24 @@ footer {
     background: var(--scrollbar-thumb-hover);
 }
 
-/* Responsive */
+/* Responsive design for meal cards */
 @media (max-width: 768px) {
+    .meal-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .day-header {
+        padding: 12px 20px;
+        margin: 20px 0 12px 0;
+    }
+    
+    .meal-card {
+        padding: 15px;
+        margin: 12px 0;
+    }
+    
     .nav-menu {
         display: none;
     }
