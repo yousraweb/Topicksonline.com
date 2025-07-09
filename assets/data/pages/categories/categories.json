@@ -28,6 +28,13 @@
       "articleCount": 2,
       "description": "Browse all Personal Finance articles",
       "link": "/category/personal-finance"
+    },
+    {
+      "name": "Food & Nutrition",
+      "slug": "food-nutrition",
+      "articleCount": 1,
+      "description": "Browse all Food & Nutrition articles",
+      "link": "/category/food-nutrition"
     }
   ]
 }

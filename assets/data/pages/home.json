@@ -80,6 +80,25 @@
       ]
     },
     {
+      "id": "articles/No-Cook Budget Meals",
+      "title": "No-Cook Budget Meals for When You're Too Tired to Cook (or Don't Have a Stove): 7 Lifesaving Recipes Under $3 Each",
+      "description": "Whether it's heat, laziness, or no kitchen — this is your fix. After 3 months with a broken stove and a $50/week food budget, here are 7 no-cook meals that saved my sanity and wallet.",
+      "category": "Food & Nutrition",
+      "difficulty": "Beginner",
+      "author": "Maria Santos",
+      "date": "2025-07-08",
+      "readTime": "12 min",
+      "image": "assets/images/No-Cook Budget Meals.jpg",
+      "tags": [
+        "no-cook meals",
+        "budget recipes",
+        "easy meals",
+        "lazy cooking",
+        "dorm food",
+        "quick meals"
+      ]
+    },
+    {
       "id": "articles/Stay Motivated Working Out Alone at Home",
       "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
       "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years.",
@@ -172,25 +191,6 @@
         "Remote Work",
         "Concentration",
         "Time Management"
-      ]
-    },
-    {
-      "id": "articles/The Ultimate Work From Home Desk Setup Guide",
-      "title": "The Ultimate Work From Home Desk Setup Guide (2025 Edition) - I Spent $3,200 Testing 47 Products",
-      "description": "After 3 years of remote work and testing 47 different products, here's my complete guide to creating the perfect work from home desk setup. Includes budget options and premium picks that actually work.",
-      "category": "Productivity & Tools",
-      "difficulty": "Beginner",
-      "author": "Marcus Chen",
-      "date": "2025-07-06",
-      "readTime": "19 min",
-      "image": "assets/images/The Ultimate Work From Home Desk Setup Guide.jpg",
-      "tags": [
-        "Work From Home",
-        "Desk Setup",
-        "Productivity",
-        "Home Office",
-        "Remote Work",
-        "Ergonomics"
       ]
     }
   ]
