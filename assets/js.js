@@ -535,7 +535,57 @@ function renderArticle(articleData) {
 
     const mainContent = $('#main-content');
     const contentBlocks = {
-        text: (block) => `<p>${block.content}</p>`,
+        text: (block) => {
+            const content = block.content;
+            
+            // Check if it's a day header (e.g., **MONDAY**)
+            if (/^\*\*(MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)\*\*$/.test(content.trim())) {
+                const day = content.replace(/\*\*/g, '');
+                return `<div class="day-header"><h3>${day}</h3></div>`;
+            }
+            
+            // Check if it's a meal entry (e.g., **Breakfast: Scrambled Eggs with Toast ($1.25)**)
+            const mealMatch = content.match(/^\*\*(Breakfast|Lunch|Dinner): (.+?) \(\$(\d+\.\d+)\)\*\*\n(.+)$/);
+            if (mealMatch) {
+                const [, mealType, dishName, price, description] = mealMatch;
+                return `
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <span class="meal-type">${mealType}</span>
+                            <span class="meal-price">$${price}</span>
+                        </div>
+                        <h4 class="meal-name">${dishName}</h4>
+                        <p class="meal-description">${description}</p>
+                    </div>
+                `;
+            }
+            
+            // Check if it's a highlighted text with **bold** formatting
+            if (content.includes('**') && !content.includes('\n')) {
+                const formattedContent = content
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^/, '<p class="highlight-text">')
+                    .replace(/$/, '</p>');
+                return formattedContent;
+            }
+            
+            // Check if it contains steps or numbered items
+            if (content.includes('\n') && (content.includes('1.') || content.includes('-') || content.includes('•'))) {
+                const lines = content.split('\n').filter(line => line.trim());
+                const listItems = lines.map(line => {
+                    const trimmed = line.trim();
+                    // Remove markdown bold and bullet points
+                    const cleaned = trimmed.replace(/^\*\*|\*\*$/g, '').replace(/^[-•]\s*/, '');
+                    return `<li>${cleaned}</li>`;
+                }).join('');
+                return `<ul class="content-list">${listItems}</ul>`;
+            }
+            
+            // Regular paragraph with markdown formatting
+            const formattedContent = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return `<p>${formattedContent}</p>`;
+        },
+        
         heading2: (block) => `<h2>${block.content}</h2>`,
         heading3: (block) => `<h3>${block.content}</h3>`,
         code: (block) => `<div class="code-block"><pre>${block.content}</pre></div>`,
