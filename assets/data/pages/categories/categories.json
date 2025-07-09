@@ -2,18 +2,18 @@
   "title": "All Categories",
   "categories": [
     {
+      "name": "Money & Budgeting",
+      "slug": "money-budgeting",
+      "articleCount": 5,
+      "description": "Browse all Money & Budgeting articles",
+      "link": "/category/money-budgeting"
+    },
+    {
       "name": "Health & Fitness",
       "slug": "health-fitness",
       "articleCount": 5,
       "description": "Browse all Health & Fitness articles",
       "link": "/category/health-fitness"
-    },
-    {
-      "name": "Money & Budgeting",
-      "slug": "money-budgeting",
-      "articleCount": 4,
-      "description": "Browse all Money & Budgeting articles",
-      "link": "/category/money-budgeting"
     },
     {
       "name": "Productivity & Tools",
