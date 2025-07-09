@@ -9,6 +9,13 @@
       "link": "/category/health-fitness"
     },
     {
+      "name": "Money & Budgeting",
+      "slug": "money-budgeting",
+      "articleCount": 4,
+      "description": "Browse all Money & Budgeting articles",
+      "link": "/category/money-budgeting"
+    },
+    {
       "name": "Productivity & Tools",
       "slug": "productivity-tools",
       "articleCount": 3,
@@ -21,27 +28,6 @@
       "articleCount": 3,
       "description": "Browse all E-Business articles",
       "link": "/category/e-business"
-    },
-    {
-      "name": "Personal Finance",
-      "slug": "personal-finance",
-      "articleCount": 2,
-      "description": "Browse all Personal Finance articles",
-      "link": "/category/personal-finance"
-    },
-    {
-      "name": "Money & Budgeting",
-      "slug": "money-budgeting",
-      "articleCount": 1,
-      "description": "Browse all Money & Budgeting articles",
-      "link": "/category/money-budgeting"
-    },
-    {
-      "name": "Food & Nutrition",
-      "slug": "food-nutrition",
-      "articleCount": 1,
-      "description": "Browse all Food & Nutrition articles",
-      "link": "/category/food-nutrition"
     }
   ]
 }
