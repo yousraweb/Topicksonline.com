@@ -80,6 +80,25 @@
       ]
     },
     {
+      "id": "articles/Stay Motivated Working Out Alone at Home",
+      "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
+      "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years.",
+      "category": "Health & Fitness",
+      "difficulty": "Beginner",
+      "author": "Alex Rodriguez",
+      "date": "2025-07-08",
+      "readTime": "13 min",
+      "image": "assets/images/Stay Motivated Working Out Alone at Home.jpg",
+      "tags": [
+        "workout motivation",
+        "home fitness",
+        "fitness habits",
+        "exercise consistency",
+        "solo workouts",
+        "fitness accountability"
+      ]
+    },
+    {
       "id": "articles/7-Day Budget Meal Plan for Under $50",
       "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
       "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
@@ -172,25 +191,6 @@
         "Home Office",
         "Remote Work",
         "Ergonomics"
-      ]
-    },
-    {
-      "id": "articles/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals",
-      "title": "Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals (I Fed Myself for $6/Day Using These)",
-      "description": "Stop buying expensive groceries that only make one meal. These 10 ingredients cost under $3 each but can create dozens of different meals. I tested every one during my broke college years.",
-      "category": "Personal Finance",
-      "difficulty": "Beginner",
-      "author": "Carlos Rivera",
-      "date": "2025-07-06",
-      "readTime": "15 min",
-      "image": "assets/images/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals.jpg",
-      "tags": [
-        "Budget Groceries",
-        "Cheap Food",
-        "Meal Planning",
-        "Money Saving",
-        "Food Budget",
-        "Frugal Living"
       ]
     }
   ]

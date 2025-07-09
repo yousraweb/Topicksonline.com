@@ -2,7 +2,7 @@
   "title": "Health & Fitness Articles",
   "category": "Health & Fitness",
   "description": "All articles about Health & Fitness",
-  "articleCount": 4,
+  "articleCount": 5,
   "articles": [
     {
       "id": "articles/Beginner Home Fitness Mistakes",
@@ -78,6 +78,25 @@
       "difficulty": "Beginner",
       "readTime": "15 min",
       "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss."
+    },
+    {
+      "id": "articles/Stay Motivated Working Out Alone at Home",
+      "image": "assets/images/Stay Motivated Working Out Alone at Home.jpg",
+      "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
+      "author": "Alex Rodriguez",
+      "date": "2025-07-08",
+      "category": "Health & Fitness",
+      "tags": [
+        "workout motivation",
+        "home fitness",
+        "fitness habits",
+        "exercise consistency",
+        "solo workouts",
+        "fitness accountability"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "13 min",
+      "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years."
     }
   ]
 }
