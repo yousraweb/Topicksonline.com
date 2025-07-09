@@ -42,6 +42,25 @@
       ]
     },
     {
+      "id": "articles/Grocery Store Hacks",
+      "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
+      "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety.",
+      "category": "Money & Budgeting",
+      "difficulty": "Beginner",
+      "author": "David Kim",
+      "date": "2025-07-08",
+      "readTime": "14 min",
+      "image": "assets/images/Grocery Store Hacks.jpg",
+      "tags": [
+        "grocery savings",
+        "budget tips",
+        "money saving",
+        "shopping hacks",
+        "frugal living",
+        "food budget"
+      ]
+    },
+    {
       "id": "articles/Home Workout Space in a Small Room",
       "title": "How to Create a Home Workout Space in a Small Room: Transform Any Corner Into Your Personal Gym",
       "description": "No extra room needed—just smart setup. After transforming my 10x10 bedroom into a functional workout space for under $75, here's exactly how to create an inviting home gym anywhere.",
@@ -172,25 +191,6 @@
         "SEO",
         "Content Strategy",
         "Online Business"
-      ]
-    },
-    {
-      "id": "articles/Stay Focused Working from Home",
-      "title": "How to Stay Focused Working from Home: 12 Battle-Tested Strategies (I Tracked My Focus for 6 Months)",
-      "description": "Struggling to stay focused while working from home? I tested 12 different focus strategies for 6 months and tracked the results. Here's what actually works (and what's just productivity theater).",
-      "category": "Productivity & Tools",
-      "difficulty": "Beginner",
-      "author": "David Kim",
-      "date": "2025-07-06",
-      "readTime": "17 min",
-      "image": "assets/images/Stay Focused Working from Home.jpg",
-      "tags": [
-        "Work From Home",
-        "Focus",
-        "Productivity",
-        "Remote Work",
-        "Concentration",
-        "Time Management"
       ]
     }
   ]

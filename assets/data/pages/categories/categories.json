@@ -30,6 +30,13 @@
       "link": "/category/personal-finance"
     },
     {
+      "name": "Money & Budgeting",
+      "slug": "money-budgeting",
+      "articleCount": 1,
+      "description": "Browse all Money & Budgeting articles",
+      "link": "/category/money-budgeting"
+    },
+    {
       "name": "Food & Nutrition",
       "slug": "food-nutrition",
       "articleCount": 1,

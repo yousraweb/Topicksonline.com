@@ -1,0 +1,27 @@
+{
+  "title": "Money & Budgeting Articles",
+  "category": "Money & Budgeting",
+  "description": "All articles about Money & Budgeting",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Grocery Store Hacks",
+      "image": "assets/images/Grocery Store Hacks.jpg",
+      "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
+      "author": "David Kim",
+      "date": "2025-07-08",
+      "category": "Money & Budgeting",
+      "tags": [
+        "grocery savings",
+        "budget tips",
+        "money saving",
+        "shopping hacks",
+        "frugal living",
+        "food budget"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min",
+      "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety."
+    }
+  ]
+}
