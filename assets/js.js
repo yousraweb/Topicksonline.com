@@ -82,7 +82,6 @@ const theme = {
         if (toggle) toggle.textContent = theme === 'light' ? '🌙' : '☀️';
     }
 };
-
 window.toggleTheme = theme.toggle.bind(theme);
 
 // Loading State

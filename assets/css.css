@@ -644,11 +644,11 @@ main {
     font-weight: 600;
     margin: 20px 0;
     padding: 15px;
-    border-left: 3px solid var(--error);
-    background: var(--error-bg);
+    border-left: 2px solid var(--error);
+    /* background: var(--error-bg); */
     border-radius: 0 8px 8px 0;
     color: var(--text-primary);
-    border: 1px solid var(--error-border);
+    /* border: 1px solid var(--error-border); */
 }
 
 /* Content lists - now fully dynamic */
@@ -1352,7 +1352,6 @@ footer {
     top: -29px;
     left: 11px;
     padding: 0 8px;
-    background: var(--bg-primary);
 }
 
 .conclusion-box h3 {
