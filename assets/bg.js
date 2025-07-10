@@ -54,6 +54,7 @@ const sound = {
 };
 
 // Animation control
+// Animation control
 const animation = {
     init() {
         const savedAnimation = localStorage.getItem('animation') || 'on';
@@ -67,11 +68,35 @@ const animation = {
         localStorage.setItem('animation', newState);
         this.updateIcon(newState);
         
-        // Clear canvas if animation is disabled
         if (!this.enabled) {
+            // Animation turned OFF - also turn off sound and clear canvas
             canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
             fireworks.length = 0;
             particles.length = 0;
+            
+            // Store current sound state before disabling
+            const currentSoundState = sound.enabled ? 'on' : 'off';
+            localStorage.setItem('soundBeforeAnimation', currentSoundState);
+            
+            // Disable sound
+            sound.enabled = false;
+            audioEnabled = false;
+            sound.updateIcon('off');
+            
+        } else {
+            // Animation turned ON - restore previous sound state
+            const previousSoundState = localStorage.getItem('soundBeforeAnimation') || localStorage.getItem('sound') || 'off';
+            
+            if (previousSoundState === 'on') {
+                sound.enabled = true;
+                localStorage.setItem('sound', 'on');
+                sound.updateIcon('on');
+                
+                // Initialize audio if needed
+                if (!audioEnabled) {
+                    initAudio();
+                }
+            }
         }
     },
     
@@ -305,14 +330,6 @@ canvas.addEventListener('mousemove', function (e) {
   mouse.y = e.pageY - canvas.offsetTop;
 });
 
-// Launch firework on click - shoots at mouse position
-canvas.addEventListener('click', function (e) {
-  var targetX = e.pageX - canvas.offsetLeft;
-  var targetY = e.pageY - canvas.offsetTop;
-
-  fireworks.push(new Firework(canvasWidth / 2, canvasHeight, targetX, targetY));
-  playLaunchSound();
-});
 
 // Also handle clicks anywhere on the page, not just canvas
 document.addEventListener('click', function (e) {
@@ -321,7 +338,7 @@ document.addEventListener('click', function (e) {
   var targetX = e.clientX - rect.left;
   var targetY = e.clientY - rect.top;
 
-  fireworks.push(new Firework(canvasWidth / 2, canvasHeight, targetX, targetY));
+  fireworks.push(new Firework(random(canvasWidth * 0.25, canvasWidth * 0.75), canvasHeight, targetX, targetY));
   playLaunchSound();
 });
 
@@ -358,7 +375,7 @@ function gameLoop() {
     // Auto-launch fireworks
     if (timerTick >= options.timerInterval) {
         fireworks.push(new Firework(
-            canvasWidth / random(1, 5),
+            random(canvasWidth * 0.25, canvasWidth * 0.75),
             canvasHeight,
             random(canvasWidth * 0.25, canvasWidth * 0.75),
             random(0, canvasHeight / 2)
