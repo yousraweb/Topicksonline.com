@@ -77,7 +77,7 @@ const animation = {
     
     updateIcon(state) {
         const toggle = document.querySelector('#animation-toggle');
-        if (toggle) toggle.textContent = state === 'on' ? '🎨' : '⏸️';
+        if (toggle) toggle.textContent = state === 'on' ? '🔥' : '❄️';
     }
 };
 
