@@ -338,7 +338,7 @@ document.addEventListener('click', function (e) {
   var targetX = e.clientX - rect.left;
   var targetY = e.clientY - rect.top;
 
-  fireworks.push(new Firework(random(canvasWidth * 0.25, canvasWidth * 0.75), canvasHeight, targetX, targetY));
+  fireworks.push(new Firework(random(canvasWidth * 0.3, canvasWidth * 0.7), canvasHeight, targetX, targetY));
   playLaunchSound();
 });
 
@@ -375,9 +375,9 @@ function gameLoop() {
     // Auto-launch fireworks
     if (timerTick >= options.timerInterval) {
         fireworks.push(new Firework(
-            random(canvasWidth * 0.25, canvasWidth * 0.75),
+            random(canvasWidth * 0.3, canvasWidth * 0.7),
             canvasHeight,
-            random(canvasWidth * 0.25, canvasWidth * 0.75),
+            random(canvasWidth * 0.3, canvasWidth * 0.7),
             random(0, canvasHeight / 2)
         ));
         playLaunchSound();
