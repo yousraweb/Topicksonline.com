@@ -28,6 +28,13 @@
       "articleCount": 3,
       "description": "Browse all E-Business articles",
       "link": "/category/e-business"
+    },
+    {
+      "name": "Health & Wellness",
+      "slug": "health-wellness",
+      "articleCount": 1,
+      "description": "Browse all Health & Wellness articles",
+      "link": "/category/health-wellness"
     }
   ]
 }

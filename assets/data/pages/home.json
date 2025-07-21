@@ -5,6 +5,26 @@
   },
   "featured": [
     {
+      "id": "articles/Food and Acne",
+      "title": "The Truth About Food and Acne: 7 Diet Mistakes That Wrecked My Skin (And How You Can Avoid Them)",
+      "description": "Struggling with acne despite trying every skincare product? The problem might be on your plate. I made 7 critical diet mistakes that destroyed my skin—here's what I learned and how you can avoid them.",
+      "category": "Health & Wellness",
+      "difficulty": "Beginner",
+      "author": "Stephanie Garcia",
+      "date": "2025-07-21",
+      "readTime": "15 min",
+      "image": "assets/images/Food and Acne.jpg",
+      "tags": [
+        "Acne",
+        "Diet",
+        "Skin Care",
+        "Nutrition",
+        "Health",
+        "Clear Skin",
+        "Anti-inflammatory"
+      ]
+    },
+    {
       "id": "articles/Beginner Home Fitness Mistakes",
       "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
       "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them.",
@@ -172,25 +192,6 @@
         "Grocery Budget",
         "Money Saving",
         "Food Budget"
-      ]
-    },
-    {
-      "id": "articles/Best Productivity Tools for Remote Workers",
-      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
-      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
-      "category": "Productivity & Tools",
-      "difficulty": "Beginner",
-      "author": "Jennifer Rodriguez",
-      "date": "2025-07-06",
-      "readTime": "16 min",
-      "image": "assets/images/Best Productivity Tools for Remote Workers.jpg",
-      "tags": [
-        "Productivity Tools",
-        "Remote Work",
-        "Task Management",
-        "Time Tracking",
-        "Collaboration Apps",
-        "Focus Apps"
       ]
     }
   ]

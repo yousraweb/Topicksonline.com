@@ -1,0 +1,28 @@
+{
+  "title": "Health & Wellness Articles",
+  "category": "Health & Wellness",
+  "description": "All articles about Health & Wellness",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Food and Acne",
+      "image": "assets/images/Food and Acne.jpg",
+      "title": "The Truth About Food and Acne: 7 Diet Mistakes That Wrecked My Skin (And How You Can Avoid Them)",
+      "author": "Stephanie Garcia",
+      "date": "2025-07-21",
+      "category": "Health & Wellness",
+      "tags": [
+        "Acne",
+        "Diet",
+        "Skin Care",
+        "Nutrition",
+        "Health",
+        "Clear Skin",
+        "Anti-inflammatory"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "15 min",
+      "description": "Struggling with acne despite trying every skincare product? The problem might be on your plate. I made 7 critical diet mistakes that destroyed my skin—here's what I learned and how you can avoid them."
+    }
+  ]
+}
