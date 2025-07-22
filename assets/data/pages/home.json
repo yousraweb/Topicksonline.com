@@ -5,10 +5,30 @@
   },
   "featured": [
     {
+      "id": "articles/Belly Fat",
+      "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
+      "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
+      "category": "Fitness & Weight Loss",
+      "difficulty": "Beginner",
+      "author": "Maya Singh",
+      "date": "2025-07-22",
+      "readTime": "12 min",
+      "image": "assets/images/Belly Fat.jpg",
+      "tags": [
+        "Belly Fat",
+        "Weight Loss",
+        "Home Workouts",
+        "Fat Burning",
+        "Core Exercises",
+        "Healthy Eating",
+        "No Gym"
+      ]
+    },
+    {
       "id": "articles/Food and Acne",
       "title": "The Truth About Food and Acne: 7 Diet Mistakes That Wrecked My Skin (And How You Can Avoid Them)",
       "description": "Struggling with acne despite trying every skincare product? The problem might be on your plate. I made 7 critical diet mistakes that destroyed my skin—here's what I learned and how you can avoid them.",
-      "category": "Health & Wellness",
+      "category": "Beauty & Wellness",
       "difficulty": "Beginner",
       "author": "Stephanie Garcia",
       "date": "2025-07-21",
@@ -122,7 +142,7 @@
       "id": "articles/Lose Weight at Home Without a Gym",
       "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
       "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss.",
-      "category": "Health & Fitness",
+      "category": "Fitness & Weight Loss",
       "difficulty": "Beginner",
       "author": "Rachel Chen",
       "date": "2025-07-08",
@@ -160,7 +180,7 @@
       "id": "articles/Stay Motivated Working Out Alone at Home",
       "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
       "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years.",
-      "category": "Health & Fitness",
+      "category": "Fitness & Weight Loss",
       "difficulty": "Beginner",
       "author": "Alex Rodriguez",
       "date": "2025-07-08",
@@ -173,25 +193,6 @@
         "exercise consistency",
         "solo workouts",
         "fitness accountability"
-      ]
-    },
-    {
-      "id": "articles/7-Day Budget Meal Plan for Under $50",
-      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
-      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
-      "category": "Money & Budgeting",
-      "difficulty": "Beginner",
-      "author": "Maria Santos",
-      "date": "2025-07-06",
-      "readTime": "14 min",
-      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
-      "tags": [
-        "Budget Meals",
-        "Meal Planning",
-        "Cheap Recipes",
-        "Grocery Budget",
-        "Money Saving",
-        "Food Budget"
       ]
     }
   ]

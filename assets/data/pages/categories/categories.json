@@ -11,9 +11,16 @@
     {
       "name": "Health & Fitness",
       "slug": "health-fitness",
-      "articleCount": 5,
+      "articleCount": 3,
       "description": "Browse all Health & Fitness articles",
       "link": "/category/health-fitness"
+    },
+    {
+      "name": "Fitness & Weight Loss",
+      "slug": "fitness-weight-loss",
+      "articleCount": 3,
+      "description": "Browse all Fitness & Weight Loss articles",
+      "link": "/category/fitness-weight-loss"
     },
     {
       "name": "Productivity & Tools",
@@ -30,11 +37,11 @@
       "link": "/category/e-business"
     },
     {
-      "name": "Health & Wellness",
-      "slug": "health-wellness",
+      "name": "Beauty & Wellness",
+      "slug": "beauty-wellness",
       "articleCount": 1,
-      "description": "Browse all Health & Wellness articles",
-      "link": "/category/health-wellness"
+      "description": "Browse all Beauty & Wellness articles",
+      "link": "/category/beauty-wellness"
     }
   ]
 }

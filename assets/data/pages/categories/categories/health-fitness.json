@@ -2,7 +2,7 @@
   "title": "Health & Fitness Articles",
   "category": "Health & Fitness",
   "description": "All articles about Health & Fitness",
-  "articleCount": 5,
+  "articleCount": 3,
   "articles": [
     {
       "id": "articles/Beginner Home Fitness Mistakes",
@@ -59,44 +59,6 @@
       "difficulty": "Beginner",
       "readTime": "11 min",
       "description": "No extra room needed—just smart setup. After transforming my 10x10 bedroom into a functional workout space for under $75, here's exactly how to create an inviting home gym anywhere."
-    },
-    {
-      "id": "articles/Lose Weight at Home Without a Gym",
-      "image": "assets/images/Lose Weight at Home Without a Gym.jpg",
-      "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
-      "author": "Rachel Chen",
-      "date": "2025-07-08",
-      "category": "Health & Fitness",
-      "tags": [
-        "weight loss",
-        "home fitness",
-        "fat loss",
-        "calorie deficit",
-        "HIIT workouts",
-        "nutrition tips"
-      ],
-      "difficulty": "Beginner",
-      "readTime": "15 min",
-      "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss."
-    },
-    {
-      "id": "articles/Stay Motivated Working Out Alone at Home",
-      "image": "assets/images/Stay Motivated Working Out Alone at Home.jpg",
-      "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
-      "author": "Alex Rodriguez",
-      "date": "2025-07-08",
-      "category": "Health & Fitness",
-      "tags": [
-        "workout motivation",
-        "home fitness",
-        "fitness habits",
-        "exercise consistency",
-        "solo workouts",
-        "fitness accountability"
-      ],
-      "difficulty": "Beginner",
-      "readTime": "13 min",
-      "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years."
     }
   ]
 }

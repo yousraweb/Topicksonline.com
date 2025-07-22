@@ -45,6 +45,22 @@
       "author": "Sarah Martinez"
     },
     {
+      "id": "articles/Belly Fat",
+      "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
+      "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
+      "category": "Fitness & Weight Loss",
+      "tags": [
+        "Belly Fat",
+        "Weight Loss",
+        "Home Workouts",
+        "Fat Burning",
+        "Core Exercises",
+        "Healthy Eating",
+        "No Gym"
+      ],
+      "author": "Maya Singh"
+    },
+    {
       "id": "articles/Best Productivity Tools for Remote Workers",
       "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
       "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
@@ -78,7 +94,7 @@
       "id": "articles/Food and Acne",
       "title": "The Truth About Food and Acne: 7 Diet Mistakes That Wrecked My Skin (And How You Can Avoid Them)",
       "description": "Struggling with acne despite trying every skincare product? The problem might be on your plate. I made 7 critical diet mistakes that destroyed my skin—here's what I learned and how you can avoid them.",
-      "category": "Health & Wellness",
+      "category": "Beauty & Wellness",
       "tags": [
         "Acne",
         "Diet",
@@ -139,7 +155,7 @@
       "id": "articles/Lose Weight at Home Without a Gym",
       "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
       "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss.",
-      "category": "Health & Fitness",
+      "category": "Fitness & Weight Loss",
       "tags": [
         "weight loss",
         "home fitness",
@@ -184,7 +200,7 @@
       "id": "articles/Stay Motivated Working Out Alone at Home",
       "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
       "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years.",
-      "category": "Health & Fitness",
+      "category": "Fitness & Weight Loss",
       "tags": [
         "workout motivation",
         "home fitness",
