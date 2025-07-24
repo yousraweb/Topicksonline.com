@@ -1,0 +1,46 @@
+{
+  "title": "Healthy Eating on a Budget Articles",
+  "category": "Healthy Eating on a Budget",
+  "description": "All articles about Healthy Eating on a Budget",
+  "articleCount": 2,
+  "articles": [
+    {
+      "id": "articles/No-Cook Budget Meals",
+      "image": "assets/images/No-Cook Budget Meals.jpg",
+      "title": "No-Cook Budget Meals for When You're Too Tired to Cook (or Don't Have a Stove): 7 Lifesaving Recipes Under $3 Each",
+      "author": "Maria Santos",
+      "date": "2025-07-08",
+      "category": "Healthy Eating on a Budget",
+      "tags": [
+        "no-cook meals",
+        "budget recipes",
+        "easy meals",
+        "lazy cooking",
+        "dorm food",
+        "quick meals"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "12 min",
+      "description": "Whether it's heat, laziness, or no kitchen — this is your fix. After 3 months with a broken stove and a $50/week food budget, here are 7 no-cook meals that saved my sanity and wallet."
+    },
+    {
+      "id": "articles/7-Day Budget Meal Plan for Under $50",
+      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
+      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
+      "author": "Maria Santos",
+      "date": "2025-07-06",
+      "category": "Healthy Eating on a Budget",
+      "tags": [
+        "Budget Meals",
+        "Meal Planning",
+        "Cheap Recipes",
+        "Grocery Budget",
+        "Money Saving",
+        "Food Budget"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min",
+      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment."
+    }
+  ]
+}

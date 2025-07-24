@@ -1,0 +1,27 @@
+{
+  "title": "Motivation & Mental Health Articles",
+  "category": "Motivation & Mental Health",
+  "description": "All articles about Motivation & Mental Health",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Stay Motivated Working Out Alone at Home",
+      "image": "assets/images/Stay Motivated Working Out Alone at Home.jpg",
+      "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
+      "author": "Alex Rodriguez",
+      "date": "2025-07-08",
+      "category": "Motivation & Mental Health",
+      "tags": [
+        "workout motivation",
+        "home fitness",
+        "fitness habits",
+        "exercise consistency",
+        "solo workouts",
+        "fitness accountability"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "13 min",
+      "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years."
+    }
+  ]
+}

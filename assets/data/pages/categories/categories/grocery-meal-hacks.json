@@ -1,0 +1,46 @@
+{
+  "title": "Grocery & Meal Hacks Articles",
+  "category": "Grocery & Meal Hacks",
+  "description": "All articles about Grocery & Meal Hacks",
+  "articleCount": 2,
+  "articles": [
+    {
+      "id": "articles/Grocery Store Hacks",
+      "image": "assets/images/Grocery Store Hacks.jpg",
+      "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
+      "author": "David Kim",
+      "date": "2025-07-08",
+      "category": "Grocery & Meal Hacks",
+      "tags": [
+        "grocery savings",
+        "budget tips",
+        "money saving",
+        "shopping hacks",
+        "frugal living",
+        "food budget"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min",
+      "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety."
+    },
+    {
+      "id": "articles/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals",
+      "image": "assets/images/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals.jpg",
+      "title": "Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals (I Fed Myself for $6/Day Using These)",
+      "author": "Carlos Rivera",
+      "date": "2025-07-06",
+      "category": "Grocery & Meal Hacks",
+      "tags": [
+        "Budget Groceries",
+        "Cheap Food",
+        "Meal Planning",
+        "Money Saving",
+        "Food Budget",
+        "Frugal Living"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "15 min",
+      "description": "Stop buying expensive groceries that only make one meal. These 10 ingredients cost under $3 each but can create dozens of different meals. I tested every one during my broke college years."
+    }
+  ]
+}

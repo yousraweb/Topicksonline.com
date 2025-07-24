@@ -1,16 +1,36 @@
 {
-  "title": "Health & Fitness Articles",
-  "category": "Health & Fitness",
-  "description": "All articles about Health & Fitness",
-  "articleCount": 3,
+  "title": "At-Home Fitness Articles",
+  "category": "At-Home Fitness",
+  "description": "All articles about At-Home Fitness",
+  "articleCount": 5,
   "articles": [
+    {
+      "id": "articles/Lose Belly Fat At Home",
+      "image": "assets/images/Lose Belly Fat At Home.jpg",
+      "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
+      "author": "Maya Singh",
+      "date": "2025-07-22",
+      "category": "At-Home Fitness",
+      "tags": [
+        "Belly Fat",
+        "Weight Loss",
+        "Home Workouts",
+        "Fat Burning",
+        "Core Exercises",
+        "Healthy Eating",
+        "No Gym"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "12 min",
+      "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required."
+    },
     {
       "id": "articles/Beginner Home Fitness Mistakes",
       "image": "assets/images/Beginner Home Fitness Mistakes.jpg",
       "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
       "author": "Mike Thompson",
       "date": "2025-07-08",
-      "category": "Health & Fitness",
+      "category": "At-Home Fitness",
       "tags": [
         "fitness mistakes",
         "home workout",
@@ -29,7 +49,7 @@
       "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
       "author": "Sarah Martinez",
       "date": "2025-07-08",
-      "category": "Health & Fitness",
+      "category": "At-Home Fitness",
       "tags": [
         "beginner fitness",
         "home workout",
@@ -47,7 +67,7 @@
       "title": "How to Create a Home Workout Space in a Small Room: Transform Any Corner Into Your Personal Gym",
       "author": "Jessica Chen",
       "date": "2025-07-08",
-      "category": "Health & Fitness",
+      "category": "At-Home Fitness",
       "tags": [
         "home gym",
         "small space",
@@ -59,6 +79,25 @@
       "difficulty": "Beginner",
       "readTime": "11 min",
       "description": "No extra room needed—just smart setup. After transforming my 10x10 bedroom into a functional workout space for under $75, here's exactly how to create an inviting home gym anywhere."
+    },
+    {
+      "id": "articles/Lose Weight at Home Without a Gym",
+      "image": "assets/images/Lose Weight at Home Without a Gym.jpg",
+      "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
+      "author": "Rachel Chen",
+      "date": "2025-07-08",
+      "category": "At-Home Fitness",
+      "tags": [
+        "weight loss",
+        "home fitness",
+        "fat loss",
+        "calorie deficit",
+        "HIIT workouts",
+        "nutrition tips"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "15 min",
+      "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss."
     }
   ]
 }
