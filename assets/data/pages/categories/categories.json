@@ -4,7 +4,7 @@
     {
       "name": "Money & Budgeting",
       "slug": "money-budgeting",
-      "articleCount": 5,
+      "articleCount": 4,
       "description": "Browse all Money & Budgeting articles",
       "link": "/category/money-budgeting"
     },
@@ -28,20 +28,6 @@
       "articleCount": 3,
       "description": "Browse all Productivity & Tools articles",
       "link": "/category/productivity-tools"
-    },
-    {
-      "name": "E-Business",
-      "slug": "e-business",
-      "articleCount": 3,
-      "description": "Browse all E-Business articles",
-      "link": "/category/e-business"
-    },
-    {
-      "name": "Beauty & Wellness",
-      "slug": "beauty-wellness",
-      "articleCount": 1,
-      "description": "Browse all Beauty & Wellness articles",
-      "link": "/category/beauty-wellness"
     }
   ]
 }

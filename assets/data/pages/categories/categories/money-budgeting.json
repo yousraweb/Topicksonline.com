@@ -2,27 +2,8 @@
   "title": "Money & Budgeting Articles",
   "category": "Money & Budgeting",
   "description": "All articles about Money & Budgeting",
-  "articleCount": 5,
+  "articleCount": 4,
   "articles": [
-    {
-      "id": "articles/Budgeting Lies",
-      "image": "assets/images/Budgeting Lies.jpg",
-      "title": "5 Budgeting Lies That Kept Me Broke for Years (Despite Following All the 'Expert' Advice)",
-      "author": "Marcus Johnson",
-      "date": "2025-07-08",
-      "category": "Money & Budgeting",
-      "tags": [
-        "budgeting tips",
-        "personal finance",
-        "money management",
-        "budget myths",
-        "financial advice",
-        "debt payoff"
-      ],
-      "difficulty": "Beginner",
-      "readTime": "12 min",
-      "description": "I followed all the personal finance advice—and still overdrafted every month. After 3 years of budgeting 'failures,' I discovered the 5 lies that kept me broke and the simple truths that finally worked."
-    },
     {
       "id": "articles/Grocery Store Hacks",
       "image": "assets/images/Grocery Store Hacks.jpg",
