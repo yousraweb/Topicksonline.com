@@ -1,0 +1,20 @@
+{
+  "title": "Uncategorized Articles",
+  "category": "Uncategorized",
+  "description": "All articles about Uncategorized",
+  "articleCount": 1,
+  "articles": [
+    {
+      "id": "articles/Beginner Home Fitness Mistakes",
+      "image": "assets/images/Beginner Home Fitness Mistakes.jpg",
+      "title": "Untitled",
+      "author": "Unknown",
+      "date": "",
+      "category": "Uncategorized",
+      "tags": [],
+      "difficulty": "Beginner",
+      "readTime": "5 min",
+      "description": ""
+    }
+  ]
+}

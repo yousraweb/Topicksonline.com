@@ -2,7 +2,7 @@
   "title": "At-Home Fitness Articles",
   "category": "At-Home Fitness",
   "description": "All articles about At-Home Fitness",
-  "articleCount": 5,
+  "articleCount": 4,
   "articles": [
     {
       "id": "articles/Lose Belly Fat At Home",
@@ -23,25 +23,6 @@
       "difficulty": "Beginner",
       "readTime": "12 min",
       "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required."
-    },
-    {
-      "id": "articles/Beginner Home Fitness Mistakes",
-      "image": "assets/images/Beginner Home Fitness Mistakes.jpg",
-      "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
-      "author": "Mike Thompson",
-      "date": "2025-07-08",
-      "category": "At-Home Fitness",
-      "tags": [
-        "fitness mistakes",
-        "home workout",
-        "beginner fitness",
-        "workout form",
-        "fitness motivation",
-        "exercise tips"
-      ],
-      "difficulty": "Beginner",
-      "readTime": "14 min",
-      "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them."
     },
     {
       "id": "articles/Beginners NoGym Workout Plan",
