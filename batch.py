@@ -534,3 +534,11 @@ Examples:
 
 if __name__ == "__main__":
     main()
+
+def generate_sitemap(self):
+    urls = ['https://topicksonline.com/']
+    for article in self.articles:
+        urls.append(f"https://topicksonline.com/{article['id']}")
+    for category in self.categories:
+        urls.append(f"https://topicksonline.com/category/{self.slugify(category)}")
+    # Generate XML sitemap

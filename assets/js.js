@@ -1234,3 +1234,7 @@ window.checkNewsletterSubscribers = function() {
     console.table(subscribers);
     return subscribers;
 };
+function updateMetaTags(article) {
+    document.title = article.title + " - TopPicksOnline";
+    document.querySelector('meta[name="description"]').content = article.description;
+};
