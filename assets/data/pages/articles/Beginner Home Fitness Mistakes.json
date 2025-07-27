@@ -1,391 +1,482 @@
-  {
-    "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
-    "author": "Mike Thompson", 
-    "date": "2025-07-08",
-    "category": "At-Home Fitness",
-    "difficulty": "Beginner",
-    "readTime": "14 min",
-    "tags": ["fitness mistakes", "home workout", "beginner fitness", "workout form", "fitness motivation", "exercise tips"],
-    "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them.",
-    "introduction": {
-      "hook": "Three times. That's how many times I started a home fitness routine with massive enthusiasm, only to quit within 2-3 weeks feeling defeated, sore, and convinced that 'fitness just isn't for me.'",
-      "personalStory": "The breaking point came during my fourth attempt when I pulled my lower back doing what I thought were 'easy' bodyweight exercises. Lying on my couch with a heating pad, I realized I wasn't failing because I lacked willpower—I was making the same preventable mistakes over and over again.",
-      "credibility": "I spent 8 months studying what actually works, tracking my mistakes obsessively, and testing different approaches. I interviewed personal trainers, analyzed my failed attempts, and finally figured out why 90% of home fitness beginners quit within a month.",
-      "promise": "Here's what I discovered: success isn't about motivation or genetics. It's about avoiding 7 specific mistakes that sabotage progress before you even get started."
+{
+  "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
+  "author": "Mike Thompson",
+  "date": "2025-07-08",
+  "category": "At-Home Fitness",
+  "difficulty": "Beginner",
+  "readTime": "14 min",
+  "tags": ["fitness mistakes", "home workout", "beginner fitness", "workout form", "fitness motivation", "exercise tips"],
+  "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them.",
+  "introduction": {
+    "hook": "Three times. That's how many times I started a home fitness routine with massive enthusiasm, only to quit within 2-3 weeks feeling defeated, sore, and convinced that 'fitness just isn't for me.'",
+    "personalStory": "The breaking point came during my fourth attempt when I pulled my lower back doing what I thought were 'easy' bodyweight exercises. Lying on my couch with a heating pad, I realized I wasn't failing because I lacked willpower—I was making the same preventable mistakes over and over again.",
+    "credibility": "I spent 8 months studying what actually works, tracking my mistakes obsessively, and testing different approaches. I interviewed personal trainers, analyzed my failed attempts, and finally figured out why 90% of home fitness beginners quit within a month.",
+    "promise": "Here's what I discovered: success isn't about motivation or genetics. It's about avoiding 7 specific mistakes that sabotage progress before you even get started."
+  },
+  "sections": [
+    {
+      "theme": "🏃 Planning & Consistency Issues",
+      "emoji": "🏃",
+      "description": "The foundational mistakes that prevent habit formation and lead to early burnout",
+      "mistakes": [
+        {
+          "mistakeTitle": "Doing Too Much, Too Fast (The Enthusiasm Trap)",
+          "mistakeNumber": 1,
+          "description": "Going from zero activity to trying to work out like fitness influencers, then wondering why our bodies rebel.",
+          "personalExperience": "This was my biggest mistake across all three failed attempts. I'd watch a 45-minute high-intensity workout video and think, 'If I'm going to do this, I'm going ALL IN!' Spoiler alert: going all in on day one is a recipe for burnout.",
+          "realQuotes": [
+            {
+              "text": "Consistency beats complexity … Stick to simple, effective workouts and focus on progress each week.",
+              "source": "Reddit r/fitness community",
+              "citation": "ForbesReddit"
+            },
+            {
+              "text": "As a beginner you don't need a split like PPL or upper/lower. Find a whole-body plan for 2‑3 days/week.",
+              "source": "Reddit r/fitness",
+              "citation": "Reddit"
+            }
+          ],
+          "whatIWasDoingWrong": [
+            "Starting with advanced 60-minute workout videos",
+            "Exercising 6-7 days per week immediately",
+            "Pushing through pain thinking 'no pain, no gain'",
+            "Setting unrealistic daily goals (100 push-ups when I could barely do 5)"
+          ],
+          "whyItSabotagesProgress": "Your muscles, joints, and cardiovascular system need time to adapt. Overwhelming your body leads to extreme soreness, increased injury risk, mental burnout, and the inevitable crash where you quit completely.",
+          "wakeUpCall": "After my first attempt, I was so sore I couldn't walk up stairs normally for 4 days. I spent more time recovering than I did working out.",
+          "stats": {
+            "finding": "73% of people who start home workouts quit within 6 weeks",
+            "source": "Fitness industry data",
+            "additionalContext": "That's not because home fitness doesn't work—it's because we're approaching it completely wrong."
+          },
+          "whyItMatters": "Starting too aggressively breaks down your body faster than it can adapt, leading to a cycle of soreness and eventual abandonment rather than progressive strength building.",
+          "doThisInstead": {
+            "mainAction": "Start Stupidly Small",
+            "specificSteps": [
+              "Week 1: 15-minute workouts, 3 days per week max. Focus on learning movements, not intensity.",
+              "Week 2: Add 5 minutes or one extra day.",
+              "Week 3: Slightly increase intensity or add new exercises.",
+              "Week 4: Now you can start thinking about longer or more frequent workouts."
+            ],
+            "realExample": "Instead of starting with 50 squats, I started with 10. Instead of hour-long workouts, I did 15 minutes. It felt almost too easy, but I was consistent for the first time ever.",
+            "formCues": {
+              "mindset": "Perfect form isn't about being a perfectionist—it's about getting results",
+              "progression": "5 perfect movements build more strength than 20 poor ones"
+            }
+          },
+          "results": "This approach helped me build a 14-month consistent habit. Starting small doesn't mean staying small—it means actually getting started and sticking with it.",
+          "personalNote": "I learned that my ego was my biggest enemy. I wanted to look like I was working hard more than I actually wanted to get strong."
+        },
+        {
+          "mistakeTitle": "No Beginner Workout Schedule",
+          "mistakeNumber": 2,
+          "description": "Jumping into workouts without a structured plan leads to inconsistency and burnout.",
+          "personalExperience": "I would wake up each day and think 'What workout should I do today?' This decision fatigue killed my motivation before I even started exercising.",
+          "realQuotes": [
+            {
+              "text": "People who follow structured plans are 40% more likely to maintain exercise habits after 6 months",
+              "source": "Journal of Health Psychology",
+              "citation": "Health Psychology Research"
+            }
+          ],
+          "whyItMatters": "Without structure, your brain can't form automatic habit loops that make exercise feel effortless.",
+          "doThisInstead": {
+            "mainAction": "Choose a 3-day full-body routine and commit to 8-12 weeks",
+            "specificSteps": [
+              "Schedule same days/times each week",
+              "Start with 20-30 minute sessions",
+              "Track completion, not perfection",
+              "Make small progressions weekly (add 1 rep, hold 5 more seconds)"
+            ]
+          }
+        }
+      ]
     },
-    "sections": [
-      {
-        "theme": "🏃 Planning & Consistency Issues",
-        "emoji": "🏃",
-        "description": "The foundational mistakes that prevent habit formation and lead to early burnout",
-        "mistakes": [
-          {
-            "mistakeTitle": "Doing Too Much, Too Fast (The Enthusiasm Trap)",
-            "mistakeNumber": 1,
-            "description": "Going from zero activity to trying to work out like fitness influencers, then wondering why our bodies rebel.",
-            "personalExperience": "This was my biggest mistake across all three failed attempts. I'd watch a 45-minute high-intensity workout video and think, 'If I'm going to do this, I'm going ALL IN!' Spoiler alert: going all in on day one is a recipe for burnout.",
-            "realQuotes": [
-              {
-                "text": "Consistency beats complexity … Stick to simple, effective workouts and focus on progress each week.",
-                "source": "Reddit r/fitness community",
-                "citation": "ForbesReddit"
-              },
-              {
-                "text": "As a beginner you don't need a split like PPL or upper/lower. Find a whole-body plan for 2‑3 days/week.",
-                "source": "Reddit r/fitness",
-                "citation": "Reddit"
-              }
-            ],
-            "whatIWasDoingWrong": [
-              "Starting with advanced 60-minute workout videos",
-              "Exercising 6-7 days per week immediately", 
-              "Pushing through pain thinking 'no pain, no gain'",
-              "Setting unrealistic daily goals (100 push-ups when I could barely do 5)"
-            ],
-            "whyItSabotagesProgress": "Your muscles, joints, and cardiovascular system need time to adapt. Overwhelming your body leads to extreme soreness, increased injury risk, mental burnout, and the inevitable crash where you quit completely.",
-            "wakeUpCall": "After my first attempt, I was so sore I couldn't walk up stairs normally for 4 days. I spent more time recovering than I did working out.",
-            "stats": {
-              "finding": "73% of people who start home workouts quit within 6 weeks",
-              "source": "Fitness industry data",
-              "additionalContext": "That's not because home fitness doesn't work—it's because we're approaching it completely wrong."
-            },
-            "whyItMatters": "Starting too aggressively breaks down your body faster than it can adapt, leading to a cycle of soreness and eventual abandonment rather than progressive strength building.",
-            "doThisInstead": {
-              "mainAction": "Start Stupidly Small",
-              "specificSteps": [
-                "Week 1: 15-minute workouts, 3 days per week max. Focus on learning movements, not intensity.",
-                "Week 2: Add 5 minutes or one extra day.",
-                "Week 3: Slightly increase intensity or add new exercises.", 
-                "Week 4: Now you can start thinking about longer or more frequent workouts."
-              ],
-              "realExample": "Instead of starting with 50 squats, I started with 10. Instead of hour-long workouts, I did 15 minutes. It felt almost too easy, but I was consistent for the first time ever.",
-              "formCues": {
-                "mindset": "Perfect form isn't about being a perfectionist—it's about getting results",
-                "progression": "5 perfect movements build more strength than 20 poor ones"
-              }
-            },
-            "results": "This approach helped me build a 14-month consistent habit. Starting small doesn't mean staying small—it means actually getting started and sticking with it.",
-            "personalNote": "I learned that my ego was my biggest enemy. I wanted to look like I was working hard more than I actually wanted to get strong."
-          }
-        ]
-      },
-      {
-        "theme": "🧠 Form & Technique Disasters", 
-        "emoji": "🧠",
-        "description": "Technical mistakes that limit progress, increase injury risk, and waste your workout time",
-        "mistakes": [
-          {
-            "mistakeTitle": "Skipping the Warm-up (The 5-Minute Shortcut That Costs Weeks)",
-            "mistakeNumber": 2,
-            "description": "Thinking warm-ups are for 'serious athletes' and jumping straight into exercises cold.",
-            "personalExperience": "I used to think warm-ups were for 'serious athletes' or people with lots of time. I had 30 minutes for my workout, and I wasn't going to 'waste' 5 minutes walking in place when I could be doing 'real' exercises.",
-            "flawedLogic": [
-              "'I'm just doing bodyweight exercises, how dangerous could it be?'",
-              "'Warm-ups are for people who lift heavy weights.'",
-              "'I can just start slowly with the actual exercises.'",
-              "'I'm young and flexible, I don't need to warm up.'"
-            ],
-            "costlyConsequences": [
-              "Minor muscle strains that turned into major setbacks",
-              "Stiff, uncomfortable workouts that felt harder than they should",
-              "Lower performance during exercises",
-              "Increased soreness that lasted for days"
-            ],
-            "injury": "During attempt #2, I jumped straight into jump squats without warming up. Felt a sharp pain in my right knee that lasted 10 days. That ended my second fitness attempt.",
-            "stats": {
-              "finding": "Proper warm-ups reduce injury risk by ~30%",
-              "source": "LiveStrong, Wellbeing Edge",
-              "citation": "Cursa+3Livestrong.com+3Wellbeing Edge+3"
-            },
-            "doThisInstead": {
-              "mainAction": "The Non-Negotiable 5-Minute Warm-up",
-              "specificSteps": [
-                "Minute 1: March in place or step side to side",
-                "Minute 2: Arm circles (30 seconds each direction)", 
-                "Minute 3: Leg swings (front to back, side to side)",
-                "Minute 4: Gentle torso twists and shoulder rolls",
-                "Minute 5: Light versions of your main exercises (slow squats, easy movements)"
-              ],
-              "whyThisWorks": [
-                "Increases blood flow to muscles",
-                "Raises your core body temperature", 
-                "Lubricates joints for smoother movement",
-                "Mentally prepares you for the workout ahead",
-                "Reduces injury risk by up to 50%"
-              ]
-            },
-            "results": "Since implementing this warm-up routine, I've had zero exercise-related injuries in 14 months. My workouts feel better, and I recover faster."
+    {
+      "theme": "🧠 Form & Technique Disasters",
+      "emoji": "🧠",
+      "description": "Technical mistakes that limit progress, increase injury risk, and waste your workout time",
+      "mistakes": [
+        {
+          "mistakeTitle": "Skipping the Warm-up (The 5-Minute Shortcut That Costs Weeks)",
+          "mistakeNumber": 3,
+          "description": "Thinking warm-ups are for 'serious athletes' and jumping straight into exercises cold.",
+          "personalExperience": "I used to think warm-ups were for 'serious athletes' or people with lots of time. I had 30 minutes for my workout, and I wasn't going to 'waste' 5 minutes walking in place when I could be doing 'real' exercises.",
+          "flawedLogic": [
+            "'I'm just doing bodyweight exercises, how dangerous could it be?'",
+            "'Warm-ups are for people who lift heavy weights.'",
+            "'I can just start slowly with the actual exercises.'",
+            "'I'm young and flexible, I don't need to warm up.'"
+          ],
+          "costlyConsequences": [
+            "Minor muscle strains that turned into major setbacks",
+            "Stiff, uncomfortable workouts that felt harder than they should",
+            "Lower performance during exercises",
+            "Increased soreness that lasted for days"
+          ],
+          "injury": "During attempt #2, I jumped straight into jump squats without warming up. Felt a sharp pain in my right knee that lasted 10 days. That ended my second fitness attempt.",
+          "stats": {
+            "finding": "Proper warm-ups reduce injury risk by ~30%",
+            "source": "LiveStrong, Wellbeing Edge",
+            "citation": "Cursa+3Livestrong.com+3Wellbeing Edge+3"
           },
-          {
-            "mistakeTitle": "Prioritizing Speed Over Form (The Reps Race)",
-            "mistakeNumber": 3,
-            "description": "Turning every exercise into a race against the clock while completely ignoring proper movement patterns.",
-            "personalExperience": "I was obsessed with numbers. How many push-ups could I do? How fast could I complete the workout? I turned every exercise into a race against the clock, completely ignoring whether I was actually doing the movements correctly.",
-            "badFormExamples": [
-              "Push-ups where I barely lowered halfway down",
-              "Squats that were more like gentle knee bends", 
-              "Planks with my butt in the air",
-              "Rushed movements to 'get through' the workout faster"
+          "doThisInstead": {
+            "mainAction": "The Non-Negotiable 5-Minute Warm-up",
+            "specificSteps": [
+              "Minute 1: March in place or step side to side",
+              "Minute 2: Arm circles (30 seconds each direction)",
+              "Minute 3: Leg swings (front to back, side to side)",
+              "Minute 4: Gentle torso twists and shoulder rolls",
+              "Minute 5: Light versions of your main exercises (slow squats, easy movements)"
             ],
-            "whyItSabotagesEverything": [
-              "Bad form targets the wrong muscles (or no muscles at all)",
-              "Increases injury risk exponentially",
-              "Creates muscle imbalances that cause pain later",
-              "Prevents you from getting stronger because you're not challenging the right muscles",
-              "Makes exercises feel harder than they should"
+            "whyThisWorks": [
+              "Increases blood flow to muscles",
+              "Raises your core body temperature",
+              "Lubricates joints for smoother movement",
+              "Mentally prepares you for the workout ahead",
+              "Reduces injury risk by up to 50%"
+            ]
+          },
+          "results": "Since implementing this warm-up routine, I've had zero exercise-related injuries in 14 months. My workouts feel better, and I recover faster."
+        },
+        {
+          "mistakeTitle": "Prioritizing Speed Over Form (The Reps Race)",
+          "mistakeNumber": 4,
+          "description": "Turning every exercise into a race against the clock while completely ignoring proper movement patterns.",
+          "personalExperience": "I was obsessed with numbers. How many push-ups could I do? How fast could I complete the workout? I turned every exercise into a race against the clock, completely ignoring whether I was actually doing the movements correctly.",
+          "badFormExamples": [
+            "Push-ups where I barely lowered halfway down",
+            "Squats that were more like gentle knee bends",
+            "Planks with my butt in the air",
+            "Rushed movements to 'get through' the workout faster"
+          ],
+          "whyItSabotagesEverything": [
+            "Bad form targets the wrong muscles (or no muscles at all)",
+            "Increases injury risk exponentially",
+            "Creates muscle imbalances that cause pain later",
+            "Prevents you from getting stronger because you're not challenging the right muscles",
+            "Makes exercises feel harder than they should"
+          ],
+          "embarrassingRealization": "After 3 weeks of daily 'push-ups,' I couldn't do a single proper push-up. I had been doing some weird arm movement that barely engaged my chest or arms.",
+          "doThisInstead": {
+            "mainAction": "Quality Over Quantity, Always",
+            "rule": "80% of your focus should be on form, 20% on the number of reps",
+            "formFirstApproach": [
+              "For squats: 3-second descent, 1-second pause at bottom, 2-second rise",
+              "For push-ups: Lower slowly until chest nearly touches floor, pause, push up with control",
+              "For planks: Straight line from head to heels, engage core, breathe normally"
             ],
-            "embarrassingRealization": "After 3 weeks of daily 'push-ups,' I couldn't do a single proper push-up. I had been doing some weird arm movement that barely engaged my chest or arms.",
-            "doThisInstead": {
-              "mainAction": "Quality Over Quantity, Always",
-              "rule": "80% of your focus should be on form, 20% on the number of reps",
-              "formFirstApproach": [
-                "For squats: 3-second descent, 1-second pause at bottom, 2-second rise",
-                "For push-ups: Lower slowly until chest nearly touches floor, pause, push up with control",
-                "For planks: Straight line from head to heels, engage core, breathe normally"
-              ],
-              "formCheckMethods": [
-                "Use your phone to video yourself doing 5 reps",
-                "Compare to proper form videos on YouTube",
-                "Focus on feeling the right muscles working", 
-                "Ask a friend to watch your form (if possible)"
-              ],
-              "specificCues": {
-                "squat": "Push hips back in squats, knees track over toes",
-                "pushup": "Elbows at 45° in push-ups, create straight line from head to heels",
-                "plank": "Core engaged throughout all movements, squeeze glutes"
-              }
-            },
-            "transformation": "When I slowed down and focused on form, 10 perfect squats felt more challenging than my previous 25 sloppy ones. But I actually started getting stronger.",
-            "mentalShift": "Perfect form isn't about being a perfectionist—it's about getting results. 5 perfect push-ups build more strength than 20 poor ones."
-          }
-        ]
-      },
-      {
-        "theme": "🍽️ Recovery & Nutrition Neglect",
-        "emoji": "🍽️", 
-        "description": "Overlooked factors that impact workout performance, recovery, and long-term results",
-        "mistakes": [
-          {
-            "mistakeTitle": "No Rest Days (The More-is-Better Myth)",
-            "mistakeNumber": 4,
-            "description": "Believing rest days are for lazy people and that working out every single day shows commitment.",
-            "personalExperience": "I thought rest days were for lazy people. If I was serious about getting fit, shouldn't I work out every single day? I wore my daily workout streak like a badge of honor, even when my body was screaming for a break.",
-            "flawedThinking": [
-              "'Rest days will slow my progress'",
-              "'I'll lose momentum if I take a day off'",
-              "'I can push through the fatigue'", 
-              "'More workouts = faster results'"
+            "formCheckMethods": [
+              "Use your phone to video yourself doing 5 reps",
+              "Compare to proper form videos on YouTube",
+              "Focus on feeling the right muscles working",
+              "Ask a friend to watch your form (if possible)"
             ],
-            "whatActuallyHappened": [
-              "Chronic fatigue that made workouts feel impossible",
-              "Decreased performance (I got weaker, not stronger)",
-              "Constant muscle soreness that never went away",
-              "Mental burnout and loss of motivation",
-              "Eventual complete breakdown and quitting"
-            ],
-            "scienceIgnored": "Muscles grow during rest, not during exercise. Exercise breaks down muscle fibers; rest rebuilds them stronger. Without adequate recovery, you're stuck in a cycle of breakdown without rebuilding.",
-            "stats": {
-              "finding": "5 minutes a day of bodyweight exercise can improve strength by ~13%, endurance by ~51%, and mental well‑being by ~16%",
-              "source": "Multiple studies including Livestrong.com, Reddit user experiences, The Times",
-              "citation": "Livestrong.com+2Reddit+2The Times+2smartfithive+6Wellbeing Edge+6Verywell Health+6HN Magazine+2homefitgym.com+2Cursa+2Tom's Guide"
-            },
-            "doThisInstead": {
-              "mainAction": "Strategic Rest for Maximum Gains",
-              "beginnerSchedule": [
-                "3-4 workout days per week maximum",
-                "At least one full rest day between intense workouts",
-                "1-2 complete rest days per week",
-                "Active recovery on non-workout days (light walking, gentle stretching)"
-              ],
-              "properRestDefinition": {
-                "completeRest": "No structured exercise, just normal daily activities",
-                "activeRecovery": "10-15 minute walk, gentle yoga, light housework, playing with kids/pets"
-              },
-              "restDaySignals": [
-                "Feeling dreading your workout",
-                "Noticeable decrease in performance", 
-                "Unusual soreness that lasts more than 48 hours",
-                "Fatigue that sleep doesn't fix",
-                "Getting sick more often"
-              ]
-            },
-            "results": "When I started taking 2-3 rest days per week, my strength increased 40% faster than when I was working out daily. I had more energy and actually looked forward to workouts."
-          }
-        ]
-      }
-    ],
-    "visualAids": [
-      {
-        "type": "checklist",
-        "title": "Pre-Workout Safety & Form Check",
-        "subtitle": "Have you prepared for a safe, effective workout?",
-        "items": [
-          {
-            "question": "Have you completed a 5-minute warm-up?",
-            "yesResult": "✅ 30% lower injury risk, better performance",
-            "noResult": "❌ Higher injury risk, stiff movements"
+            "specificCues": {
+              "squat": "Push hips back in squats, knees track over toes",
+              "pushup": "Elbows at 45° in push-ups, create straight line from head to heels",
+              "plank": "Core engaged throughout all movements, squeeze glutes"
+            }
           },
-          {
-            "question": "Do you know proper form for today's exercises?",
-            "yesResult": "✅ Target correct muscles, build real strength", 
-            "noResult": "❌ Wasted effort, potential injury"
-          },
-          {
-            "question": "Have you planned rest days this week?",
-            "yesResult": "✅ Muscles can recover and grow stronger",
-            "noResult": "❌ Risk of burnout and performance decline"
-          },
-          {
-            "question": "Are your expectations realistic for this stage?",
-            "yesResult": "✅ Sustainable motivation and progress",
-            "noResult": "❌ Disappointment and early quitting"
-          }
-        ]
-      },
-      {
-        "type": "comparison_table", 
-        "title": "Sprint Mentality vs. Lifestyle Mentality",
-        "subtitle": "The fundamental mindset difference that determines success",
-        "columns": ["Approach", "Sprint Mentality (❌)", "Lifestyle Mentality (✅)"],
-        "rows": [
-          ["Timeline", "Expect results in 2-4 weeks", "Focus on 8-12 week improvements"],
-          ["Intensity", "All-or-nothing, maximum effort", "Gradual progression, sustainable effort"],
-          ["Setbacks", "View as failures, reason to quit", "View as learning opportunities"],
-          ["Rest Days", "Reluctant, feel guilty", "Scheduled as essential recovery"],
-          ["Form Focus", "Rush through for more reps", "Perfect form over quantity"],
-          ["Comparison", "Compare to fitness influencers", "Compare to last week's self"]
-        ]
-      },
-      {
-        "type": "progression_flowchart",
-        "title": "4-Week Beginner Progression Path",
-        "subtitle": "How to build sustainable habits without burnout",
-        "weeks": [
-          {
-            "week": 1,
-            "focus": "Foundation & Form",
-            "duration": "15 minutes, 3 days/week",
-            "goal": "Learn basic movements, establish routine"
-          },
-          {
-            "week": 2, 
-            "focus": "Consistency Building",
-            "duration": "20 minutes, 3-4 days/week",
-            "goal": "Add time or frequency, maintain form"
-          },
-          {
-            "week": 3,
-            "focus": "Strength Development", 
-            "duration": "25 minutes, 4 days/week",
-            "goal": "Increase reps, add exercise variations"
-          },
-          {
-            "week": 4,
-            "focus": "Habit Solidification",
-            "duration": "30 minutes, 4 days/week", 
-            "goal": "Complete full routines, build confidence"
-          }
-        ]
-      }
-    ],
-    "actionableBoxes": [
-      {
-        "mistakeTitle": "Doing Too Much, Too Fast",
-        "fixTitle": "Start Stupidly Small Instead",
-        "actions": [
-          "Week 1: 15-minute workouts max, 3 days only",
-          "Focus on learning 4-5 basic movements perfectly",
-          "Add just 5 minutes OR 1 extra day each week",
-          "Celebrate consistency over intensity"
-        ],
-        "successMetric": "Can complete workouts without extreme soreness"
-      },
-      {
-        "mistakeTitle": "Skipping Warm-ups",
-        "fixTitle": "Non-Negotiable 5-Minute Warm-up",
-        "actions": [
-          "2 minutes: Light cardio (marching, step-ups)",
-          "2 minutes: Dynamic stretches (arm circles, leg swings)",
-          "1 minute: Light versions of workout exercises"
-        ],
-        "successMetric": "Workouts feel smoother, no sharp pains"
-      },
-      {
-        "mistakeTitle": "Poor Form Focus",
-        "fixTitle": "Quality Over Quantity Always", 
-        "actions": [
-          "Video yourself doing 5 reps of each exercise",
-          "Compare to proper form tutorials online",
-          "Slow down: 3 seconds down, 1 second pause, 2 seconds up",
-          "Feel the right muscles working during each rep"
-        ],
-        "successMetric": "Muscles feel more worked with fewer reps"
-      }
-    ],
-    "expertData": [
-      {
-        "statistic": "73% of home workout beginners quit within 6 weeks",
-        "source": "Fitness Industry Research",
-        "insight": "The problem isn't motivation—it's approach. Most people try to go from zero to hero overnight."
-      },
-      {
-        "statistic": "Proper warm-ups reduce injury risk by 30%",
-        "source": "Sports Medicine Studies (LiveStrong, Wellbeing Edge)",
-        "insight": "5 minutes of preparation prevents weeks of injury recovery."
-      },
-      {
-        "statistic": "Perfect form with 50% fewer reps builds 40% more strength",
-        "source": "Exercise Science Research",
-        "insight": "Quality movements target the right muscles and create progressive overload."
-      }
-    ],
-    "realStories": [
-      {
-        "scenario": "The Enthusiasm Crash",
-        "story": "I tried to do a 60-minute P90X workout on day one. Couldn't walk properly for 4 days and quit completely.",
-        "lesson": "Starting small feels too easy, but it's the only approach that actually works long-term."
-      },
-      {
-        "scenario": "The Injury Setback", 
-        "story": "Skipped warm-ups to 'save time' and pulled my knee during jump squats. Lost 10 days of progress.",
-        "lesson": "5 minutes of warming up prevents weeks of forced rest."
-      },
-      {
-        "scenario": "The Form Wake-up Call",
-        "story": "Did 'push-ups' for 3 weeks but couldn't do one proper push-up. I was just moving my arms around.",
-        "lesson": "Bad form isn't just ineffective—it's completely pointless."
-      }
-    ],
-    "personalVoice": {
-      "biggestRealization": "My biggest discovery: The mistake that underlies all other mistakes is treating fitness like a sprint instead of a lifestyle change.",
-      "mindsetShift": "Instead of 'I need to get fit in 30 days,' I started thinking 'I want to feel strong and energetic for the next 30 years.' This shift changed everything.",
-      "encouragement": "Remember: every fitness expert started as a beginner making these exact mistakes. The key is recognizing them early and making small adjustments.",
-      "honestTruth": "Progress equals consistency plus patience. Not perfection plus intensity."
+          "transformation": "When I slowed down and focused on form, 10 perfect squats felt more challenging than my previous 25 sloppy ones. But I actually started getting stronger.",
+          "mentalShift": "Perfect form isn't about being a perfectionist—it's about getting results. 5 perfect push-ups build more strength than 20 poor ones."
+        }
+      ]
     },
-    "conclusion": {
-      "mainMessage": "After 3 failed attempts, one minor injury, and 14 months of consistent success, here's what I've learned: fitness isn't about perfection, motivation, or dramatic transformation. It's about progress, consistency, and patience.",
-      "keyInsight": "Every mistake I made was preventable with the right information and realistic expectations. You don't need perfect genetics, unlimited time, or expensive equipment to succeed with home fitness. You need to avoid these 7 common mistakes that sabotage 90% of beginners before they see real results.",
-      "actionPlan": "Start small, focus on form, take rest days, set realistic expectations, ignore the comparison trap, support your workouts with basic nutrition, and think lifestyle change, not quick fix.",
-      "callToAction": "Which of these 7 mistakes resonates most with your experience? Have you fallen into any of these traps? I'd love to hear your story and what you learned from your own fitness journey."
+    {
+      "theme": "🍽️ Recovery & Nutrition Neglect",
+      "emoji": "🍽️",
+      "description": "Overlooked factors that impact workout performance, recovery, and long-term results",
+      "mistakes": [
+        {
+          "mistakeTitle": "No Rest Days (The More-is-Better Myth)",
+          "mistakeNumber": 5,
+          "description": "Believing rest days are for lazy people and that working out every single day shows commitment.",
+          "personalExperience": "I thought rest days were for lazy people. If I was serious about getting fit, shouldn't I work out every single day? I wore my daily workout streak like a badge of honor, even when my body was screaming for a break.",
+          "flawedThinking": [
+            "'Rest days will slow my progress'",
+            "'I'll lose momentum if I take a day off'",
+            "'I can push through the fatigue'",
+            "'More workouts = faster results'"
+          ],
+          "whatActuallyHappened": [
+            "Chronic fatigue that made workouts feel impossible",
+            "Decreased performance (I got weaker, not stronger)",
+            "Constant muscle soreness that never went away",
+            "Mental burnout and loss of motivation",
+            "Eventual complete breakdown and quitting"
+          ],
+          "scienceIgnored": "Muscles grow during rest, not during exercise. Exercise breaks down muscle fibers; rest rebuilds them stronger. Without adequate recovery, you're stuck in a cycle of breakdown without rebuilding.",
+          "stats": {
+            "finding": "5 minutes a day of bodyweight exercise can improve strength by ~13%, endurance by ~51%, and mental well‑being by ~16%",
+            "source": "Multiple studies including Livestrong.com, Reddit user experiences, The Times",
+            "citation": "Livestrong.com+2Reddit+2The Times+2smartfithive+6Wellbeing Edge+6Verywell Health+6HN Magazine+2homefitgym.com+2Cursa+2Tom's Guide"
+          },
+          "doThisInstead": {
+            "mainAction": "Strategic Rest for Maximum Gains",
+            "beginnerSchedule": [
+              "3-4 workout days per week maximum",
+              "At least one full rest day between intense workouts",
+              "1-2 complete rest days per week",
+              "Active recovery on non-workout days (light walking, gentle stretching)"
+            ],
+            "properRestDefinition": {
+              "completeRest": "No structured exercise, just normal daily activities",
+              "activeRecovery": "10-15 minute walk, gentle yoga, light housework, playing with kids/pets"
+            },
+            "restDaySignals": [
+              "Feeling dreading your workout",
+              "Noticeable decrease in performance",
+              "Unusual soreness that lasts more than 48 hours",
+              "Fatigue that sleep doesn't fix",
+              "Getting sick more often"
+            ]
+          },
+          "results": "When I started taking 2-3 rest days per week, my strength increased 40% faster than when I was working out daily. I had more energy and actually looked forward to workouts."
+        },
+        {
+          "mistakeTitle": "Unrealistic Expectations (The 30-Day Transformation Fantasy)",
+          "mistakeNumber": 6,
+          "description": "Expecting dramatic transformation within a month and quitting when reality doesn't match Instagram promises.",
+          "personalExperience": "I started every fitness attempt expecting dramatic transformation within a month. I'd seen the before/after photos online and thought I'd look completely different in 4 weeks. When I didn't see major changes by week 2, I assumed the program wasn't working.",
+          "unrealisticTimeline": {
+            "week1": "Expecting to feel dramatically stronger",
+            "week2": "Looking for visible muscle definition",
+            "week3": "Expecting compliments from others",
+            "week4": "Anticipating complete body transformation"
+          },
+          "realityVsExpectations": {
+            "expected": ["Immediate energy boost", "rapid weight loss", "visible muscle growth", "dramatic strength gains"],
+            "reality": ["Gradual energy improvements", "slow but steady strength building", "subtle changes that compound over time", "real results that take 8-12 weeks to become obvious"]
+          },
+          "doThisInstead": {
+            "mainAction": "Realistic Timeline for Real Results",
+            "realisticProgression": {
+              "weeks1to2": "Focus on consistency and form. You might feel slightly more energetic. Don't expect visible changes.",
+              "weeks3to4": "Movements start feeling easier. You might sleep better. Still no major visual changes.",
+              "weeks5to8": "Noticeable strength improvements. Better endurance. Clothes might fit slightly differently.",
+              "weeks9to12": "Real visual changes become apparent. Others might start noticing. You feel significantly stronger."
+            },
+            "celebrateInstead": [
+              "Completing workouts consistently",
+              "Feeling less winded climbing stairs",
+              "Sleeping better and having more energy",
+              "Improving your form on exercises",
+              "Adding more reps or holding planks longer"
+            ]
+          }
+        },
+        {
+          "mistakeTitle": "Ignoring Nutrition (The Exercise-Only Approach)",
+          "mistakeNumber": 7,
+          "description": "Thinking you can out-exercise a bad diet and using workouts as an excuse to eat whatever you want.",
+          "personalExperience": "I thought I could out-exercise a bad diet. I'd work out for 30 minutes, then reward myself with pizza and beer because I 'earned it.' I completely ignored the nutrition side of fitness and wondered why I wasn't seeing results.",
+          "nutritionMistakes": [
+            "Using workouts as an excuse to eat whatever I wanted",
+            "Thinking 30 minutes of exercise burned way more calories than it actually did",
+            "Ignoring the timing of meals around workouts",
+            "Not drinking enough water",
+            "Skipping meals then overeating later"
+          ],
+          "humblingMath": "A 30-minute home workout burns approximately 150-250 calories. One slice of pizza is about 300 calories. I was easily eating back my entire workout in post-exercise 'rewards.'",
+          "doThisInstead": {
+            "mainAction": "Simple Nutrition Support (Not a Diet)",
+            "preWorkoutFuel": [
+              "Small banana with almond butter",
+              "Greek yogurt with berries",
+              "Apple with a small handful of nuts",
+              "Slice of whole grain toast with avocado"
+            ],
+            "postWorkoutRecovery": [
+              "Protein-rich meal or snack",
+              "Chocolate milk (seriously—research-backed)",
+              "Chicken and vegetables",
+              "Protein smoothie with fruit",
+              "Eggs and whole grain toast"
+            ],
+            "hydrationStrategy": [
+              "Glass of water immediately upon waking",
+              "Water bottle nearby during all workouts",
+              "Sip water every 10-15 minutes during exercise",
+              "Another glass of water within 30 minutes post-workout"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "visualAids": [
+    {
+      "type": "checklist",
+      "title": "Pre-Workout Safety & Form Check",
+      "subtitle": "Have you prepared for a safe, effective workout?",
+      "items": [
+        {
+          "question": "Have you completed a 5-minute warm-up?",
+          "yesResult": "✅ 30% lower injury risk, better performance",
+          "noResult": "❌ Higher injury risk, stiff movements"
+        },
+        {
+          "question": "Do you know proper form for today's exercises?",
+          "yesResult": "✅ Target correct muscles, build real strength",
+          "noResult": "❌ Wasted effort, potential injury"
+        },
+        {
+          "question": "Have you planned rest days this week?",
+          "yesResult": "✅ Muscles can recover and grow stronger",
+          "noResult": "❌ Risk of burnout and performance decline"
+        },
+        {
+          "question": "Are your expectations realistic for this stage?",
+          "yesResult": "✅ Sustainable motivation and progress",
+          "noResult": "❌ Disappointment and early quitting"
+        }
+      ]
     },
-    "sources": [
-      {
-        "citation": "ForbesReddit",
-        "type": "community_testimonial",
-        "description": "Real user experiences from Reddit fitness community",
-        "credibility": "Peer-validated advice from actual beginners"
-      },
-      {
-        "citation": "Livestrong.com+2Reddit+2The Times+2smartfithive+6Wellbeing Edge+6Verywell Health+6HN Magazine+2homefitgym.com+2Cursa+2Tom's Guide",
-        "type": "research_compilation",
-        "description": "Multiple source verification of exercise benefits and injury prevention statistics",
-        "credibility": "Cross-referenced data from health and fitness authorities"
-      },
-      {
-        "citation": "Cursa+3Livestrong.com+3Wellbeing Edge+3",
-        "type": "injury_prevention_research", 
-        "description": "Warm-up effectiveness studies from sports medicine sources",
-        "credibility": "Medical and sports science backing"
-      }
-    ]
-  }
+    {
+      "type": "comparison_table",
+      "title": "Sprint Mentality vs. Lifestyle Mentality",
+      "subtitle": "The fundamental mindset difference that determines success",
+      "columns": ["Approach", "Sprint Mentality (❌)", "Lifestyle Mentality (✅)"],
+      "rows": [
+        ["Timeline", "Expect results in 2-4 weeks", "Focus on 8-12 week improvements"],
+        ["Intensity", "All-or-nothing, maximum effort", "Gradual progression, sustainable effort"],
+        ["Setbacks", "View as failures, reason to quit", "View as learning opportunities"],
+        ["Rest Days", "Reluctant, feel guilty", "Scheduled as essential recovery"],
+        ["Form Focus", "Rush through for more reps", "Perfect form over quantity"],
+        ["Comparison", "Compare to fitness influencers", "Compare to last week's self"]
+      ]
+    },
+    {
+      "type": "progression_flowchart",
+      "title": "4-Week Beginner Progression Path",
+      "subtitle": "How to build sustainable habits without burnout",
+      "weeks": [
+        {
+          "week": 1,
+          "focus": "Foundation & Form",
+          "duration": "15 minutes, 3 days/week",
+          "goal": "Learn basic movements, establish routine"
+        },
+        {
+          "week": 2,
+          "focus": "Consistency Building",
+          "duration": "20 minutes, 3-4 days/week",
+          "goal": "Add time or frequency, maintain form"
+        },
+        {
+          "week": 3,
+          "focus": "Strength Development",
+          "duration": "25 minutes, 4 days/week",
+          "goal": "Increase reps, add exercise variations"
+        },
+        {
+          "week": 4,
+          "focus": "Habit Solidification",
+          "duration": "30 minutes, 4 days/week",
+          "goal": "Complete full routines, build confidence"
+        }
+      ]
+    }
+  ],
+  "actionableBoxes": [
+    {
+      "mistakeTitle": "Doing Too Much, Too Fast",
+      "fixTitle": "Start Stupidly Small Instead",
+      "actions": [
+        "Week 1: 15-minute workouts max, 3 days only",
+        "Focus on learning 4-5 basic movements perfectly",
+        "Add just 5 minutes OR 1 extra day each week",
+        "Celebrate consistency over intensity"
+      ],
+      "successMetric": "Can complete workouts without extreme soreness"
+    },
+    {
+      "mistakeTitle": "Skipping Warm-ups",
+      "fixTitle": "Non-Negotiable 5-Minute Warm-up",
+      "actions": [
+        "2 minutes: Light cardio (marching, step-ups)",
+        "2 minutes: Dynamic stretches (arm circles, leg swings)",
+        "1 minute: Light versions of workout exercises"
+      ],
+      "successMetric": "Workouts feel smoother, no sharp pains"
+    },
+    {
+      "mistakeTitle": "Poor Form Focus",
+      "fixTitle": "Quality Over Quantity Always",
+      "actions": [
+        "Video yourself doing 5 reps of each exercise",
+        "Compare to proper form tutorials online",
+        "Slow down: 3 seconds down, 1 second pause, 2 seconds up",
+        "Feel the right muscles working during each rep"
+      ],
+      "successMetric": "Muscles feel more worked with fewer reps"
+    }
+  ],
+  "expertData": [
+    {
+      "statistic": "73% of home workout beginners quit within 6 weeks",
+      "source": "Fitness Industry Research",
+      "insight": "The problem isn't motivation—it's approach. Most people try to go from zero to hero overnight."
+    },
+    {
+      "statistic": "Proper warm-ups reduce injury risk by 30%",
+      "source": "Sports Medicine Studies (LiveStrong, Wellbeing Edge)",
+      "insight": "5 minutes of preparation prevents weeks of injury recovery."
+    },
+    {
+      "statistic": "Perfect form with 50% fewer reps builds 40% more strength",
+      "source": "Exercise Science Research",
+      "insight": "Quality movements target the right muscles and create progressive overload."
+    }
+  ],
+  "realStories": [
+    {
+      "scenario": "The Enthusiasm Crash",
+      "story": "I tried to do a 60-minute P90X workout on day one. Couldn't walk properly for 4 days and quit completely.",
+      "lesson": "Starting small feels too easy, but it's the only approach that actually works long-term."
+    },
+    {
+      "scenario": "The Injury Setback",
+      "story": "Skipped warm-ups to 'save time' and pulled my knee during jump squats. Lost 10 days of progress.",
+      "lesson": "5 minutes of warming up prevents weeks of forced rest."
+    },
+    {
+      "scenario": "The Form Wake-up Call",
+      "story": "Did 'push-ups' for 3 weeks but couldn't do one proper push-up. I was just moving my arms around.",
+      "lesson": "Bad form isn't just ineffective—it's completely pointless."
+    }
+  ],
+  "personalVoice": {
+    "biggestRealization": "My biggest discovery: The mistake that underlies all other mistakes is treating fitness like a sprint instead of a lifestyle change.",
+    "mindsetShift": "Instead of 'I need to get fit in 30 days,' I started thinking 'I want to feel strong and energetic for the next 30 years.' This shift changed everything.",
+    "encouragement": "Remember: every fitness expert started as a beginner making these exact mistakes. The key is recognizing them early and making small adjustments.",
+    "honestTruth": "Progress equals consistency plus patience. Not perfection plus intensity."
+  },
+  "conclusion": {
+    "mainMessage": "After 3 failed attempts, one minor injury, and 14 months of consistent success, here's what I've learned: fitness isn't about perfection, motivation, or dramatic transformation. It's about progress, consistency, and patience.",
+    "keyInsight": "Every mistake I made was preventable with the right information and realistic expectations. You don't need perfect genetics, unlimited time, or expensive equipment to succeed with home fitness. You need to avoid these 7 common mistakes that sabotage 90% of beginners before they see real results.",
+    "actionPlan": "Start small, focus on form, take rest days, set realistic expectations, ignore the comparison trap, support your workouts with basic nutrition, and think lifestyle change, not quick fix.",
+    "callToAction": "Which of these 7 mistakes resonates most with your experience? Have you fallen into any of these traps? I'd love to hear your story and what you learned from your own fitness journey."
+  },
+  "sources": [
+    {
+      "citation": "ForbesReddit",
+      "type": "community_testimonial",
+      "description": "Real user experiences from Reddit fitness community",
+      "credibility": "Peer-validated advice from actual beginners"
+    },
+    {
+      "citation": "Livestrong.com+2Reddit+2The Times+2smartfithive+6Wellbeing Edge+6Verywell Health+6HN Magazine+2homefitgym.com+2Cursa+2Tom's Guide",
+      "type": "research_compilation",
+      "description": "Multiple source verification of exercise benefits and injury prevention statistics",
+      "credibility": "Cross-referenced data from health and fitness authorities"
+    },
+    {
+      "citation": "Cursa+3Livestrong.com+3Wellbeing Edge+3",
+      "type": "injury_prevention_research",
+      "description": "Warm-up effectiveness studies from sports medicine sources",
+      "credibility": "Medical and sports science backing"
+    }
+  ]
+}
