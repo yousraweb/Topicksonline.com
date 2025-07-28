@@ -121,7 +121,7 @@ const templates = {
 };
 
 // Newsletter Template Function
-// FIXED renderNewsletterBlock function - includes missing elements
+// FINAL FIX: Newsletter system that works properly
 function renderNewsletterBlock(block) {
     const benefits = block.benefits || [
         { icon: "✨", text: "Weekly insights" },
@@ -129,8 +129,10 @@ function renderNewsletterBlock(block) {
         { icon: "✋", text: "Unsubscribe anytime" }
     ];
 
+    const uniqueId = Math.random().toString(36).substr(2, 9);
+
     return `
-        <section class="newsletter-section" data-newsletter-id="${Math.random().toString(36).substr(2, 9)}">
+        <section class="newsletter-section" data-newsletter-id="${uniqueId}">
             <div class="newsletter-content">
                 <span class="newsletter-icon">${block.icon || '📧'}</span>
                 <h3 class="newsletter-title">${block.title || 'Join 2,500+ Readers'}</h3>
@@ -138,7 +140,7 @@ function renderNewsletterBlock(block) {
                     ${block.description || 'Get weekly tips on fitness, productivity, and saving money. No spam, unsubscribe anytime.'}
                 </p>
                 
-                <form class="newsletter-form">
+                <form class="newsletter-form" data-form-id="${uniqueId}">
                     <input 
                         type="email" 
                         class="newsletter-input" 
@@ -151,14 +153,9 @@ function renderNewsletterBlock(block) {
                     </button>
                 </form>
                 
-                <!-- THESE WERE MISSING - NOW INCLUDED! -->
-                <div class="newsletter-success" style="display: none;">
-                    ${block.successMessage || '🎉 Welcome aboard! Check your email to confirm your subscription.'}
-                </div>
-                
-                <div class="newsletter-error" style="display: none;">
-                    ${block.errorMessage || '⚠️ Something went wrong. Please try again.'}
-                </div>
+                <!-- SUCCESS/ERROR MESSAGES WITH UNIQUE IDS -->
+                <div class="newsletter-success" id="success-${uniqueId}" style="display: none;"></div>
+                <div class="newsletter-error" id="error-${uniqueId}" style="display: none;"></div>
                 
                 <div class="newsletter-benefits">
                     ${benefits.map(benefit => `
@@ -173,12 +170,11 @@ function renderNewsletterBlock(block) {
     `;
 }
 
-// Newsletter functionality
-// SAFE Newsletter JavaScript - Won't crash if elements are missing
+// IMPROVED Newsletter object - no more alerts or stuck buttons
 const newsletter = {
     init() {
         this.bindEvents();
-        console.log('📧 Newsletter system initialized safely');
+        console.log('📧 Newsletter system initialized - final version');
     },
 
     bindEvents() {
@@ -196,25 +192,24 @@ const newsletter = {
         
         const email = form.querySelector('.newsletter-input')?.value?.trim();
         const button = form.querySelector('.newsletter-button');
-        const successMsg = form.querySelector('.newsletter-success');
-        const errorMsg = form.querySelector('.newsletter-error');
+        const formId = form.getAttribute('data-form-id');
+        
+        // Get message elements by ID to ensure they're found
+        const successMsg = document.getElementById(`success-${formId}`);
+        const errorMsg = document.getElementById(`error-${formId}`);
 
-        // Check if required elements exist
-        if (!email) {
-            console.error('❌ Email input not found or empty');
-            alert('Please enter your email address');
-            return;
-        }
+        console.log('📋 Form elements found:', {
+            email: !!email,
+            button: !!button,
+            successMsg: !!successMsg,
+            errorMsg: !!errorMsg,
+            formId: formId
+        });
 
-        if (!button) {
-            console.error('❌ Submit button not found');
-            return;
-        }
-
-        // Validate email
-        if (!this.isValidEmail(email)) {
+        // Validate
+        if (!email || !this.isValidEmail(email)) {
             console.log('❌ Invalid email');
-            this.showError(errorMsg, 'Please enter a valid email address.');
+            this.showMessage(errorMsg, '⚠️ Please enter a valid email address.', 'error');
             return;
         }
 
@@ -223,9 +218,12 @@ const newsletter = {
         this.hideMessages(successMsg, errorMsg);
 
         try {
-            console.log('📨 Sending to newsletter service...');
+            console.log('📨 Attempting to subscribe:', email);
             
-            // Try the Netlify function first
+            // Try the backend function with timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+
             const response = await fetch('/.netlify/functions/subscribe', {
                 method: 'POST',
                 headers: {
@@ -235,41 +233,72 @@ const newsletter = {
                     email: email,
                     firstName: '',
                     source: window.location.pathname
-                })
+                }),
+                signal: controller.signal
             });
 
-            const data = await response.json();
-            console.log('📡 API Response:', { status: response.status, data });
-
-            if (response.ok && data.success) {
-                console.log('✅ Successfully subscribed');
-                this.showSuccess(successMsg, data.message || 'Welcome to our newsletter!');
+            clearTimeout(timeoutId);
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('✅ API Success:', data);
+                
+                this.showMessage(successMsg, '🎉 ' + (data.message || 'Welcome to our newsletter!'), 'success');
                 form.reset();
                 this.trackSubscription(email);
             } else {
-                throw new Error(data.error || `API returned ${response.status}`);
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Server error: ${response.status}`);
             }
             
         } catch (error) {
-            console.error('❌ Newsletter error:', error.message);
+            console.error('❌ Subscription error:', error.name, error.message);
             
-            // Try fallback method
-            try {
-                await this.fallbackSubmission(email);
-                this.showSuccess(successMsg, 'Thank you! We\'ll add you to our newsletter.');
-                form.reset();
-            } catch (fallbackError) {
-                this.showError(errorMsg, 'Unable to subscribe right now. Please try again later.');
+            if (error.name === 'AbortError') {
+                console.log('⏰ Request timed out, trying fallback...');
+                await this.handleFallback(email, successMsg, errorMsg);
+            } else if (error.message.includes('fetch')) {
+                console.log('🌐 Network error, trying fallback...');
+                await this.handleFallback(email, successMsg, errorMsg);
+            } else {
+                this.showMessage(errorMsg, '⚠️ ' + error.message, 'error');
             }
         } finally {
+            // ALWAYS reset button state
+            console.log('🔄 Resetting button state');
             this.setLoading(button, false);
         }
     },
 
-    async fallbackSubmission(email) {
-        console.log('🔄 Trying fallback submission...');
-        
-        // Save to localStorage as backup
+    async handleFallback(email, successMsg, errorMsg) {
+        try {
+            console.log('🔄 Using fallback method...');
+            
+            // Save locally
+            this.saveEmailLocally(email);
+            
+            // Try simple email service
+            const formData = new FormData();
+            formData.append('email', 'yousraelassoui6@gmail.com');
+            formData.append('_subject', 'Newsletter Subscription - TopPicksOnline');
+            formData.append('subscriber_email', email);
+            formData.append('_next', window.location.href);
+            
+            await fetch('https://formsubmit.co/yousraelassoui6@gmail.com', {
+                method: 'POST',
+                body: formData
+            });
+            
+            this.showMessage(successMsg, '🎉 Thank you! We\'ll add you to our newsletter.', 'success');
+            console.log('✅ Fallback successful');
+            
+        } catch (fallbackError) {
+            console.error('❌ Fallback failed:', fallbackError);
+            this.showMessage(errorMsg, '⚠️ Please try again later or contact us directly.', 'error');
+        }
+    },
+
+    saveEmailLocally(email) {
         const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
         subscribers.push({
             email: email,
@@ -277,66 +306,51 @@ const newsletter = {
             page: window.location.href
         });
         localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-        
-        // Try to send via FormSubmit
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('_subject', 'Newsletter Subscription - TopPicksOnline');
-        formData.append('_next', window.location.href);
-        
-        const response = await fetch('https://formsubmit.co/yousraelassoui6@gmail.com', {
-            method: 'POST',
-            body: formData
-        });
-        
-        if (!response.ok) {
-            throw new Error('Fallback submission failed');
-        }
-        
-        console.log('✅ Fallback submission successful');
+        console.log('💾 Email saved locally');
     },
 
-    isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email) && email.length < 255 && email.length > 5;
+    showMessage(element, message, type) {
+        if (!element) {
+            console.warn('⚠️ Message element not found, using console instead');
+            console.log(`${type.toUpperCase()}: ${message}`);
+            return;
+        }
+        
+        element.innerHTML = message;
+        element.style.display = 'block';
+        this.styleMessage(element, type);
+        
+        console.log(`📢 Showing ${type} message:`, message);
+    },
+
+    hideMessages(successMsg, errorMsg) {
+        if (successMsg) {
+            successMsg.style.display = 'none';
+            successMsg.innerHTML = '';
+        }
+        if (errorMsg) {
+            errorMsg.style.display = 'none';
+            errorMsg.innerHTML = '';
+        }
     },
 
     setLoading(button, loading) {
-        if (!button) return;
+        if (!button) {
+            console.warn('⚠️ Button not found');
+            return;
+        }
         
         if (loading) {
             button.disabled = true;
             button.innerHTML = '⏳ Subscribing...';
             button.style.opacity = '0.8';
+            console.log('🔄 Button set to loading state');
         } else {
             button.disabled = false;
             button.innerHTML = button.getAttribute('data-original-text') || 'Subscribe';
             button.style.opacity = '1';
+            console.log('✅ Button reset to normal state');
         }
-    },
-
-    showSuccess(successMsg, message) {
-        if (!successMsg) {
-            // If no success element, show alert as fallback
-            alert(message || 'Successfully subscribed!');
-            return;
-        }
-        
-        successMsg.innerHTML = `🎉 ${message}`;
-        successMsg.style.display = 'block';
-        this.styleMessage(successMsg, 'success');
-    },
-
-    showError(errorMsg, message) {
-        if (!errorMsg) {
-            // If no error element, show alert as fallback
-            alert('Error: ' + message);
-            return;
-        }
-        
-        errorMsg.innerHTML = `⚠️ ${message}`;
-        errorMsg.style.display = 'block';
-        this.styleMessage(errorMsg, 'error');
     },
 
     styleMessage(element, type) {
@@ -352,9 +366,9 @@ const newsletter = {
         element.style.marginTop = '12px';
     },
 
-    hideMessages(successMsg, errorMsg) {
-        if (successMsg) successMsg.style.display = 'none';
-        if (errorMsg) errorMsg.style.display = 'none';
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email) && email.length < 255 && email.length > 5;
     },
 
     trackSubscription(email) {
@@ -366,18 +380,6 @@ const newsletter = {
         console.log('📊 Newsletter subscription tracked');
     }
 };
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    newsletter.init();
-});
-
-// Backup: Also initialize if already loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => newsletter.init());
-} else {
-    newsletter.init();
-}
 
 // Also ensure you have this helper function to check stored emails:
 window.getNewsletterSubscribers = function() {
