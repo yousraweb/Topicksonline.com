@@ -752,7 +752,7 @@ function setMetaTags(articleData) {
 
 // Also add a function to reset meta tags when navigating away
 function resetMetaTags() {
-    document.title = 'TopPicksOnline - One Blog. Every Topic.';
+    document.title = 'TopPicksOnline - Take control of your health, fitness, and productivity';
     
     // Reset basic meta tags
     const metaDescription = document.querySelector('meta[name="description"]');

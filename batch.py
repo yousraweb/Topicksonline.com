@@ -183,7 +183,7 @@ class ArticleManager:
         # Default homepage structure
         homepage_data = {
             "hero": {
-                "title": "One Blog. Every Topic.",
+                "title": "Take control of your health, fitness, and productivity",
                 "subtitle": "Fresh content every day on what matters — from money to mindset."
             },
             "featured": []
