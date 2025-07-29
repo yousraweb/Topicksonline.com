@@ -631,6 +631,277 @@ function renderArticle(articleData) {
                     ${section.description ? `<p class="section-description">${section.description}</p>` : ''}
             `;
             
+            // Handle PROBLEMS
+            if (section.problems) {
+                section.problems.forEach(problem => {
+                    contentHTML += `
+                        <div class="problem-block">
+                            <h3 class="subsection-heading">${problem.problemTitle}</h3>
+                            ${problem.description ? `<p>${problem.description}</p>` : ''}
+                            ${problem.personalExperience ? `<div class="highlight-text">${problem.personalExperience}</div>` : ''}
+                            
+                            ${problem.testingMethod ? `
+                                <div class="method-box">
+                                    <h4>Testing Method:</h4>
+                                    <p><strong>Approach:</strong> ${problem.testingMethod.approach}</p>
+                                    <p><strong>Key Insight:</strong> ${problem.testingMethod.keyInsight}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle IMPACTS
+            if (section.impacts) {
+                section.impacts.forEach(impact => {
+                    contentHTML += `
+                        <div class="impact-block">
+                            <h3 class="subsection-heading">${impact.impactTitle}</h3>
+                            ${impact.description ? `<p>${impact.description}</p>` : ''}
+                            ${impact.personalExperience ? `<div class="highlight-text">${impact.personalExperience}</div>` : ''}
+                            
+                            ${impact.productivityImpact ? `
+                                <div class="impact-data">
+                                    <h4>Productivity Impact:</h4>
+                                    <ul>${impact.productivityImpact.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${impact.healthConsequences ? `
+                                <div class="impact-data">
+                                    <h4>Health Consequences:</h4>
+                                    <ul>${impact.healthConsequences.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${impact.keyInsight ? `<div class="tip-box">${impact.keyInsight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle HACKS
+            if (section.hacks) {
+                section.hacks.forEach(hack => {
+                    contentHTML += `
+                        <div class="hack-block">
+                            <h3 class="subsection-heading">Hack #${hack.hackNumber}: ${hack.hackTitle}</h3>
+                            ${hack.description ? `<p>${hack.description}</p>` : ''}
+                            ${hack.personalExperience ? `<div class="highlight-text">${hack.personalExperience}</div>` : ''}
+                            
+                            ${hack.howItWorks ? `
+                                <h4>How It Works:</h4>
+                                <ul class="content-list">
+                                    ${hack.howItWorks.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${hack.whatIWasDoingWrong ? `
+                                <h4>What I Was Doing Wrong:</h4>
+                                <ul class="content-list">
+                                    ${hack.whatIWasDoingWrong.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${hack.doThisInstead ? `
+                                <div class="tip-box">
+                                    <h4>${hack.doThisInstead.mainAction}</h4>
+                                    ${hack.doThisInstead.specificSteps ? `
+                                        <ul>
+                                            ${hack.doThisInstead.specificSteps.map(step => `<li>${step}</li>`).join('')}
+                                        </ul>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            ${hack.realExample ? `
+                                <div class="example-box">
+                                    <strong>Example:</strong> ${hack.realExample}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle MEALS (for no-cook and meal plan articles)
+            if (section.meals) {
+                section.meals.forEach(meal => {
+                    contentHTML += `
+                        <div class="meal-block">
+                            <h3 class="subsection-heading">Meal #${meal.mealNumber}: ${meal.mealTitle} - ${meal.cost}</h3>
+                            ${meal.description ? `<p><strong>${meal.description}</strong></p>` : ''}
+                            ${meal.personalExperience ? `<div class="highlight-text">${meal.personalExperience}</div>` : ''}
+                            
+                            ${meal.ingredients ? `
+                                <div class="ingredients-list">
+                                    <h4>Ingredients:</h4>
+                                    <ul>${meal.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${meal.assembly ? `
+                                <div class="assembly-steps">
+                                    <h4>Assembly:</h4>
+                                    <ol>${meal.assembly.map(step => `<li>${step}</li>`).join('')}</ol>
+                                </div>
+                            ` : ''}
+                            
+                            ${meal.whyItWorks ? `
+                                <div class="benefits">
+                                    <h4>Why It Works:</h4>
+                                    <ul>${meal.whyItWorks.map(benefit => `<li>${benefit}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle WEEKLY MEALS (for meal plan articles)
+            if (section.weeklyMeals) {
+                section.weeklyMeals.forEach(day => {
+                    contentHTML += `
+                        <div class="daily-meals">
+                            <h3 class="subsection-heading">${day.day} - Daily Total: ${day.dailyTotal}</h3>
+                            <div class="meals-grid">
+                                ${day.meals.map(meal => `
+                                    <div class="meal-card">
+                                        <h4>${meal.mealType}: ${meal.name} - ${meal.cost}</h4>
+                                        <p><strong>Ingredients:</strong> ${meal.ingredients}</p>
+                                        ${meal.note ? `<p><em>Note: ${meal.note}</em></p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle SAFETY PROTOCOLS
+            if (section.safetyProtocols) {
+                section.safetyProtocols.forEach(protocol => {
+                    contentHTML += `
+                        <div class="safety-block">
+                            <h3 class="subsection-heading">${protocol.protocolTitle}</h3>
+                            ${protocol.description ? `<p>${protocol.description}</p>` : ''}
+                            ${protocol.personalExperience ? `<div class="highlight-text">${protocol.personalExperience}</div>` : ''}
+                            
+                            ${protocol.prepAheadStrategies ? `
+                                <h4>Prep Ahead Strategies:</h4>
+                                <ul class="content-list">
+                                    ${protocol.prepAheadStrategies.map(strategy => `<li>${strategy}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${protocol.safeStorageTimes ? `
+                                <h4>Safe Storage Times:</h4>
+                                <ul class="content-list">
+                                    ${protocol.safeStorageTimes.map(time => `<li>${time}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${protocol.foodSafetyReminder ? `
+                                <div class="warning-box">⚠️ ${protocol.foodSafetyReminder}</div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle BUDGET BREAKDOWN
+            if (section.budgetBreakdown) {
+                section.budgetBreakdown.forEach(breakdown => {
+                    contentHTML += `
+                        <div class="budget-block">
+                            <h3 class="subsection-heading">${breakdown.breakdownTitle}</h3>
+                            ${breakdown.description ? `<p>${breakdown.description}</p>` : ''}
+                            ${breakdown.personalExperience ? `<div class="highlight-text">${breakdown.personalExperience}</div>` : ''}
+                            
+                            ${breakdown.weeklyGroceryList ? `
+                                <div class="grocery-list">
+                                    <h4>Weekly Grocery List - ${breakdown.weeklyGroceryList.totalCost}</h4>
+                                    <p><strong>Meals Provided:</strong> ${breakdown.weeklyGroceryList.mealsProvided}</p>
+                                    
+                                    <div class="pantry-section">
+                                        <h5>Pantry Staples:</h5>
+                                        <ul>${breakdown.weeklyGroceryList.pantryStaples.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    </div>
+                                    
+                                    <div class="fresh-section">
+                                        <h5>Fresh Ingredients:</h5>
+                                        <ul>${breakdown.weeklyGroceryList.freshIngredients.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${breakdown.costPerMealComparison ? `
+                                <div class="cost-comparison">
+                                    <h4>Cost Per Meal Comparison:</h4>
+                                    <ul>
+                                        <li><strong>No-Cook Meals:</strong> ${breakdown.costPerMealComparison.noCookMeals}</li>
+                                        <li><strong>Fast Food:</strong> ${breakdown.costPerMealComparison.fastFood}</li>
+                                        <li><strong>Delivery:</strong> ${breakdown.costPerMealComparison.delivery}</li>
+                                        <li><strong>Traditional Cooking:</strong> ${breakdown.costPerMealComparison.traditionalHomeCooking}</li>
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle VARIETY STRATEGIES
+            if (section.varietyStrategies) {
+                section.varietyStrategies.forEach(strategy => {
+                    contentHTML += `
+                        <div class="variety-block">
+                            <h3 class="subsection-heading">${strategy.strategy}</h3>
+                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
+                            
+                            ${strategy.examples ? `
+                                <h4>Examples:</h4>
+                                <ul class="content-list">
+                                    ${strategy.examples.map(example => `<li>${example}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${strategy.principle ? `<div class="tip-box">${strategy.principle}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle WEEKLY SCHEDULE
+            if (section.weeklySchedule) {
+                section.weeklySchedule.forEach(day => {
+                    contentHTML += `
+                        <div class="schedule-day">
+                            <h3 class="subsection-heading">${day.day} - ${day.duration}</h3>
+                            ${day.focus ? `<p><strong>Focus:</strong> ${day.focus}</p>` : ''}
+                            
+                            ${day.structure ? `
+                                <div class="workout-structure">
+                                    <h4>Structure:</h4>
+                                    <ul>${day.structure.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${day.activities ? `
+                                <div class="activities">
+                                    <h4>Activities:</h4>
+                                    <ul>${day.activities.map(activity => `<li>${activity}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${day.goal ? `<div class="goal-box"><strong>Goal:</strong> ${day.goal}</div>` : ''}
+                            ${day.mindset ? `<div class="mindset-box"><em>${day.mindset}</em></div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
             // Handle PRINCIPLES
             if (section.principles) {
                 section.principles.forEach(principle => {
@@ -730,6 +1001,13 @@ function renderArticle(articleData) {
                                     ${habit.stressReductionTechniques.map(item => `<li>${item}</li>`).join('')}
                                 </ul>
                             ` : ''}
+                            
+                            ${habit.trackingMethods ? `
+                                <h4>Tracking Methods:</h4>
+                                <ul class="content-list">
+                                    ${habit.trackingMethods.map(method => `<li>${method}</li>`).join('')}
+                                </ul>
+                            ` : ''}
                         </div>
                     `;
                 });
@@ -779,23 +1057,30 @@ function renderArticle(articleData) {
                             ${ingredient.description ? `<p><strong>${ingredient.description}</strong></p>` : ''}
                             ${ingredient.personalExperience ? `<div class="highlight-text">${ingredient.personalExperience}</div>` : ''}
                             
-                            ${ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins ? `
+                            ${ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || ingredient.whyRiceDominates || ingredient.whyPastaWins || ingredient.whyOatsAreUnderrated || ingredient.whyPotatoesArePerfect || ingredient.whyFrozenVegetablesAreSmart || ingredient.whyCabbageIsTheMVPVegetable ? `
                                 <h4>Why This Works:</h4>
                                 <ul class="content-list">
-                                    ${(ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || []).map(item => `<li>${item}</li>`).join('')}
+                                    ${(ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || ingredient.whyRiceDominates || ingredient.whyPastaWins || ingredient.whyOatsAreUnderrated || ingredient.whyPotatoesArePerfect || ingredient.whyFrozenVegetablesAreSmart || ingredient.whyCabbageIsTheMVPVegetable || []).map(item => `<li>${item}</li>`).join('')}
                                 </ul>
                             ` : ''}
                             
-                            ${ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy ? `
+                            ${ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || ingredient.mealIdeasThatTransform || ingredient.mealIdeasThatComfort || ingredient.mealIdeasBeyondBasic || ingredient.mealIdeasThatFillYouUp || ingredient.mealIdeasThatAddColor || ingredient.mealIdeasThatSurprise || ingredient.mealIdeasBeyondSandwiches ? `
                                 <div class="meal-ideas">
                                     <h4>Meal Ideas:</h4>
-                                    ${(ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || []).map(meal => `
+                                    ${(ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || ingredient.mealIdeasThatTransform || ingredient.mealIdeasThatComfort || ingredient.mealIdeasBeyondBasic || ingredient.mealIdeasThatFillYouUp || ingredient.mealIdeasThatAddColor || ingredient.mealIdeasThatSurprise || ingredient.mealIdeasBeyondSandwiches || []).map(meal => `
                                         <div class="meal-idea">
                                             <h5>${meal.meal} - ${meal.cost}</h5>
                                             <p>${meal.description}</p>
                                             <p><em>${meal.appeal}</em></p>
                                         </div>
                                     `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${ingredient.storageLongevityTips ? `
+                                <div class="storage-tips">
+                                    <h4>Storage & Longevity Tips:</h4>
+                                    <ul>${ingredient.storageLongevityTips.map(tip => `<li>${tip}</li>`).join('')}</ul>
                                 </div>
                             ` : ''}
                         </div>
@@ -830,6 +1115,19 @@ function renderArticle(articleData) {
                                 <div class="recommendations">
                                     <h4>Recommendations:</h4>
                                     ${item.deskRecommendations.map(rec => `
+                                        <div class="recommendation-item">
+                                            <h5>${rec.category}</h5>
+                                            <p><strong>${rec.product}</strong></p>
+                                            <p>${rec.description}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${item.chairRecommendations ? `
+                                <div class="recommendations">
+                                    <h4>Chair Recommendations:</h4>
+                                    ${item.chairRecommendations.map(rec => `
                                         <div class="recommendation-item">
                                             <h5>${rec.category}</h5>
                                             <p><strong>${rec.product}</strong></p>
@@ -883,6 +1181,88 @@ function renderArticle(articleData) {
                 });
             }
             
+            // Handle ENVIRONMENT
+            if (section.environment) {
+                section.environment.forEach(env => {
+                    contentHTML += `
+                        <div class="environment-block">
+                            <h3 class="subsection-heading">${env.environmentTitle}</h3>
+                            ${env.description ? `<p>${env.description}</p>` : ''}
+                            ${env.personalExperience ? `<div class="highlight-text">${env.personalExperience}</div>` : ''}
+                            
+                            ${env.naturalVsArtificialLight ? `
+                                <div class="lighting-section">
+                                    <h4>Natural vs Artificial Light:</h4>
+                                    ${env.naturalVsArtificialLight.naturalLightOptimal ? `
+                                        <h5>Natural Light (Optimal):</h5>
+                                        <ul>${env.naturalVsArtificialLight.naturalLightOptimal.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    ` : ''}
+                                    ${env.naturalVsArtificialLight.whenNaturalLightNotEnough ? `
+                                        <h5>When Natural Light Isn't Enough:</h5>
+                                        <ul>${env.naturalVsArtificialLight.whenNaturalLightNotEnough.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            ${env.artificialLightingThatWorks ? `
+                                <div class="lighting-recommendations">
+                                    <h4>Artificial Lighting That Works:</h4>
+                                    ${env.artificialLightingThatWorks.map(light => `
+                                        <div class="lighting-item">
+                                            <h5>${light.type}</h5>
+                                            <p>${light.description}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${env.lightingTip ? `<div class="tip-box">${env.lightingTip}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle COMFORT
+            if (section.comfort) {
+                section.comfort.forEach(comfort => {
+                    contentHTML += `
+                        <div class="comfort-block">
+                            <h3 class="subsection-heading">${comfort.comfortTitle}</h3>
+                            ${comfort.description ? `<p>${comfort.description}</p>` : ''}
+                            ${comfort.personalExperience ? `<div class="highlight-text">${comfort.personalExperience}</div>` : ''}
+                            
+                            ${comfort.plantsMoreThanDecoration ? `
+                                <div class="plants-section">
+                                    <h4>Plants: More Than Decoration</h4>
+                                    ${comfort.plantsMoreThanDecoration.benefits ? `
+                                        <h5>Benefits:</h5>
+                                        <ul>${comfort.plantsMoreThanDecoration.benefits.map(benefit => `<li>${benefit}</li>`).join('')}</ul>
+                                    ` : ''}
+                                    ${comfort.plantsMoreThanDecoration.bestOfficePlants ? `
+                                        <h5>Best Office Plants:</h5>
+                                        <ul>${comfort.plantsMoreThanDecoration.bestOfficePlants.map(plant => `<li>${plant}</li>`).join('')}</ul>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            ${comfort.decorThatMotivates ? `
+                                <div class="decor-section">
+                                    <h4>Decor That Motivates:</h4>
+                                    ${comfort.decorThatMotivates.whatWorks ? `
+                                        ${comfort.decorThatMotivates.whatWorks.map(item => `
+                                            <div class="decor-item">
+                                                <h5>${item.item}</h5>
+                                                <p>${item.description}</p>
+                                            </div>
+                                        `).join('')}
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
             // Handle SYSTEMS
             if (section.systems) {
                 section.systems.forEach(system => {
@@ -903,6 +1283,20 @@ function renderArticle(articleData) {
                                 <div class="tip-box">
                                     <h4>Tracking Method:</h4>
                                     <p>${system.trackingMethod}</p>
+                                </div>
+                            ` : ''}
+                            
+                            ${system.virtualWorkoutBuddy ? `
+                                <div class="accountability-method">
+                                    <h4>Virtual Workout Buddy:</h4>
+                                    <ul>${system.virtualWorkoutBuddy.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${system.workoutClothesAsVisualCues ? `
+                                <div class="environment-tip">
+                                    <h4>Workout Clothes as Visual Cues:</h4>
+                                    <ul>${system.workoutClothesAsVisualCues.map(item => `<li>${item}</li>`).join('')}</ul>
                                 </div>
                             ` : ''}
                         </div>
@@ -1066,6 +1460,113 @@ function renderArticle(articleData) {
         });
     }
     
+    // Add additional top-level content sections
+    if (articleData.strategicCombinations) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Strategic Combinations</h2>
+                ${articleData.strategicCombinations.map(combo => `
+                    <div class="combination-block">
+                        <h3>${combo.combination || combo.strategy}</h3>
+                        ${combo.ingredients ? `<p><strong>Ingredients:</strong> ${combo.ingredients}</p>` : ''}
+                        ${combo.result ? `<p><strong>Result:</strong> ${combo.result}</p>` : ''}
+                        ${combo.strategy ? `<p>${combo.strategy}</p>` : ''}
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+    
+    if (articleData.dailyMealStructure) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Daily Meal Structure - ${articleData.dailyMealStructure.totalCost}</h2>
+                <div class="meal-breakdown">
+                    ${articleData.dailyMealStructure.breakdown.map(meal => `
+                        <div class="meal-item">
+                            <h4>${meal.meal} - ${meal.cost}</h4>
+                            <p>${meal.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <p><strong>Appeal:</strong> ${articleData.dailyMealStructure.appeal}</p>
+            </section>
+        `;
+    }
+    
+    if (articleData.completeSetupGuide) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Complete Setup Guide</h2>
+                ${articleData.completeSetupGuide.map(phase => `
+                    <div class="phase-block">
+                        <h3>${phase.phase} - Budget: ${phase.budget}</h3>
+                        <p><strong>Goal:</strong> ${phase.goal}</p>
+                        <h4>Items:</h4>
+                        <ul>${phase.items.map(item => `<li>${item}</li>`).join('')}</ul>
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+    
+    if (articleData.moneySavingTips) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Money Saving Tips</h2>
+                <ul class="tips-list">
+                    ${articleData.moneySavingTips.map(tip => `<li>${tip}</li>`).join('')}
+                </ul>
+            </section>
+        `;
+    }
+    
+    if (articleData.commonMistakes) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Common Mistakes</h2>
+                ${articleData.commonMistakes.map(mistake => `
+                    <div class="mistake-item">
+                        <h4>${mistake.mistake}</h4>
+                        <p>${mistake.explanation}</p>
+                        <p><strong>Solution:</strong> ${mistake.solution}</p>
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+    
+    if (articleData.troubleshootingGuide) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Troubleshooting Guide</h2>
+                ${articleData.troubleshootingGuide.map(issue => `
+                    <div class="troubleshoot-item">
+                        <h4>Issue: ${issue.issue}</h4>
+                        <h5>Solutions:</h5>
+                        <ul>${issue.solutions.map(solution => `<li>${solution}</li>`).join('')}</ul>
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+    
+    if (articleData.implementationGuide) {
+        contentHTML += `
+            <section class="article-section">
+                <h2 class="section-heading">Implementation Guide</h2>
+                ${articleData.implementationGuide.map(phase => `
+                    <div class="implementation-phase">
+                        <h3>${phase.phase}</h3>
+                        <p><strong>Strategies:</strong> ${phase.strategies.join(', ')}</p>
+                        <p><strong>Goal:</strong> ${phase.goal}</p>
+                        <p><strong>Success Metric:</strong> ${phase.successMetric}</p>
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+    
     // Add conclusion if it exists
     if (articleData.conclusion) {
         contentHTML += `
@@ -1073,6 +1574,7 @@ function renderArticle(articleData) {
                 <h3>Key Takeaways</h3>
                 ${articleData.conclusion.mainMessage ? `<p><strong>${articleData.conclusion.mainMessage}</strong></p>` : ''}
                 ${articleData.conclusion.keyInsight ? `<p>${articleData.conclusion.keyInsight}</p>` : ''}
+                ${articleData.conclusion.actionPlan ? `<p>${articleData.conclusion.actionPlan}</p>` : ''}
                 ${articleData.conclusion.callToAction ? `<p>${articleData.conclusion.callToAction}</p>` : ''}
             </div>
         `;
