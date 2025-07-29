@@ -562,12 +562,12 @@ const newsletter = {
             this.saveEmailLocally(email);
             
             const formData = new FormData();
-            formData.append('email', 'yousraelassoui6@gmail.com');
+            formData.append('email', 'yarraelliz@topicksonline.com');
             formData.append('_subject', 'Newsletter Subscription - TopPicksOnline');
             formData.append('subscriber_email', email);
             formData.append('_next', window.location.href);
             
-            await fetch('https://formsubmit.co/yousraelassoui6@gmail.com', {
+            await fetch('https://formsubmit.co/yarraelliz@topicksonline.com', {
                 method: 'POST',
                 body: formData
             });
