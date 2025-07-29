@@ -90,22 +90,6 @@
       "author": "Jessica Chen"
     },
     {
-      "id": "articles/Lose Belly Fat At Home",
-      "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
-      "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
-      "category": "At-Home Fitness",
-      "tags": [
-        "Belly Fat",
-        "Weight Loss",
-        "Home Workouts",
-        "Fat Burning",
-        "Core Exercises",
-        "Healthy Eating",
-        "No Gym"
-      ],
-      "author": "Maya Singh"
-    },
-    {
       "id": "articles/Lose Weight at Home Without a Gym",
       "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
       "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss.",
@@ -119,6 +103,22 @@
         "nutrition tips"
       ],
       "author": "Rachel Chen"
+    },
+    {
+      "id": "articles/Lose-Belly-Fat-At-Home",
+      "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
+      "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
+      "category": "At-Home Fitness",
+      "tags": [
+        "Belly Fat",
+        "Weight Loss",
+        "Home Workouts",
+        "Fat Burning",
+        "Core Exercises",
+        "Healthy Eating",
+        "No Gym"
+      ],
+      "author": "Maya Singh"
     },
     {
       "id": "articles/No-Cook Budget Meals",
