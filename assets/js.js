@@ -631,7 +631,386 @@ function renderArticle(articleData) {
                     ${section.description ? `<p class="section-description">${section.description}</p>` : ''}
             `;
             
-            // Handle different section content types
+            // Handle PRINCIPLES
+            if (section.principles) {
+                section.principles.forEach(principle => {
+                    contentHTML += `
+                        <div class="principle-block">
+                            <h3 class="subsection-heading">${principle.principleTitle || principle.title}</h3>
+                            ${principle.description ? `<p>${principle.description}</p>` : ''}
+                            ${principle.personalExperience ? `<div class="highlight-text">${principle.personalExperience}</div>` : ''}
+                            
+                            ${principle.threePillars ? `
+                                <div class="pillars-content">
+                                    <h4>The Three Pillars:</h4>
+                                    <ul class="content-list">
+                                        <li><strong>Nutrition:</strong> ${principle.threePillars.nutrition}</li>
+                                        <li><strong>Movement:</strong> ${principle.threePillars.movement}</li>
+                                        <li><strong>Mindset:</strong> ${principle.threePillars.mindset}</li>
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${principle.keyInsight ? `<div class="tip-box">${principle.keyInsight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle STRATEGIES
+            if (section.strategies) {
+                section.strategies.forEach(strategy => {
+                    contentHTML += `
+                        <div class="strategy-block">
+                            <h3 class="subsection-heading">${strategy.strategyTitle || strategy.title}</h3>
+                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
+                            ${strategy.personalExperience ? `<div class="highlight-text">${strategy.personalExperience}</div>` : ''}
+                            
+                            ${strategy.tdeeCalculation ? `
+                                <div class="calculation-box">
+                                    <h4>TDEE Calculation Example:</h4>
+                                    <p><strong>Definition:</strong> ${strategy.tdeeCalculation.definition}</p>
+                                    <p><strong>Example:</strong> ${strategy.tdeeCalculation.myExample}</p>
+                                    <p><strong>Result:</strong> ${strategy.tdeeCalculation.result}</p>
+                                    <p><strong>Target:</strong> ${strategy.tdeeCalculation.deficitTarget}</p>
+                                </div>
+                            ` : ''}
+                            
+                            ${strategy.dailyEatingStructure ? `
+                                <div class="meal-structure">
+                                    <h4>Daily Eating Structure (${strategy.dailyEatingStructure.total}):</h4>
+                                    <ul>
+                                        <li><strong>Breakfast:</strong> ${strategy.dailyEatingStructure.breakfast}</li>
+                                        <li><strong>Lunch:</strong> ${strategy.dailyEatingStructure.lunch}</li>
+                                        <li><strong>Snack:</strong> ${strategy.dailyEatingStructure.snack}</li>
+                                        <li><strong>Dinner:</strong> ${strategy.dailyEatingStructure.dinner}</li>
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${strategy.keyInsight ? `<div class="tip-box">${strategy.keyInsight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle HABITS
+            if (section.habits) {
+                section.habits.forEach(habit => {
+                    contentHTML += `
+                        <div class="habit-block">
+                            <h3 class="subsection-heading">${habit.habitTitle || habit.title}</h3>
+                            ${habit.description ? `<p>${habit.description}</p>` : ''}
+                            ${habit.personalExperience ? `<div class="highlight-text">${habit.personalExperience}</div>` : ''}
+                            
+                            ${habit.whySleepMatters ? `
+                                <h4>Why Sleep Matters:</h4>
+                                <ul class="content-list">
+                                    ${habit.whySleepMatters.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${habit.sleepOptimization ? `
+                                <h4>Sleep Optimization:</h4>
+                                <ul class="content-list">
+                                    ${habit.sleepOptimization.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${habit.movementStrategies ? `
+                                <h4>Movement Strategies:</h4>
+                                <ul class="content-list">
+                                    ${habit.movementStrategies.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${habit.stressReductionTechniques ? `
+                                <h4>Stress Reduction Techniques:</h4>
+                                <ul class="content-list">
+                                    ${habit.stressReductionTechniques.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle WORKOUT TYPES
+            if (section.workoutTypes) {
+                section.workoutTypes.forEach(workout => {
+                    contentHTML += `
+                        <div class="workout-block">
+                            <h3 class="subsection-heading">${workout.workoutTitle}: ${workout.description}</h3>
+                            ${workout.personalExperience ? `<div class="highlight-text">${workout.personalExperience}</div>` : ''}
+                            
+                            ${workout.exercises ? `
+                                <div class="exercises-list">
+                                    <h4>Exercises:</h4>
+                                    ${workout.exercises.map(exercise => `
+                                        <div class="exercise-item">
+                                            <h5>${exercise.exercise}</h5>
+                                            <p><strong>Duration:</strong> ${exercise.duration}</p>
+                                            <p><strong>Technique:</strong> ${exercise.technique}</p>
+                                            ${exercise.benefits ? `<p><strong>Benefits:</strong> ${exercise.benefits}</p>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${workout.progressionTips ? `
+                                <div class="tip-box">
+                                    <h4>Progression Tips:</h4>
+                                    <ul>
+                                        ${workout.progressionTips.map(tip => `<li>${tip}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle INGREDIENTS
+            if (section.ingredients) {
+                section.ingredients.forEach(ingredient => {
+                    contentHTML += `
+                        <div class="ingredient-block">
+                            <h3 class="subsection-heading">${ingredient.ingredientTitle} - ${ingredient.cost}</h3>
+                            ${ingredient.description ? `<p><strong>${ingredient.description}</strong></p>` : ''}
+                            ${ingredient.personalExperience ? `<div class="highlight-text">${ingredient.personalExperience}</div>` : ''}
+                            
+                            ${ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins ? `
+                                <h4>Why This Works:</h4>
+                                <ul class="content-list">
+                                    ${(ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || []).map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            
+                            ${ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy ? `
+                                <div class="meal-ideas">
+                                    <h4>Meal Ideas:</h4>
+                                    ${(ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || []).map(meal => `
+                                        <div class="meal-idea">
+                                            <h5>${meal.meal} - ${meal.cost}</h5>
+                                            <p>${meal.description}</p>
+                                            <p><em>${meal.appeal}</em></p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle FURNITURE
+            if (section.furniture) {
+                section.furniture.forEach(item => {
+                    contentHTML += `
+                        <div class="furniture-block">
+                            <h3 class="subsection-heading">${item.furnitureTitle}</h3>
+                            ${item.description ? `<p>${item.description}</p>` : ''}
+                            ${item.personalExperience ? `<div class="highlight-text">${item.personalExperience}</div>` : ''}
+                            
+                            ${item.deskRequirements ? `
+                                <div class="requirements-section">
+                                    <h4>Desk Requirements:</h4>
+                                    ${item.deskRequirements.sizeRequirements ? `
+                                        <h5>Size Requirements:</h5>
+                                        <ul>${item.deskRequirements.sizeRequirements.map(req => `<li>${req}</li>`).join('')}</ul>
+                                    ` : ''}
+                                    ${item.deskRequirements.stabilityIsEverything ? `
+                                        <h5>Stability Matters:</h5>
+                                        <ul>${item.deskRequirements.stabilityIsEverything.map(req => `<li>${req}</li>`).join('')}</ul>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            ${item.deskRecommendations ? `
+                                <div class="recommendations">
+                                    <h4>Recommendations:</h4>
+                                    ${item.deskRecommendations.map(rec => `
+                                        <div class="recommendation-item">
+                                            <h5>${rec.category}</h5>
+                                            <p><strong>${rec.product}</strong></p>
+                                            <p>${rec.description}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle TECHNOLOGY
+            if (section.technology) {
+                section.technology.forEach(tech => {
+                    contentHTML += `
+                        <div class="tech-block">
+                            <h3 class="subsection-heading">${tech.techTitle}</h3>
+                            ${tech.description ? `<p>${tech.description}</p>` : ''}
+                            ${tech.personalExperience ? `<div class="highlight-text">${tech.personalExperience}</div>` : ''}
+                            
+                            ${tech.monitorSetup ? `
+                                <div class="monitor-setup">
+                                    <h4>Monitor Setup:</h4>
+                                    ${tech.monitorSetup.singleVsDualVsUltrawide ? `
+                                        <h5>Setup Comparison:</h5>
+                                        <ul>${tech.monitorSetup.singleVsDualVsUltrawide.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    ` : ''}
+                                    ${tech.monitorSetup.optimalDualSetup ? `
+                                        <h5>Optimal Dual Setup:</h5>
+                                        <ul>${tech.monitorSetup.optimalDualSetup.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            ${tech.peripheralRecommendations ? `
+                                <div class="recommendations">
+                                    <h4>Peripheral Recommendations:</h4>
+                                    ${tech.peripheralRecommendations.map(rec => `
+                                        <div class="recommendation-item">
+                                            <h5>${rec.category}</h5>
+                                            <p><strong>${rec.product}</strong></p>
+                                            <p>${rec.description}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle SYSTEMS
+            if (section.systems) {
+                section.systems.forEach(system => {
+                    contentHTML += `
+                        <div class="system-block">
+                            <h3 class="subsection-heading">${system.systemTitle}</h3>
+                            ${system.description ? `<p>${system.description}</p>` : ''}
+                            ${system.personalExperience ? `<div class="highlight-text">${system.personalExperience}</div>` : ''}
+                            
+                            ${system.goalEvolution ? `
+                                <div class="goal-evolution">
+                                    <h4>Goal Evolution:</h4>
+                                    <ul>${system.goalEvolution.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${system.trackingMethod ? `
+                                <div class="tip-box">
+                                    <h4>Tracking Method:</h4>
+                                    <p>${system.trackingMethod}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle CONCEPTS
+            if (section.concepts) {
+                section.concepts.forEach(concept => {
+                    contentHTML += `
+                        <div class="concept-block">
+                            <h3 class="subsection-heading">${concept.conceptTitle}</h3>
+                            ${concept.description ? `<p>${concept.description}</p>` : ''}
+                            ${concept.personalExperience ? `<div class="highlight-text">${concept.personalExperience}</div>` : ''}
+                            
+                            ${concept.subcutaneousFat ? `
+                                <div class="fat-type">
+                                    <h4>Subcutaneous Fat:</h4>
+                                    <p><strong>Definition:</strong> ${concept.subcutaneousFat.definition}</p>
+                                    <ul>${concept.subcutaneousFat.characteristics.map(char => `<li>${char}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${concept.visceralFat ? `
+                                <div class="fat-type">
+                                    <h4>Visceral Fat:</h4>
+                                    <p><strong>Definition:</strong> ${concept.visceralFat.definition}</p>
+                                    <ul>${concept.visceralFat.characteristics.map(char => `<li>${char}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${concept.keyInsight ? `<div class="tip-box">${concept.keyInsight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle CHALLENGES
+            if (section.challenges) {
+                section.challenges.forEach(challenge => {
+                    contentHTML += `
+                        <div class="challenge-block">
+                            <h3 class="subsection-heading">${challenge.challengeTitle}</h3>
+                            ${challenge.description ? `<p>${challenge.description}</p>` : ''}
+                            ${challenge.personalExperience ? `<div class="highlight-text">${challenge.personalExperience}</div>` : ''}
+                            
+                            ${challenge.gymVsHomeReality ? `
+                                <div class="comparison">
+                                    <h4>Gym vs Home Reality:</h4>
+                                    <ul>${challenge.gymVsHomeReality.map(item => `<li>${item}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${challenge.myFailedAttempts ? `
+                                <div class="failed-attempts">
+                                    <h4>Failed Attempts:</h4>
+                                    <ul>${challenge.myFailedAttempts.map(attempt => `<li>${attempt}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${challenge.keyInsight ? `<div class="tip-box">${challenge.keyInsight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Handle NUTRITIONAL STRATEGIES
+            if (section.nutritionStrategies) {
+                section.nutritionStrategies.forEach(strategy => {
+                    contentHTML += `
+                        <div class="nutrition-block">
+                            <h3 class="subsection-heading">${strategy.strategyTitle}</h3>
+                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
+                            ${strategy.personalExperience ? `<div class="highlight-text">${strategy.personalExperience}</div>` : ''}
+                            
+                            ${strategy.foodsToReduceOrEliminate ? `
+                                <div class="foods-section">
+                                    <h4>Foods to Reduce or Eliminate:</h4>
+                                    ${strategy.foodsToReduceOrEliminate.map(food => `
+                                        <div class="food-category">
+                                            <h5>${food.category}</h5>
+                                            <p>${food.explanation}</p>
+                                            <p><strong>Examples:</strong> ${food.examples || food.effects}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${strategy.foodsThatAccelerateFatLoss ? `
+                                <div class="foods-section">
+                                    <h4>Foods That Accelerate Fat Loss:</h4>
+                                    ${strategy.foodsThatAccelerateFatLoss.map(food => `
+                                        <div class="food-category">
+                                            <h5>${food.category}</h5>
+                                            <p>${food.benefits}</p>
+                                            <p><strong>Examples:</strong> ${food.examples}</p>
+                                            ${food.target ? `<p><strong>Target:</strong> ${food.target}</p>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Keep existing handlers for MISTAKES and TOOLS
             if (section.mistakes) {
                 section.mistakes.forEach(mistake => {
                     contentHTML += `
@@ -662,7 +1041,6 @@ function renderArticle(articleData) {
                 });
             }
             
-            // Handle other section content types
             if (section.tools) {
                 section.tools.forEach(tool => {
                     contentHTML += `
