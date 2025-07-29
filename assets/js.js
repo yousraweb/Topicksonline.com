@@ -89,29 +89,344 @@ const showLoading = () => {
     $('#main-content').innerHTML = '<div class="loading">Loading...</div>';
 };
 
-// Template functions
-const templates = {
-    tutorialCard: (tutorial) => `
-        <div class="tutorial-card animate-in" onclick="navigateTo('/articles/${tutorial.id.replace('articles/', '')}')" data-category="${tutorial.category}">
-            <div class="tutorial-thumbnail" style="position: relative;">
-                <!-- Loader shown until image loads -->
-                <div class="image-loader"></div>
-                ${tutorial.image ? `<img src="${tutorial.image}" 
-                                       alt="${tutorial.title}" 
-                                       onload="this.previousElementSibling.style.display='none'" 
-                                       onerror="this.previousElementSibling.style.display='none'; this.style.display='none';" />` : ''}
-            </div>
-            <div class="tutorial-content">
-                <span class="tutorial-category">${tutorial.category}</span>
-                <h3 class="tutorial-title">${tutorial.title}</h3>
-                <p class="tutorial-description">${tutorial.description}</p>
-                <div class="tutorial-meta">
-                    <span>${tutorial.author}</span>
-                    <span>${tutorial.readTime || tutorial.date || ''}</span>
+// HERO SLIDER CLASS
+class HeroSlider {
+    constructor(container, slides, options = {}) {
+        this.container = container;
+        this.slides = slides;
+        this.currentSlide = 0;
+        this.isPlaying = true;
+        this.options = {
+            autoPlayInterval: 5000,
+            transitionDuration: 600,
+            ...options
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        this.render();
+        this.bindEvents();
+        this.startAutoPlay();
+    }
+    
+    render() {
+        const dotsHTML = this.slides.map((_, index) => 
+            `<div class="slider-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></div>`
+        ).join('');
+        
+        const slidesHTML = this.slides.map((slide, index) => `
+            <div class="slide" data-slide="${index}">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-category">${slide.category}</span>
+                    <h2 class="slide-title">${slide.title}</h2>
+                    <p class="slide-description">${slide.description}</p>
+                    <div class="slide-meta">
+                        <span>By ${slide.author}</span>
+                        <span>•</span>
+                        <span>${slide.readTime || slide.date}</span>
+                    </div>
+                    <a href="/articles/${slide.id.replace('articles/', '')}" class="slide-cta">
+                        Read Article →
+                    </a>
+                </div>
+                <div class="slide-image">
+                    ${slide.image ? `<img src="${slide.image}" alt="${slide.title}" loading="lazy" />` : ''}
                 </div>
             </div>
-        </div>
-    `,
+        `).join('');
+        
+        this.container.innerHTML = `
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    ${slidesHTML}
+                </div>
+                
+                <button class="slider-nav prev" onclick="heroSlider.prevSlide()">‹</button>
+                <button class="slider-nav next" onclick="heroSlider.nextSlide()">›</button>
+                
+                <div class="slider-dots">
+                    ${dotsHTML}
+                </div>
+                
+                <div class="slider-progress"></div>
+            </div>
+        `;
+        
+        this.wrapper = this.container.querySelector('.slider-wrapper');
+        this.dots = this.container.querySelectorAll('.slider-dot');
+        this.progress = this.container.querySelector('.slider-progress');
+    }
+    
+    bindEvents() {
+        // Dot navigation
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        this.container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        this.container.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+        });
+        
+        // Pause on hover
+        this.container.addEventListener('mouseenter', () => {
+            this.pauseAutoPlay();
+        });
+        
+        this.container.addEventListener('mouseleave', () => {
+            this.startAutoPlay();
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.prevSlide();
+            if (e.key === 'ArrowRight') this.nextSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                this.toggleAutoPlay();
+            }
+        });
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlider();
+        this.resetAutoPlay();
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.updateSlider();
+        this.resetAutoPlay();
+    }
+    
+    prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+        this.updateSlider();
+        this.resetAutoPlay();
+    }
+    
+    updateSlider() {
+        const translateX = -this.currentSlide * 100;
+        this.wrapper.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+    
+    startAutoPlay() {
+        if (!this.isPlaying) return;
+        
+        this.autoPlayTimer = setInterval(() => {
+            this.nextSlide();
+        }, this.options.autoPlayInterval);
+        
+        // Progress bar animation
+        this.progress.style.width = '0%';
+        this.progress.style.transition = `width ${this.options.autoPlayInterval}ms linear`;
+        
+        setTimeout(() => {
+            this.progress.style.width = '100%';
+        }, 50);
+    }
+    
+    pauseAutoPlay() {
+        clearInterval(this.autoPlayTimer);
+        this.progress.style.transition = 'none';
+    }
+    
+    resetAutoPlay() {
+        this.pauseAutoPlay();
+        if (this.isPlaying) {
+            this.startAutoPlay();
+        }
+    }
+    
+    toggleAutoPlay() {
+        this.isPlaying = !this.isPlaying;
+        if (this.isPlaying) {
+            this.startAutoPlay();
+        } else {
+            this.pauseAutoPlay();
+        }
+    }
+    
+    destroy() {
+        clearInterval(this.autoPlayTimer);
+        this.container.innerHTML = '';
+    }
+}
+
+// Global slider instance
+let heroSlider = null;
+
+// PAGINATION CLASS
+class Pagination {
+    constructor(items, itemsPerPage = 12) {
+        this.allItems = items;
+        this.itemsPerPage = itemsPerPage;
+        this.currentPage = 1;
+        this.totalPages = Math.ceil(items.length / itemsPerPage);
+    }
+    
+    getCurrentPageItems() {
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        return this.allItems.slice(startIndex, endIndex);
+    }
+    
+    goToPage(page) {
+        if (page >= 1 && page <= this.totalPages) {
+            this.currentPage = page;
+            return true;
+        }
+        return false;
+    }
+    
+    nextPage() {
+        return this.goToPage(this.currentPage + 1);
+    }
+    
+    prevPage() {
+        return this.goToPage(this.currentPage - 1);
+    }
+    
+    getPageNumbers() {
+        const pages = [];
+        const maxVisible = 7;
+        
+        if (this.totalPages <= maxVisible) {
+            for (let i = 1; i <= this.totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            // Always show first page
+            pages.push(1);
+            
+            if (this.currentPage > 4) {
+                pages.push('...');
+            }
+            
+            // Show current page and surrounding pages
+            const start = Math.max(2, this.currentPage - 1);
+            const end = Math.min(this.totalPages - 1, this.currentPage + 1);
+            
+            for (let i = start; i <= end; i++) {
+                if (!pages.includes(i)) {
+                    pages.push(i);
+                }
+            }
+            
+            if (this.currentPage < this.totalPages - 3) {
+                pages.push('...');
+            }
+            
+            // Always show last page
+            if (!pages.includes(this.totalPages)) {
+                pages.push(this.totalPages);
+            }
+        }
+        
+        return pages;
+    }
+    
+    renderPagination(onPageChange) {
+        if (this.totalPages <= 1) return '';
+        
+        const pages = this.getPageNumbers();
+        const startItem = (this.currentPage - 1) * this.itemsPerPage + 1;
+        const endItem = Math.min(this.currentPage * this.itemsPerPage, this.allItems.length);
+        
+        const pagesHTML = pages.map(page => {
+            if (page === '...') {
+                return '<span class="pagination-ellipsis">…</span>';
+            }
+            return `
+                <button class="pagination-button ${page === this.currentPage ? 'active' : ''}" 
+                        onclick="${onPageChange}(${page})">
+                    ${page}
+                </button>
+            `;
+        }).join('');
+        
+        return `
+            <div class="pagination-container">
+                <div class="pagination">
+                    <button class="pagination-button prev ${this.currentPage === 1 ? 'disabled' : ''}" 
+                            onclick="${onPageChange}(${this.currentPage - 1})" 
+                            ${this.currentPage === 1 ? 'disabled' : ''}>
+                        ‹
+                    </button>
+                    
+                    ${pagesHTML}
+                    
+                    <button class="pagination-button next ${this.currentPage === this.totalPages ? 'disabled' : ''}" 
+                            onclick="${onPageChange}(${this.currentPage + 1})"
+                            ${this.currentPage === this.totalPages ? 'disabled' : ''}>
+                        ›
+                    </button>
+                </div>
+                
+                <div class="pagination-info">
+                    Showing ${startItem}-${endItem} of ${this.allItems.length} articles
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Global pagination instances
+let categoryPagination = null;
+let searchPagination = null;
+
+// Template functions
+const templates = {
+    tutorialCard: (tutorial) => {
+        const imageHTML = tutorial.image ? 
+            `<img src="${tutorial.image}" 
+                 alt="${tutorial.title}" 
+                 onload="this.previousElementSibling.style.display='none'" 
+                 onerror="this.previousElementSibling.style.display='none'; this.style.display='none';" />` : '';
+        
+        return `
+            <div class="tutorial-card animate-in" onclick="navigateTo('/articles/${tutorial.id.replace('articles/', '')}')" data-category="${tutorial.category}">
+                <div class="tutorial-thumbnail" style="position: relative;">
+                    <div class="image-loader"></div>
+                    ${imageHTML}
+                </div>
+                <div class="tutorial-content">
+                    <span class="tutorial-category">${tutorial.category}</span>
+                    <h3 class="tutorial-title">${tutorial.title}</h3>
+                    <p class="tutorial-description">${tutorial.description}</p>
+                    <div class="tutorial-meta">
+                        <span>${tutorial.author}</span>
+                        <span>${tutorial.readTime || tutorial.date || ''}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
     
     dropdownItem: (item) => `
         <div class="dropdown-item">
@@ -121,7 +436,6 @@ const templates = {
 };
 
 // Newsletter Template Function
-// FINAL FIX: Newsletter system that works properly
 function renderNewsletterBlock(block) {
     const benefits = block.benefits || [
         { icon: "✨", text: "Weekly insights" },
@@ -130,6 +444,13 @@ function renderNewsletterBlock(block) {
     ];
 
     const uniqueId = Math.random().toString(36).substr(2, 9);
+    
+    const benefitsHTML = benefits.map(benefit => `
+        <div class="newsletter-benefit">
+            <span class="newsletter-benefit-icon">${benefit.icon}</span>
+            <span>${benefit.text}</span>
+        </div>
+    `).join('');
 
     return `
         <section class="newsletter-section" data-newsletter-id="${uniqueId}">
@@ -153,82 +474,56 @@ function renderNewsletterBlock(block) {
                     </button>
                 </form>
                 
-                <!-- SUCCESS/ERROR MESSAGES WITH UNIQUE IDS -->
                 <div class="newsletter-success" id="success-${uniqueId}" style="display: none;"></div>
                 <div class="newsletter-error" id="error-${uniqueId}" style="display: none;"></div>
                 
                 <div class="newsletter-benefits">
-                    ${benefits.map(benefit => `
-                        <div class="newsletter-benefit">
-                            <span class="newsletter-benefit-icon">${benefit.icon}</span>
-                            <span>${benefit.text}</span>
-                        </div>
-                    `).join('')}
+                    ${benefitsHTML}
                 </div>
             </div>
         </section>
     `;
 }
 
-// IMPROVED Newsletter object - no more alerts or stuck buttons
+// Newsletter functionality
 const newsletter = {
     init() {
         this.bindEvents();
-        console.log('📧 Newsletter system initialized - final version');
+        console.log('📧 Newsletter system initialized');
     },
 
     bindEvents() {
         document.addEventListener('submit', (e) => {
             if (e.target.classList.contains('newsletter-form')) {
                 e.preventDefault();
-                console.log('📝 Newsletter form submitted');
                 this.handleSubmit(e.target);
             }
         });
     },
 
     async handleSubmit(form) {
-        console.log('🚀 Processing newsletter subscription...');
-        
         const email = form.querySelector('.newsletter-input')?.value?.trim();
         const button = form.querySelector('.newsletter-button');
         const formId = form.getAttribute('data-form-id');
         
-        // Get message elements by ID to ensure they're found
         const successMsg = document.getElementById(`success-${formId}`);
         const errorMsg = document.getElementById(`error-${formId}`);
 
-        console.log('📋 Form elements found:', {
-            email: !!email,
-            button: !!button,
-            successMsg: !!successMsg,
-            errorMsg: !!errorMsg,
-            formId: formId
-        });
-
-        // Validate
         if (!email || !this.isValidEmail(email)) {
-            console.log('❌ Invalid email');
             this.showMessage(errorMsg, '⚠️ Please enter a valid email address.', 'error');
             return;
         }
 
-        // Set loading state
         this.setLoading(button, true);
         this.hideMessages(successMsg, errorMsg);
 
         try {
-            console.log('📨 Attempting to subscribe:', email);
-            
-            // Try the backend function with timeout
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 8000);
 
             const response = await fetch('/.netlify/functions/subscribe', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: email,
                     firstName: '',
@@ -241,8 +536,6 @@ const newsletter = {
             
             if (response.ok) {
                 const data = await response.json();
-                console.log('✅ API Success:', data);
-                
                 this.showMessage(successMsg, '🎉 ' + (data.message || 'Welcome to our newsletter!'), 'success');
                 form.reset();
                 this.trackSubscription(email);
@@ -252,32 +545,22 @@ const newsletter = {
             }
             
         } catch (error) {
-            console.error('❌ Subscription error:', error.name, error.message);
-            
             if (error.name === 'AbortError') {
-                console.log('⏰ Request timed out, trying fallback...');
                 await this.handleFallback(email, successMsg, errorMsg);
             } else if (error.message.includes('fetch')) {
-                console.log('🌐 Network error, trying fallback...');
                 await this.handleFallback(email, successMsg, errorMsg);
             } else {
                 this.showMessage(errorMsg, '⚠️ ' + error.message, 'error');
             }
         } finally {
-            // ALWAYS reset button state
-            console.log('🔄 Resetting button state');
             this.setLoading(button, false);
         }
     },
 
     async handleFallback(email, successMsg, errorMsg) {
         try {
-            console.log('🔄 Using fallback method...');
-            
-            // Save locally
             this.saveEmailLocally(email);
             
-            // Try simple email service
             const formData = new FormData();
             formData.append('email', 'yousraelassoui6@gmail.com');
             formData.append('_subject', 'Newsletter Subscription - TopPicksOnline');
@@ -290,10 +573,8 @@ const newsletter = {
             });
             
             this.showMessage(successMsg, '🎉 Thank you! We\'ll add you to our newsletter.', 'success');
-            console.log('✅ Fallback successful');
             
         } catch (fallbackError) {
-            console.error('❌ Fallback failed:', fallbackError);
             this.showMessage(errorMsg, '⚠️ Please try again later or contact us directly.', 'error');
         }
     },
@@ -306,21 +587,14 @@ const newsletter = {
             page: window.location.href
         });
         localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-        console.log('💾 Email saved locally');
     },
 
     showMessage(element, message, type) {
-        if (!element) {
-            console.warn('⚠️ Message element not found, using console instead');
-            console.log(`${type.toUpperCase()}: ${message}`);
-            return;
-        }
+        if (!element) return;
         
         element.innerHTML = message;
         element.style.display = 'block';
         this.styleMessage(element, type);
-        
-        console.log(`📢 Showing ${type} message:`, message);
     },
 
     hideMessages(successMsg, errorMsg) {
@@ -335,21 +609,16 @@ const newsletter = {
     },
 
     setLoading(button, loading) {
-        if (!button) {
-            console.warn('⚠️ Button not found');
-            return;
-        }
+        if (!button) return;
         
         if (loading) {
             button.disabled = true;
             button.innerHTML = '⏳ Subscribing...';
             button.style.opacity = '0.8';
-            console.log('🔄 Button set to loading state');
         } else {
             button.disabled = false;
             button.innerHTML = button.getAttribute('data-original-text') || 'Subscribe';
             button.style.opacity = '1';
-            console.log('✅ Button reset to normal state');
         }
     },
 
@@ -377,52 +646,8 @@ const newsletter = {
                 method: 'website_form'
             });
         }
-        console.log('📊 Newsletter subscription tracked');
     }
 };
-
-// Also ensure you have this helper function to check stored emails:
-window.getNewsletterSubscribers = function() {
-    const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-    console.log('📧 Newsletter Subscribers:');
-    console.table(subscribers);
-    return subscribers;
-};
-
-// Auto-save button text
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const buttons = document.querySelectorAll('.newsletter-button');
-        buttons.forEach(button => {
-            if (!button.getAttribute('data-original-text')) {
-                button.setAttribute('data-original-text', button.textContent);
-            }
-        });
-    }, 1000);
-});
-
-// Add CSS for loading spinner and shake animation
-const additionalCSS = `
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-.newsletter-error {
-    animation-fill-mode: both;
-}
-`;
-
-// Inject additional CSS
-const style = document.createElement('style');
-style.textContent = additionalCSS;
-document.head.appendChild(style);
 
 // Filter functionality
 const filters = {
@@ -431,7 +656,6 @@ const filters = {
     generateChips(container, categories) {
         container.innerHTML = '';
         
-        // Add "All" chip
         const allChip = createElement('button', {
             className: 'filter-chip active',
             textContent: 'All',
@@ -439,7 +663,6 @@ const filters = {
         });
         container.appendChild(allChip);
         
-        // Add category chips
         categories.forEach(cat => {
             const chip = createElement('button', {
                 className: 'filter-chip',
@@ -453,12 +676,10 @@ const filters = {
     apply(category) {
         this.currentCategory = category;
         
-        // Update active chip
         $$('.filter-chip').forEach(chip => {
             chip.classList.toggle('active', chip.textContent === category);
         });
         
-        // Filter cards
         const cards = $$('.tutorial-card');
         let visibleCount = 0;
         
@@ -480,10 +701,8 @@ const filters = {
             }
         });
         
-        // Show no results message if needed
         this.handleNoResults(visibleCount, category);
         
-        // Update URL
         const url = new URL(window.location);
         if (category === 'All') {
             url.searchParams.delete('filter');
@@ -522,15 +741,18 @@ async function renderNavigation(navData, commonData) {
         
         if (item.title === 'Categories' && commonData.categories?.categories) {
             const topCategories = commonData.categories.categories.slice(0, 10);
+            const topCategoriesHTML = topCategories.map(templates.dropdownItem).join('');
+            const allCategoriesHTML = commonData.categories.categories.length > 10 ? `
+                <div class="dropdown-item" style="border-top: 1px solid var(--border); padding-top: 12px;">
+                    <a href="/categories" class="nav-link" style="font-style: italic;">View all categories →</a>
+                </div>
+            ` : '';
+            
             li.innerHTML = `
                 <a href="#" class="nav-link">${item.title} ▾</a>
                 <div class="dropdown">
-                    ${topCategories.map(templates.dropdownItem).join('')}
-                    ${commonData.categories.categories.length > 10 ? `
-                        <div class="dropdown-item" style="border-top: 1px solid var(--border); padding-top: 12px;">
-                            <a href="/categories" class="nav-link" style="font-style: italic;">View all categories →</a>
-                        </div>
-                    ` : ''}
+                    ${topCategoriesHTML}
+                    ${allCategoriesHTML}
                 </div>
             `;
         } else if (item.subItems) {
@@ -548,6 +770,25 @@ async function renderNavigation(navData, commonData) {
     });
 }
 
+// PAGINATION FUNCTIONS
+window.changeCategoryPage = function(page) {
+    if (categoryPagination && categoryPagination.goToPage(page)) {
+        renderCategoryPageContent();
+        scrollToTop();
+    }
+};
+
+window.changeSearchPage = function(page) {
+    if (searchPagination && searchPagination.goToPage(page)) {
+        renderSearchPageContent();
+        scrollToTop();
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // Page Rendering Functions
 function renderHomepage(pageData) {
     const mainContent = $('#main-content');
@@ -555,8 +796,20 @@ function renderHomepage(pageData) {
 
     cache.currentArticles = pageData.featured || [];
     
-    // Check if newsletter data exists in JSON
+    const sliderArticles = cache.currentArticles.slice(0, 5);
+    const gridArticles = cache.currentArticles.slice(5);
+    
     const newsletterHTML = pageData.newsletter ? renderNewsletterBlock(pageData.newsletter) : '';
+    const sliderHTML = sliderArticles.length > 0 ? `
+        <div class="hero-slider animate-in" id="heroSlider">
+            <!-- Slider will be rendered here -->
+        </div>
+    ` : '';
+    
+    const titleText = sliderArticles.length > 0 ? 'More Articles' : (pageData.hero?.title || 'Featured Tutorials');
+    const gridHTML = gridArticles.length > 0 ? 
+        gridArticles.map(templates.tutorialCard).join('') : 
+        cache.currentArticles.map(templates.tutorialCard).join('');
     
     mainContent.innerHTML = `
         <div class="search-container animate-in">
@@ -568,6 +821,8 @@ function renderHomepage(pageData) {
             </div>
         </div>
         
+        ${sliderHTML}
+        
         <div class="filter-container animate-in">
             <div class="filter-chips">
                 <!-- Chips will be generated dynamically -->
@@ -575,21 +830,33 @@ function renderHomepage(pageData) {
         </div>
         
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 32px;">${pageData.hero?.title || 'Featured Tutorials'}</h2>
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 32px;">
+                ${titleText}
+            </h2>
             <div class="tutorial-grid">
-                ${cache.currentArticles.map(templates.tutorialCard).join('') || '<p>No tutorials found</p>'}
+                ${gridHTML || '<p>No tutorials found</p>'}
             </div>
             
             ${newsletterHTML}
         </div>
     `;
     
+    // Initialize slider if we have featured articles
+    if (sliderArticles.length > 0) {
+        const sliderContainer = $('#heroSlider');
+        if (sliderContainer) {
+            if (heroSlider) {
+                heroSlider.destroy();
+            }
+            heroSlider = new HeroSlider(sliderContainer, sliderArticles);
+        }
+    }
+    
     // Generate filter chips from categories
     const filterContainer = $('.filter-chips');
     if (filterContainer && cache.categories?.categories) {
         filters.generateChips(filterContainer, cache.categories.categories);
         
-        // Apply filter from URL if present
         const urlParams = new URLSearchParams(window.location.search);
         const filterParam = urlParams.get('filter');
         if (filterParam) {
@@ -599,1003 +866,237 @@ function renderHomepage(pageData) {
     }
 }
 
+// Store category data globally for pagination
+let currentCategoryData = null;
+
+function renderCategoryPage(categoryData) {
+    if (!categoryData) return renderNotFound();
+    
+    currentCategoryData = categoryData;
+    categoryPagination = new Pagination(categoryData.articles || [], 12);
+    
+    const mainContent = $('#main-content');
+    const newsletterHTML = categoryData.newsletter ? renderNewsletterBlock(categoryData.newsletter) : '';
+    
+    mainContent.innerHTML = `
+        <div class="container animate-in">
+            <div class="article-header">
+                <h1 class="article-title">${categoryData.title}</h1>
+                <p class="article-meta">${categoryData.articleCount} articles in ${categoryData.category}</p>
+            </div>
+            
+            <div class="section-header">
+                <h2>All ${categoryData.category} Articles</h2>
+            </div>
+            
+            <div class="tutorial-grid" id="categoryGrid">
+                <!-- Articles will be rendered here -->
+            </div>
+            
+            <div id="categoryPagination">
+                <!-- Pagination will be rendered here -->
+            </div>
+            
+            ${newsletterHTML}
+        </div>
+    `;
+    
+    renderCategoryPageContent();
+}
+
+function renderCategoryPageContent() {
+    const grid = $('#categoryGrid');
+    const paginationContainer = $('#categoryPagination');
+    
+    if (!categoryPagination || !grid) return;
+    
+    const currentItems = categoryPagination.getCurrentPageItems();
+    
+    grid.innerHTML = currentItems.length > 0 
+        ? currentItems.map(templates.tutorialCard).join('')
+        : '<p>No articles found in this category.</p>';
+    
+    grid.classList.add('paginated');
+    
+    paginationContainer.innerHTML = categoryPagination.renderPagination('changeCategoryPage');
+}
+
+// Store search data globally for pagination
+let currentSearchData = null;
+
+// Search functionality
+const search = {
+    async loadIndex() {
+        if (!cache.searchIndex) {
+            cache.searchIndex = await fetchJSON('/assets/data/search-index.json');
+        }
+        return cache.searchIndex;
+    },
+    
+    async perform(query) {
+        const index = await this.loadIndex();
+        if (!index?.articles || !query.trim()) return [];
+        
+        const lowerQuery = query.toLowerCase();
+        return index.articles.filter(article => 
+            ['title', 'description', 'category', 'author'].some(field => 
+                article[field]?.toLowerCase().includes(lowerQuery)
+            ) || article.tags?.some(tag => tag.toLowerCase().includes(lowerQuery))
+        );
+    },
+    
+    displayDropdown(results, query) {
+        const dropdown = $('#search-dropdown');
+        
+        if (results.length === 0) {
+            dropdown.innerHTML = `<div class="search-no-results">No articles found for "${query}"</div>`;
+        } else {
+            const resultsHTML = results.slice(0, 5).map(article => `
+                <div class="search-result-item" onclick="navigateTo('/articles/${article.id.replace('articles/', '')}')">
+                    <div class="search-result-title">${this.highlightMatch(article.title, query)}</div>
+                    <div class="search-result-meta">${article.category} • By ${article.author}</div>
+                </div>
+            `).join('');
+            
+            const viewAllHTML = results.length > 5 ? `
+                <div class="search-result-item" onclick="showAllResults('${query}')">
+                    <div class="search-result-meta">View all ${results.length} results →</div>
+                </div>
+            ` : '';
+            
+            dropdown.innerHTML = resultsHTML + viewAllHTML;
+        }
+        
+        dropdown.style.display = 'block';
+    },
+    
+    highlightMatch(text, query) {
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<strong>$1</strong>');
+    },
+    
+    displayResults(results, query) {
+        currentSearchData = { results, query };
+        searchPagination = new Pagination(results, 12);
+        
+        $('#main-content').innerHTML = `
+            <div class="container">
+                <div class="section-header">
+                    <h2>Search Results for "${query}" (${results.length})</h2>
+                </div>
+                <div class="tutorial-grid" id="searchGrid">
+                    <!-- Results will be rendered here -->
+                </div>
+                
+                <div id="searchPagination">
+                    <!-- Pagination will be rendered here -->
+                </div>
+            </div>
+        `;
+        
+        renderSearchPageContent();
+    }
+};
+
+function renderSearchPageContent() {
+    const grid = $('#searchGrid');
+    const paginationContainer = $('#searchPagination');
+    
+    if (!searchPagination || !grid || !currentSearchData) return;
+    
+    const currentItems = searchPagination.getCurrentPageItems();
+    
+    grid.innerHTML = currentItems.length > 0 
+        ? currentItems.map(templates.tutorialCard).join('')
+        : '<p>No articles found matching your search.</p>';
+    
+    grid.classList.add('paginated');
+    
+    paginationContainer.innerHTML = searchPagination.renderPagination('changeSearchPage');
+}
+
+// Search handlers
+const handleSearchInput = debounce(async (query) => {
+    const dropdown = $('#search-dropdown');
+    
+    if (!query.trim()) {
+        dropdown.style.display = 'none';
+        return;
+    }
+    
+    const results = await search.perform(query);
+    search.displayDropdown(results, query);
+}, 300);
+
+window.handleSearchInput = handleSearchInput;
+
+async function showAllResults(query) {
+    $('#search-dropdown').style.display = 'none';
+    showLoading();
+    const results = await search.perform(query);
+    search.displayResults(results, query);
+    window.history.pushState({}, '', `/search?q=${encodeURIComponent(query)}`);
+}
+
+window.showAllResults = showAllResults;
+
 function renderArticle(articleData) {
     if (!articleData) return renderNotFound();
 
-    // Set meta tags for social media sharing
     setMetaTags(articleData);
 
     const mainContent = $('#main-content');
-    
-    // Generate content HTML from sections
     let contentHTML = '';
     
-    // Add introduction if it exists
     if (articleData.introduction) {
-        contentHTML += `
-            <div class="article-introduction">
-                ${articleData.introduction.hook ? `<p><strong>${articleData.introduction.hook}</strong></p>` : ''}
-                ${articleData.introduction.personalStory ? `<p>${articleData.introduction.personalStory}</p>` : ''}
-                ${articleData.introduction.credibility ? `<p>${articleData.introduction.credibility}</p>` : ''}
-                ${articleData.introduction.promise ? `<p>${articleData.introduction.promise}</p>` : ''}
-            </div>
-        `;
+        const introElements = [];
+        if (articleData.introduction.hook) introElements.push(`<p><strong>${articleData.introduction.hook}</strong></p>`);
+        if (articleData.introduction.personalStory) introElements.push(`<p>${articleData.introduction.personalStory}</p>`);
+        if (articleData.introduction.credibility) introElements.push(`<p>${articleData.introduction.credibility}</p>`);
+        if (articleData.introduction.promise) introElements.push(`<p>${articleData.introduction.promise}</p>`);
+        
+        contentHTML += `<div class="article-introduction">${introElements.join('')}</div>`;
     }
     
-    // Process sections
     if (articleData.sections) {
         articleData.sections.forEach(section => {
-            contentHTML += `
-                <section class="article-section">
-                    <h2 class="section-heading">${section.theme}</h2>
-                    ${section.description ? `<p class="section-description">${section.description}</p>` : ''}
-            `;
-            
-            // Handle PROBLEMS
-            if (section.problems) {
-                section.problems.forEach(problem => {
-                    contentHTML += `
-                        <div class="problem-block">
-                            <h3 class="subsection-heading">${problem.problemTitle}</h3>
-                            ${problem.description ? `<p>${problem.description}</p>` : ''}
-                            ${problem.personalExperience ? `<div class="highlight-text">${problem.personalExperience}</div>` : ''}
-                            
-                            ${problem.testingMethod ? `
-                                <div class="method-box">
-                                    <h4>Testing Method:</h4>
-                                    <p><strong>Approach:</strong> ${problem.testingMethod.approach}</p>
-                                    <p><strong>Key Insight:</strong> ${problem.testingMethod.keyInsight}</p>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
+            contentHTML += `<section class="article-section">`;
+            contentHTML += `<h2 class="section-heading">${section.theme}</h2>`;
+            if (section.description) {
+                contentHTML += `<p class="section-description">${section.description}</p>`;
             }
             
-            // Handle IMPACTS
-            if (section.impacts) {
-                section.impacts.forEach(impact => {
-                    contentHTML += `
-                        <div class="impact-block">
-                            <h3 class="subsection-heading">${impact.impactTitle}</h3>
-                            ${impact.description ? `<p>${impact.description}</p>` : ''}
-                            ${impact.personalExperience ? `<div class="highlight-text">${impact.personalExperience}</div>` : ''}
-                            
-                            ${impact.productivityImpact ? `
-                                <div class="impact-data">
-                                    <h4>Productivity Impact:</h4>
-                                    <ul>${impact.productivityImpact.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${impact.healthConsequences ? `
-                                <div class="impact-data">
-                                    <h4>Health Consequences:</h4>
-                                    <ul>${impact.healthConsequences.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${impact.keyInsight ? `<div class="tip-box">${impact.keyInsight}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle HACKS
-            if (section.hacks) {
-                section.hacks.forEach(hack => {
-                    contentHTML += `
-                        <div class="hack-block">
-                            <h3 class="subsection-heading">Hack #${hack.hackNumber}: ${hack.hackTitle}</h3>
-                            ${hack.description ? `<p>${hack.description}</p>` : ''}
-                            ${hack.personalExperience ? `<div class="highlight-text">${hack.personalExperience}</div>` : ''}
-                            
-                            ${hack.howItWorks ? `
-                                <h4>How It Works:</h4>
-                                <ul class="content-list">
-                                    ${hack.howItWorks.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${hack.whatIWasDoingWrong ? `
-                                <h4>What I Was Doing Wrong:</h4>
-                                <ul class="content-list">
-                                    ${hack.whatIWasDoingWrong.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${hack.doThisInstead ? `
-                                <div class="tip-box">
-                                    <h4>${hack.doThisInstead.mainAction}</h4>
-                                    ${hack.doThisInstead.specificSteps ? `
-                                        <ul>
-                                            ${hack.doThisInstead.specificSteps.map(step => `<li>${step}</li>`).join('')}
-                                        </ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            ${hack.realExample ? `
-                                <div class="example-box">
-                                    <strong>Example:</strong> ${hack.realExample}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle MEALS (for no-cook and meal plan articles)
-            if (section.meals) {
-                section.meals.forEach(meal => {
-                    contentHTML += `
-                        <div class="meal-block">
-                            <h3 class="subsection-heading">Meal #${meal.mealNumber}: ${meal.mealTitle} - ${meal.cost}</h3>
-                            ${meal.description ? `<p><strong>${meal.description}</strong></p>` : ''}
-                            ${meal.personalExperience ? `<div class="highlight-text">${meal.personalExperience}</div>` : ''}
-                            
-                            ${meal.ingredients ? `
-                                <div class="ingredients-list">
-                                    <h4>Ingredients:</h4>
-                                    <ul>${meal.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${meal.assembly ? `
-                                <div class="assembly-steps">
-                                    <h4>Assembly:</h4>
-                                    <ol>${meal.assembly.map(step => `<li>${step}</li>`).join('')}</ol>
-                                </div>
-                            ` : ''}
-                            
-                            ${meal.whyItWorks ? `
-                                <div class="benefits">
-                                    <h4>Why It Works:</h4>
-                                    <ul>${meal.whyItWorks.map(benefit => `<li>${benefit}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle WEEKLY MEALS (for meal plan articles)
-            if (section.weeklyMeals) {
-                section.weeklyMeals.forEach(day => {
-                    contentHTML += `
-                        <div class="daily-meals">
-                            <h3 class="subsection-heading">${day.day} - Daily Total: ${day.dailyTotal}</h3>
-                            <div class="meals-grid">
-                                ${day.meals.map(meal => `
-                                    <div class="meal-card">
-                                        <h4>${meal.mealType}: ${meal.name} - ${meal.cost}</h4>
-                                        <p><strong>Ingredients:</strong> ${meal.ingredients}</p>
-                                        ${meal.note ? `<p><em>Note: ${meal.note}</em></p>` : ''}
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle SAFETY PROTOCOLS
-            if (section.safetyProtocols) {
-                section.safetyProtocols.forEach(protocol => {
-                    contentHTML += `
-                        <div class="safety-block">
-                            <h3 class="subsection-heading">${protocol.protocolTitle}</h3>
-                            ${protocol.description ? `<p>${protocol.description}</p>` : ''}
-                            ${protocol.personalExperience ? `<div class="highlight-text">${protocol.personalExperience}</div>` : ''}
-                            
-                            ${protocol.prepAheadStrategies ? `
-                                <h4>Prep Ahead Strategies:</h4>
-                                <ul class="content-list">
-                                    ${protocol.prepAheadStrategies.map(strategy => `<li>${strategy}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${protocol.safeStorageTimes ? `
-                                <h4>Safe Storage Times:</h4>
-                                <ul class="content-list">
-                                    ${protocol.safeStorageTimes.map(time => `<li>${time}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${protocol.foodSafetyReminder ? `
-                                <div class="warning-box">⚠️ ${protocol.foodSafetyReminder}</div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle BUDGET BREAKDOWN
-            if (section.budgetBreakdown) {
-                section.budgetBreakdown.forEach(breakdown => {
-                    contentHTML += `
-                        <div class="budget-block">
-                            <h3 class="subsection-heading">${breakdown.breakdownTitle}</h3>
-                            ${breakdown.description ? `<p>${breakdown.description}</p>` : ''}
-                            ${breakdown.personalExperience ? `<div class="highlight-text">${breakdown.personalExperience}</div>` : ''}
-                            
-                            ${breakdown.weeklyGroceryList ? `
-                                <div class="grocery-list">
-                                    <h4>Weekly Grocery List - ${breakdown.weeklyGroceryList.totalCost}</h4>
-                                    <p><strong>Meals Provided:</strong> ${breakdown.weeklyGroceryList.mealsProvided}</p>
-                                    
-                                    <div class="pantry-section">
-                                        <h5>Pantry Staples:</h5>
-                                        <ul>${breakdown.weeklyGroceryList.pantryStaples.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    </div>
-                                    
-                                    <div class="fresh-section">
-                                        <h5>Fresh Ingredients:</h5>
-                                        <ul>${breakdown.weeklyGroceryList.freshIngredients.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    </div>
-                                </div>
-                            ` : ''}
-                            
-                            ${breakdown.costPerMealComparison ? `
-                                <div class="cost-comparison">
-                                    <h4>Cost Per Meal Comparison:</h4>
-                                    <ul>
-                                        <li><strong>No-Cook Meals:</strong> ${breakdown.costPerMealComparison.noCookMeals}</li>
-                                        <li><strong>Fast Food:</strong> ${breakdown.costPerMealComparison.fastFood}</li>
-                                        <li><strong>Delivery:</strong> ${breakdown.costPerMealComparison.delivery}</li>
-                                        <li><strong>Traditional Cooking:</strong> ${breakdown.costPerMealComparison.traditionalHomeCooking}</li>
-                                    </ul>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle VARIETY STRATEGIES
-            if (section.varietyStrategies) {
-                section.varietyStrategies.forEach(strategy => {
-                    contentHTML += `
-                        <div class="variety-block">
-                            <h3 class="subsection-heading">${strategy.strategy}</h3>
-                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
-                            
-                            ${strategy.examples ? `
-                                <h4>Examples:</h4>
-                                <ul class="content-list">
-                                    ${strategy.examples.map(example => `<li>${example}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${strategy.principle ? `<div class="tip-box">${strategy.principle}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle WEEKLY SCHEDULE
-            if (section.weeklySchedule) {
-                section.weeklySchedule.forEach(day => {
-                    contentHTML += `
-                        <div class="schedule-day">
-                            <h3 class="subsection-heading">${day.day} - ${day.duration}</h3>
-                            ${day.focus ? `<p><strong>Focus:</strong> ${day.focus}</p>` : ''}
-                            
-                            ${day.structure ? `
-                                <div class="workout-structure">
-                                    <h4>Structure:</h4>
-                                    <ul>${day.structure.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${day.activities ? `
-                                <div class="activities">
-                                    <h4>Activities:</h4>
-                                    <ul>${day.activities.map(activity => `<li>${activity}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${day.goal ? `<div class="goal-box"><strong>Goal:</strong> ${day.goal}</div>` : ''}
-                            ${day.mindset ? `<div class="mindset-box"><em>${day.mindset}</em></div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle PRINCIPLES
-            if (section.principles) {
-                section.principles.forEach(principle => {
-                    contentHTML += `
-                        <div class="principle-block">
-                            <h3 class="subsection-heading">${principle.principleTitle || principle.title}</h3>
-                            ${principle.description ? `<p>${principle.description}</p>` : ''}
-                            ${principle.personalExperience ? `<div class="highlight-text">${principle.personalExperience}</div>` : ''}
-                            
-                            ${principle.threePillars ? `
-                                <div class="pillars-content">
-                                    <h4>The Three Pillars:</h4>
-                                    <ul class="content-list">
-                                        <li><strong>Nutrition:</strong> ${principle.threePillars.nutrition}</li>
-                                        <li><strong>Movement:</strong> ${principle.threePillars.movement}</li>
-                                        <li><strong>Mindset:</strong> ${principle.threePillars.mindset}</li>
-                                    </ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${principle.keyInsight ? `<div class="tip-box">${principle.keyInsight}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle STRATEGIES
-            if (section.strategies) {
-                section.strategies.forEach(strategy => {
-                    contentHTML += `
-                        <div class="strategy-block">
-                            <h3 class="subsection-heading">${strategy.strategyTitle || strategy.title}</h3>
-                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
-                            ${strategy.personalExperience ? `<div class="highlight-text">${strategy.personalExperience}</div>` : ''}
-                            
-                            ${strategy.tdeeCalculation ? `
-                                <div class="calculation-box">
-                                    <h4>TDEE Calculation Example:</h4>
-                                    <p><strong>Definition:</strong> ${strategy.tdeeCalculation.definition}</p>
-                                    <p><strong>Example:</strong> ${strategy.tdeeCalculation.myExample}</p>
-                                    <p><strong>Result:</strong> ${strategy.tdeeCalculation.result}</p>
-                                    <p><strong>Target:</strong> ${strategy.tdeeCalculation.deficitTarget}</p>
-                                </div>
-                            ` : ''}
-                            
-                            ${strategy.dailyEatingStructure ? `
-                                <div class="meal-structure">
-                                    <h4>Daily Eating Structure (${strategy.dailyEatingStructure.total}):</h4>
-                                    <ul>
-                                        <li><strong>Breakfast:</strong> ${strategy.dailyEatingStructure.breakfast}</li>
-                                        <li><strong>Lunch:</strong> ${strategy.dailyEatingStructure.lunch}</li>
-                                        <li><strong>Snack:</strong> ${strategy.dailyEatingStructure.snack}</li>
-                                        <li><strong>Dinner:</strong> ${strategy.dailyEatingStructure.dinner}</li>
-                                    </ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${strategy.keyInsight ? `<div class="tip-box">${strategy.keyInsight}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle HABITS
-            if (section.habits) {
-                section.habits.forEach(habit => {
-                    contentHTML += `
-                        <div class="habit-block">
-                            <h3 class="subsection-heading">${habit.habitTitle || habit.title}</h3>
-                            ${habit.description ? `<p>${habit.description}</p>` : ''}
-                            ${habit.personalExperience ? `<div class="highlight-text">${habit.personalExperience}</div>` : ''}
-                            
-                            ${habit.whySleepMatters ? `
-                                <h4>Why Sleep Matters:</h4>
-                                <ul class="content-list">
-                                    ${habit.whySleepMatters.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${habit.sleepOptimization ? `
-                                <h4>Sleep Optimization:</h4>
-                                <ul class="content-list">
-                                    ${habit.sleepOptimization.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${habit.movementStrategies ? `
-                                <h4>Movement Strategies:</h4>
-                                <ul class="content-list">
-                                    ${habit.movementStrategies.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${habit.stressReductionTechniques ? `
-                                <h4>Stress Reduction Techniques:</h4>
-                                <ul class="content-list">
-                                    ${habit.stressReductionTechniques.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${habit.trackingMethods ? `
-                                <h4>Tracking Methods:</h4>
-                                <ul class="content-list">
-                                    ${habit.trackingMethods.map(method => `<li>${method}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle WORKOUT TYPES
-            if (section.workoutTypes) {
-                section.workoutTypes.forEach(workout => {
-                    contentHTML += `
-                        <div class="workout-block">
-                            <h3 class="subsection-heading">${workout.workoutTitle}: ${workout.description}</h3>
-                            ${workout.personalExperience ? `<div class="highlight-text">${workout.personalExperience}</div>` : ''}
-                            
-                            ${workout.exercises ? `
-                                <div class="exercises-list">
-                                    <h4>Exercises:</h4>
-                                    ${workout.exercises.map(exercise => `
-                                        <div class="exercise-item">
-                                            <h5>${exercise.exercise}</h5>
-                                            <p><strong>Duration:</strong> ${exercise.duration}</p>
-                                            <p><strong>Technique:</strong> ${exercise.technique}</p>
-                                            ${exercise.benefits ? `<p><strong>Benefits:</strong> ${exercise.benefits}</p>` : ''}
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${workout.progressionTips ? `
-                                <div class="tip-box">
-                                    <h4>Progression Tips:</h4>
-                                    <ul>
-                                        ${workout.progressionTips.map(tip => `<li>${tip}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle INGREDIENTS
-            if (section.ingredients) {
-                section.ingredients.forEach(ingredient => {
-                    contentHTML += `
-                        <div class="ingredient-block">
-                            <h3 class="subsection-heading">${ingredient.ingredientTitle} - ${ingredient.cost}</h3>
-                            ${ingredient.description ? `<p><strong>${ingredient.description}</strong></p>` : ''}
-                            ${ingredient.personalExperience ? `<div class="highlight-text">${ingredient.personalExperience}</div>` : ''}
-                            
-                            ${ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || ingredient.whyRiceDominates || ingredient.whyPastaWins || ingredient.whyOatsAreUnderrated || ingredient.whyPotatoesArePerfect || ingredient.whyFrozenVegetablesAreSmart || ingredient.whyCabbageIsTheMVPVegetable ? `
-                                <h4>Why This Works:</h4>
-                                <ul class="content-list">
-                                    ${(ingredient.whyEggsAreBudgetGold || ingredient.whyBeansAreBrilliant || ingredient.whyGroundTurkeyWins || ingredient.whyRiceDominates || ingredient.whyPastaWins || ingredient.whyOatsAreUnderrated || ingredient.whyPotatoesArePerfect || ingredient.whyFrozenVegetablesAreSmart || ingredient.whyCabbageIsTheMVPVegetable || []).map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || ingredient.mealIdeasThatTransform || ingredient.mealIdeasThatComfort || ingredient.mealIdeasBeyondBasic || ingredient.mealIdeasThatFillYouUp || ingredient.mealIdeasThatAddColor || ingredient.mealIdeasThatSurprise || ingredient.mealIdeasBeyondSandwiches ? `
-                                <div class="meal-ideas">
-                                    <h4>Meal Ideas:</h4>
-                                    ${(ingredient.mealIdeasThatStretch || ingredient.mealIdeasThatSatisfy || ingredient.mealIdeasThatTransform || ingredient.mealIdeasThatComfort || ingredient.mealIdeasBeyondBasic || ingredient.mealIdeasThatFillYouUp || ingredient.mealIdeasThatAddColor || ingredient.mealIdeasThatSurprise || ingredient.mealIdeasBeyondSandwiches || []).map(meal => `
-                                        <div class="meal-idea">
-                                            <h5>${meal.meal} - ${meal.cost}</h5>
-                                            <p>${meal.description}</p>
-                                            <p><em>${meal.appeal}</em></p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${ingredient.storageLongevityTips ? `
-                                <div class="storage-tips">
-                                    <h4>Storage & Longevity Tips:</h4>
-                                    <ul>${ingredient.storageLongevityTips.map(tip => `<li>${tip}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle FURNITURE
-            if (section.furniture) {
-                section.furniture.forEach(item => {
-                    contentHTML += `
-                        <div class="furniture-block">
-                            <h3 class="subsection-heading">${item.furnitureTitle}</h3>
-                            ${item.description ? `<p>${item.description}</p>` : ''}
-                            ${item.personalExperience ? `<div class="highlight-text">${item.personalExperience}</div>` : ''}
-                            
-                            ${item.deskRequirements ? `
-                                <div class="requirements-section">
-                                    <h4>Desk Requirements:</h4>
-                                    ${item.deskRequirements.sizeRequirements ? `
-                                        <h5>Size Requirements:</h5>
-                                        <ul>${item.deskRequirements.sizeRequirements.map(req => `<li>${req}</li>`).join('')}</ul>
-                                    ` : ''}
-                                    ${item.deskRequirements.stabilityIsEverything ? `
-                                        <h5>Stability Matters:</h5>
-                                        <ul>${item.deskRequirements.stabilityIsEverything.map(req => `<li>${req}</li>`).join('')}</ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            ${item.deskRecommendations ? `
-                                <div class="recommendations">
-                                    <h4>Recommendations:</h4>
-                                    ${item.deskRecommendations.map(rec => `
-                                        <div class="recommendation-item">
-                                            <h5>${rec.category}</h5>
-                                            <p><strong>${rec.product}</strong></p>
-                                            <p>${rec.description}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${item.chairRecommendations ? `
-                                <div class="recommendations">
-                                    <h4>Chair Recommendations:</h4>
-                                    ${item.chairRecommendations.map(rec => `
-                                        <div class="recommendation-item">
-                                            <h5>${rec.category}</h5>
-                                            <p><strong>${rec.product}</strong></p>
-                                            <p>${rec.description}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle TECHNOLOGY
-            if (section.technology) {
-                section.technology.forEach(tech => {
-                    contentHTML += `
-                        <div class="tech-block">
-                            <h3 class="subsection-heading">${tech.techTitle}</h3>
-                            ${tech.description ? `<p>${tech.description}</p>` : ''}
-                            ${tech.personalExperience ? `<div class="highlight-text">${tech.personalExperience}</div>` : ''}
-                            
-                            ${tech.monitorSetup ? `
-                                <div class="monitor-setup">
-                                    <h4>Monitor Setup:</h4>
-                                    ${tech.monitorSetup.singleVsDualVsUltrawide ? `
-                                        <h5>Setup Comparison:</h5>
-                                        <ul>${tech.monitorSetup.singleVsDualVsUltrawide.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    ` : ''}
-                                    ${tech.monitorSetup.optimalDualSetup ? `
-                                        <h5>Optimal Dual Setup:</h5>
-                                        <ul>${tech.monitorSetup.optimalDualSetup.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            ${tech.peripheralRecommendations ? `
-                                <div class="recommendations">
-                                    <h4>Peripheral Recommendations:</h4>
-                                    ${tech.peripheralRecommendations.map(rec => `
-                                        <div class="recommendation-item">
-                                            <h5>${rec.category}</h5>
-                                            <p><strong>${rec.product}</strong></p>
-                                            <p>${rec.description}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle ENVIRONMENT
-            if (section.environment) {
-                section.environment.forEach(env => {
-                    contentHTML += `
-                        <div class="environment-block">
-                            <h3 class="subsection-heading">${env.environmentTitle}</h3>
-                            ${env.description ? `<p>${env.description}</p>` : ''}
-                            ${env.personalExperience ? `<div class="highlight-text">${env.personalExperience}</div>` : ''}
-                            
-                            ${env.naturalVsArtificialLight ? `
-                                <div class="lighting-section">
-                                    <h4>Natural vs Artificial Light:</h4>
-                                    ${env.naturalVsArtificialLight.naturalLightOptimal ? `
-                                        <h5>Natural Light (Optimal):</h5>
-                                        <ul>${env.naturalVsArtificialLight.naturalLightOptimal.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    ` : ''}
-                                    ${env.naturalVsArtificialLight.whenNaturalLightNotEnough ? `
-                                        <h5>When Natural Light Isn't Enough:</h5>
-                                        <ul>${env.naturalVsArtificialLight.whenNaturalLightNotEnough.map(item => `<li>${item}</li>`).join('')}</ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            ${env.artificialLightingThatWorks ? `
-                                <div class="lighting-recommendations">
-                                    <h4>Artificial Lighting That Works:</h4>
-                                    ${env.artificialLightingThatWorks.map(light => `
-                                        <div class="lighting-item">
-                                            <h5>${light.type}</h5>
-                                            <p>${light.description}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${env.lightingTip ? `<div class="tip-box">${env.lightingTip}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle COMFORT
-            if (section.comfort) {
-                section.comfort.forEach(comfort => {
-                    contentHTML += `
-                        <div class="comfort-block">
-                            <h3 class="subsection-heading">${comfort.comfortTitle}</h3>
-                            ${comfort.description ? `<p>${comfort.description}</p>` : ''}
-                            ${comfort.personalExperience ? `<div class="highlight-text">${comfort.personalExperience}</div>` : ''}
-                            
-                            ${comfort.plantsMoreThanDecoration ? `
-                                <div class="plants-section">
-                                    <h4>Plants: More Than Decoration</h4>
-                                    ${comfort.plantsMoreThanDecoration.benefits ? `
-                                        <h5>Benefits:</h5>
-                                        <ul>${comfort.plantsMoreThanDecoration.benefits.map(benefit => `<li>${benefit}</li>`).join('')}</ul>
-                                    ` : ''}
-                                    ${comfort.plantsMoreThanDecoration.bestOfficePlants ? `
-                                        <h5>Best Office Plants:</h5>
-                                        <ul>${comfort.plantsMoreThanDecoration.bestOfficePlants.map(plant => `<li>${plant}</li>`).join('')}</ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            ${comfort.decorThatMotivates ? `
-                                <div class="decor-section">
-                                    <h4>Decor That Motivates:</h4>
-                                    ${comfort.decorThatMotivates.whatWorks ? `
-                                        ${comfort.decorThatMotivates.whatWorks.map(item => `
-                                            <div class="decor-item">
-                                                <h5>${item.item}</h5>
-                                                <p>${item.description}</p>
-                                            </div>
-                                        `).join('')}
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle SYSTEMS
-            if (section.systems) {
-                section.systems.forEach(system => {
-                    contentHTML += `
-                        <div class="system-block">
-                            <h3 class="subsection-heading">${system.systemTitle}</h3>
-                            ${system.description ? `<p>${system.description}</p>` : ''}
-                            ${system.personalExperience ? `<div class="highlight-text">${system.personalExperience}</div>` : ''}
-                            
-                            ${system.goalEvolution ? `
-                                <div class="goal-evolution">
-                                    <h4>Goal Evolution:</h4>
-                                    <ul>${system.goalEvolution.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${system.trackingMethod ? `
-                                <div class="tip-box">
-                                    <h4>Tracking Method:</h4>
-                                    <p>${system.trackingMethod}</p>
-                                </div>
-                            ` : ''}
-                            
-                            ${system.virtualWorkoutBuddy ? `
-                                <div class="accountability-method">
-                                    <h4>Virtual Workout Buddy:</h4>
-                                    <ul>${system.virtualWorkoutBuddy.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${system.workoutClothesAsVisualCues ? `
-                                <div class="environment-tip">
-                                    <h4>Workout Clothes as Visual Cues:</h4>
-                                    <ul>${system.workoutClothesAsVisualCues.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle CONCEPTS
-            if (section.concepts) {
-                section.concepts.forEach(concept => {
-                    contentHTML += `
-                        <div class="concept-block">
-                            <h3 class="subsection-heading">${concept.conceptTitle}</h3>
-                            ${concept.description ? `<p>${concept.description}</p>` : ''}
-                            ${concept.personalExperience ? `<div class="highlight-text">${concept.personalExperience}</div>` : ''}
-                            
-                            ${concept.subcutaneousFat ? `
-                                <div class="fat-type">
-                                    <h4>Subcutaneous Fat:</h4>
-                                    <p><strong>Definition:</strong> ${concept.subcutaneousFat.definition}</p>
-                                    <ul>${concept.subcutaneousFat.characteristics.map(char => `<li>${char}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${concept.visceralFat ? `
-                                <div class="fat-type">
-                                    <h4>Visceral Fat:</h4>
-                                    <p><strong>Definition:</strong> ${concept.visceralFat.definition}</p>
-                                    <ul>${concept.visceralFat.characteristics.map(char => `<li>${char}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${concept.keyInsight ? `<div class="tip-box">${concept.keyInsight}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle CHALLENGES
-            if (section.challenges) {
-                section.challenges.forEach(challenge => {
-                    contentHTML += `
-                        <div class="challenge-block">
-                            <h3 class="subsection-heading">${challenge.challengeTitle}</h3>
-                            ${challenge.description ? `<p>${challenge.description}</p>` : ''}
-                            ${challenge.personalExperience ? `<div class="highlight-text">${challenge.personalExperience}</div>` : ''}
-                            
-                            ${challenge.gymVsHomeReality ? `
-                                <div class="comparison">
-                                    <h4>Gym vs Home Reality:</h4>
-                                    <ul>${challenge.gymVsHomeReality.map(item => `<li>${item}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${challenge.myFailedAttempts ? `
-                                <div class="failed-attempts">
-                                    <h4>Failed Attempts:</h4>
-                                    <ul>${challenge.myFailedAttempts.map(attempt => `<li>${attempt}</li>`).join('')}</ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${challenge.keyInsight ? `<div class="tip-box">${challenge.keyInsight}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Handle NUTRITIONAL STRATEGIES
-            if (section.nutritionStrategies) {
-                section.nutritionStrategies.forEach(strategy => {
-                    contentHTML += `
-                        <div class="nutrition-block">
-                            <h3 class="subsection-heading">${strategy.strategyTitle}</h3>
-                            ${strategy.description ? `<p>${strategy.description}</p>` : ''}
-                            ${strategy.personalExperience ? `<div class="highlight-text">${strategy.personalExperience}</div>` : ''}
-                            
-                            ${strategy.foodsToReduceOrEliminate ? `
-                                <div class="foods-section">
-                                    <h4>Foods to Reduce or Eliminate:</h4>
-                                    ${strategy.foodsToReduceOrEliminate.map(food => `
-                                        <div class="food-category">
-                                            <h5>${food.category}</h5>
-                                            <p>${food.explanation}</p>
-                                            <p><strong>Examples:</strong> ${food.examples || food.effects}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${strategy.foodsThatAccelerateFatLoss ? `
-                                <div class="foods-section">
-                                    <h4>Foods That Accelerate Fat Loss:</h4>
-                                    ${strategy.foodsThatAccelerateFatLoss.map(food => `
-                                        <div class="food-category">
-                                            <h5>${food.category}</h5>
-                                            <p>${food.benefits}</p>
-                                            <p><strong>Examples:</strong> ${food.examples}</p>
-                                            ${food.target ? `<p><strong>Target:</strong> ${food.target}</p>` : ''}
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            // Keep existing handlers for MISTAKES and TOOLS
-            if (section.mistakes) {
-                section.mistakes.forEach(mistake => {
-                    contentHTML += `
-                        <div class="mistake-block">
-                            <h3 class="subsection-heading">Mistake #${mistake.mistakeNumber}: ${mistake.mistakeTitle}</h3>
-                            ${mistake.description ? `<p>${mistake.description}</p>` : ''}
-                            ${mistake.personalExperience ? `<div class="highlight-text">${mistake.personalExperience}</div>` : ''}
-                            
-                            ${mistake.whatIWasDoingWrong ? `
-                                <h4>What I Was Doing Wrong:</h4>
-                                <ul class="content-list">
-                                    ${mistake.whatIWasDoingWrong.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${mistake.doThisInstead ? `
-                                <div class="tip-box">
-                                    <h4>${mistake.doThisInstead.mainAction}</h4>
-                                    ${mistake.doThisInstead.specificSteps ? `
-                                        <ul>
-                                            ${mistake.doThisInstead.specificSteps.map(step => `<li>${step}</li>`).join('')}
-                                        </ul>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-            }
-            
-            if (section.tools) {
-                section.tools.forEach(tool => {
-                    contentHTML += `
-                        <div class="tool-block">
-                            <h3 class="subsection-heading">${tool.toolName}</h3>
-                            ${tool.description ? `<p>${tool.description}</p>` : ''}
-                            ${tool.personalExperience ? `<p>${tool.personalExperience}</p>` : ''}
-                            
-                            ${tool.whatILove ? `
-                                <h4>What I Love:</h4>
-                                <ul class="content-list">
-                                    ${tool.whatILove.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            ` : ''}
-                            
-                            ${tool.bestFor ? `<div class="highlight-text"><strong>Best For:</strong> ${tool.bestFor}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
+            // Handle various section types
+            ['problems', 'impacts', 'hacks', 'meals', 'weeklyMeals', 'safetyProtocols', 
+             'budgetBreakdown', 'varietyStrategies', 'weeklySchedule', 'principles', 
+             'strategies', 'habits', 'workoutTypes', 'ingredients', 'furniture', 
+             'technology', 'environment', 'comfort', 'systems', 'concepts', 
+             'challenges', 'nutritionStrategies', 'mistakes', 'tools'].forEach(type => {
+                if (section[type]) {
+                    contentHTML += renderSectionType(section[type], type);
+                }
+            });
             
             contentHTML += `</section>`;
         });
     }
     
-    // Add additional top-level content sections
+    // Add additional content sections
     if (articleData.strategicCombinations) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Strategic Combinations</h2>
-                ${articleData.strategicCombinations.map(combo => `
-                    <div class="combination-block">
-                        <h3>${combo.combination || combo.strategy}</h3>
-                        ${combo.ingredients ? `<p><strong>Ingredients:</strong> ${combo.ingredients}</p>` : ''}
-                        ${combo.result ? `<p><strong>Result:</strong> ${combo.result}</p>` : ''}
-                        ${combo.strategy ? `<p>${combo.strategy}</p>` : ''}
-                    </div>
-                `).join('')}
-            </section>
-        `;
+        contentHTML += renderStrategicCombinations(articleData.strategicCombinations);
     }
     
     if (articleData.dailyMealStructure) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Daily Meal Structure - ${articleData.dailyMealStructure.totalCost}</h2>
-                <div class="meal-breakdown">
-                    ${articleData.dailyMealStructure.breakdown.map(meal => `
-                        <div class="meal-item">
-                            <h4>${meal.meal} - ${meal.cost}</h4>
-                            <p>${meal.description}</p>
-                        </div>
-                    `).join('')}
-                </div>
-                <p><strong>Appeal:</strong> ${articleData.dailyMealStructure.appeal}</p>
-            </section>
-        `;
+        contentHTML += renderDailyMealStructure(articleData.dailyMealStructure);
     }
     
-    if (articleData.completeSetupGuide) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Complete Setup Guide</h2>
-                ${articleData.completeSetupGuide.map(phase => `
-                    <div class="phase-block">
-                        <h3>${phase.phase} - Budget: ${phase.budget}</h3>
-                        <p><strong>Goal:</strong> ${phase.goal}</p>
-                        <h4>Items:</h4>
-                        <ul>${phase.items.map(item => `<li>${item}</li>`).join('')}</ul>
-                    </div>
-                `).join('')}
-            </section>
-        `;
-    }
-    
-    if (articleData.moneySavingTips) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Money Saving Tips</h2>
-                <ul class="tips-list">
-                    ${articleData.moneySavingTips.map(tip => `<li>${tip}</li>`).join('')}
-                </ul>
-            </section>
-        `;
-    }
-    
-    if (articleData.commonMistakes) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Common Mistakes</h2>
-                ${articleData.commonMistakes.map(mistake => `
-                    <div class="mistake-item">
-                        <h4>${mistake.mistake}</h4>
-                        <p>${mistake.explanation}</p>
-                        <p><strong>Solution:</strong> ${mistake.solution}</p>
-                    </div>
-                `).join('')}
-            </section>
-        `;
-    }
-    
-    if (articleData.troubleshootingGuide) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Troubleshooting Guide</h2>
-                ${articleData.troubleshootingGuide.map(issue => `
-                    <div class="troubleshoot-item">
-                        <h4>Issue: ${issue.issue}</h4>
-                        <h5>Solutions:</h5>
-                        <ul>${issue.solutions.map(solution => `<li>${solution}</li>`).join('')}</ul>
-                    </div>
-                `).join('')}
-            </section>
-        `;
-    }
-    
-    if (articleData.implementationGuide) {
-        contentHTML += `
-            <section class="article-section">
-                <h2 class="section-heading">Implementation Guide</h2>
-                ${articleData.implementationGuide.map(phase => `
-                    <div class="implementation-phase">
-                        <h3>${phase.phase}</h3>
-                        <p><strong>Strategies:</strong> ${phase.strategies.join(', ')}</p>
-                        <p><strong>Goal:</strong> ${phase.goal}</p>
-                        <p><strong>Success Metric:</strong> ${phase.successMetric}</p>
-                    </div>
-                `).join('')}
-            </section>
-        `;
-    }
-    
-    // Add conclusion if it exists
     if (articleData.conclusion) {
-        contentHTML += `
-            <div class="conclusion-box">
-                <h3>Key Takeaways</h3>
-                ${articleData.conclusion.mainMessage ? `<p><strong>${articleData.conclusion.mainMessage}</strong></p>` : ''}
-                ${articleData.conclusion.keyInsight ? `<p>${articleData.conclusion.keyInsight}</p>` : ''}
-                ${articleData.conclusion.actionPlan ? `<p>${articleData.conclusion.actionPlan}</p>` : ''}
-                ${articleData.conclusion.callToAction ? `<p>${articleData.conclusion.callToAction}</p>` : ''}
-            </div>
-        `;
+        contentHTML += renderConclusion(articleData.conclusion);
     }
     
-    // Fallback: if no sections, try the old content array format
+    // Fallback for old content format
     if (!contentHTML && articleData.content) {
-        const contentBlocks = {
-            text: (block) => `<p>${block.content}</p>`,
-            heading2: (block) => `<h2>${block.content}</h2>`,
-            heading3: (block) => `<h3>${block.content}</h3>`,
-            code: (block) => `<div class="code-block"><pre>${block.content}</pre></div>`,
-            tip: (block) => `<div class="tip-box">💡 ${block.content}</div>`,
-            warning: (block) => `<div class="warning-box">⚠️ ${block.content}</div>`,
-            conclusion: (block) => `<div class="conclusion-box"><h3>Conclusion</h3><p>${block.content}</p></div>`,
-            newsletter: (block) => renderNewsletterBlock(block)
-        };
-
-        contentHTML = articleData.content.map(block => 
-            contentBlocks[block.type] ? contentBlocks[block.type](block) : ''
-        ).join('');
+        contentHTML = renderOldContentFormat(articleData.content);
     }
 
     mainContent.innerHTML = `
@@ -1615,19 +1116,99 @@ function renderArticle(articleData) {
     const shareButtonHTML = shareUtils.createShareButton();
     mainContent.insertAdjacentHTML('beforeend', shareButtonHTML);
 
-    // Update share button behavior for mobile
     const shareButton = document.querySelector('.share-button');
     if (navigator.share) {
         shareButton.onclick = () => shareUtils.shareNative();
     }
     
-    // Initialize affiliate cards after rendering
     setTimeout(initAffiliateCards, 100);
 }
 
-// Add this new function to handle meta tags
+// Helper functions for rendering different section types
+function renderSectionType(items, type) {
+    // This is a simplified version - you would implement specific rendering for each type
+    return items.map(item => {
+        switch(type) {
+            case 'mistakes':
+                return `<div class="mistake-block">
+                    <h3 class="subsection-heading">Mistake #${item.mistakeNumber}: ${item.mistakeTitle}</h3>
+                    ${item.description ? `<p>${item.description}</p>` : ''}
+                    ${item.personalExperience ? `<div class="highlight-text">${item.personalExperience}</div>` : ''}
+                </div>`;
+            case 'tools':
+                return `<div class="tool-block">
+                    <h3 class="subsection-heading">${item.toolName}</h3>
+                    ${item.description ? `<p>${item.description}</p>` : ''}
+                </div>`;
+            default:
+                return `<div class="content-block"><p>${JSON.stringify(item)}</p></div>`;
+        }
+    }).join('');
+}
+
+function renderStrategicCombinations(combinations) {
+    const combosHTML = combinations.map(combo => `
+        <div class="combination-block">
+            <h3>${combo.combination || combo.strategy}</h3>
+            ${combo.ingredients ? `<p><strong>Ingredients:</strong> ${combo.ingredients}</p>` : ''}
+            ${combo.result ? `<p><strong>Result:</strong> ${combo.result}</p>` : ''}
+            ${combo.strategy ? `<p>${combo.strategy}</p>` : ''}
+        </div>
+    `).join('');
+    
+    return `<section class="article-section"><h2 class="section-heading">Strategic Combinations</h2>${combosHTML}</section>`;
+}
+
+function renderDailyMealStructure(structure) {
+    const mealsHTML = structure.breakdown.map(meal => `
+        <div class="meal-item">
+            <h4>${meal.meal} - ${meal.cost}</h4>
+            <p>${meal.description}</p>
+        </div>
+    `).join('');
+    
+    return `
+        <section class="article-section">
+            <h2 class="section-heading">Daily Meal Structure - ${structure.totalCost}</h2>
+            <div class="meal-breakdown">${mealsHTML}</div>
+            <p><strong>Appeal:</strong> ${structure.appeal}</p>
+        </section>
+    `;
+}
+
+function renderConclusion(conclusion) {
+    const elements = [];
+    if (conclusion.mainMessage) elements.push(`<p><strong>${conclusion.mainMessage}</strong></p>`);
+    if (conclusion.keyInsight) elements.push(`<p>${conclusion.keyInsight}</p>`);
+    if (conclusion.actionPlan) elements.push(`<p>${conclusion.actionPlan}</p>`);
+    if (conclusion.callToAction) elements.push(`<p>${conclusion.callToAction}</p>`);
+    
+    return `
+        <div class="conclusion-box">
+            <h3>Key Takeaways</h3>
+            ${elements.join('')}
+        </div>
+    `;
+}
+
+function renderOldContentFormat(content) {
+    const contentBlocks = {
+        text: (block) => `<p>${block.content}</p>`,
+        heading2: (block) => `<h2>${block.content}</h2>`,
+        heading3: (block) => `<h3>${block.content}</h3>`,
+        code: (block) => `<div class="code-block"><pre>${block.content}</pre></div>`,
+        tip: (block) => `<div class="tip-box">💡 ${block.content}</div>`,
+        warning: (block) => `<div class="warning-box">⚠️ ${block.content}</div>`,
+        conclusion: (block) => `<div class="conclusion-box"><h3>Conclusion</h3><p>${block.content}</p></div>`,
+        newsletter: (block) => renderNewsletterBlock(block)
+    };
+
+    return content.map(block => 
+        contentBlocks[block.type] ? contentBlocks[block.type](block) : ''
+    ).join('');
+}
+
 function setMetaTags(articleData) {
-    // Get or create meta tags
     const getOrCreateMeta = (property, name = null) => {
         let meta = document.querySelector(`meta[property="${property}"]`) || 
                    (name ? document.querySelector(`meta[name="${name}"]`) : null);
@@ -1640,28 +1221,21 @@ function setMetaTags(articleData) {
         return meta;
     };
 
-    // Extract description from first text block
     const firstTextBlock = articleData.content?.find(block => block.type === 'text');
     const description = articleData.description || 
                        (firstTextBlock ? firstTextBlock.content.substring(0, 160) + '...' : 
                         `Read about ${articleData.title} by ${articleData.author}`);
 
-    // Extract first image from content
     const firstImageBlock = articleData.content?.find(block => block.type === 'image');
     const imageUrl = articleData.thumbnail || firstImageBlock?.src || '/assets/default-share-image.jpg';
-
-    // Current page URL
     const currentUrl = window.location.href;
 
-    // Update page title
     document.title = `${articleData.title} | TopPicksOnline`;
 
-    // Basic meta tags
     getOrCreateMeta(null, 'description').content = description;
     getOrCreateMeta(null, 'author').content = articleData.author;
     getOrCreateMeta(null, 'keywords').content = articleData.tags?.join(', ') || articleData.category;
 
-    // Open Graph meta tags (Facebook, LinkedIn, etc.)
     getOrCreateMeta('og:title').content = articleData.title;
     getOrCreateMeta('og:description').content = description;
     getOrCreateMeta('og:type').content = 'article';
@@ -1681,14 +1255,12 @@ function setMetaTags(articleData) {
         });
     }
 
-    // Twitter Card meta tags
     getOrCreateMeta('twitter:card').content = 'summary_large_image';
     getOrCreateMeta('twitter:title').content = articleData.title;
     getOrCreateMeta('twitter:description').content = description;
     getOrCreateMeta('twitter:image').content = imageUrl;
     getOrCreateMeta('twitter:site').content = '@topicksonline';
 
-    // Structured data for SEO (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
     if (!structuredData) {
         structuredData = document.createElement('script');
@@ -1725,50 +1297,20 @@ function setMetaTags(articleData) {
     });
 }
 
-// Also add a function to reset meta tags when navigating away
 function resetMetaTags() {
     document.title = 'TopPicksOnline - Take control of your health, fitness, and productivity';
     
-    // Reset basic meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.content = 'Discover high-quality tutorials on programming, design, business, and more';
     
-    // Remove article-specific meta tags
     document.querySelectorAll('meta[property^="article:"], meta[property^="og:"], meta[property^="twitter:"]').forEach(meta => {
         if (meta.getAttribute('property') !== 'og:site_name') {
             meta.remove();
         }
     });
     
-    // Remove structured data
     const structuredData = document.querySelector('script[type="application/ld+json"]');
     if (structuredData) structuredData.remove();
-}
-
-function renderCategoryPage(categoryData) {
-    if (!categoryData) return renderNotFound();
-    
-    // Check if newsletter data exists in JSON
-    const newsletterHTML = categoryData.newsletter ? renderNewsletterBlock(categoryData.newsletter) : '';
-    
-    $('#main-content').innerHTML = `
-        <div class="container animate-in">
-            <div class="article-header">
-                <h1 class="article-title">${categoryData.title}</h1>
-                <p class="article-meta">${categoryData.articleCount} articles in ${categoryData.category}</p>
-            </div>
-            
-            <div class="section-header">
-                <h2>All ${categoryData.category} Articles</h2>
-            </div>
-            
-            <div class="tutorial-grid">
-                ${categoryData.articles?.map(templates.tutorialCard).join('') || '<p>No articles found in this category.</p>'}
-            </div>
-            
-            ${newsletterHTML}
-        </div>
-    `;
 }
 
 function renderGenericPage(pageData) {
@@ -1779,19 +1321,18 @@ function renderGenericPage(pageData) {
         text: (block) => `<p>${block.content}</p>`,
         heading: (block) => `<h${block.level || 2}>${block.content}</h${block.level || 2}>`,
         list: (block) => `<ul>${block.items?.map(item => `<li>${item}</li>`).join('') || ''}</ul>`,
-        cards: (block) => `
-            <div class="cards-grid">
-                ${block.cards?.map(card => `
-                    <div class="card">
-                        <h3>${card.title}</h3>
-                        <p>${card.description}</p>
-                        ${card.link ? `<a href="${card.link}" class="card-link">Learn More →</a>` : ''}
-                    </div>
-                `).join('') || ''}
-            </div>
-        `,
+        cards: (block) => {
+            const cardsHTML = block.cards?.map(card => `
+                <div class="card">
+                    <h3>${card.title}</h3>
+                    <p>${card.description}</p>
+                    ${card.link ? `<a href="${card.link}" class="card-link">Learn More →</a>` : ''}
+                </div>
+            `).join('') || '';
+            return `<div class="cards-grid">${cardsHTML}</div>`;
+        },
         cta: (block) => `<div class="cta-section"><p>${block.text}</p></div>`,
-        newsletter: (block) => renderNewsletterBlock(block) // ADD NEWSLETTER SUPPORT
+        newsletter: (block) => renderNewsletterBlock(block)
     };
 
     let content = '';
@@ -1828,107 +1369,23 @@ async function renderFooter(footerData) {
     const footerContent = $('#footer-content');
     if (!footerData?.columns) return;
 
-    footerContent.innerHTML = footerData.columns.map(column => `
-        <div class="footer-column">
-            <h4>${column.title}</h4>
-            <ul class="footer-links">
-                ${column.links?.map(link => `
-                    <li><a href="${link.link}">${link.title}</a></li>
-                `).join('') || ''}
-            </ul>
-        </div>
-    `).join('');
-}
-
-// Search functionality
-const search = {
-    async loadIndex() {
-        if (!cache.searchIndex) {
-            cache.searchIndex = await fetchJSON('/assets/data/search-index.json');
-        }
-        return cache.searchIndex;
-    },
-    
-    async perform(query) {
-        const index = await this.loadIndex();
-        if (!index?.articles || !query.trim()) return [];
+    const columnsHTML = footerData.columns.map(column => {
+        const linksHTML = column.links?.map(link => `
+            <li><a href="${link.link}">${link.title}</a></li>
+        `).join('') || '';
         
-        const lowerQuery = query.toLowerCase();
-        return index.articles.filter(article => 
-            ['title', 'description', 'category', 'author'].some(field => 
-                article[field]?.toLowerCase().includes(lowerQuery)
-            ) || article.tags?.some(tag => tag.toLowerCase().includes(lowerQuery))
-        );
-    },
-    
-    displayDropdown(results, query) {
-        const dropdown = $('#search-dropdown');
-        
-        if (results.length === 0) {
-            dropdown.innerHTML = `<div class="search-no-results">No articles found for "${query}"</div>`;
-        } else {
-            dropdown.innerHTML = results.slice(0, 5).map(article => `
-                <div class="search-result-item" onclick="navigateTo('/articles/${article.id.replace('articles/', '')}')">
-                    <div class="search-result-title">${this.highlightMatch(article.title, query)}</div>
-                    <div class="search-result-meta">${article.category} • By ${article.author}</div>
-                </div>
-            `).join('');
-            
-            if (results.length > 5) {
-                dropdown.innerHTML += `
-                    <div class="search-result-item" onclick="showAllResults('${query}')">
-                        <div class="search-result-meta">View all ${results.length} results →</div>
-                    </div>
-                `;
-            }
-        }
-        
-        dropdown.style.display = 'block';
-    },
-    
-    highlightMatch(text, query) {
-        const regex = new RegExp(`(${query})`, 'gi');
-        return text.replace(regex, '<strong>$1</strong>');
-    },
-    
-    displayResults(results) {
-        $('#main-content').innerHTML = `
-            <div class="container">
-                <div class="section-header">
-                    <h2>Search Results (${results.length})</h2>
-                </div>
-                <div class="tutorial-grid">
-                    ${results.map(templates.tutorialCard).join('') || '<p>No articles found matching your search.</p>'}
-                </div>
+        return `
+            <div class="footer-column">
+                <h4>${column.title}</h4>
+                <ul class="footer-links">
+                    ${linksHTML}
+                </ul>
             </div>
         `;
-    }
-};
+    }).join('');
 
-// Search handlers
-const handleSearchInput = debounce(async (query) => {
-    const dropdown = $('#search-dropdown');
-    
-    if (!query.trim()) {
-        dropdown.style.display = 'none';
-        return;
-    }
-    
-    const results = await search.perform(query);
-    search.displayDropdown(results, query);
-}, 300);
-
-window.handleSearchInput = handleSearchInput;
-
-async function showAllResults(query) {
-    $('#search-dropdown').style.display = 'none';
-    showLoading();
-    const results = await search.perform(query);
-    search.displayResults(results);
-    window.history.pushState({}, '', `/search?q=${encodeURIComponent(query)}`);
+    footerContent.innerHTML = columnsHTML;
 }
-
-window.showAllResults = showAllResults;
 
 // Routing
 async function handleRoute() {
@@ -1952,12 +1409,11 @@ async function handleRoute() {
         const query = urlParams.get('q');
         if (query) {
             const results = await search.perform(query);
-            search.displayResults(results);
+            search.displayResults(results, query);
         } else {
             navigateTo('/');
         }
     } else {
-        // Try to load as a generic page
         const pageName = path.substring(1);
         const pageData = await fetchJSON(`/assets/data/pages/${pageName}.json`);
         if (pageData) {
@@ -1970,13 +1426,18 @@ async function handleRoute() {
 
 function navigateTo(path) {
     $('#search-dropdown') && ($('#search-dropdown').style.display = 'none');
+    
+    if (heroSlider && path !== '/') {
+        heroSlider.destroy();
+        heroSlider = null;
+    }
+    
     window.history.pushState({}, '', path);
     handleRoute();
 }
 
 window.navigateTo = navigateTo;
 
-// Add this function to your JavaScript
 function initAffiliateCards() {
     const affiliateCards = document.querySelectorAll('.affiliate-card');
     
@@ -1984,16 +1445,16 @@ function initAffiliateCards() {
         const inner = card.querySelector('.affiliate-card-inner');
         const glow = card.querySelector('.affiliate-glow');
         
+        if (!inner || !glow) return;
+        
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Update glow position
             glow.style.setProperty('--x', `${x}px`);
             glow.style.setProperty('--y', `${y}px`);
             
-            // Calculate rotation for 3D tilt
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const rotateX = ((y - centerY) / centerY) * 2;
@@ -2175,7 +1636,7 @@ window.shareUtils = shareUtils;
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     theme.init();
-    newsletter.init(); // ADD NEWSLETTER INITIALIZATION
+    newsletter.init();
 
     const commonData = await fetchCommonData();
     if (commonData.navigation) {
@@ -2202,14 +1663,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
-// Newsletter helper functions
+
+// Helper functions
 window.checkNewsletterSubscribers = function() {
     const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
     console.log('📧 Newsletter Subscribers (' + subscribers.length + ' total):');
     console.table(subscribers);
     return subscribers;
 };
-function updateMetaTags(article) {
-    document.title = article.title + " - TopPicksOnline";
-    document.querySelector('meta[name="description"]').content = article.description;
-};
+
+// Auto-save button text
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const buttons = document.querySelectorAll('.newsletter-button');
+        buttons.forEach(button => {
+            if (!button.getAttribute('data-original-text')) {
+                button.setAttribute('data-original-text', button.textContent);
+            }
+        });
+    }, 1000);
+});
