@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Take control of your health, fitness, and productivity",
-    "subtitle": "Helping busy people take control of their health, fitness, and productivity with at-home routines and budget-smart meal planning."
+    "title": "Take Control of Your Health, Fitness, and Productivity",
+    "subtitle": "Practical at-home solutions and budget-smart strategies for busy people who want real results without the overwhelm."
   },
   "featured": [
     {
@@ -62,6 +62,25 @@
       ]
     },
     {
+      "id": "articles/7-Day Budget Meal Plan for Under $50",
+      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
+      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
+      "category": "Healthy Eating on a Budget",
+      "difficulty": "Beginner",
+      "author": "Maria Santos",
+      "date": "2025-07-06",
+      "readTime": "14 min",
+      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
+      "tags": [
+        "Budget Meals",
+        "Meal Planning",
+        "Cheap Recipes",
+        "Grocery Budget",
+        "Money Saving",
+        "Food Budget"
+      ]
+    },
+    {
       "id": "articles/Grocery Store Hacks",
       "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
       "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety.",
@@ -78,6 +97,25 @@
         "shopping hacks",
         "frugal living",
         "food budget"
+      ]
+    },
+    {
+      "id": "articles/Best Productivity Tools for Remote Workers",
+      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
+      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
+      "category": "Work-from-Home Productivity",
+      "difficulty": "Beginner",
+      "author": "Jennifer Rodriguez",
+      "date": "2025-07-06",
+      "readTime": "16 min",
+      "image": "assets/images/Best Productivity Tools for Remote Workers.jpg",
+      "tags": [
+        "Productivity Tools",
+        "Remote Work",
+        "Task Management",
+        "Time Tracking",
+        "Collaboration Apps",
+        "Focus Apps"
       ]
     },
     {
@@ -154,44 +192,6 @@
         "exercise consistency",
         "solo workouts",
         "fitness accountability"
-      ]
-    },
-    {
-      "id": "articles/7-Day Budget Meal Plan for Under $50",
-      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
-      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
-      "category": "Healthy Eating on a Budget",
-      "difficulty": "Beginner",
-      "author": "Maria Santos",
-      "date": "2025-07-06",
-      "readTime": "14 min",
-      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
-      "tags": [
-        "Budget Meals",
-        "Meal Planning",
-        "Cheap Recipes",
-        "Grocery Budget",
-        "Money Saving",
-        "Food Budget"
-      ]
-    },
-    {
-      "id": "articles/Best Productivity Tools for Remote Workers",
-      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
-      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
-      "category": "Work-from-Home Productivity",
-      "difficulty": "Beginner",
-      "author": "Jennifer Rodriguez",
-      "date": "2025-07-06",
-      "readTime": "16 min",
-      "image": "assets/images/Best Productivity Tools for Remote Workers.jpg",
-      "tags": [
-        "Productivity Tools",
-        "Remote Work",
-        "Task Management",
-        "Time Tracking",
-        "Collaboration Apps",
-        "Focus Apps"
       ]
     }
   ]

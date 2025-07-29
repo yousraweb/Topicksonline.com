@@ -1,16 +1,16 @@
 {
   "title": "Blog",
   "type": "page",
-  "description": "Latest news, updates, and insights from our team",
+  "description": "Latest health, fitness, and productivity insights for busy people",
   "content": [
     {
       "type": "hero",
       "title": "Our Blog",
-      "subtitle": "Insights, updates, and stories from our team"
+      "subtitle": "Practical health, fitness, and productivity insights that actually work"
     },
     {
       "type": "text",
-      "content": "Stay updated with the latest trends, tips, and insights from our team of experts. We share our knowledge and experience to help you grow."
+      "content": "Stay updated with the latest strategies, tips, and real-world experiences from our team and community. We share tested methods for taking control of your health, fitness, and productivity—all from home and on a budget."
     },
     {
       "type": "heading",
@@ -21,28 +21,28 @@
       "type": "blog_list",
       "posts": [
         {
-          "title": "The Future of Web Development in 2025",
+          "title": "Morning Productivity Routines That Actually Stick: 5 Systems for Busy People",
           "date": "January 15, 2025",
-          "excerpt": "Explore the latest trends and technologies shaping the future of web development.",
-          "author": "Sarah Chen",
-          "readTime": "5 min read",
-          "link": "/blog/future-web-development-2025"
-        },
-        {
-          "title": "Building Scalable Applications with Modern Architecture",
-          "date": "January 10, 2025",
-          "excerpt": "Learn how to design and build applications that can scale with your business needs.",
-          "author": "Mike Johnson",
+          "excerpt": "Stop failing at morning routines. These 5 flexible systems work even when you're tired, rushed, or traveling.",
+          "author": "Yousra El Assoui",
           "readTime": "8 min read",
-          "link": "/blog/scalable-applications"
+          "link": "/blog/morning-productivity-routines-2025"
         },
         {
-          "title": "AI and Machine Learning: A Developer's Guide",
+          "title": "Budget Meal Prep for Weight Loss: $40/Week Plans That Don't Taste Like Cardboard",
+          "date": "January 10, 2025",
+          "excerpt": "Real meal prep strategies that save money AND help you lose weight without sacrificing flavor or variety.",
+          "author": "Maya Singh",
+          "readTime": "12 min read",
+          "link": "/blog/budget-meal-prep-weight-loss"
+        },
+        {
+          "title": "Home HIIT Workouts for Small Spaces: Maximum Results in 20 Minutes",
           "date": "January 5, 2025",
-          "excerpt": "A comprehensive guide to implementing AI and ML in your applications.",
-          "author": "Alex Rivera",
+          "excerpt": "Transform any small space into an effective workout zone with these apartment-friendly HIIT routines.",
+          "author": "Mike Thompson",
           "readTime": "10 min read",
-          "link": "/blog/ai-ml-guide"
+          "link": "/blog/small-space-hiit-workouts"
         }
       ]
     }

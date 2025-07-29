@@ -2,25 +2,39 @@
   "title": "All Categories",
   "categories": [
     {
-      "name": "Programming",
-      "slug": "programming",
-      "articleCount": 1,
-      "description": "Browse all Programming articles",
-      "link": "/category/programming"
+      "name": "At-Home Fitness",
+      "slug": "at-home-fitness",
+      "articleCount": 6,
+      "description": "Home workouts, bodyweight exercises, and fitness routines for small spaces",
+      "link": "/category/at-home-fitness"
     },
     {
-      "name": "Marketing",
-      "slug": "marketing",
-      "articleCount": 1,
-      "description": "Browse all Marketing articles",
-      "link": "/category/marketing"
+      "name": "Healthy Eating on a Budget",
+      "slug": "healthy-eating-budget",
+      "articleCount": 3,
+      "description": "Budget meal planning, grocery hacks, and affordable nutrition tips",
+      "link": "/category/healthy-eating-budget"
     },
     {
-      "name": "Design",
-      "slug": "design",
+      "name": "Work-from-Home Productivity",
+      "slug": "work-from-home-productivity",
+      "articleCount": 2,
+      "description": "Productivity tools, time management, and focus strategies for remote workers",
+      "link": "/category/work-from-home-productivity"
+    },
+    {
+      "name": "Motivation & Mental Health",
+      "slug": "motivation-mental-health",
       "articleCount": 1,
-      "description": "Browse all Design articles",
-      "link": "/category/design"
+      "description": "Staying motivated, building habits, and maintaining mental wellness",
+      "link": "/category/motivation-mental-health"
+    },
+    {
+      "name": "Grocery & Meal Hacks",
+      "slug": "grocery-meal-hacks",
+      "articleCount": 1,
+      "description": "Smart shopping strategies and time-saving meal preparation tips",
+      "link": "/category/grocery-meal-hacks"
     }
   ]
 }

@@ -14,7 +14,7 @@
     },
     {
       "type": "text",
-      "content": "Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website."
+      "content": "Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our health and productivity content website."
     },
     {
       "type": "heading",
@@ -23,15 +23,15 @@
     },
     {
       "type": "text",
-      "content": "We collect information you provide directly to us, such as when you create an account, subscribe to our newsletter, or contact us."
+      "content": "We collect information you provide directly to us, such as when you subscribe to our newsletter, download our meal plans or workout guides, or contact us for health and productivity advice."
     },
     {
       "type": "list",
       "items": [
-        "Personal Information: Name, email address, phone number",
-        "Account Information: Username, password, preferences",
-        "Payment Information: Processed securely through third-party providers",
-        "Usage Data: How you interact with our services"
+        "Personal Information: Name, email address for newsletter and resource access",
+        "Health Goals: General fitness and wellness goals you share with us",
+        "Content Preferences: Types of health and productivity content you're interested in",
+        "Usage Data: How you interact with our health and fitness content"
       ]
     },
     {
@@ -46,12 +46,21 @@
     {
       "type": "list",
       "items": [
-        "Provide, maintain, and improve our services",
-        "Send you technical notices and support messages",
-        "Communicate with you about products, services, and events",
-        "Monitor and analyze trends and usage",
-        "Detect, investigate, and prevent fraudulent transactions"
+        "Provide health, fitness, and productivity content and resources",
+        "Send you relevant tips, meal plans, and workout guides",
+        "Communicate about new content and health-related updates",
+        "Improve our content based on user interests and needs",
+        "Ensure the safety and security of our health content platform"
       ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Important Note About Health Information"
+    },
+    {
+      "type": "text",
+      "content": "We do not collect sensitive health data or medical information. Our content is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment."
     },
     {
       "type": "heading",

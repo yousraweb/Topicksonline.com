@@ -14,7 +14,7 @@
     },
     {
       "type": "text",
-      "content": "This Cookie Policy explains how we use cookies and similar technologies to recognize you when you visit our website."
+      "content": "This Cookie Policy explains how we use cookies and similar technologies to recognize you when you visit our health, fitness, and productivity content website."
     },
     {
       "type": "heading",
@@ -23,7 +23,7 @@
     },
     {
       "type": "text",
-      "content": "Cookies are small data files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to site owners."
+      "content": "Cookies are small data files that are placed on your computer or mobile device when you visit a website. They help us provide a better experience by remembering your content preferences and improving our health and productivity resources."
     },
     {
       "type": "heading",
@@ -34,9 +34,9 @@
       "type": "list",
       "items": [
         "Essential Cookies: Required for the website to function properly",
-        "Analytics Cookies: Help us understand how visitors interact with our website",
-        "Functionality Cookies: Enable enhanced functionality and personalization",
-        "Advertising Cookies: Used to deliver relevant ads and track campaign performance"
+        "Analytics Cookies: Help us understand which health and fitness content is most valuable",
+        "Functionality Cookies: Remember your workout and meal planning preferences",
+        "Content Cookies: Show you relevant health and productivity tips based on your interests"
       ]
     },
     {
@@ -48,9 +48,9 @@
       "type": "table",
       "headers": ["Cookie Name", "Purpose", "Duration"],
       "rows": [
-        ["session_id", "Maintains user session", "Session"],
-        ["analytics_token", "Google Analytics tracking", "2 years"],
-        ["user_preferences", "Stores user preferences", "1 year"],
+        ["session_id", "Maintains user session for content access", "Session"],
+        ["analytics_token", "Tracks which health content is most helpful", "2 years"],
+        ["content_preferences", "Stores fitness and nutrition content preferences", "1 year"],
         ["consent_given", "Records cookie consent", "1 year"]
       ]
     },
@@ -61,7 +61,7 @@
     },
     {
       "type": "text",
-      "content": "Most web browsers allow you to control cookies through their settings. You can set your browser to refuse cookies or delete certain cookies. However, if you choose to block cookies, some features of our website may not function properly."
+      "content": "Most web browsers allow you to control cookies through their settings. You can set your browser to refuse cookies or delete certain cookies. However, if you choose to block cookies, some features of our health and productivity content may not function properly."
     },
     {
       "type": "heading",
@@ -79,7 +79,7 @@
     },
     {
       "type": "text",
-      "content": "If you have questions about our use of cookies, please contact us at privacy@example.com"
+      "content": "If you have questions about our use of cookies, please contact us at yousraelassoui6@gmail.com"
     }
   ]
 }

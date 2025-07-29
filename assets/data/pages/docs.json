@@ -1,12 +1,12 @@
 {
-  "title": "Documentation",
+  "title": "Resource Center",
   "type": "page",
-  "description": "Comprehensive guides and API references for developers",
+  "description": "Comprehensive guides and resources for health, fitness, and productivity",
   "content": [
     {
       "type": "hero",
-      "title": "Documentation Center",
-      "subtitle": "Everything you need to build amazing projects"
+      "title": "Resource Center",
+      "subtitle": "Everything you need to take control of your health, fitness, and productivity"
     },
     {
       "type": "heading",
@@ -15,47 +15,47 @@
     },
     {
       "type": "text",
-      "content": "Welcome to our documentation center. Here you'll find comprehensive guides, tutorials, and API references to help you get the most out of our platform."
+      "content": "Welcome to our resource center. Here you'll find comprehensive guides, workout plans, meal prep templates, and productivity frameworks to help you build sustainable habits that fit your busy lifestyle."
     },
     {
       "type": "cards",
       "cards": [
         {
           "title": "Quick Start Guide",
-          "description": "Get up and running in minutes with our step-by-step guide",
-          "link": "/docs/quickstart"
+          "description": "Begin your health and productivity journey with our beginner-friendly roadmap",
+          "link": "/resources/quickstart"
         },
         {
-          "title": "API Reference",
-          "description": "Complete API documentation with examples and code snippets",
-          "link": "/docs/api"
+          "title": "Workout Library",
+          "description": "Complete collection of home workout routines for all fitness levels",
+          "link": "/resources/workouts"
         },
         {
-          "title": "Examples",
-          "description": "Learn by example with our collection of sample projects",
-          "link": "/docs/examples"
+          "title": "Meal Planning Templates",
+          "description": "Ready-to-use meal plans and grocery lists for every budget",
+          "link": "/resources/meal-plans"
         },
         {
-          "title": "FAQ",
-          "description": "Find answers to commonly asked questions",
-          "link": "/docs/faq"
+          "title": "Productivity Tools",
+          "description": "Templates, trackers, and systems for managing time and tasks effectively",
+          "link": "/resources/productivity"
         }
       ]
     },
     {
       "type": "heading",
       "level": 2,
-      "content": "Popular Topics"
+      "content": "Popular Resources"
     },
     {
       "type": "list",
       "items": [
-        "Authentication and Authorization",
-        "Working with APIs",
-        "Database Integration",
-        "Deployment Guidelines",
-        "Performance Optimization",
-        "Security Best Practices"
+        "4-Week Beginner Home Workout Plan",
+        "Budget Meal Prep for Weight Loss",
+        "Small Space Home Gym Setup Guide",
+        "Morning Routine Templates",
+        "Habit Tracking Worksheets",
+        "Emergency No-Cook Meal List"
       ]
     }
   ]

@@ -14,7 +14,7 @@
     },
     {
       "type": "text",
-      "content": "Please read these Terms of Service carefully before using our website or services."
+      "content": "Please read these Terms of Service carefully before using our health, fitness, and productivity content website."
     },
     {
       "type": "heading",
@@ -23,25 +23,34 @@
     },
     {
       "type": "text",
-      "content": "By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access our services."
+      "content": "By accessing or using our health and productivity content, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access our content or services."
     },
     {
       "type": "heading",
       "level": 2,
-      "content": "Use of Services"
+      "content": "Health and Fitness Disclaimer"
     },
     {
       "type": "text",
-      "content": "You may use our services only for lawful purposes and in accordance with these Terms. You agree not to use our services:"
+      "content": "Our content is for informational and educational purposes only. It is not intended as a substitute for professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare providers before starting any fitness program or making significant dietary changes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "content": "Use of Content and Services"
+    },
+    {
+      "type": "text",
+      "content": "You may use our health and productivity content only for personal, non-commercial purposes and in accordance with these Terms. You agree not to:"
     },
     {
       "type": "list",
       "items": [
-        "In any way that violates any applicable law or regulation",
-        "To transmit any harmful or malicious code",
-        "To impersonate or attempt to impersonate another person",
-        "In any way that infringes upon the rights of others",
-        "To engage in any conduct that restricts or inhibits anyone's use of the services"
+        "Redistribute our workout plans, meal guides, or content without permission",
+        "Use our content for commercial fitness or nutrition businesses",
+        "Modify our content and present it as your own",
+        "Share our premium resources outside of your personal use",
+        "Use our content in any way that could harm others' health or safety"
       ]
     },
     {
@@ -51,16 +60,16 @@
     },
     {
       "type": "text",
-      "content": "The services and their original content, features, and functionality are and will remain the exclusive property of our company and its licensors."
+      "content": "Our workout plans, meal guides, productivity templates, and original content are and will remain the exclusive property of TopPicksOnline and its content creators."
     },
     {
       "type": "heading",
       "level": 2,
-      "content": "Termination"
+      "content": "Assumption of Risk"
     },
     {
       "type": "text",
-      "content": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."
+      "content": "By using our fitness content, you acknowledge that physical exercise carries inherent risks. You participate in any suggested activities at your own risk and are responsible for your safety and well-being."
     },
     {
       "type": "heading",
@@ -69,7 +78,7 @@
     },
     {
       "type": "text",
-      "content": "In no event shall our company, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages."
+      "content": "In no event shall TopPicksOnline, its founder, or content contributors be liable for any injury, health issue, or other damages arising from the use of our fitness, nutrition, or productivity content."
     },
     {
       "type": "heading",
