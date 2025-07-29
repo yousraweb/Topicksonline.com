@@ -5,8 +5,8 @@
   "articleCount": 2,
   "articles": [
     {
-      "id": "articles/Grocery Store Hacks",
-      "image": "assets/images/Grocery Store Hacks.jpg",
+      "id": "articles/grocery-store-hacks",
+      "image": "assets/images/grocery-store-hacks.jpg",
       "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
       "author": "David Kim",
       "date": "2025-07-08",
@@ -24,8 +24,8 @@
       "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety."
     },
     {
-      "id": "articles/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals",
-      "image": "assets/images/Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals.jpg",
+      "id": "articles/top-10-cheapest-grocery-items-that-stretch-across-multiple-meals",
+      "image": "assets/images/top-10-cheapest-grocery-items-that-stretch-across-multiple-meals.jpg",
       "title": "Top 10 Cheapest Grocery Items That Stretch Across Multiple Meals (I Fed Myself for $6/Day Using These)",
       "author": "Carlos Rivera",
       "date": "2025-07-06",

@@ -5,7 +5,7 @@
   },
   "featured": [
     {
-      "id": "articles/Lose-Belly-Fat-At-Home",
+      "id": "articles/lose-belly-fat-at-home",
       "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
       "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
       "category": "At-Home Fitness",
@@ -13,7 +13,7 @@
       "author": "Maya Singh",
       "date": "2025-07-22",
       "readTime": "12 min",
-      "image": "assets/images/Lose-Belly-Fat-At-Home.jpg",
+      "image": "assets/images/lose-belly-fat-at-home.jpg",
       "tags": [
         "Belly Fat",
         "Weight Loss",
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "id": "articles/Beginner Home Fitness Mistakes",
+      "id": "articles/beginner-home-fitness-mistakes",
       "title": "Beginner Home Fitness Mistakes That Sabotage Progress: 7 Costly Errors I Made (So You Don't Have To)",
       "description": "Don't burn out, get injured, or quit early like I did. After 3 failed fitness attempts and one minor injury, here are the 7 mistakes that sabotage home workout progress—and exactly how to fix them.",
       "category": "At-Home Fitness",
@@ -33,7 +33,7 @@
       "author": "Mike Thompson",
       "date": "2025-07-08",
       "readTime": "14 min",
-      "image": "assets/images/Beginner Home Fitness Mistakes.jpg",
+      "image": "assets/images/beginner-home-fitness-mistakes.jpg",
       "tags": [
         "fitness mistakes",
         "home workout",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "articles/Beginners NoGym Workout Plan",
+      "id": "articles/beginners-nogym-workout-plan",
       "title": "Beginner's No-Gym Workout Plan: 4 Weeks to Get Fit at Home",
       "description": "Stop drowning in expensive gym memberships you never use. After 6 months of testing home workout routines and spending $0 on equipment, here's the 4-week plan that actually got me fit at home.",
       "category": "At-Home Fitness",
@@ -52,7 +52,7 @@
       "author": "Sarah Martinez",
       "date": "2025-07-08",
       "readTime": "12 min",
-      "image": "assets/images/Beginners NoGym Workout Plan.jpg",
+      "image": "assets/images/beginners-nogym-workout-plan.jpg",
       "tags": [
         "beginner fitness",
         "home workout",
@@ -62,26 +62,7 @@
       ]
     },
     {
-      "id": "articles/7-Day Budget Meal Plan for Under $50",
-      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
-      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
-      "category": "Healthy Eating on a Budget",
-      "difficulty": "Beginner",
-      "author": "Maria Santos",
-      "date": "2025-07-06",
-      "readTime": "14 min",
-      "image": "assets/images/7-Day Budget Meal Plan for Under $50.jpg",
-      "tags": [
-        "Budget Meals",
-        "Meal Planning",
-        "Cheap Recipes",
-        "Grocery Budget",
-        "Money Saving",
-        "Food Budget"
-      ]
-    },
-    {
-      "id": "articles/Grocery Store Hacks",
+      "id": "articles/grocery-store-hacks",
       "title": "Grocery Store Hacks: 15 Ways to Save Big on Your Weekly Shopping Trip (I Cut My Bill by 47%)",
       "description": "Your habits matter more than coupons. After spending $180/week on groceries for two people, I used these 15 smart tricks to cut my bill to $95/week without sacrificing quality or variety.",
       "category": "Grocery & Meal Hacks",
@@ -89,7 +70,7 @@
       "author": "David Kim",
       "date": "2025-07-08",
       "readTime": "14 min",
-      "image": "assets/images/Grocery Store Hacks.jpg",
+      "image": "assets/images/grocery-store-hacks.jpg",
       "tags": [
         "grocery savings",
         "budget tips",
@@ -100,26 +81,7 @@
       ]
     },
     {
-      "id": "articles/Best Productivity Tools for Remote Workers",
-      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
-      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
-      "category": "Work-from-Home Productivity",
-      "difficulty": "Beginner",
-      "author": "Jennifer Rodriguez",
-      "date": "2025-07-06",
-      "readTime": "16 min",
-      "image": "assets/images/Best Productivity Tools for Remote Workers.jpg",
-      "tags": [
-        "Productivity Tools",
-        "Remote Work",
-        "Task Management",
-        "Time Tracking",
-        "Collaboration Apps",
-        "Focus Apps"
-      ]
-    },
-    {
-      "id": "articles/Home Workout Space in a Small Room",
+      "id": "articles/home-workout-space-in-a-small-room",
       "title": "How to Create a Home Workout Space in a Small Room: Transform Any Corner Into Your Personal Gym",
       "description": "No extra room needed—just smart setup. After transforming my 10x10 bedroom into a functional workout space for under $75, here's exactly how to create an inviting home gym anywhere.",
       "category": "At-Home Fitness",
@@ -127,7 +89,7 @@
       "author": "Jessica Chen",
       "date": "2025-07-08",
       "readTime": "11 min",
-      "image": "assets/images/Home Workout Space in a Small Room.jpg",
+      "image": "assets/images/home-workout-space-in-a-small-room.jpg",
       "tags": [
         "home gym",
         "small space",
@@ -138,7 +100,7 @@
       ]
     },
     {
-      "id": "articles/Lose Weight at Home Without a Gym",
+      "id": "articles/lose-weight-at-home-without-a-gym",
       "title": "Lose Weight at Home Without a Gym: Beginner's Guide to Fat Loss (I Lost 35 Pounds in 6 Months)",
       "description": "Don't waste money on gym memberships you won't use. After losing 35 pounds in 6 months using only home workouts and simple nutrition changes, here's exactly what works for sustainable fat loss.",
       "category": "At-Home Fitness",
@@ -146,7 +108,7 @@
       "author": "Rachel Chen",
       "date": "2025-07-08",
       "readTime": "15 min",
-      "image": "assets/images/Lose Weight at Home Without a Gym.jpg",
+      "image": "assets/images/lose-weight-at-home-without-a-gym.jpg",
       "tags": [
         "weight loss",
         "home fitness",
@@ -157,7 +119,7 @@
       ]
     },
     {
-      "id": "articles/No-Cook Budget Meals",
+      "id": "articles/no-cook-budget-meals",
       "title": "No-Cook Budget Meals for When You're Too Tired to Cook (or Don't Have a Stove): 7 Lifesaving Recipes Under $3 Each",
       "description": "Whether it's heat, laziness, or no kitchen — this is your fix. After 3 months with a broken stove and a $50/week food budget, here are 7 no-cook meals that saved my sanity and wallet.",
       "category": "Healthy Eating on a Budget",
@@ -165,7 +127,7 @@
       "author": "Maria Santos",
       "date": "2025-07-08",
       "readTime": "12 min",
-      "image": "assets/images/No-Cook Budget Meals.jpg",
+      "image": "assets/images/no-cook-budget-meals.jpg",
       "tags": [
         "no-cook meals",
         "budget recipes",
@@ -176,7 +138,7 @@
       ]
     },
     {
-      "id": "articles/Stay Motivated Working Out Alone at Home",
+      "id": "articles/stay-motivated-working-out-alone-at-home",
       "title": "How to Stay Motivated Working Out Alone at Home: 7 Systems That Kept Me Going for 2 Years",
       "description": "No gym = no trainer or workout buddies = easy to quit. After failing 6 times to stick with home workouts, here are the 7 motivation systems that finally made it stick for 2+ years.",
       "category": "Motivation & Mental Health",
@@ -184,7 +146,7 @@
       "author": "Alex Rodriguez",
       "date": "2025-07-08",
       "readTime": "13 min",
-      "image": "assets/images/Stay Motivated Working Out Alone at Home.jpg",
+      "image": "assets/images/stay-motivated-working-out-alone-at-home.jpg",
       "tags": [
         "workout motivation",
         "home fitness",
@@ -192,6 +154,44 @@
         "exercise consistency",
         "solo workouts",
         "fitness accountability"
+      ]
+    },
+    {
+      "id": "articles/7-day-budget-meal-plan-for-under-50",
+      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
+      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
+      "category": "Healthy Eating on a Budget",
+      "difficulty": "Beginner",
+      "author": "Maria Santos",
+      "date": "2025-07-06",
+      "readTime": "14 min",
+      "image": "assets/images/7-day-budget-meal-plan-for-under-50.jpg",
+      "tags": [
+        "Budget Meals",
+        "Meal Planning",
+        "Cheap Recipes",
+        "Grocery Budget",
+        "Money Saving",
+        "Food Budget"
+      ]
+    },
+    {
+      "id": "articles/best-productivity-tools-for-remote-workers",
+      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
+      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
+      "category": "Work-from-Home Productivity",
+      "difficulty": "Beginner",
+      "author": "Jennifer Rodriguez",
+      "date": "2025-07-06",
+      "readTime": "16 min",
+      "image": "assets/images/best-productivity-tools-for-remote-workers.jpg",
+      "tags": [
+        "Productivity Tools",
+        "Remote Work",
+        "Task Management",
+        "Time Tracking",
+        "Collaboration Apps",
+        "Focus Apps"
       ]
     }
   ]
