@@ -283,7 +283,7 @@ let heroSlider = null;
 
 // PAGINATION CLASS
 class Pagination {
-    constructor(items, itemsPerPage = 12) {
+    constructor(items, itemsPerPage = 3) {
         this.allItems = items;
         this.itemsPerPage = itemsPerPage;
         this.currentPage = 1;
