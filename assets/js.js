@@ -1273,7 +1273,31 @@ function renderSectionType(items, type) {
             case 'budgetBreakdown':
                 return keyValTable(item);
             default:
-                return `<div class="content-block">${typeof item === 'string' ? item : (item.content || JSON.stringify(item))}</div>`;
+                // Improved fallback renderer: handle common generic shapes gracefully instead of dumping raw JSON
+                if (typeof item === 'string') {
+                    return `<div class="content-block"><p>${item}</p></div>`;
+                }
+                if (item && typeof item === 'object') {
+                    // Try common fields first
+                    const heading = item.title || item.problemTitle || item.strategyTitle || item.name || '';
+                    const sub = item.subtitle || item.subTitle || '';
+                    const desc = item.description || item.personalExperience || item.discoveryInsight || item.keyInsight || item.result || '';
+                    const listCandidates = item.items || item.points || item.bullets || item.rules || item.steps || item.brutalData || item.transformationResults || item.actions;
+                    const stats = item.stats ? keyValTable(item.stats) : '';
+                    const kv = (!heading && !desc && !listCandidates) ? keyValTable(item) : '';
+                    const listHTML = Array.isArray(listCandidates) ? listify(listCandidates, (x)=>`<li>${typeof x==='string'?x:(x.title?`<strong>${x.title}</strong>${x.description?` - ${x.description}`:''}`:JSON.stringify(x))}</li>`) : '';
+                    return `
+                        <div class="content-block">
+                            ${heading ? `<h3 class="subsection-heading">${heading}${item.problemNumber?` #${item.problemNumber}`:''}${item.strategyNumber?` #${item.strategyNumber}`:''}</h3>` : ''}
+                            ${sub ? `<p class="subheading">${sub}</p>` : ''}
+                            ${desc ? `<p>${desc}</p>` : ''}
+                            ${listHTML}
+                            ${stats}
+                            ${kv}
+                        </div>
+                    `;
+                }
+                return '';
         }
     }).join('');
 }
