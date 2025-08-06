@@ -1515,6 +1515,284 @@ footer {
     transform: translateX(4px);
 }
 
+/* TOC should not overlap navbar and should not block clicks */
+.toc {
+    position: relative;
+    z-index: 0; /* below navbar which has z-index:1000 */
+    margin-top: 16px; /* create breathing room below header */
+}
+.toc a {
+    pointer-events: auto; /* ensure links are clickable */
+}
+
+/* Anchor offset for fixed navbar when scrolling to section ids */
+.article-section[id]::before {
+    content: "";
+    display: block;
+    height: 84px; /* nav height (72px) + spacing */
+    margin-top: -84px;
+    visibility: hidden;
+}
+@media (max-width: 768px) {
+    .article-section[id]::before {
+        height: 72px;
+        margin-top: -72px;
+    }
+}
+
+/* Schedule/Day object cards fallback (day, duration, structure[], goal) */
+.schedule-card, .routine-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    margin: 14px 0;
+}
+.schedule-card .schedule-header,
+.routine-card .schedule-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.schedule-card .schedule-day {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.schedule-card .schedule-duration {
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+.schedule-card .schedule-structure {
+    margin: 8px 0 0 0;
+    padding-left: 18px;
+}
+.schedule-card .schedule-structure li {
+    color: var(--text-secondary);
+    margin: 6px 0;
+}
+.schedule-card .schedule-goal {
+    margin-top: 10px;
+    color: var(--text-secondary);
+}
+
+/* Generic key/value box for unknown objects to avoid raw JSON */
+.kv {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 12px 0;
+}
+.kv ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.kv li {
+    color: var(--text-secondary);
+    margin: 6px 0;
+}
+/* ===== Article missing styles: meta chips, tags, TOC, intro, lists, meals, spacing ===== */
+
+/* Meta chips under title */
+.meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 12px 0 20px;
+}
+.meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 999px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+/* Tag chips */
+.tag-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 16px 0 24px;
+}
+.tag-chip {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--accent-medium);
+    border-radius: 999px;
+}
+
+/* Article cover image container */
+.article-cover {
+    margin: 24px 0 12px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+.article-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Article introduction block */
+.article-introduction {
+    margin: 24px 0 32px;
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+.article-introduction p + p {
+    margin-top: 10px;
+}
+
+/* Section container spacing */
+.article-section {
+    margin: 28px 0 16px;
+}
+.section-description {
+    color: var(--text-secondary);
+    margin: 8px 0 0;
+}
+
+/* Generic content blocks (fallback renderer) */
+.content-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    color: var(--text-secondary);
+    margin: 14px 0;
+}
+
+/* List block (for many section types) */
+.list-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    margin: 14px 0;
+}
+.list-block h3 {
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+.list-block p {
+    color: var(--text-secondary);
+    margin: 6px 0 0 0;
+}
+.list-block ul {
+    margin: 10px 0 0 0;
+    padding-left: 18px;
+}
+.list-block li {
+    margin: 6px 0;
+    color: var(--text-secondary);
+}
+
+/* Table-of-Contents */
+.toc {
+    margin: 18px auto 0;
+    max-width: 800px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+}
+.toc-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+.toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 14px;
+}
+.toc a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+
+/* Meals/day blocks used by meal plans */
+.day-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin: 16px 0;
+}
+.day-block h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 18px;
+}
+.meal-list {
+    display: grid;
+    gap: 10px;
+}
+.meal-head {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Improve article typography spacing */
+.article-content p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+}
+.article-content ul,
+.article-content ol {
+    padding-left: 22px;
+    margin: 12px 0;
+}
+.article-content li {
+    margin: 6px 0;
+}
+
+/* Responsive adjustments for article UI additions */
+@media (max-width: 768px) {
+    .toc ul {
+        grid-template-columns: 1fr;
+    }
+    .article-introduction,
+    .list-block,
+    .content-block,
+    .day-block {
+        padding: 16px;
+    }
+}
 /* Article Page Styles */
 .article-container {
     max-width: 800px;

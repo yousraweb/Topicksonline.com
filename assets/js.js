@@ -403,25 +403,34 @@ let searchPagination = null;
 // Template functions
 const templates = {
     tutorialCard: (tutorial) => {
-        const imageHTML = tutorial.image ? 
-            `<img src="${tutorial.image}" 
-                 alt="${tutorial.title}" 
-                 onload="this.previousElementSibling.style.display='none'" 
-                 onerror="this.previousElementSibling.style.display='none'; this.style.display='none';" />` : '';
-        
+        const id = (tutorial.id || '').replace(/^articles\//, '') || (tutorial.slug || '');
+        const slug = id || (tutorial.title ? tutorial.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') : '');
+        const resolvedImage = tutorial.image || tutorial.thumbnail || (slug ? `/assets/images/${slug}.jpg` : '');
+        const imageHTML = resolvedImage ?
+            `<img src="${resolvedImage}"
+                 alt="${tutorial.title}"
+                 loading="lazy"
+                 onload="this.previousElementSibling.style.display='none'"
+                 onerror="this.style.display='none'; this.previousElementSibling.style.display='none'; this.parentElement.classList.add('no-image');" />`
+            : '';
+
+        const readMeta = [tutorial.author, tutorial.readTime || tutorial.date, tutorial.category].filter(Boolean).join(' • ');
+
         return `
-            <div class="tutorial-card animate-in" onclick="navigateTo('/articles/${tutorial.id.replace('articles/', '')}')" data-category="${tutorial.category}">
+            <div class="tutorial-card animate-in" role="article" tabindex="0"
+                 onclick="navigateTo('/articles/${slug}')"
+                 onkeypress="if(event.key==='Enter'){navigateTo('/articles/${slug}')}"
+                 data-category="${tutorial.category}">
                 <div class="tutorial-thumbnail" style="position: relative;">
                     <div class="image-loader"></div>
                     ${imageHTML}
                 </div>
                 <div class="tutorial-content">
-                    <span class="tutorial-category">${tutorial.category}</span>
+                    <span class="tutorial-category">${tutorial.category || ''}</span>
                     <h3 class="tutorial-title">${tutorial.title}</h3>
-                    <p class="tutorial-description">${tutorial.description}</p>
+                    <p class="tutorial-description">${tutorial.description || ''}</p>
                     <div class="tutorial-meta">
-                        <span>${tutorial.author}</span>
-                        <span>${tutorial.readTime || tutorial.date || ''}</span>
+                        <span>${readMeta}</span>
                     </div>
                 </div>
             </div>
@@ -1040,6 +1049,32 @@ async function showAllResults(query) {
 
 window.showAllResults = showAllResults;
 
+function resolveArticleImage(articleData) {
+    // try explicit
+    if (articleData.thumbnail || articleData.image) return articleData.thumbnail || articleData.image;
+    // derive from url slug
+    const path = window.location.pathname; // /articles/slug
+    const slug = path.startsWith('/articles/') ? path.slice('/articles/'.length).replace(/\/+$/,'') : '';
+    if (slug) {
+        return `/assets/images/${slug}.jpg`;
+    }
+    // final fallback
+    return '/assets/default-share-image.jpg';
+}
+function formatMetaChips(articleData) {
+    const chips = [
+        articleData.author ? `👤 ${articleData.author}` : null,
+        articleData.date ? `📅 ${articleData.date}` : null,
+        articleData.readTime ? `⏱️ ${articleData.readTime}` : null,
+        articleData.category ? `🏷️ ${articleData.category}` : null
+    ].filter(Boolean).map(t=>`<span class="meta-chip">${t}</span>`).join('');
+    return `<div class="meta-chips">${chips}</div>`;
+}
+function renderTOC(sections) {
+    if (!sections || sections.length < 3) return '';
+    const items = sections.map((s, i)=>`<li><a class="toc-link" data-target="sec-${i}" href="#sec-${i}">${s.theme || s.title || ('Section '+(i+1))}</a></li>`).join('');
+    return `<nav class="toc" aria-label="Table of contents"><div class="toc-title">On this page</div><ul>${items}</ul></nav>`;
+}
 function renderArticle(articleData) {
     if (!articleData) return renderNotFound();
 
@@ -1048,6 +1083,10 @@ function renderArticle(articleData) {
     const mainContent = $('#main-content');
     let contentHTML = '';
     
+    const coverImage = resolveArticleImage(articleData);
+
+    const tocHTML = renderTOC(articleData.sections);
+
     if (articleData.introduction) {
         const introElements = [];
         if (articleData.introduction.hook) introElements.push(`<p><strong>${articleData.introduction.hook}</strong></p>`);
@@ -1059,19 +1098,19 @@ function renderArticle(articleData) {
     }
     
     if (articleData.sections) {
-        articleData.sections.forEach(section => {
-            contentHTML += `<section class="article-section">`;
-            contentHTML += `<h2 class="section-heading">${section.theme}</h2>`;
+        articleData.sections.forEach((section, idx) => {
+            contentHTML += `<section class="article-section" id="sec-${idx}">`;
+            contentHTML += `<h2 class="section-heading">${section.theme || section.title || ''} ${section.emoji ? `<span>${section.emoji}</span>`:''}</h2>`;
             if (section.description) {
                 contentHTML += `<p class="section-description">${section.description}</p>`;
             }
             
             // Handle various section types
-            ['problems', 'impacts', 'hacks', 'meals', 'weeklyMeals', 'safetyProtocols', 
-             'budgetBreakdown', 'varietyStrategies', 'weeklySchedule', 'principles', 
-             'strategies', 'habits', 'workoutTypes', 'ingredients', 'furniture', 
-             'technology', 'environment', 'comfort', 'systems', 'concepts', 
-             'challenges', 'nutritionStrategies', 'mistakes', 'tools'].forEach(type => {
+            ['problems', 'impacts', 'hacks', 'meals', 'weeklyMeals', 'safetyProtocols',
+             'budgetBreakdown', 'varietyStrategies', 'weeklySchedule', 'principles',
+             'strategies', 'habits', 'workoutTypes', 'ingredients', 'furniture',
+             'technology', 'environment', 'comfort', 'systems', 'concepts',
+             'challenges', 'nutritionStrategies', 'mistakes', 'tools', 'rules'].forEach(type => {
                 if (section[type]) {
                     contentHTML += renderSectionType(section[type], type);
                 }
@@ -1079,6 +1118,12 @@ function renderArticle(articleData) {
             
             contentHTML += `</section>`;
         });
+    }
+
+    // Handle schedule/day object arrays rendered as readable cards
+    if (articleData.schedule && Array.isArray(articleData.schedule)) {
+        const scheduleHTML = articleData.schedule.map(item => renderScheduleCard(item)).join('');
+        contentHTML += `<section class="article-section"><h2 class="section-heading">Schedule</h2>${scheduleHTML}</section>`;
     }
     
     // Add additional content sections
@@ -1099,13 +1144,18 @@ function renderArticle(articleData) {
         contentHTML = renderOldContentFormat(articleData.content);
     }
 
+    const tagsHTML = articleData.tags?.length ? `<div class="tag-chips">${articleData.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>` : '';
+
     mainContent.innerHTML = `
         <article class="article-container animate-in">
             <header class="article-header">
                 <h1 class="article-title">${articleData.title}</h1>
-                <div class="article-meta">
-                    By ${articleData.author} • ${articleData.date} • ${articleData.category}
+                ${formatMetaChips(articleData)}
+                <div class="article-cover">
+                    <img src="${coverImage}" alt="${articleData.title}" onerror="this.style.display='none'">
                 </div>
+                ${tagsHTML}
+                ${tocHTML}
             </header>
             <div class="article-content">
                 ${contentHTML}
@@ -1117,7 +1167,7 @@ function renderArticle(articleData) {
     mainContent.insertAdjacentHTML('beforeend', shareButtonHTML);
 
     const shareButton = document.querySelector('.share-button');
-    if (navigator.share) {
+    if (shareButton && navigator.share) {
         shareButton.onclick = () => shareUtils.shareNative();
     }
     
@@ -1125,23 +1175,105 @@ function renderArticle(articleData) {
 }
 
 // Helper functions for rendering different section types
+function listify(arr, mapper) {
+    return `<ul>${arr.map(mapper).join('')}</ul>`;
+}
+
+/* Render schedule/routine style objects into cards instead of raw JSON */
+function renderScheduleCard(item) {
+    if (!item || typeof item !== 'object') return '';
+    const day = item.day || item.title || '';
+    const duration = item.duration ? String(item.duration) : '';
+    const structure = Array.isArray(item.structure) ? item.structure : Array.isArray(item.activities) ? item.activities : null;
+    const goal = item.goal || item.objective || '';
+
+    const structureHTML = structure ? `<ul class="schedule-structure">${structure.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
+    const durationHTML = duration ? `<span class="schedule-duration">${duration}</span>` : '';
+    const goalHTML = goal ? `<div class="schedule-goal"><strong>Goal:</strong> ${goal}</div>` : '';
+
+    if (!day && !duration && !structure && !goal) {
+        // fallback to key/value table (already styled by .kv)
+        return keyValTable(item);
+    }
+
+    return `
+        <div class="schedule-card">
+            <div class="schedule-header">
+                ${day ? `<div class="schedule-day">${day}</div>` : ''}
+                ${durationHTML}
+            </div>
+            ${structureHTML}
+            ${goalHTML}
+        </div>
+    `;
+}
+function pillList(items) {
+    return `<div class="pill-list">${items.map(t=>`<span class="pill">${t}</span>`).join('')}</div>`;
+}
+function keyValTable(obj) {
+    if (!obj) return '';
+    return `<div class="kv"><ul>${Object.entries(obj).map(([k,v])=>`<li><strong>${k.replace(/([A-Z])/g,' $1')}:</strong> ${Array.isArray(v)?v.join(', '): (typeof v==='object'? JSON.stringify(v): v)}</li>`).join('')}</ul></div>`;
+}
+function mealDay(day) {
+    const meals = day.meals?.map(m=>`
+        <div class="meal-card">
+            <div class="meal-head"><strong>${m.mealType}</strong> • ${m.cost || ''}</div>
+            <div class="meal-name">${m.name || ''}</div>
+            ${m.ingredients ? `<div class="meal-ingredients">${m.ingredients}</div>` : ''}
+            ${m.note ? `<div class="meal-note">${m.note}</div>` : ''}
+        </div>
+    `).join('') || '';
+    return `<div class="day-block"><h3>${day.day}${day.dailyTotal?` • <small>${day.dailyTotal}</small>`:''}</h3><div class="meal-list">${meals}</div></div>`;
+}
 function renderSectionType(items, type) {
-    // This is a simplified version - you would implement specific rendering for each type
     return items.map(item => {
         switch(type) {
             case 'mistakes':
                 return `<div class="mistake-block">
-                    <h3 class="subsection-heading">Mistake #${item.mistakeNumber}: ${item.mistakeTitle}</h3>
+                    <h3 class="subsection-heading">${item.mistakeTitle || item.title || 'Mistake'}${item.mistakeNumber?` #${item.mistakeNumber}`:''}</h3>
                     ${item.description ? `<p>${item.description}</p>` : ''}
                     ${item.personalExperience ? `<div class="highlight-text">${item.personalExperience}</div>` : ''}
                 </div>`;
             case 'tools':
                 return `<div class="tool-block">
-                    <h3 class="subsection-heading">${item.toolName}</h3>
+                    <h3 class="subsection-heading">${item.toolName || item.title}</h3>
                     ${item.description ? `<p>${item.description}</p>` : ''}
                 </div>`;
+            case 'impacts':
+            case 'principles':
+            case 'strategies':
+            case 'habits':
+            case 'workoutTypes':
+            case 'ingredients':
+            case 'furniture':
+            case 'technology':
+            case 'environment':
+            case 'comfort':
+            case 'systems':
+            case 'concepts':
+            case 'challenges':
+            case 'nutritionStrategies':
+                return `<div class="list-block">
+                    ${item.impactTitle || item.systemTitle || item.techTitle || item.furnitureTitle ? `<h3>${item.impactTitle || item.systemTitle || item.techTitle || item.furnitureTitle}</h3>` : ''}
+                    ${item.description ? `<p>${item.description}</p>`:''}
+                    ${item.rules ? listify(item.rules, r=>`<li><strong>${r.title||''}</strong> - ${r.description||''}</li>`) : ''}
+                    ${item.monitorSetup ? keyValTable(item.monitorSetup) : ''}
+                    ${item.deskRequirements ? keyValTable(item.deskRequirements) : ''}
+                    ${item.stats ? keyValTable(item.stats) : ''}
+                    ${item.examples ? listify(item.examples, ex=>`<li>${ex}</li>`) : ''}
+                    ${item.virtualWorkoutBuddy ? listify(item.virtualWorkoutBuddy, ex=>`<li>${ex}</li>`) : ''}
+                </div>`;
+            case 'weeklyMeals':
+                return mealDay(item);
+            case 'meals':
+                return `<div class="meal-card">
+                    <div class="meal-head"><strong>${item.meal || ''}</strong> ${item.cost?`• ${item.cost}`:''}</div>
+                    ${item.description?`<div>${item.description}</div>`:''}
+                </div>`;
+            case 'budgetBreakdown':
+                return keyValTable(item);
             default:
-                return `<div class="content-block"><p>${JSON.stringify(item)}</p></div>`;
+                return `<div class="content-block">${typeof item === 'string' ? item : (item.content || JSON.stringify(item))}</div>`;
         }
     }).join('');
 }
@@ -1210,7 +1342,7 @@ function renderOldContentFormat(content) {
 
 function setMetaTags(articleData) {
     const getOrCreateMeta = (property, name = null) => {
-        let meta = document.querySelector(`meta[property="${property}"]`) || 
+        let meta = document.querySelector(`meta[property="${property}"]`) ||
                    (name ? document.querySelector(`meta[name="${name}"]`) : null);
         if (!meta) {
             meta = document.createElement('meta');
@@ -1222,19 +1354,22 @@ function setMetaTags(articleData) {
     };
 
     const firstTextBlock = articleData.content?.find(block => block.type === 'text');
-    const description = articleData.description || 
-                       (firstTextBlock ? firstTextBlock.content.substring(0, 160) + '...' : 
+    const description = articleData.description ||
+                       (firstTextBlock ? firstTextBlock.content.substring(0, 160) + '...' :
                         `Read about ${articleData.title} by ${articleData.author}`);
 
+    // improved image fallback using slug-based path
+    const path = window.location.pathname;
+    const slug = path.startsWith('/articles/') ? path.slice('/articles/'.length).replace(/\/+$/,'') : '';
     const firstImageBlock = articleData.content?.find(block => block.type === 'image');
-    const imageUrl = articleData.thumbnail || firstImageBlock?.src || '/assets/default-share-image.jpg';
+    const imageUrl = articleData.thumbnail || firstImageBlock?.src || (slug ? `/assets/images/${slug}.jpg` : '/assets/default-share-image.jpg');
     const currentUrl = window.location.href;
 
     document.title = `${articleData.title} | TopPicksOnline`;
 
     getOrCreateMeta(null, 'description').content = description;
-    getOrCreateMeta(null, 'author').content = articleData.author;
-    getOrCreateMeta(null, 'keywords').content = articleData.tags?.join(', ') || articleData.category;
+    getOrCreateMeta(null, 'author').content = articleData.author || '';
+    getOrCreateMeta(null, 'keywords').content = articleData.tags?.join(', ') || articleData.category || '';
 
     getOrCreateMeta('og:title').content = articleData.title;
     getOrCreateMeta('og:description').content = description;
@@ -1242,9 +1377,9 @@ function setMetaTags(articleData) {
     getOrCreateMeta('og:url').content = currentUrl;
     getOrCreateMeta('og:image').content = imageUrl;
     getOrCreateMeta('og:site_name').content = 'TopPicksOnline';
-    getOrCreateMeta('article:author').content = articleData.author;
-    getOrCreateMeta('article:published_time').content = articleData.date;
-    getOrCreateMeta('article:section').content = articleData.category;
+    getOrCreateMeta('article:author').content = articleData.author || '';
+    getOrCreateMeta('article:published_time').content = articleData.date || '';
+    getOrCreateMeta('article:section').content = articleData.category || '';
     
     if (articleData.tags) {
         articleData.tags.forEach(tag => {
@@ -1276,7 +1411,7 @@ function setMetaTags(articleData) {
         "image": imageUrl,
         "author": {
             "@type": "Person",
-            "name": articleData.author
+            "name": articleData.author || ''
         },
         "publisher": {
             "@type": "Organization",
@@ -1286,14 +1421,14 @@ function setMetaTags(articleData) {
                 "url": "/assets/logo.png"
             }
         },
-        "datePublished": articleData.date,
-        "dateModified": articleData.lastModified || articleData.date,
+        "datePublished": articleData.date || '',
+        "dateModified": articleData.lastModified || articleData.date || '',
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": currentUrl
         },
-        "articleSection": articleData.category,
-        "keywords": articleData.tags?.join(', ')
+        "articleSection": articleData.category || '',
+        "keywords": articleData.tags?.join(', ') || ''
     });
 }
 
@@ -1431,8 +1566,9 @@ function navigateTo(path) {
         heroSlider.destroy();
         heroSlider = null;
     }
-    
-    window.history.pushState({}, '', path);
+    // normalize double slashes and trailing
+    const url = path.replace(/\/{2,}/g,'/').replace(/\/+$/,'').replace(/^$/,'/');
+    window.history.pushState({}, '', url);
     handleRoute();
 }
 
@@ -1651,15 +1787,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('popstate', handleRoute);
 
     document.addEventListener('click', (e) => {
+        // internal links
         if (e.target.tagName === 'A' && e.target.href.startsWith(window.location.origin)) {
+            // if TOC link with hash target inside same page, smooth scroll without navigateTo
+            const href = e.target.getAttribute('href') || '';
+            const isToc = e.target.classList.contains('toc-link') || (href.startsWith('#') && e.target.closest('.toc'));
+            if (isToc) {
+                e.preventDefault();
+                const targetId = href.replace(/^.*#/, '');
+                const el = document.getElementById(targetId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                return;
+            }
             e.preventDefault();
-            navigateTo(e.target.getAttribute('href'));
+            navigateTo(href);
         }
         
         const searchBox = $('.search-box');
         const dropdown = $('#search-dropdown');
         if (searchBox && dropdown && !searchBox.contains(e.target)) {
             dropdown.style.display = 'none';
+        }
+    });
+
+    // Delegate TOC clicks added dynamically
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a.toc-link');
+        if (a) {
+            e.preventDefault();
+            const targetId = a.getAttribute('data-target') || a.getAttribute('href').replace(/^.*#/, '');
+            const el = document.getElementById(targetId);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
