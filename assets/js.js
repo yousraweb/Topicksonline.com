@@ -1143,6 +1143,41 @@ function renderArticle(articleData) {
     if (!contentHTML && articleData.content) {
         contentHTML = renderOldContentFormat(articleData.content);
     }
+    
+    // Handle visual aids
+    if (articleData.visualAids && Array.isArray(articleData.visualAids)) {
+        const visualAidsHTML = articleData.visualAids.map(visualAid => renderVisualAid(visualAid)).join('');
+        contentHTML += `<section class="article-section visual-aids-section">${visualAidsHTML}</section>`;
+    }
+    
+    // Handle actionable boxes
+    if (articleData.actionableBoxes && Array.isArray(articleData.actionableBoxes)) {
+        const boxesHTML = articleData.actionableBoxes.map(box => renderActionableBox(box)).join('');
+        contentHTML += `<section class="article-section actionable-boxes-section">${boxesHTML}</section>`;
+    }
+    
+    // Handle expert data
+    if (articleData.expertData && Array.isArray(articleData.expertData)) {
+        const expertDataHTML = articleData.expertData.map(data => renderExpertData(data)).join('');
+        contentHTML += `<section class="article-section expert-data-section">${expertDataHTML}</section>`;
+    }
+    
+    // Handle real stories
+    if (articleData.realStories && Array.isArray(articleData.realStories)) {
+        const storiesHTML = articleData.realStories.map(story => renderRealStory(story)).join('');
+        contentHTML += `<section class="article-section real-stories-section">${storiesHTML}</section>`;
+    }
+    
+    // Handle personal voice
+    if (articleData.personalVoice) {
+        contentHTML += `<section class="article-section personal-voice-section">${renderPersonalVoice(articleData.personalVoice)}</section>`;
+    }
+    
+    // Handle sources
+    if (articleData.sources && Array.isArray(articleData.sources)) {
+        const sourcesHTML = articleData.sources.map(source => renderSource(source)).join('');
+        contentHTML += `<section class="article-section sources-section"><h2>Sources & References</h2>${sourcesHTML}</section>`;
+    }
 
     const tagsHTML = articleData.tags?.length ? `<div class="tag-chips">${articleData.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>` : '';
 
@@ -1362,6 +1397,165 @@ function renderOldContentFormat(content) {
     return content.map(block => 
         contentBlocks[block.type] ? contentBlocks[block.type](block) : ''
     ).join('');
+}
+// Visual aids rendering functions
+function renderChecklist(visualAid) {
+    const itemsHTML = visualAid.items.map(item => `
+        <div class="checklist-item">
+            <div class="checklist-question">${item.question}</div>
+            <div class="checklist-result yes-result">${item.yesResult}</div>
+            <div class="checklist-result no-result">${item.noResult}</div>
+        </div>
+    `).join('');
+    
+    return `
+        <div class="visual-aid checklist">
+            <h3>${visualAid.title}</h3>
+            ${visualAid.subtitle ? `<p class="visual-aid-subtitle">${visualAid.subtitle}</p>` : ''}
+            <div class="checklist-container">
+                ${itemsHTML}
+            </div>
+        </div>
+    `;
+}
+
+function renderComparisonTable(visualAid) {
+    // Create table header
+    const headerRow = visualAid.columns.map(col => `<th>${col}</th>`).join('');
+    const headerHTML = `<thead><tr><th></th>${headerRow}</tr></thead>`;
+    
+    // Create table rows
+    const rowsHTML = visualAid.rows.map(row => {
+        const cellsHTML = row.data.map(cell => `<td>${cell}</td>`).join('');
+        return `<tr><td><strong>${row.label}</strong></td>${cellsHTML}</tr>`;
+    }).join('');
+    const bodyHTML = `<tbody>${rowsHTML}</tbody>`;
+    
+    return `
+        <div class="visual-aid comparison-table">
+            <h3>${visualAid.title}</h3>
+            ${visualAid.subtitle ? `<p class="visual-aid-subtitle">${visualAid.subtitle}</p>` : ''}
+            <div class="table-container">
+                <table>
+                    ${headerHTML}
+                    ${bodyHTML}
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function renderProgressionFlowchart(visualAid) {
+    const weeksHTML = visualAid.weeks.map(week => `
+        <div class="flowchart-week">
+            <div class="week-header">
+                <span class="week-number">${week.week}</span>
+            </div>
+            <div class="week-content">
+                ${week.milestones ? `<div class="week-milestones">${week.milestones}</div>` : ''}
+                ${week.focus ? `<div class="week-focus">Focus: ${week.focus}</div>` : ''}
+                ${week.intensity ? `<div class="week-intensity">Intensity: ${week.intensity}</div>` : ''}
+                ${week.keyExercises ? `<div class="week-exercises">Key: ${week.keyExercises.join(', ')}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+    
+    return `
+        <div class="visual-aid progression-flowchart">
+            <h3>${visualAid.title}</h3>
+            ${visualAid.subtitle ? `<p class="visual-aid-subtitle">${visualAid.subtitle}</p>` : ''}
+            <div class="flowchart-container">
+                ${weeksHTML}
+            </div>
+        </div>
+    `;
+}
+
+function renderVisualAid(visualAid) {
+    switch (visualAid.type) {
+        case 'checklist':
+            return renderChecklist(visualAid);
+        case 'comparison_table':
+            return renderComparisonTable(visualAid);
+        case 'progression_flowchart':
+            return renderProgressionFlowchart(visualAid);
+        default:
+            return `<div class="visual-aid">Unsupported visual aid type: ${visualAid.type}</div>`;
+    }
+}
+
+// Actionable boxes rendering function
+function renderActionableBox(box) {
+    const actionsHTML = box.actions.map(action => `<li>${action}</li>`).join('');
+    
+    return `
+        <div class="actionable-box">
+            <div class="box-header">
+                <h3 class="problem-title">${box.problemTitle}</h3>
+                <h4 class="solution-title">${box.solutionTitle}</h4>
+            </div>
+            <div class="box-content">
+                <ul class="action-list">
+                    ${actionsHTML}
+                </ul>
+                ${box.successMetric ? `<div class="success-metric">Success Metric: ${box.successMetric}</div>` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Expert data rendering function
+function renderExpertData(data) {
+    return `
+        <div class="expert-data">
+            <h3>Expert Insights</h3>
+            <div class="statistic-card">
+                <div class="statistic-value">${data.statistic}</div>
+                <div class="statistic-source">Source: ${data.source}</div>
+                <div class="statistic-insight">${data.insight}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Real stories rendering function
+function renderRealStory(story) {
+    return `
+        <div class="real-story">
+            <h3>${story.scenario}</h3>
+            <div class="story-content">
+                <p>${story.story}</p>
+                <div class="story-lesson">Lesson: ${story.lesson}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Personal voice rendering function
+function renderPersonalVoice(voice) {
+    return `
+        <div class="personal-voice">
+            <h3>Author's Personal Insights</h3>
+            <div class="voice-content">
+                ${voice.biggestRealization ? `<p><strong>Biggest Realization:</strong> ${voice.biggestRealization}</p>` : ''}
+                ${voice.mindsetShift ? `<p><strong>Mindset Shift:</strong> ${voice.mindsetShift}</p>` : ''}
+                ${voice.encouragement ? `<p><strong>Encouragement:</strong> ${voice.encouragement}</p>` : ''}
+                ${voice.honestTruth ? `<p><strong>Honest Truth:</strong> ${voice.honestTruth}</p>` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Sources rendering function
+function renderSource(source) {
+    return `
+        <div class="source-item">
+            <div class="source-citation">${source.citation}</div>
+            <div class="source-type">${source.type}</div>
+            <div class="source-description">${source.description}</div>
+            <div class="source-credibility">${source.credibility}</div>
+        </div>
+    `;
 }
 
 function setMetaTags(articleData) {

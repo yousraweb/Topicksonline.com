@@ -1300,6 +1300,372 @@ main {
     animation: animate 80s alternate infinite, animate_color 3s linear infinite;
 }
 
+/* Styles for new article sections */
+.visual-aid {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.visual-aid h3 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.visual-aid-subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Checklist styles */
+.checklist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checklist-item {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    background: var(--bg-secondary);
+    transition: var(--transition);
+}
+
+.checklist-item:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+}
+
+.checklist-question {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.checklist-result {
+    padding: 8px 12px;
+    border-radius: var(--radius-xs);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.yes-result {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success);
+}
+
+.no-result {
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--error);
+}
+
+/* Comparison table styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-container th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.table-container tr:hover {
+    background: var(--bg-card-hover);
+}
+
+/* Progression flowchart styles */
+.flowchart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.flowchart-week {
+    flex: 1 1 200px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.week-header {
+    margin-bottom: 16px;
+}
+
+.week-number {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.week-content {
+    text-align: left;
+}
+
+.week-focus,
+.week-intensity,
+.week-exercises {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 8px 0;
+}
+
+/* Actionable boxes styles */
+.actionable-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.actionable-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.box-header {
+    margin-bottom: 16px;
+}
+
+.problem-title {
+    color: var(--error);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.solution-title {
+    color: var(--success);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.action-list {
+    padding-left: 20px;
+    margin: 16px 0;
+}
+
+.action-list li {
+    margin: 8px 0;
+    color: var(--text-secondary);
+}
+
+.success-metric {
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Expert data styles */
+.expert-data {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.expert-data h3 {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.statistic-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    padding: 20px;
+    text-align: center;
+}
+
+.statistic-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.statistic-source {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.statistic-insight {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* Real stories styles */
+.real-story {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.real-story h3 {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.story-content {
+    color: var(--text-secondary);
+}
+
+.story-lesson {
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Personal voice styles */
+.personal-voice {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.personal-voice h3 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.voice-content {
+    color: var(--text-secondary);
+}
+
+.voice-content p {
+    margin: 16px 0;
+}
+
+.voice-content strong {
+    color: var(--text-primary);
+}
+
+/* Sources styles */
+.sources-section h2 {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 600;
+    margin: 32px 0 24px;
+    text-align: center;
+}
+
+.source-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.source-citation {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.source-type {
+    font-size: 14px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.source-description {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.source-credibility {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .flowchart-container {
+        flex-direction: column;
+    }
+    
+    .flowchart-week {
+        width: 100%;
+    }
+    
+    .actionable-box,
+    .expert-data,
+    .real-story,
+    .personal-voice,
+    .source-item,
+    .visual-aid {
+        padding: 16px;
+    }
+    
+    .problem-title {
+        font-size: 18px;
+    }
+    
+    .solution-title {
+        font-size: 16px;
+    }
+    
+    .statistic-value {
+        font-size: 16px;
+    }
+}
+
 @keyframes colorChange {
     0% {
         --hue: 0deg;
