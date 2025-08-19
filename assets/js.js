@@ -112,7 +112,7 @@ class HeroSlider {
     }
     
     render() {
-        const dotsHTML = this.slides.map((_, index) => 
+        const dotsHTML = this.slides.map((_, index) =>
             `<div class="slider-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></div>`
         ).join('');
         
@@ -128,7 +128,7 @@ class HeroSlider {
                         <span>•</span>
                         <span>${slide.readTime || slide.date}</span>
                     </div>
-                    <a href="/articles/${slide.id.replace('articles/', '')}" class="slide-cta">
+                    <a href="/articles/${this.getSlugFromId(slide.id)}" class="slide-cta">
                         Read Article →
                     </a>
                 </div>
@@ -158,6 +158,13 @@ class HeroSlider {
         this.wrapper = this.container.querySelector('.slider-wrapper');
         this.dots = this.container.querySelectorAll('.slider-dot');
         this.progress = this.container.querySelector('.slider-progress');
+    }
+    
+    getSlugFromId(id) {
+        if (id && typeof id === 'string' && id.startsWith('articles/')) {
+            return id.replace(/^articles\//, '');
+        }
+        return '';
     }
     
     bindEvents() {
@@ -403,8 +410,21 @@ let searchPagination = null;
 // Template functions
 const templates = {
     tutorialCard: (tutorial) => {
-        const id = (tutorial.id || '').replace(/^articles\//, '') || (tutorial.slug || '');
-        const slug = id || (tutorial.title ? tutorial.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') : '');
+        // Extract slug from id field if available, otherwise generate from title
+        let slug = '';
+        if (tutorial.id && typeof tutorial.id === 'string' && tutorial.id.startsWith('articles/')) {
+            slug = tutorial.id.replace(/^articles\//, '');
+        } else if (tutorial.slug && typeof tutorial.slug === 'string') {
+            slug = tutorial.slug;
+        } else if (tutorial.title && typeof tutorial.title === 'string') {
+            // Generate slug from title, but limit length to prevent issues
+            slug = tutorial.title.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/(^-|-$)/g, '')
+                .substring(0, 50); // Limit to 50 characters
+        }
+        
+        // Use explicit image if provided, otherwise derive from slug
         const resolvedImage = tutorial.image || tutorial.thumbnail || (slug ? `/assets/images/${slug}.jpg` : '');
         const imageHTML = resolvedImage ?
             `<img src="${resolvedImage}"
@@ -961,7 +981,7 @@ const search = {
             dropdown.innerHTML = `<div class="search-no-results">No articles found for "${query}"</div>`;
         } else {
             const resultsHTML = results.slice(0, 5).map(article => `
-                <div class="search-result-item" onclick="navigateTo('/articles/${article.id.replace('articles/', '')}')">
+                <div class="search-result-item" onclick="navigateTo('/articles/${this.getSlugFromId(article.id)}')">
                     <div class="search-result-title">${this.highlightMatch(article.title, query)}</div>
                     <div class="search-result-meta">${article.category} • By ${article.author}</div>
                 </div>
@@ -977,6 +997,13 @@ const search = {
         }
         
         dropdown.style.display = 'block';
+    },
+    
+    getSlugFromId(id) {
+        if (id && typeof id === 'string' && id.startsWith('articles/')) {
+            return id.replace(/^articles\//, '');
+        }
+        return '';
     },
     
     highlightMatch(text, query) {
