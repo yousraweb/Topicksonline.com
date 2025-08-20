@@ -5,6 +5,26 @@
   },
   "featured": [
     {
+      "id": "articles/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank",
+      "title": "10 High-Protein Snacks That Keep You Full Without Breaking the Bank",
+      "description": "Tired of expensive protein bars that cost $3 each? I found 10 high protein snacks that actually fill you up for under $1 per serving. These healthy snacks saved me $200+ monthly.",
+      "category": "Healthy Eating on a Budget",
+      "difficulty": "Beginner",
+      "author": "Mike Rodriguez",
+      "date": "January 18, 2025",
+      "readTime": "11 min read",
+      "image": "assets/images/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank.jpg",
+      "tags": [
+        "high protein snacks",
+        "healthy snacks",
+        "budget-friendly meals",
+        "cheap protein",
+        "affordable nutrition",
+        "money saving tips",
+        "meal prep snacks"
+      ]
+    },
+    {
       "id": "articles/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals",
       "title": "The Ultimate Beginner's Guide to Meal Prep Meals: Save Time, Eat Healthy, Spend Less",
       "description": "I failed at meal prep 3 times before figuring it out. Here's how to avoid my expensive mistakes and actually make meal prep work for busy people who want healthy meals without the stress.",
@@ -174,25 +194,6 @@
         "exercise consistency",
         "solo workouts",
         "fitness accountability"
-      ]
-    },
-    {
-      "id": "articles/7-day-budget-meal-plan-for-under-50",
-      "title": "7-Day Budget Meal Plan for Under $50 (I Ate This for 3 Months When Money Was Tight)",
-      "description": "Grocery prices are insane, but you can still eat well on $50/week. This is the exact meal plan I used for 3 months when money was tight—real recipes, real prices, real food that doesn't taste like punishment.",
-      "category": "Healthy Eating on a Budget",
-      "difficulty": "Beginner",
-      "author": "Maria Santos",
-      "date": "2025-07-06",
-      "readTime": "14 min",
-      "image": "assets/images/7-day-budget-meal-plan-for-under-50.jpg",
-      "tags": [
-        "Budget Meals",
-        "Meal Planning",
-        "Cheap Recipes",
-        "Grocery Budget",
-        "Money Saving",
-        "Food Budget"
       ]
     }
   ]

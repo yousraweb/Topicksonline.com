@@ -2,8 +2,28 @@
   "title": "Healthy Eating on a Budget Articles",
   "category": "Healthy Eating on a Budget",
   "description": "All articles about Healthy Eating on a Budget",
-  "articleCount": 3,
+  "articleCount": 4,
   "articles": [
+    {
+      "id": "articles/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank",
+      "image": "assets/images/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank.jpg",
+      "title": "10 High-Protein Snacks That Keep You Full Without Breaking the Bank",
+      "author": "Mike Rodriguez",
+      "date": "January 18, 2025",
+      "category": "Healthy Eating on a Budget",
+      "tags": [
+        "high protein snacks",
+        "healthy snacks",
+        "budget-friendly meals",
+        "cheap protein",
+        "affordable nutrition",
+        "money saving tips",
+        "meal prep snacks"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "11 min read",
+      "description": "Tired of expensive protein bars that cost $3 each? I found 10 high protein snacks that actually fill you up for under $1 per serving. These healthy snacks saved me $200+ monthly."
+    },
     {
       "id": "articles/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals",
       "image": "assets/images/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals.jpg",
