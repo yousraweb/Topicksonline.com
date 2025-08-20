@@ -1,32 +1,43 @@
-import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from playwright.sync_api import sync_playwright
+from urllib.parse import urljoin, urlparse
 from collections import deque
 import datetime
 
-# 🔹 Change this to your website
 base_url = "https://topicksonline.com"
 
 visited = set()
 queue = deque([base_url])
 urls = []
 
-while queue:
-    url = queue.popleft()
-    if url in visited:
-        continue
-    visited.add(url)
-    try:
-        r = requests.get(url, timeout=5)
-        if r.status_code == 200:
-            soup = BeautifulSoup(r.text, "html.parser")
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)
+    page = browser.new_page()
+
+    while queue:
+        url = queue.popleft()
+        if url in visited:
+            continue
+        visited.add(url)
+
+        try:
+            page.goto(url, timeout=15000)
             urls.append(url)
-            for link in soup.find_all("a", href=True):
-                full_url = urljoin(base_url, link["href"])
-                if full_url.startswith(base_url) and full_url not in visited:
-                    queue.append(full_url)
-    except:
-        continue
+
+            # Get all links on the page
+            links = page.eval_on_selector_all(
+                "a[href]", "elements => elements.map(e => e.href)"
+            )
+
+            for link in links:
+                # Keep only internal links
+                if urlparse(link).netloc == urlparse(base_url).netloc and link not in visited:
+                    queue.append(link)
+
+        except Exception as e:
+            print(f"⚠️ Could not crawl {url}: {e}")
+            continue
+
+    browser.close()
 
 # Write sitemap.xml
 with open("sitemap.xml", "w", encoding="utf-8") as f:
