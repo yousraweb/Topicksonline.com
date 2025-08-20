@@ -5,6 +5,26 @@
   },
   "featured": [
     {
+      "id": "articles/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals",
+      "title": "The Ultimate Beginner's Guide to Meal Prep Meals: Save Time, Eat Healthy, Spend Less",
+      "description": "I failed at meal prep 3 times before figuring it out. Here's how to avoid my expensive mistakes and actually make meal prep work for busy people who want healthy meals without the stress.",
+      "category": "Healthy Eating on a Budget",
+      "difficulty": "Beginner",
+      "author": "Sarah Mitchell",
+      "date": "January 15, 2025",
+      "readTime": "12 min read",
+      "image": "assets/images/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals.jpg",
+      "tags": [
+        "meal prep meals",
+        "healthy meals",
+        "low calorie meals",
+        "meal planning",
+        "healthy eating",
+        "budget cooking",
+        "time saving"
+      ]
+    },
+    {
       "id": "articles/lose-belly-fat-at-home",
       "title": "How to Lose Belly Fat at Home: A Simple Guide That Actually Works",
       "description": "Struggling to lose stubborn belly fat? This proven home-based approach combines simple workouts, smart eating habits, and daily lifestyle changes that actually work—no gym membership required.",
@@ -173,25 +193,6 @@
         "Grocery Budget",
         "Money Saving",
         "Food Budget"
-      ]
-    },
-    {
-      "id": "articles/best-productivity-tools-for-remote-workers",
-      "title": "Best Productivity Tools for Remote Workers: Apps That Actually Work (I Tested 73 Tools Over 2 Years)",
-      "description": "Stop drowning in productivity apps that don't work. After testing 73 different tools over 2 years and spending $1,847 on subscriptions, here are the ones that actually improved my remote work productivity.",
-      "category": "Work-from-Home Productivity",
-      "difficulty": "Beginner",
-      "author": "Jennifer Rodriguez",
-      "date": "2025-07-06",
-      "readTime": "16 min",
-      "image": "assets/images/best-productivity-tools-for-remote-workers.jpg",
-      "tags": [
-        "Productivity Tools",
-        "Remote Work",
-        "Task Management",
-        "Time Tracking",
-        "Collaboration Apps",
-        "Focus Apps"
       ]
     }
   ]

@@ -2,8 +2,28 @@
   "title": "Healthy Eating on a Budget Articles",
   "category": "Healthy Eating on a Budget",
   "description": "All articles about Healthy Eating on a Budget",
-  "articleCount": 2,
+  "articleCount": 3,
   "articles": [
+    {
+      "id": "articles/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals",
+      "image": "assets/images/The-Ultimate-Beginner's-Guide-to-Meal-Prep-Meals.jpg",
+      "title": "The Ultimate Beginner's Guide to Meal Prep Meals: Save Time, Eat Healthy, Spend Less",
+      "author": "Sarah Mitchell",
+      "date": "January 15, 2025",
+      "category": "Healthy Eating on a Budget",
+      "tags": [
+        "meal prep meals",
+        "healthy meals",
+        "low calorie meals",
+        "meal planning",
+        "healthy eating",
+        "budget cooking",
+        "time saving"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "12 min read",
+      "description": "I failed at meal prep 3 times before figuring it out. Here's how to avoid my expensive mistakes and actually make meal prep work for busy people who want healthy meals without the stress."
+    },
     {
       "id": "articles/no-cook-budget-meals",
       "image": "assets/images/no-cook-budget-meals.jpg",
