@@ -2,8 +2,28 @@
   "title": "Healthy Eating on a Budget Articles",
   "category": "Healthy Eating on a Budget",
   "description": "All articles about Healthy Eating on a Budget",
-  "articleCount": 4,
+  "articleCount": 5,
   "articles": [
+    {
+      "id": "articles/budget-planner-healthier-lifestyle-balance-fitness-food-finances",
+      "image": "assets/images/budget-planner-healthier-lifestyle-balance-fitness-food-finances.jpg",
+      "title": "Budget Planner for a Healthier Lifestyle: How to Balance Fitness, Food, and Finances",
+      "author": "Jessica Martinez",
+      "date": "January 22, 2025",
+      "category": "Healthy Eating on a Budget",
+      "tags": [
+        "budget planner",
+        "healthy food near me",
+        "affordable meals",
+        "budget fitness",
+        "healthy on a budget",
+        "meal planning budget",
+        "cheap healthy food"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "14 min read",
+      "description": "Broke but want to get healthy? I spent $2,400 on 'healthy living' in 3 months and had nothing to show for it. Here's my budget planner system that actually works for real people with real money limits."
+    },
     {
       "id": "articles/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank",
       "image": "assets/images/10-High-Protein-Snacks-That-Keep-You-Full-Without-Breaking-the-Bank.jpg",

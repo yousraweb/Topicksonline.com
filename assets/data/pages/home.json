@@ -5,6 +5,26 @@
   },
   "featured": [
     {
+      "id": "articles/budget-planner-healthier-lifestyle-balance-fitness-food-finances",
+      "title": "Budget Planner for a Healthier Lifestyle: How to Balance Fitness, Food, and Finances",
+      "description": "Broke but want to get healthy? I spent $2,400 on 'healthy living' in 3 months and had nothing to show for it. Here's my budget planner system that actually works for real people with real money limits.",
+      "category": "Healthy Eating on a Budget",
+      "difficulty": "Beginner",
+      "author": "Jessica Martinez",
+      "date": "January 22, 2025",
+      "readTime": "14 min read",
+      "image": "assets/images/budget-planner-healthier-lifestyle-balance-fitness-food-finances.jpg",
+      "tags": [
+        "budget planner",
+        "healthy food near me",
+        "affordable meals",
+        "budget fitness",
+        "healthy on a budget",
+        "meal planning budget",
+        "cheap healthy food"
+      ]
+    },
+    {
       "id": "articles/lose-weight-fast-healthy-way-7-science-backed-tips",
       "title": "Lose Weight Fast (The Healthy Way): 7 Science-Backed Tips You Can Start Today",
       "description": "Tired of crash diets that backfire? I lost 28 pounds in 12 weeks using these science-backed methods to lose weight fast without destroying my metabolism or sanity.",
@@ -176,25 +196,6 @@
         "calorie deficit",
         "HIIT workouts",
         "nutrition tips"
-      ]
-    },
-    {
-      "id": "articles/no-cook-budget-meals",
-      "title": "No-Cook Budget Meals for When You're Too Tired to Cook (or Don't Have a Stove): 7 Lifesaving Recipes Under $3 Each",
-      "description": "Whether it's heat, laziness, or no kitchen — this is your fix. After 3 months with a broken stove and a $50/week food budget, here are 7 no-cook meals that saved my sanity and wallet.",
-      "category": "Healthy Eating on a Budget",
-      "difficulty": "Beginner",
-      "author": "Maria Santos",
-      "date": "2025-07-08",
-      "readTime": "12 min",
-      "image": "assets/images/no-cook-budget-meals.jpg",
-      "tags": [
-        "no-cook meals",
-        "budget recipes",
-        "easy meals",
-        "lazy cooking",
-        "dorm food",
-        "quick meals"
       ]
     }
   ]
