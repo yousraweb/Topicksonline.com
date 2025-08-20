@@ -2,8 +2,28 @@
   "title": "At-Home Fitness Articles",
   "category": "At-Home Fitness",
   "description": "All articles about At-Home Fitness",
-  "articleCount": 5,
+  "articleCount": 6,
   "articles": [
+    {
+      "id": "articles/lose-weight-fast-healthy-way-7-science-backed-tips",
+      "image": "assets/images/lose-weight-fast-healthy-way-7-science-backed-tips.jpg",
+      "title": "Lose Weight Fast (The Healthy Way): 7 Science-Backed Tips You Can Start Today",
+      "author": "Dr. Lisa Chen",
+      "date": "January 20, 2025",
+      "category": "At-Home Fitness",
+      "tags": [
+        "lose weight fast",
+        "lose belly fat",
+        "belly fat removal",
+        "healthy weight loss",
+        "science-based weight loss",
+        "metabolism boost",
+        "sustainable weight loss"
+      ],
+      "difficulty": "Beginner",
+      "readTime": "13 min read",
+      "description": "Tired of crash diets that backfire? I lost 28 pounds in 12 weeks using these science-backed methods to lose weight fast without destroying my metabolism or sanity."
+    },
     {
       "id": "articles/lose-belly-fat-at-home",
       "image": "assets/images/lose-belly-fat-at-home.jpg",
