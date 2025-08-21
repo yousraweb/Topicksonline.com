@@ -1,52 +1,45 @@
-from playwright.sync_api import sync_playwright
-from urllib.parse import urljoin, urlparse
-from collections import deque
+import os
 import datetime
 
 base_url = "https://topicksonline.com"
-
-visited = set()
-queue = deque([base_url])
 urls = []
 
-with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
-    page = browser.new_page()
+def add_json_urls(folder, url_prefix):
+    """Loop through JSON files in a folder and add URLs"""
+    if not os.path.exists(folder):
+        print(f"⚠️ Skipping missing folder: {folder}")
+        return
 
-    while queue:
-        url = queue.popleft()
-        if url in visited:
-            continue
-        visited.add(url)
+    for filename in os.listdir(folder):
+        if filename.endswith(".json"):
+            slug = filename.replace(".json", "")
+            if slug == "home" and url_prefix == "":  # homepage
+                urls.append((f"{base_url}/", datetime.date.today().isoformat()))
+            else:
+                urls.append((f"{base_url}/{url_prefix}{slug}", datetime.date.today().isoformat()))
 
-        try:
-            page.goto(url, timeout=15000)
-            urls.append(url)
+# ✅ Define your real folders
+articles_folder   = os.path.join("assets", "data", "pages", "articles")
+categories_folder = os.path.join("assets", "data", "pages", "categories")
+pages_folder      = os.path.join("assets", "data", "pages")
 
-            # Get all links on the page
-            links = page.eval_on_selector_all(
-                "a[href]", "elements => elements.map(e => e.href)"
-            )
+# ✅ Articles
+add_json_urls(articles_folder, "articles/")
 
-            for link in links:
-                # Keep only internal links
-                if urlparse(link).netloc == urlparse(base_url).netloc and link not in visited:
-                    queue.append(link)
+# ✅ Categories
+add_json_urls(categories_folder, "categories/")
 
-        except Exception as e:
-            print(f"⚠️ Could not crawl {url}: {e}")
-            continue
+# ✅ Top-level pages (about.json, privacy.json, etc.)
+add_json_urls(pages_folder, "")
 
-    browser.close()
-
-# Write sitemap.xml
+# ✅ Write sitemap.xml
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
-    for u in urls:
+    for url, lastmod in urls:
         f.write("  <url>\n")
-        f.write(f"    <loc>{u}</loc>\n")
-        f.write(f"    <lastmod>{datetime.date.today().isoformat()}</lastmod>\n")
+        f.write(f"    <loc>{url}</loc>\n")
+        f.write(f"    <lastmod>{lastmod}</lastmod>\n")
         f.write("  </url>\n")
     f.write("</urlset>")
 
